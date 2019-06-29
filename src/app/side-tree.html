@@ -1,0 +1,24 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <!-- <button mat-icon-button disabled></button> -->
+      <div fxLayout fxLayoutAlign="start center" class="menu-leaf" [style.paddingLeft]="node.isMain ? '29px': '0px'">
+        <div *ngIf="node.isMain" class="icon-holder">
+          <mat-icon>home</mat-icon>
+        </div>
+        <span class="menu-leaf-label">{{node.name}}</span>
+      </div>
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+      <div fxLayout fxLayoutAlign="start center" class="menu-node">
+          <i class="plus-icon" matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+          </i>
+          <div *ngIf="node.isMain" class="icon-holder menu-node-icon">
+            <mat-icon>insert_chart_outlined</mat-icon>
+          </div>
+          <span class="menu-node-label">{{node.name}}</span>
+      </div>
+    </mat-tree-node>
+  </mat-tree>

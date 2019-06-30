@@ -15,29 +15,65 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav class="mat-elevation-z2" [opened]="openSideNav" #sidenav [mode]="isSmallDevice ? 'over' : 'side'">
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="nav-tree">
+  <mat-sidenav class="mat-elevation-z2" [opened]="openSideNav"
+    #sidenav [mode]="isSmallDevice ? 'over' : 'side'">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl"
+      class="nav-tree">
       <!-- This is the tree node template for leaf nodes -->
+
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-        <div fxLayout fxLayoutAlign="start center" class="menu-leaf" [style.paddingLeft]="node.isMain ? '29px': '0px'">
-          <div *ngIf="node.isMain" class="icon-holder">
-            <mat-icon>home</mat-icon>
-          </div>
-          <span class="menu-leaf-label">{{node.name}}</span>
-        </div>
+        <ng-container *ngIf="node.isMain; else leafNodeTpl">
+          <li class="mat-tree-node main-tree-node active">
+            <a class="main-node-link">
+                <div class="main-icon-container">
+                    <mat-icon>{{ node.icon }}</mat-icon>
+                </div>
+                <span class="main-node-label tree-label">
+                    {{node.name}}
+                </span>
+            </a>
+            <!-- use a disabled button to provide padding for tree leaf -->
+            
+          </li>
+        </ng-container>
+        <ng-template #leafNodeTpl>
+            <li class="mat-tree-node leaf-node" 
+            [class.first-child]="node.isFirstChild"
+            [class.child]="!node.isMain"
+            [class.last-node-dashed]="!node.isLastChild">
+              <!-- use a disabled button to provide padding for tree leaf -->
+              <a class="child-link">
+                  <span class="tree-label">
+                      {{node.name}}
+                  </span>
+              </a>              
+            </li>
+          </ng-template>
       </mat-tree-node>
+
       <!-- This is the tree node template for expandable nodes -->
       <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-        <li [class.menu-node-list]="!node.isMain">
-          <div fxLayout fxLayoutAlign="start center" class="menu-node">
-            <i class="plus-icon" matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
-            </i>
-            <div *ngIf="node.isMain" class="icon-holder menu-node-icon">
-              <mat-icon>insert_chart_outlined</mat-icon>
-            </div>
-            <span class="menu-node-label">{{node.name}}</span>
-          </div>
-          <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+        <li 
+          [class.dashed-border]="!node.isMain && !node.isLastChild"
+          [class.child]="!node.isMain"
+          [class.first-child]="node.isFirstChild" class="main-tree-node main-node-has-child" matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+            <!-- <button mat-icon-button >
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+            </button> -->
+            <a [class.child-link]="!node.isMain" class="main-node-link mat-tree-node">
+                <div *ngIf="node.isMain" class="main-icon-container has-child">
+                    <mat-icon>{{ node.icon }}</mat-icon>
+                </div>
+                <span [class.child-label]="!node.isMain" class="main-node-label tree-label">
+                    {{node.name}}
+                </span>
+            </a>
+            <!-- <span class="tree-label">
+                {{node.name}}
+            </span> -->
+          <ul [class.last-node-ul]="node.lastNode" class="node-ul" [class.example-tree-invisible]="!treeControl.isExpanded(node)">
             <ng-container matTreeNodeOutlet></ng-container>
           </ul>
         </li>

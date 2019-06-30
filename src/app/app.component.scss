@@ -18,9 +18,9 @@ mat-sidenav-container{
     width: 240px;
   }
 
-.plus-icon::after{
-    content: '+'
-}
+// .plus-icon::after{
+//     content: '+'
+// }
 
 .icon-holder{
     background-color: white;
@@ -46,11 +46,11 @@ mat-sidenav-container{
 }
 
 .menu-leaf-label{
-    padding-left: 10px;
+    padding-left: 6px;
 }
 
 .menu-node-label{
-    padding-left:10px
+    padding-left:12px
 }
 
 .example-tree-invisible {
@@ -65,15 +65,215 @@ mat-sidenav-container{
       }
   }
 
-.menu-node-list::before{
-    content: "";
-    position: absolute;
-    border-left: 1px dashed rgba(12, 12, 12, 0.3);
-    z-index: 1;
-    top: 0px;
-    bottom: 0px;
+li.menu-node-list{
+    &::before{
+        content: "";
+        position: absolute;
+        border-left: 1px dashed rgba(12, 12, 12, 0.3);
+        z-index: 1;
+        top: 15px;
+        bottom: -15px;
+        left: -7px;
+    }
+
+    &.first-node::before{
+        top: 0px;
+    }
+
 }
 
 .menu-node-list{
     position: relative;
+}
+
+.menu-node-label{
+    position: relative;
+    &.dashed-border{
+        &::before{
+            content: '';
+            position: absolute;
+            width: 10px;
+            border-bottom: 1px dashed rgba(12, 12, 12, 0.3);
+            left: -15px;
+            top: 6px;
+            
+        }
+    }
+
+    // &::after{
+    //     content: "+";
+    //     position: absolute;
+    //     top: 7px;
+    //     display: inline-block;
+    //     margin-left: -12px;
+    //     font-size: 12px;
+    //     font-weight: inherit;
+    // }
+}
+
+.plus-icon{
+     position: relative;
+    &::after{
+        content: "+";
+        position: absolute;
+        top: -7px;
+        bottom: 0px;
+        margin-left: -6px;
+    }
+}
+
+.menu-ul{
+    padding-left: 35px;
+}
+
+.main-tree-node{
+    // display: block;
+    .node-ul{
+        padding-left: 35px;
+    }
+    .last-node-ul{
+        padding-left: 25px;
+    }
+    .main-node-link{
+        position: relative;
+        width: 100%;
+        padding: 17px 0;
+        .main-icon-container{
+            position: absolute;
+            top: 4px;
+            left: 6px;
+            height: 40px;
+            width: 40px;
+            border-radius: 999px;
+            margin-left: 10px;
+            mat-icon{
+                position: absolute;
+                top: 7px;
+                left: 7px;
+                color: rgba(255, 255, 255, 0.55)
+            }
+            &.has-child{
+                
+            }
+        }
+        .main-node-label{
+            margin-left: 65px;
+            display: block;
+        }
+    }
+    &.active{
+        .main-node-link{
+            .main-icon-container{
+                background-color: white;
+                mat-icon{
+                    color: #0aa89e;
+                }
+            }
+        }
+
+        
+    }
+    &.child a{
+        padding: 8px 0px 8px 16px;
+        &.child-link{
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                width: 17px;
+                left: 0px;
+                top: 15px;
+            }
+        }
+    }
+
+    &.main-node-has-child{
+        .main-node-label{
+            position: relative;
+            &::after{
+                content: '+';
+                position: absolute;
+                top: 0px;
+                left: -60px;
+            }
+            &.child-label{
+                margin-left: 20px;
+                &::after{
+                    content: '+';
+                    position: absolute;
+                    top: 0px;
+                    left: -15px; 
+                }
+            }
+        }
+    }
+
+    &.dashed-border{
+        position: relative;
+        &::before{
+            content: '';
+            border-left: 1px dashed rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: 15px;
+            bottom: -14px;
+        }
+        &.first-child::before{
+            top: 0px
+        }
+    }
+}
+
+.mat-tree-node.leaf-node{
+    // display: block
+}
+
+mat-tree, mat-sidenav{
+    background-color: rgb(43, 50, 58);
+}
+
+.leaf-node{
+    &.last-node-dashed{
+        position: relative;
+        &::before{
+            content: '';
+            border-left: 1px dashed rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: 15px;
+            bottom: -15px;
+            left: 0px;
+        }
+        &.first-child::before{
+            top: 0px
+        }
+    }
+    &.child a{
+        padding: 8px 0px 8px 16px;
+    }
+    a.child-link{
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            width: 15px;
+            left: 0px;
+            top: 16px;
+        }
+    }
+    
+}
+
+mat-tree{
+    padding-top: 15px;
+
+    .tree-label{
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 12px;
+        font-style: italic;
+    }
+    .mat-tree-node{
+        min-height: 0px;
+        overflow: initial;
+    }
 }

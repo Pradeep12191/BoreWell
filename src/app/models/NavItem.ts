@@ -6,4 +6,5 @@ export interface NavItem{
     isLastChild?: boolean;
     lastNode?: boolean;
     icon?: string;
+    path?: string
 }

@@ -45,3 +45,25 @@ html, body{
 body{
     background-color: #e5e6e6;
 }
+
+.bore-well-expansion-panel.mat-expansion-panel{
+    border-radius: 0px;
+
+    .mat-expansion-panel-body{
+        padding-top: 16px;
+    }
+    
+    .mat-expansion-panel-header{
+        background-color: rgb(10, 168, 158);
+        height: 48px !important;
+        &:hover, &:focus{
+            background-color: rgb(10, 168, 158);
+        }
+        .mat-expansion-panel-header-title{
+            color: white;
+            font-size: 20px;
+        }
+    }
+}
+
+

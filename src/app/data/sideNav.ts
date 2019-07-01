@@ -4,7 +4,8 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
     {
         name: 'Dashboard',
         isMain: true,
-        icon: 'home'
+        icon: 'home',
+        path: 'dashboard'
     },
     {
         name: 'Master',
@@ -53,7 +54,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
         icon: 'account_circle',
         isMain: true,
         children: [
-            { name: 'Point Entry', isFirstChild: true, isLastChild: true }
+            { name: 'Point Entry', isFirstChild: true, isLastChild: true, path: 'pointDetails/pointEntry' }
         ],
         lastNode: true
     },

@@ -1,0 +1,45 @@
+<mat-expansion-panel class="bore-well-expansion-panel" [formGroup]="hammerDetailsForm">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Hammer Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout>
+            <mat-checkbox>Hammer Calculations</mat-checkbox>
+        </div>
+
+        <div *ngFor="let hammerCtrl of hammerDetailsForm.get('hammers').controls; let i = index" formArrayName="hammers"
+            fxLayout fxLayoutGap="20px" fxLayout.lt-md="column">
+            <ng-container [formGroup]="hammerCtrl">
+                <mat-form-field>
+                    <mat-label>Select Hammer</mat-label>
+                    <mat-select formControlName="hammer">
+                        <mat-option *ngFor="let hammer of hammers" [value]="hammer.value">{{ hammer.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" formControlName="lastScale" placeholder="Last Scale" matInput>
+                </mat-form-field>
+                <!-- <mat-form-field>
+                    <input type="text" formControlName="hammerScale" placeholder="Hammer Scale" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" formControlName="reducedSize" placeholder="Reduced Size" matInput>
+                </mat-form-field> -->
+                <mat-form-field>
+                    <input type="text" formControlName="feet" placeholder="Feet" matInput>
+                </mat-form-field>
+                <div fxLayout="column" fxLayoutAlign="center center" *ngIf="hammerFormArray.length > 1">
+                    <span class="remove-btn" (click)="removeHammer(i)">Remove</span>
+                </div>
+            </ng-container>
+        </div>
+        <div fxLayout fxLayoutAlign="end end">
+            <button (click)="addMoreHammer()" mat-raised-button color="primary">ADD MORE</button>
+        </div>
+        <div class="m-t-20">
+            <span class="asterix">* </span><span>Hammer Scale must be in MM</span>
+        </div>
+    </div>
+</mat-expansion-panel>

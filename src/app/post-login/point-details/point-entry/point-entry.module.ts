@@ -9,6 +9,7 @@ import { PointEntryDetailsComponent } from './point-entry-details/point-entry-de
 import { OtherChargesComponent } from './other-charges/other-charges.component';
 import { PointEntryService } from './point-entry.serice';
 import { BitDetailsComponent } from './bit-details/bit-details.component';
+import { HammerDetailsComponent } from './hammer-details/hammer-details.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { BitDetailsComponent } from './bit-details/bit-details.component';
         PointEntryComponent,
         PointEntryDetailsComponent,
         OtherChargesComponent,
-        BitDetailsComponent
+        BitDetailsComponent,
+        HammerDetailsComponent
     ],
     providers: [PointEntryService]
 })

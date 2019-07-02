@@ -78,9 +78,26 @@ export class PointEntryComponent implements OnInit {
       }),
       otherCharges: this.fb.group({
         charges: this.fb.array([this.pes.chargeFormBuilder()])
-      })
+      }),
+      bitDetails: this.fb.group({
+        startRpm: null,
+        endRpm: null,
+        totalRpm: null,
+        bits: this.fb.array([this.pes.bitFormBuilder()])
+      }),
+      hammerDetails: this.fb.group({
+        hammers: this.fb.array([this.pes.hammerFormBuilder()])
+      }),
+      overallTotalAmt: [null, Validators.required],
+      totalAmt: [null, Validators.required],
+      commissionAmt: [null, Validators.required],
+      remarks: [null]
     })
 
+  }
+
+  saveClick(){
+    console.log(this.basicInfoForm.value);
   }
 
 

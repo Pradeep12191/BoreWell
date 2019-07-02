@@ -85,7 +85,41 @@
             <other-charges [form]="basicInfoForm.get('otherCharges')"></other-charges>
         </div>
         <div class="m-t-20">
-            <bit-details></bit-details>
+            <bit-details [form]="basicInfoForm.get('bitDetails')"></bit-details>
+        </div>
+        <div class="m-t-20">
+            <hammer-details [form]="basicInfoForm.get('hammerDetails')"></hammer-details>
+        </div>
+        <div fxLayout="column" fxLayoutGap="20px" class="m-t-30">
+            <div fxLayout fxLayout.lt-md="column">
+                <mat-form-field fxFlex>
+                    <input type="text" formCOntrolName="overallTotalAmt" matInput placeholder="Over All Total Amount">
+                </mat-form-field>
+            </div>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="50">
+                    <input formControlName="totalAmt" type="text" matInput placeholder="Total Amount">
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                    <input formControlName="commissionAmt" type="text" matInput placeholder="Commission Amount">
+                </mat-form-field>
+            </div>
+            <div fxLayout>
+                <mat-form-field fxFlex>
+                    <textarea formControlName="remarks" matInput placeholder="Remarks" cols="30" rows="5"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="m-t-20 m-b-20">
+            <div fxLayout>
+                <div>
+                    <button mat-raised-button color="primary">CLEAR</button>
+                </div>
+                <div fxFlex></div>
+                <div>
+                    <button (click)="saveClick()" mat-raised-button color="primary">SAVE</button>
+                </div>
+            </div>
         </div>
     </mat-expansion-panel>
 

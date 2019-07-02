@@ -1,8 +1,54 @@
-<mat-expansion-panel class="bore-well-expansion-panel">
+<mat-expansion-panel class="bore-well-expansion-panel" [formGroup]="bitDetailsForm">
     <mat-expansion-panel-header>
         <mat-panel-title>
             RPM Details / BIT Details
         </mat-panel-title>
     </mat-expansion-panel-header>
-    bit deatils
+    <div fxLayout="column">
+        <div fxLayout>
+            <div fxFlex>
+                <span>Upload End Rpm File</span>
+            </div>
+        </div>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="40px" fxLayoutGap.lt-md="20px">
+            <mat-form-field fxFlex>
+                <input formControlName="startRpm" type="text" matInput placeholder="Start RPM">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input formControlName="endRpm" type="text" matInput placeholder="End RPM">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input formControlName="totalRpm" type="text" matInput placeholder="Total RPM">
+            </mat-form-field>
+        </div>
+        <mat-checkbox>Bit Calculations</mat-checkbox>
+        <div *ngFor="let bitCtrl of bitDetailsForm.get('bits').controls; let i = index" formArrayName="bits" fxLayout fxLayoutGap="20px"
+            fxLayout.lt-md="column">
+            <ng-container [formGroup]="bitCtrl">
+                <mat-form-field>
+                    <mat-label>Select Bit</mat-label>
+                    <mat-select formControlName="bit">
+                        <mat-option *ngFor="let bit of bits" [value]="bit.value">{{ bit.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" formControlName="lastBitScale" matInput placeholder="Last Bit Scale">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" formControlName="feet" matInput placeholder="Feet">
+                </mat-form-field>
+                <div fxLayout="column" fxLayoutAlign="center center" *ngIf="bitFormArray.length > 1">
+                    <span class="remove-btn" (click)="removeBit(i)">Remove</span>
+                </div>
+            </ng-container>
+        </div>
+        <div fxLayout fxLayoutAlign="end end">
+            <button (click)="addMoreBit()" mat-raised-button color="primary">ADD MORE</button>
+        </div>
+        <div class="m-t-20">
+            <span class="asterix">* </span><span>Bit Scale must be in MM</span>
+        </div>
+    </div>
 </mat-expansion-panel>

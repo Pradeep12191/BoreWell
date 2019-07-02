@@ -26,4 +26,22 @@ export class PointEntryService {
             chargeAmt: null
         })
     }
+
+    public bitFormBuilder(){
+        return this.fb.group({
+            bit: null,
+            lastBitScale: null,
+            feet: null
+        })
+    }
+
+    public hammerFormBuilder(){
+        return this.fb.group({
+            hammer: [null, Validators.required],
+            lastScale: [null, Validators.required],
+            hammerScale: [null, Validators.required],
+            reducedSize: [null, Validators.required],
+            feet: [null, Validators.required]
+        })
+    }
 }

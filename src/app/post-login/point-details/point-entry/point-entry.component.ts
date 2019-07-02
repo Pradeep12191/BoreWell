@@ -97,7 +97,7 @@ export class PointEntryComponent implements OnInit {
   }
 
   saveClick(){
-    console.log(this.basicInfoForm.value);
+    console.log( JSON.stringify(this.basicInfoForm.value, null, 2));
   }
 
 

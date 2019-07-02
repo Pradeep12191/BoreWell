@@ -8,7 +8,7 @@ const routes: Routes = [
     {
         path: '', component: PostLoginComponent, children: [
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'pointDetails/pointEntry', component: PointEntryComponent }
+            { path: 'pointDetails', loadChildren: () => import('./point-details/point-entry/point-entry.module').then(mod => mod.PointEntryModule) }
         ]
     }
 

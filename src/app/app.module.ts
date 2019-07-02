@@ -15,15 +15,13 @@ import { PostLoginRoutingModule } from './post-login/post-login-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    PostLoginComponent,
+    LoginComponent
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     PostLoginModule,
-    PostLoginRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule

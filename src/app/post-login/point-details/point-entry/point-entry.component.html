@@ -1,37 +1,69 @@
-<mat-expansion-panel class="bore-well-expansion-panel" disabled [hideToggle]="true" [expanded]="true">
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            Basic Info
-        </mat-panel-title>
-    </mat-expansion-panel-header>
+<ng-container [formGroup]="basicInfoForm">
 
-    <div fxLayout="column">
-        <div fxLayout fxLayoutGap="20px">
-            <mat-form-field fxFlex="33">
-                <mat-label>Select RIG</mat-label>
-                <mat-select>
-                    <mat-option value="1">KA01MP7396</mat-option>
-                    <mat-option value="2">KA01MP7396</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field fxFlex="33">
-                <mat-label>Select RIG</mat-label>
-                <mat-select>
-                    <mat-option value="1">KA01MP7396</mat-option>
-                    <mat-option value="2">KA01MP7396</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field fxFlex="33">
-                <mat-label>Select Bore Type</mat-label>
-                <mat-select>
-                    <mat-option value="1">New Bore</mat-option>
-                    <mat-option value="2">Re-Bore</mat-option>
-                    <mat-option value="2">Flushing</mat-option>
-                </mat-select>
-            </mat-form-field>
+    <mat-expansion-panel class="bore-well-expansion-panel" disabled [hideToggle]="true" [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Basic Info
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div fxLayout="column" fxLayoutGap="20px">
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <mat-label>Select RIG</mat-label>
+                    <mat-select formControlName="rig">
+                        <mat-option *ngFor="let rig of rigs" [value]="rig.value">{{ rig.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <input matInput readonly [matDatepicker]="dp" placeholder="Date">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp>
+                    </mat-datepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <mat-label>Select Bore Type</mat-label>
+                    <mat-select formControlName="boreType">
+                        <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.value">{{ boreType.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <input matInput formControlName="partyName" placeholder="Party Name" type="text">
+                </mat-form-field>
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <mat-select formControlName="partyState" placeholder="Party State">
+                        <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{ partyState.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div fxHide.lt-md fxFlex="33"></div>
+            </div>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <mat-select formControlName="partyCity" placeholder="Party City">
+                        <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{ partyCity.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <input type="text" formControlName="partyMobile" placeholder="Party Mobile Number" matInput>
+                </mat-form-field>
+
+                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                    <mat-select formControlName="casingType" placeholder="Casing Type">
+                        <mat-option [value]="casing.value" *ngFor="let casing of casingTypes">{{ casing.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex>
+                    <mat-select formControlName="pipeSelection" placeholder="Pipe Selection">
+                        <mat-option [value]="pipe.value" *ngFor="let pipe of pipes">{{ pipe.display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
-        <div fxLayout></div>
-        <div fxLayout></div>
-    </div>
 
-</mat-expansion-panel>
+    </mat-expansion-panel>
+
+</ng-container>

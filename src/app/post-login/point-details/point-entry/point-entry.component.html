@@ -34,7 +34,8 @@
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md>
                     <mat-select formControlName="partyState" placeholder="Party State">
-                        <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{ partyState.display }}</mat-option>
+                        <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{
+                            partyState.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <div fxHide.lt-md fxFlex="33"></div>
@@ -42,7 +43,8 @@
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
                 <mat-form-field fxFlex="33" fxFlex.lt-md>
                     <mat-select formControlName="partyCity" placeholder="Party City">
-                        <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{ partyCity.display }}</mat-option>
+                        <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{
+                            partyCity.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md>
@@ -62,8 +64,31 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                Agent Type *
+            </div>
+            <div fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-radio-group fxLayout fxFlex>
+                    <div fxFlex fxLayout fxLayoutAlign="center center">
+                        <mat-radio-button value="1" labelPosition="before">Self</mat-radio-button>
+                    </div>
+                    <div fxFlex fxLayout fxLayoutAlign="center center">
+                        <mat-radio-button value="2" labelPosition="before">Agent</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
         </div>
-
+        <div class="m-t-75">
+            <point-entry-details [form]="basicInfoForm.get('pointEntry')"></point-entry-details>
+        </div>
+        <div class="m-t-20">
+            <other-charges [form]="basicInfoForm.get('otherCharges')"></other-charges>
+        </div>
+        <div class="m-t-20">
+            <bit-details></bit-details>
+        </div>
     </mat-expansion-panel>
+
+
 
 </ng-container>

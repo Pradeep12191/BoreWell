@@ -55,7 +55,7 @@ body{
     
     .mat-expansion-panel-header{
         background-color: rgb(10, 168, 158);
-        height: 48px !important;
+        // height: 48px !important;
         &:hover, &:focus{
             background-color: rgb(10, 168, 158);
         }
@@ -63,6 +63,21 @@ body{
             color: white;
             font-size: 20px;
         }
+    }
+
+    &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover{
+        background-color: rgb(10, 168, 158);
+    }
+}
+
+.remove-btn{
+    cursor: pointer;
+    color: red;
+}
+
+@for $i from 1 through 100{
+    .m-t-#{$i} {
+        margin-top: #{$i}px
     }
 }
 

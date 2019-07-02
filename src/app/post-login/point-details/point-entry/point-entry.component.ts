@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { PointEntryService } from './point-entry.serice';
 
 @Component({
   selector: 'app-point-entry',
@@ -9,7 +10,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 export class PointEntryComponent implements OnInit {
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private pes: PointEntryService
   ) { }
   basicInfoForm: FormGroup;
   rigs;
@@ -65,9 +67,22 @@ export class PointEntryComponent implements OnInit {
       partyMobile: [null, Validators.required],
       casingType: [null, Validators.required],
       pipeSelection: [null, Validators.required],
-      agentType: ['self', Validators.required]
+      agentType: ['self', Validators.required],
+      pointEntry: this.fb.group({
+        totalFeet: [null, Validators.required],
+        feets: this.fb.array([this.pes.feetFormBuilder()]),
+        totalFeetAmt: [null, Validators.required],
+        casingDepth: [null, Validators.required],
+        casingDepthRate: [null, Validators.required],
+        casingFeetAmt: null
+      }),
+      otherCharges: this.fb.group({
+        charges: this.fb.array([this.pes.chargeFormBuilder()])
+      })
     })
 
   }
 
+
 }
+

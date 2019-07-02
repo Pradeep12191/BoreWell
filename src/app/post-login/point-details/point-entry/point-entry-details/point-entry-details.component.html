@@ -1,0 +1,58 @@
+<mat-expansion-panel class="bore-well-expansion-panel" disabled [hideToggle]="true" [expanded]="true" [formGroup]="pointEntryForm">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Point Entry
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input formControlName="totalFeet" type="text" matInput placeholder="Total Feet">
+            </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-checkbox labelPosition="after">Show/Hide Start Feet</mat-checkbox>
+        </div>
+        <div fxLayout formArrayName="feets" *ngFor="let feetCtrl of pointEntryForm.get('feets').controls"
+            fxLayout.lt-md="column" fxLayoutGap="20px">
+            <ng-container [formGroup]="feetCtrl">
+                <mat-form-field fxFlex>
+                    <input type="text" formControlName="startFeet" matInput placeholder="Start Feet">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input type="text" formControlName="endFeet" matInput placeholder="End Feet">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input type="text" formControlName="amtPerFeet" matInput placeholder="Amount Per Feet">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input type="text" formControlName="amt" matInput placeholder="Amount">
+                </mat-form-field>
+            </ng-container>
+        </div>
+        <div *ngIf="feetsFormArray.length > 1" fxLayout fxLayoutAlign="end">
+            <span class="remove-btn" (click)="removeLastFeet()">Remove</span>
+        </div>
+        <div fxLayout fxLayoutAlign="end">
+            <button (click)="addMoreFeet()" mat-raised-button color="primary">ADD MORE</button>
+        </div>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+                <mat-form-field fxFlex>
+                    <input type="text" matInput formControlName="totalFeetAmt" placeholder="Total Feet Amount">
+                </mat-form-field>
+            </div>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input type="text" matInput formControlName="casingDepth" placeholder="Casing Depth">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input type="text" matInput formControlName="casingDepthRate" placeholder="Casing Depth Rate">
+            </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input type="text" matInput formControlName="casingFeetAmt" placeholder="Casing Feet Amount">
+            </mat-form-field>
+        </div>
+    </div>
+</mat-expansion-panel>

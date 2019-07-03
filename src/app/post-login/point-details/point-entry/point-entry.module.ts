@@ -4,12 +4,13 @@ import { PointEntryComponent } from './point-entry.component';
 import { MaterialModule } from '../../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PointEntryRoutingMOdule } from './point-entry-routing.module';
+import { PointEntryRoutingModule } from './point-entry-routing.module';
 import { PointEntryDetailsComponent } from './point-entry-details/point-entry-details.component';
 import { OtherChargesComponent } from './other-charges/other-charges.component';
 import { PointEntryService } from './point-entry.serice';
 import { BitDetailsComponent } from './bit-details/bit-details.component';
 import { HammerDetailsComponent } from './hammer-details/hammer-details.component';
+import { SharedModule } from '../../../shared.module';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { HammerDetailsComponent } from './hammer-details/hammer-details.componen
         MaterialModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        PointEntryRoutingMOdule
+        PointEntryRoutingModule,
+        SharedModule
     ],
     declarations: [
         PointEntryComponent,

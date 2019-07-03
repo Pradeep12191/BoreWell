@@ -3,37 +3,40 @@
     <mat-expansion-panel class="bore-well-expansion-panel" disabled [hideToggle]="true" [expanded]="true">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Basic Info
+                {{ 'POINT_ENTRY.BASIC_INFO' | translate }}
             </mat-panel-title>
         </mat-expansion-panel-header>
 
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <mat-label>Select RIG</mat-label>
-                    <mat-select formControlName="rig">
+                    <mat-label>{{ 'POINT_ENTRY.SELECT_RIG' | translate }}</mat-label>
+                    <mat-select formControlName="rig" required>
                         <mat-option *ngFor="let rig of rigs" [value]="rig.value">{{ rig.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <input matInput readonly [matDatepicker]="dp" placeholder="Date">
+                    <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
+                    <input matInput required readonly [matDatepicker]="dp">
                     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                     <mat-datepicker #dp>
                     </mat-datepicker>
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <mat-label>Select Bore Type</mat-label>
-                    <mat-select formControlName="boreType">
+                    <mat-label>{{ 'POINT_ENTRY.SELECT_BORE_TYPE' | translate }}</mat-label>
+                    <mat-select formControlName="boreType" required>
                         <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.value">{{ boreType.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <input matInput formControlName="partyName" placeholder="Party Name" type="text">
+                    <mat-label>{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</mat-label>
+                    <input matInput formControlName="partyName" type="text" required>
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <mat-select formControlName="partyState" placeholder="Party State">
+                    <mat-label>{{ 'POINT_ENTRY.PARTY_STATE' | translate }}</mat-label>
+                    <mat-select formControlName="partyState" required>
                         <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{
                             partyState.display }}</mat-option>
                     </mat-select>
@@ -41,39 +44,43 @@
                 <div fxHide.lt-md fxFlex="33"></div>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline" >
-                    <mat-select formControlName="partyCity" placeholder="Party City">
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
+                    <mat-label>{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</mat-label>
+                    <mat-select formControlName="partyCity">
                         <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{
                             partyCity.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <input type="text" formControlName="partyMobile" placeholder="Party Mobile Number" matInput>
+                    <mat-label>{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</mat-label>
+                    <input type="text" formControlName="partyMobile" matInput>
                 </mat-form-field>
 
                 <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
-                    <mat-select formControlName="casingType" placeholder="Casing Type">
+                    <mat-label>{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</mat-label>
+                    <mat-select formControlName="casingType">
                         <mat-option [value]="casing.value" *ngFor="let casing of casingTypes">{{ casing.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
                 <mat-form-field fxFlex appearance="outline">
-                    <mat-select formControlName="pipeSelection" placeholder="Pipe Selection">
+                    <mat-label>{{ 'POINT_ENTRY.PIPE_SELECTION' | translate }}</mat-label>
+                    <mat-select formControlName="pipeSelection">
                         <mat-option [value]="pipe.value" *ngFor="let pipe of pipes">{{ pipe.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                Agent Type *
+                    {{ 'POINT_ENTRY.AGENT_TYPE.LABEL' | translate }} *
             </div>
             <div fxLayout.lt-md="column" fxLayoutGap="20px">
                 <mat-radio-group fxLayout fxFlex color="primary">
                     <div fxFlex fxLayout fxLayoutAlign="center center">
-                        <mat-radio-button value="1" labelPosition="before">Self</mat-radio-button>
+                        <mat-radio-button value="1" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.SELF' | translate }}</mat-radio-button>
                     </div>
                     <div fxFlex fxLayout fxLayoutAlign="center center">
-                        <mat-radio-button value="2" labelPosition="before">Agent</mat-radio-button>
+                        <mat-radio-button value="2" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.AGENT' | translate }}</mat-radio-button>
                     </div>
                 </mat-radio-group>
             </div>

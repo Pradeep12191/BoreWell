@@ -1,0 +1,29 @@
+{
+    "POINT_ENTRY": {
+        "BASIC_INFO": "Basic Info",
+        "SELECT_RIG": "Select RIG",
+        "DATE": "Date",
+        "SELECT_BORE_TYPE": "Select Bore Type",
+        "PARTY_NAME": "Party Name",
+        "PARTY_STATE": "Select Party State",
+        "PARTY_CITY": "Party City",
+        "PARTY_MOBILE_NUMBER": "Party Mobile Number",
+        "CASING_TYPE": "Casing Type",
+        "PIPE_SELECTION": "Pipe Selection",
+        "AGENT_TYPE": {
+            "LABEL": "Agent Type",
+            "AGENT": "Agent",
+            "SELF": "Self"
+        },
+        "POINT_ENTRY": {
+            "TOTAL_FEEL": "Total Feet",
+            "SHOW_HIDE_START_FEET": "Show/Hide Start Feet",
+            "END_FEET": "End Feet",
+            "AMOUNT_PER_FEET": "Amount Per Feet",
+            "AMOUNT": "Amount"
+        },
+        "BTN": {
+            "ADD_MORE": "ADD MORE"
+        }
+    }
+}

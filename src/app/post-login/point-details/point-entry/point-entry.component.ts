@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { PointEntryService } from './point-entry.serice';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-point-entry',
@@ -11,7 +12,8 @@ export class PointEntryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private pes: PointEntryService
+    private pes: PointEntryService,
+    private http: HttpClient
   ) { }
   basicInfoForm: FormGroup;
   rigs;
@@ -98,6 +100,9 @@ export class PointEntryComponent implements OnInit {
 
   saveClick(){
     console.log( JSON.stringify(this.basicInfoForm.value, null, 2));
+    this.http.post('http://103.207.4.72:8080/borewell/webapi/resource/createpoint', this.basicInfoForm.value).subscribe((response) => {
+    console.log(response);
+    })
   }
 
 

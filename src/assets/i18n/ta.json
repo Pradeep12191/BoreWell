@@ -1,0 +1,29 @@
+{
+    "POINT_ENTRY": {
+        "BASIC_INFO": "அடிப்படை தகவல்",
+        "SELECT_RIG": "ரிக் தேர்ந்தெடு",
+        "DATE": "தேதி",
+        "SELECT_BORE_TYPE": "போர்  வகை தேர்ந்தெடு",
+        "PARTY_NAME": "பார்ட்டி  பெயர்",
+        "PARTY_STATE": "பார்ட்டி  மாநிலம் தேர்ந்தெடு",
+        "PARTY_CITY": "பார்ட்டி  சிட்டி",
+        "PARTY_MOBILE_NUMBER": "பார்ட்டி  மொபைல் நம்பர்",
+        "CASING_TYPE": "கேசிங் வகை",
+        "PIPE_SELECTION": "பைப் வகை தேர்ந்தெடு",
+        "AGENT_TYPE": {
+            "LABEL": "ஏஜென்ட்  வகை",
+            "AGENT": "ஏஜென்ட்",
+            "SELF": "Self"
+        },
+        "POINT_ENTRY": {
+            "TOTAL_FEEL": "Total Feet",
+            "SHOW_HIDE_START_FEET": "Show/Hide Start Feet",
+            "END_FEET": "End Feet",
+            "AMOUNT_PER_FEET": "Amount Per Feet",
+            "AMOUNT": "Amount"
+        },
+        "BTN": {
+            "ADD_MORE": "ADD MORE"
+        }
+    }
+}

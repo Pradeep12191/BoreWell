@@ -8,6 +8,9 @@ import { PointEntryComponent } from './point-details/point-entry/point-entry.com
 import { PointEntryModule } from './point-details/point-entry/point-entry.module';
 import { PostLoginRoutingModule } from './post-login-routing.module';
 import { PostLoginComponent } from './post-login.component';
+import { SharedModule } from '../shared.module';
+
+
 
 @NgModule({
     imports: [
@@ -16,7 +19,8 @@ import { PostLoginComponent } from './post-login.component';
         FlexLayoutModule,
         ReactiveFormsModule,
         PointEntryModule,
-        PostLoginRoutingModule
+        PostLoginRoutingModule,
+        SharedModule
     ],
     declarations: [
         DashboardComponent,

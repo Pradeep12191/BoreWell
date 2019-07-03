@@ -8,9 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
-import { PostLoginComponent } from './post-login/post-login.component';
 import { PostLoginModule } from './post-login/post-login.module';
-import { PostLoginRoutingModule } from './post-login/post-login-routing.module';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +29,15 @@ import { PostLoginRoutingModule } from './post-login/post-login-routing.module';
     PostLoginModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    HttpClientModule,
+    FlexLayoutModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

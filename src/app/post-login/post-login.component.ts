@@ -4,6 +4,7 @@ import { SIDE_NAV_ITEMS } from '../data'
 import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
 import { NavItem, FlatNode } from '../models';
 import { MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post-login',
@@ -16,19 +17,29 @@ export class PostLoginComponent implements OnInit {
   openSideNav = true;
   isSmallDevice;
   sideNavItems = SIDE_NAV_ITEMS;
+  languages;
 
 
   treeControl = new NestedTreeControl<NavItem>(node => node.children);
   dataSource = new MatTreeNestedDataSource<NavItem>();
 
-  constructor() {
+  constructor(
+    private translate: TranslateService
+  ) {
     this.dataSource.data = SIDE_NAV_ITEMS;
   }
 
   hasChild = (_: number, node: NavItem) => !!node.children && node.children.length > 0;
 
-  ngOnInit(){
+  ngOnInit() {
+    this.languages = [
+      { id: 'en', display: 'English' },
+      { id: 'ta', display: 'Tamil' }
+    ]
+  }
 
+  changeLang(lang) {
+    this.translate.use(lang.id)
   }
 
 }

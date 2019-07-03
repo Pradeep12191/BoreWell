@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SIDE_NAV_ITEMS } from '../data'
-import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
-import { NavItem, FlatNode } from '../models';
-import { MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource } from '@angular/material';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { NavItem } from '../models';
+import { MatTreeNestedDataSource } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-post-login',
@@ -24,9 +25,19 @@ export class PostLoginComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource<NavItem>();
 
   constructor(
-    private translate: TranslateService
+    private translate: TranslateService,
+    private mediaObserver: MediaObserver
   ) {
     this.dataSource.data = SIDE_NAV_ITEMS;
+    this.mediaObserver.media$.subscribe((media) => {
+      if (media.mqAlias === 'xs') {
+          this.isSmallDevice = true;
+          this.openSideNav = false;
+      } else {
+          this.isSmallDevice = false;
+          this.openSideNav = true;
+      }
+  });
   }
 
   hasChild = (_: number, node: NavItem) => !!node.children && node.children.length > 0;

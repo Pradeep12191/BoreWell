@@ -7,21 +7,21 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <mat-label>Select RIG</mat-label>
                     <mat-select formControlName="rig">
                         <mat-option *ngFor="let rig of rigs" [value]="rig.value">{{ rig.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <input matInput readonly [matDatepicker]="dp" placeholder="Date">
                     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                     <mat-datepicker #dp>
                     </mat-datepicker>
                 </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <mat-label>Select Bore Type</mat-label>
                     <mat-select formControlName="boreType">
                         <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.value">{{ boreType.display }}</mat-option>
@@ -29,10 +29,10 @@
                 </mat-form-field>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <input matInput formControlName="partyName" placeholder="Party Name" type="text">
                 </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <mat-select formControlName="partyState" placeholder="Party State">
                         <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{
                             partyState.display }}</mat-option>
@@ -41,24 +41,24 @@
                 <div fxHide.lt-md fxFlex="33"></div>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline" >
                     <mat-select formControlName="partyCity" placeholder="Party City">
                         <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{
                             partyCity.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <input type="text" formControlName="partyMobile" placeholder="Party Mobile Number" matInput>
                 </mat-form-field>
 
-                <mat-form-field fxFlex="33" fxFlex.lt-md>
+                <mat-form-field fxFlex="33" fxFlex.lt-md appearance="outline">
                     <mat-select formControlName="casingType" placeholder="Casing Type">
                         <mat-option [value]="casing.value" *ngFor="let casing of casingTypes">{{ casing.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-form-field fxFlex>
+                <mat-form-field fxFlex appearance="outline">
                     <mat-select formControlName="pipeSelection" placeholder="Pipe Selection">
                         <mat-option [value]="pipe.value" *ngFor="let pipe of pipes">{{ pipe.display }}</mat-option>
                     </mat-select>
@@ -68,7 +68,7 @@
                 Agent Type *
             </div>
             <div fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-radio-group fxLayout fxFlex>
+                <mat-radio-group fxLayout fxFlex color="primary">
                     <div fxFlex fxLayout fxLayoutAlign="center center">
                         <mat-radio-button value="1" labelPosition="before">Self</mat-radio-button>
                     </div>

@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$bore-well-primary: mat-palette($mat-cyan);
+$bore-well-accent:  mat-palette($mat-pink, A200, A100, A400);
+$bore-well-warn:  mat-palette($mat-red);
+
+$bore-well-theme: mat-light-theme($bore-well-primary, $bore-well-accent, $bore-well-warn);
+
+@include angular-material-theme($bore-well-theme);
+

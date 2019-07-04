@@ -9,7 +9,7 @@
             <mat-checkbox>Hammer Calculations</mat-checkbox>
         </div>
 
-        <div *ngFor="let hammerCtrl of hammerDetailsForm.get('hammers').controls; let i = index" formArrayName="hammers"
+        <div *ngFor="let hammerCtrl of hammerFormArray.controls; let i = index" formArrayName="hammers"
             fxLayout fxLayoutGap="20px" fxLayout.lt-md="column">
             <ng-container [formGroup]="hammerCtrl">
                 <mat-form-field>

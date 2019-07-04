@@ -16,6 +16,9 @@ mat-sidenav-container{
 
   mat-sidenav{
     width: 240px;
+    ::ng-deep .mat-drawer-inner-container{
+        overflow-x: hidden;
+    }
   }
 
 // .plus-icon::after{

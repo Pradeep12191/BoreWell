@@ -30,7 +30,7 @@ export class PostLoginComponent implements OnInit {
   ) {
     this.dataSource.data = SIDE_NAV_ITEMS;
     this.mediaObserver.media$.subscribe((media) => {
-      if (media.mqAlias === 'xs') {
+      if (media.mqAlias === 'xs' || media.mqAlias === 'sm') {
           this.isSmallDevice = true;
           this.openSideNav = false;
       } else {

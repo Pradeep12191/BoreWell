@@ -13,7 +13,7 @@
         <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
             <mat-checkbox labelPosition="after">Show/Hide Start Feet</mat-checkbox>
         </div>
-        <div fxLayout formArrayName="feets" *ngFor="let feetCtrl of pointEntryForm.get('feets').controls"
+        <div fxLayout formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls"
             fxLayout.lt-md="column" fxLayoutGap="20px">
             <ng-container [formGroup]="feetCtrl">
                 <mat-form-field fxFlex>

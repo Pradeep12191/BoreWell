@@ -5,7 +5,7 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div fxLayout="column" fxLayoutGap="20px">
-        <div formArrayName="charges" *ngFor="let chargeCtrl of otherChargesForm.get('charges').controls; let i = index" fxLayout
+        <div formArrayName="charges" *ngFor="let chargeCtrl of chargesFormArray.controls; let i = index" fxLayout
             fxLayout.lt-md="column" fxLayoutGap="20px">
             <ng-container [formGroup]="chargeCtrl">
                 <mat-form-field fxFlex="40">

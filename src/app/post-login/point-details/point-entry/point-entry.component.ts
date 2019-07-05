@@ -25,11 +25,12 @@ export class PointEntryComponent implements OnInit {
     private pes: PointEntryService,
     private http: HttpClient,
     private config: ConfigService
-  ) { 
+  ) {
     this.appearance = this.config.getConfig('formAppearance');
   }
 
   ngOnInit() {
+
     this.rigs = [
       { value: '1', display: 'KA01MP7396' },
       { value: '2', display: 'KA01MP7396' }
@@ -105,10 +106,10 @@ export class PointEntryComponent implements OnInit {
 
   }
 
-  saveClick(){
-    console.log( JSON.stringify(this.basicInfoForm.value, null, 2));
+  saveClick() {
+    console.log(JSON.stringify(this.basicInfoForm.value, null, 2));
     this.http.post('http://103.207.4.72:8080/borewell/webapi/resource/createpoint', this.basicInfoForm.value).subscribe((response) => {
-    console.log(response);
+      console.log(response);
     })
   }
 

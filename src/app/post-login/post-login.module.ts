@@ -9,6 +9,7 @@ import { PointEntryModule } from './point-details/point-entry/point-entry.module
 import { PostLoginRoutingModule } from './post-login-routing.module';
 import { PostLoginComponent } from './post-login.component';
 import { SharedModule } from '../shared.module';
+import { HeaderComponent } from '../header/header.component';
 
 
 
@@ -20,11 +21,12 @@ import { SharedModule } from '../shared.module';
         ReactiveFormsModule,
         PointEntryModule,
         PostLoginRoutingModule,
-        SharedModule
+        SharedModule,
     ],
     declarations: [
         DashboardComponent,
-        PostLoginComponent
+        PostLoginComponent,
+        HeaderComponent
     ]
 })
 export class PostLoginModule{

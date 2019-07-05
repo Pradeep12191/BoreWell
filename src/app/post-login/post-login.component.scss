@@ -2,15 +2,6 @@
     margin-right: 15px
 }
 
-mat-toolbar{
-    position: relative;
-    z-index: 2;
-}
-
-.space{
-    flex: 1 1 100%
-}
-
 .select-lang-btn{
     padding-left: 0px;
 }
@@ -136,6 +127,15 @@ li.menu-node-list{
 
 .main-tree-node{
     // display: block;
+    // &.main-node{
+    //     transition: all 150ms ease-in;
+    //     &:hover{
+    //         background-color: rgba(255, 255, 255, 0.1)
+    //     }
+    // }
+    
+    cursor: pointer;
+
     .node-ul{
         padding-left: 35px;
     }
@@ -192,6 +192,12 @@ li.menu-node-list{
                 width: 17px;
                 left: 0px;
                 top: 15px;
+            }
+        }
+        &.path-link{
+            transition: all 150ms ease-in;
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.1);
             }
         }
     }
@@ -288,4 +294,33 @@ mat-tree{
 
 .layout-container{
     padding: 45px 0;
+}
+
+.mat-tree-node{
+    a{
+        transition: 150ms all linear;
+        text-decoration: none;
+        width: 100%;
+        &:focus{
+            outline: none
+        }
+    }
+
+    .path-link:not(.active){
+        &:hover{
+           background-color:  rgba(183, 181, 181, 0.1);
+        }
+    }
+    .active{
+        background-color:  rgba(183, 181, 181, 0.1);
+    }
+    
+}
+
+.spinner-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
 }

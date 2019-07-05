@@ -11,6 +11,7 @@ import { PointEntryService } from './point-entry.serice';
 import { BitDetailsComponent } from './bit-details/bit-details.component';
 import { HammerDetailsComponent } from './hammer-details/hammer-details.component';
 import { SharedModule } from '../../../shared.module';
+import { PointEntryResolve } from '../../../guards/resolveGuard/point-entry.guard';
 
 @NgModule({
     imports: [
@@ -28,7 +29,10 @@ import { SharedModule } from '../../../shared.module';
         BitDetailsComponent,
         HammerDetailsComponent
     ],
-    providers: [PointEntryService]
+    providers: [
+        PointEntryService,
+        PointEntryResolve
+    ]
 })
 export class PointEntryModule {
 

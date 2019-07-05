@@ -1,37 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-    <button mat-icon-button (click)="sidenav.toggle()">
-        <i class="material-icons">menu</i>
-    </button>
-
-    <span>AMMAN BORE WELLS</span>
-    <span class="space"></span>
-    <span fxHide.lt-md>Admin</span>
-    <span class="space"></span>
-    <div fxHide.lt-md fxLayout="column">
-        <span>Select Language</span>
-        <div>
-            <button class="select-lang-btn" mat-button [matMenuTriggerFor]="langMenu">English
-                <i class="material-icons">arrow_drop_down</i>
-            </button>
-        </div>
-        <mat-menu #langMenu="matMenu">
-            <button (click)="changeLang(lang)" *ngFor="let lang of languages" mat-menu-item>{{ lang.display }}</button>
-        </mat-menu>
-    </div>
-    <span class="space"></span>
-    <button fxHide.lt-md style="margin-right: 50px;" mat-button>test@test.com</button>
-    <button [matMenuTriggerFor]="settingsMenu" fxHide.gt-sm mat-icon-button>
-        <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #settingsMenu="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="langMenu">
-            <mat-icon>language</mat-icon>
-            Language</button>
-        <button mat-menu-item>
-            <mat-icon>power_settings_new</mat-icon>
-            Log Out</button>
-    </mat-menu>
-</mat-toolbar>
+<app-header (toggleSidenav)="sidenav.toggle()"></app-header>
 
 <mat-sidenav-container>
     <mat-sidenav class="mat-elevation-z2" [opened]="openSideNav" #sidenav [mode]="isSmallDevice ? 'over' : 'side'">
@@ -40,8 +7,9 @@
 
             <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
                 <ng-container *ngIf="node.isMain; else leafNodeTpl">
-                    <li class="mat-tree-node main-tree-node active">
-                        <a class="main-node-link">
+                    <li class="mat-tree-node main-tree-node" routerLinkActive="active" [class.path-link]="node.path"
+                        [class.main-node]="node.path">
+                        <a class="main-node-link" (click)="showLoader(); closeSidenavOnMobile()" [routerLink]="node.path">
                             <div class="main-icon-container">
                                 <mat-icon>{{ node.icon }}</mat-icon>
                             </div>
@@ -50,14 +18,13 @@
                             </span>
                         </a>
                         <!-- use a disabled button to provide padding for tree leaf -->
-
                     </li>
                 </ng-container>
                 <ng-template #leafNodeTpl>
-                    <li class="mat-tree-node leaf-node" [class.first-child]="node.isFirstChild" [class.child]="!node.isMain"
-                        [class.last-node-dashed]="!node.isLastChild">
+                    <li class="mat-tree-node leaf-node" routerLinkActive="active" [class.first-child]="node.isFirstChild"
+                        [class.child]="!node.isMain" [class.last-node-dashed]="!node.isLastChild">
                         <!-- use a disabled button to provide padding for tree leaf -->
-                        <a class="child-link" [routerLink]="node?.path">
+                        <a class="child-link" (click)="showLoader(); closeSidenavOnMobile()" [class.path-link]="node.path" [routerLink]="node.path">
                             <span class="tree-label">
                                 {{node.name}}
                             </span>
@@ -76,7 +43,7 @@
                   {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                 </mat-icon>
               </button> -->
-                    <a [class.child-link]="!node.isMain" class="main-node-link mat-tree-node">
+                    <a [class.child-link]="!node.isMain" [class.path-link]="node.path" class="main-node-link mat-tree-node">
                         <div *ngIf="node.isMain" class="main-icon-container has-child">
                             <mat-icon>{{ node.icon }}</mat-icon>
                         </div>
@@ -95,12 +62,18 @@
         </mat-tree>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div fxLayout class="layout-container">
-            <div fxHide.lt-md fxFlex="7"></div>
-            <div fxFlex>
-                <router-outlet></router-outlet>
-            </div>
-            <div fxHide.lt-md fxFlex="7"></div>
+        <div class="spinner-container" *ngIf="loading; else contentTpl">
+            <mat-spinner></mat-spinner>
         </div>
+        <ng-template #contentTpl>
+            <div fxLayout class="layout-container" @fadeIn>
+                <div fxHide.lt-md fxFlex="7"></div>
+                <div fxFlex>
+                    <router-outlet></router-outlet>
+                </div>
+                <div fxHide.lt-md fxFlex="7"></div>
+            </div>
+        </ng-template>
+
     </mat-sidenav-content>
 </mat-sidenav-container>

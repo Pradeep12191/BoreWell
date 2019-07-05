@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { PointEntryService } from './point-entry.serice';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from '../../../services/config.service';
 
 @Component({
   selector: 'app-point-entry',
@@ -10,11 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PointEntryComponent implements OnInit {
 
-  constructor(
-    private fb: FormBuilder,
-    private pes: PointEntryService,
-    private http: HttpClient
-  ) { }
   basicInfoForm: FormGroup;
   rigs;
   boreTypes;
@@ -22,6 +18,17 @@ export class PointEntryComponent implements OnInit {
   partyCities;
   casingTypes;
   pipes;
+  appearance: string;
+
+  constructor(
+    private fb: FormBuilder,
+    private pes: PointEntryService,
+    private http: HttpClient,
+    private config: ConfigService
+  ) { 
+    this.appearance = this.config.getConfig('formAppearance');
+  }
+
   ngOnInit() {
     this.rigs = [
       { value: '1', display: 'KA01MP7396' },

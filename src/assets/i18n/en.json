@@ -16,14 +16,52 @@
             "SELF": "Self"
         },
         "POINT_ENTRY": {
-            "TOTAL_FEEL": "Total Feet",
+            "TITLE": "Point Entry",
+            "TOTAL_FEET": "Total Feet",
             "SHOW_HIDE_START_FEET": "Show/Hide Start Feet",
+            "START_FEET": "Start Feet",
             "END_FEET": "End Feet",
             "AMOUNT_PER_FEET": "Amount Per Feet",
-            "AMOUNT": "Amount"
+            "AMOUNT": "Amount",
+            "TOTAL_FEET_AMOUNT": "Total Feet Amount",
+            "CASING_DEPTH": "Casing Depth",
+            "CASING_DEPTH_RATE":"Casing Depth Rate",
+            "CASING_FEET_AMOUNT": "Casing Feet Amount"
         },
-        "BTN": {
-            "ADD_MORE": "ADD MORE"
-        }
+        "OTHER_CHARGES": {
+            "TITLE": "Other Charges",
+            "SELECT_CHARGES": "Select Charges",
+            "CHARGE_AMT": "Charge Amount"
+        },
+        "RPM_DETAILS" :{
+            "TITLE": "RPM Details / BIT Details",
+            "UPLOAD": "Upload End RPM File",
+            "START_RPM": "Start RPM",
+            "END_RPM": "End RPM",
+            "TOTAL_RPM": "Total RPM",
+            "BIT_CALC" :"Bit Calculations",
+            "SELECT_BIT": "Select Bit",
+            "LAST_BIT_SCALE": "Last Bit Scale",
+            "FEET": "Feet",
+            "MSG": "Bit Scale must be in MM"
+        },
+        "HAMMER_DETAILS":{
+            "TITLE": "Hammer Details",
+            "HAMMER_CALC": "Hammer Calculations",
+            "SELECT_HAMMER": "Select Hammer",
+            "LAST_SCALE": "Last Scale",
+            "FEET": "Feet",
+            "MSG": "Hammer Scale must be in MM"
+        },
+        "OVERALL_AMT": "Over All Total Amount",
+        "TOTAL_AMT": "Total Amount",
+        "COMMISSION_AMT": "Commission Amount",
+        "REMARKS": "Remarks"
+    },
+    "BTN": {
+        "ADD_MORE": "ADD MORE",
+        "CLEAR": "CLEAR",
+        "SAVE": "SAVE",
+        "REMOVE": "Remove"
     }
 }

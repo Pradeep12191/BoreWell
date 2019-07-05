@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ConfigService } from '../../../../services/config.service';
 
 @Component({
     selector: 'point-entry-details',
@@ -7,16 +8,17 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
     styleUrls: ['./point-entry-details.component.scss']
 })
 export class PointEntryDetailsComponent {
-    @Input('form') pointEntryForm: FormGroup
-
+    @Input('form') pointEntryForm: FormGroup;
+    public appearance;
     get feetsFormArray(){
         return this.pointEntryForm.get('feets') as FormArray
     }
 
     constructor(
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private config: ConfigService
     ){
-
+       this.appearance = this.config.getConfig('formAppearance');
     }
 
     public addMoreFeet(){

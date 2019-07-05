@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
 import { PointEntryService } from '../point-entry.serice';
+import { ConfigService } from '../../../../services/config.service';
 
 @Component({
     selector: 'hammer-details',
@@ -10,15 +11,17 @@ import { PointEntryService } from '../point-entry.serice';
 export class HammerDetailsComponent implements OnInit {
     @Input('form') hammerDetailsForm: FormGroup;
     hammers;
+    appearance: string;
+
+    constructor(
+        private pes: PointEntryService,
+        private config: ConfigService
+    ){
+        this.appearance = this.config.getConfig('formAppearance');
+    }
 
     get hammerFormArray(){
         return this.hammerDetailsForm.get('hammers') as FormArray
-    }
-
-    constructor(
-        private pes: PointEntryService
-    ){
-
     }
 
     ngOnInit() {

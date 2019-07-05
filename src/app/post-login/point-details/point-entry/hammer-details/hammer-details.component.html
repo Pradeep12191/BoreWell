@@ -1,25 +1,26 @@
 <mat-expansion-panel class="bore-well-expansion-panel" [formGroup]="hammerDetailsForm">
     <mat-expansion-panel-header>
         <mat-panel-title>
-            Hammer Details
+            {{ 'POINT_ENTRY.HAMMER_DETAILS.TITLE' | translate}}
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div fxLayout="column" fxLayoutGap="20px">
         <div fxLayout>
-            <mat-checkbox>Hammer Calculations</mat-checkbox>
+            <mat-checkbox color="primary">{{ 'POINT_ENTRY.HAMMER_DETAILS.HAMMER_CALC' | translate }}</mat-checkbox>
         </div>
 
         <div *ngFor="let hammerCtrl of hammerFormArray.controls; let i = index" formArrayName="hammers"
             fxLayout fxLayoutGap="20px" fxLayout.lt-md="column">
             <ng-container [formGroup]="hammerCtrl">
-                <mat-form-field>
-                    <mat-label>Select Hammer</mat-label>
+                <mat-form-field [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.SELECT_HAMMER' | translate }}</mat-label>
                     <mat-select formControlName="hammer">
                         <mat-option *ngFor="let hammer of hammers" [value]="hammer.value">{{ hammer.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field>
-                    <input type="text" formControlName="lastScale" placeholder="Last Scale" matInput>
+                <mat-form-field [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.LAST_SCALE' | translate }}</mat-label>
+                    <input type="text" formControlName="lastScale" matInput>
                 </mat-form-field>
                 <!-- <mat-form-field>
                     <input type="text" formControlName="hammerScale" placeholder="Hammer Scale" matInput>
@@ -27,19 +28,20 @@
                 <mat-form-field>
                     <input type="text" formControlName="reducedSize" placeholder="Reduced Size" matInput>
                 </mat-form-field> -->
-                <mat-form-field>
-                    <input type="text" formControlName="feet" placeholder="Feet" matInput>
+                <mat-form-field [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.FEET' | translate }}</mat-label>
+                    <input type="text" formControlName="feet" matInput>
                 </mat-form-field>
                 <div fxLayout="column" fxLayoutAlign="center center" *ngIf="hammerFormArray.length > 1">
-                    <span class="remove-btn" (click)="removeHammer(i)">Remove</span>
+                    <span class="remove-btn" (click)="removeHammer(i)">{{ 'BTN.REMOVE' | translate }}</span>
                 </div>
             </ng-container>
         </div>
         <div fxLayout fxLayoutAlign="end end">
-            <button (click)="addMoreHammer()" mat-raised-button color="primary">ADD MORE</button>
+            <button (click)="addMoreHammer()" mat-raised-button color="primary">{{ 'BTN.ADD_MORE' | translate }}</button>
         </div>
         <div class="m-t-20">
-            <span class="asterix">* </span><span>Hammer Scale must be in MM</span>
+            <span class="asterix">* </span><span>{{ 'POINT_ENTRY.HAMMER_DETAILS.MSG' | translate }}</span>
         </div>
     </div>
 </mat-expansion-panel>

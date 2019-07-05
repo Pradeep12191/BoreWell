@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
 import { PointEntryService } from '../point-entry.serice';
+import { ConfigService } from '../../../../services/config.service';
 
 
 @Component({
@@ -11,16 +12,20 @@ import { PointEntryService } from '../point-entry.serice';
 export class OtherChargesComponent implements OnInit{
     @Input('form') otherChargesForm: FormGroup;
     charges;
+    appearance;
+
+    constructor(
+        private pes: PointEntryService,
+        private config: ConfigService
+    ){
+        this.appearance = this.config.getConfig('formAppearance');
+    }
 
     get chargesFormArray(){
         return this.otherChargesForm.get('charges') as FormArray
     }
 
-    constructor(
-        private pes: PointEntryService
-    ){
 
-    }
 
     ngOnInit(){
         this.charges = [

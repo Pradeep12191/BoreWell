@@ -1,11 +1,13 @@
-<mat-toolbar class="mat-elevation-z6">
+<mat-toolbar color="primary" class="mat-elevation-z6">
     <button mat-icon-button (click)="sidenav.toggle()">
-            <i class="material-icons">menu</i>
+        <i class="material-icons">menu</i>
     </button>
-    
-    <span style="margin-right: 250px">AMMAN BORE WELLS</span>
-    <span style="margin-right: 250px">Admin</span>
-    <div fxLayout="column">
+
+    <span>AMMAN BORE WELLS</span>
+    <span class="space"></span>
+    <span fxHide.lt-md>Admin</span>
+    <span class="space"></span>
+    <div fxHide.lt-md fxLayout="column">
         <span>Select Language</span>
         <div>
             <button class="select-lang-btn" mat-button [matMenuTriggerFor]="langMenu">English
@@ -17,7 +19,18 @@
         </mat-menu>
     </div>
     <span class="space"></span>
-    <button style="margin-right: 50px;" mat-button>test@test.com</button>
+    <button fxHide.lt-md style="margin-right: 50px;" mat-button>test@test.com</button>
+    <button [matMenuTriggerFor]="settingsMenu" fxHide.gt-sm mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #settingsMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="langMenu">
+            <mat-icon>language</mat-icon>
+            Language</button>
+        <button mat-menu-item>
+            <mat-icon>power_settings_new</mat-icon>
+            Log Out</button>
+    </mat-menu>
 </mat-toolbar>
 
 <mat-sidenav-container>

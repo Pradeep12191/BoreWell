@@ -12,6 +12,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     src: local('Material Icons'), local('MaterialIcons-Regular'), url(assets/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(assets/fonts/MaterialIcons-Regular.woff) format('woff'), url(assets/fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
 
+$panel-header-color: #006064;
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -54,10 +56,13 @@ body{
     }
     
     .mat-expansion-panel-header{
-        background-color: rgb(10, 168, 158);
+        background-color: $panel-header-color;
+        .mat-expansion-indicator::after{
+            color: white
+        }
         // height: 48px !important;
         &:hover, &:focus{
-            background-color: rgb(10, 168, 158);
+            background-color: $panel-header-color;
         }
         .mat-expansion-panel-header-title{
             color: white;
@@ -66,7 +71,7 @@ body{
     }
 
     &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover{
-        background-color: rgb(10, 168, 158);
+        background-color: $panel-header-color;
     }
 }
 

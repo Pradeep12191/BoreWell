@@ -2,6 +2,11 @@
     margin-right: 15px
 }
 
+mat-toolbar{
+    position: relative;
+    z-index: 2;
+}
+
 .space{
     flex: 1 1 100%
 }

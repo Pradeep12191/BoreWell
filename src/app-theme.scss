@@ -2,7 +2,7 @@
 
 @include mat-core();
 
-$bore-well-primary: mat-palette($mat-cyan);
+$bore-well-primary: mat-palette($mat-cyan, 900, 500, A400);
 $bore-well-accent:  mat-palette($mat-pink, A200, A100, A400);
 $bore-well-warn:  mat-palette($mat-red);
 

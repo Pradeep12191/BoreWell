@@ -10,6 +10,7 @@ import { PostLoginRoutingModule } from './post-login-routing.module';
 import { PostLoginComponent } from './post-login.component';
 import { SharedModule } from '../shared.module';
 import { HeaderComponent } from '../header/header.component';
+import { S404Component } from '../404/404.component';
 
 
 
@@ -26,7 +27,8 @@ import { HeaderComponent } from '../header/header.component';
     declarations: [
         DashboardComponent,
         PostLoginComponent,
-        HeaderComponent
+        HeaderComponent,
+        S404Component
     ]
 })
 export class PostLoginModule{

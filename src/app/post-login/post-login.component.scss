@@ -138,6 +138,7 @@ li.menu-node-list{
 
     .node-ul{
         padding-left: 35px;
+        overflow: hidden;
     }
     .last-node-ul{
         padding-left: 25px;
@@ -205,19 +206,54 @@ li.menu-node-list{
     &.main-node-has-child{
         .main-node-label{
             position: relative;
-            &::after{
-                content: '+';
+            .plus-btn{
                 position: absolute;
-                top: 0px;
+                height: 7px;
+                width: 7px;
                 left: -60px;
+                top: 3px;
+                &.child-plus-btn{
+                    left: -14px
+                }
+                .plus-vertical{
+                    height: 100%;
+                    border-left: 1px solid rgba(255, 255, 255, 0.55);
+                    position: absolute;
+                    left: 49%;
+                }
+                .plus-horizontal{
+                    width: 100%;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+                    position: absolute;
+                    top: 49%;
+                }
             }
+            // &::before{
+            //     content: '';
+            //     position: absolute;
+            //     top: 3px;
+            //     left: -60px;
+            //     height: 7px;
+            //     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            //     transition: all linear 2s;
+            // }
+            // &::after{
+            //     content: '';
+            //     position: absolute;
+            //     top: 0px;
+            //     left: -57px;
+            //     height: 7px;
+            //     border-right: 1px solid rgba(255, 255, 255, 0.3);
+            // }
             &.child-label{
                 margin-left: 20px;
                 &::after{
-                    content: '+';
-                    position: absolute;
-                    top: 0px;
-                    left: -15px; 
+                    // content: '';
+                    // position: absolute;
+                    // top: 0px;
+                    // left: -15px; 
+                    // height: 10px;
+                    // border-right: 1px solid rgba(255, 255, 255, 0.3);
                 }
             }
         }

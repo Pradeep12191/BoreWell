@@ -7,14 +7,14 @@ import { MatTreeNestedDataSource, MatSidenav } from '@angular/material';
 import { MediaObserver } from '@angular/flex-layout';
 import { LoaderService } from '../services/loader-service';
 import { Subscription } from 'rxjs';
-import { Router, NavigationEnd } from '@angular/router';
-import { FADE_IN_ANIMATION } from '../animations/fade-in.animation';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { FADE_IN_ANIMATION, ROTATE_PLUS_ANIMATION, EXPAND } from '../animations';
 
 @Component({
   selector: 'app-post-login',
   templateUrl: './post-login.component.html',
   styleUrls: ['./post-login.component.scss'],
-  animations: [FADE_IN_ANIMATION]
+  animations: [FADE_IN_ANIMATION, ROTATE_PLUS_ANIMATION, EXPAND]
 })
 export class PostLoginComponent implements OnInit, OnDestroy {
 
@@ -24,6 +24,7 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   sideNavItems = SIDE_NAV_ITEMS;
   loading;
   loaderSubscription: Subscription;
+
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
 
   treeControl = new NestedTreeControl<NavItem>(node => node.children);
@@ -50,8 +51,11 @@ export class PostLoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loader.showLoader()
+      }
       if (event instanceof NavigationEnd) {
-       this.loader.hideLoader();
+        this.loader.hideLoader();
       }
     });
     this.loaderSubscription = this.loader.loader$.subscribe((status) => {
@@ -72,7 +76,6 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   showLoader() {
     this.loader.showLoader();
   }
-
 
 
 }

@@ -6,6 +6,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/postlogin/dashboard', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'postlogin', loadChildren: () => import('./post-login/post-login.module').then(mod => mod.PostLoginModule) },
+    
 ];
 
 @NgModule({

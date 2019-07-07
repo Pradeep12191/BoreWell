@@ -8,6 +8,6 @@ export class PointEntryResolve implements Resolve<any>{
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return timer(0).pipe(switchMap(() => of({ data: 'value' })))
+        return timer(1500).pipe(switchMap(() => of({ data: 'value' })))
     }
 }

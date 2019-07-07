@@ -16,25 +16,25 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 name: 'Vehicle',
                 isFirstChild: true,
                 children: [
-                    { name: 'Add Vehicle', isFirstChild: true, },
-                    { name: 'View / Edit Vehicle', },
-                    { name: 'Vehicle Link / Unlink', isLastChild: true },
+                    { name: 'Add Vehicle', isFirstChild: true, path: 'ytd1' },
+                    { name: 'View / Edit Vehicle', path: 'ytd2'},
+                    { name: 'Vehicle Link / Unlink', isLastChild: true, path: 'ytd3'},
                 ],
                 lastNode: true
             },
             {
                 name: 'Tyre',
                 children: [
-                    { name: 'Add New Tyre', isFirstChild: true },
-                    { name: 'Tyre Link / Unlink', isLastChild: true },
+                    { name: 'Add New Tyre', isFirstChild: true, path: 'ytd4' },
+                    { name: 'Tyre Link / Unlink', isLastChild: true, path: 'ytd5' },
                 ],
                 lastNode: true
             },
             {
                 name: 'Bit',
                 children: [
-                    { name: 'Add Bit', isFirstChild: true },
-                    { name: 'View Bit', isLastChild: true },
+                    { name: 'Add Bit', isFirstChild: true, path: 'ytd6' },
+                    { name: 'View Bit', isLastChild: true, path: 'ytd7' },
                 ],
                 lastNode: true
             },
@@ -42,8 +42,8 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 name: 'Hammer',
                 isLastChild: true,
                 children: [
-                    { name: 'Add Hammer', isFirstChild: true },
-                    { name: 'View Hammer', isLastChild: true },
+                    { name: 'Add Hammer', isFirstChild: true, path: 'ytd8' },
+                    { name: 'View Hammer', isLastChild: true, path: 'ytd9' },
                 ],
                 lastNode: true
             },
@@ -66,23 +66,23 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
             {
                 name: 'Receipts and Advance', isFirstChild: true,
                 children: [
-                    { name: 'Amount Receipt (Self)', isFirstChild: true },
-                    { name: 'Amount Receipt (Agent)' },
-                    { name: 'Receipt & Agent Advance', isLastChild: true },
+                    { name: 'Amount Receipt (Self)', isFirstChild: true, path: 'ytd10' },
+                    { name: 'Amount Receipt (Agent)', path: 'ytd11' },
+                    { name: 'Receipt & Agent Advance', isLastChild: true, path: 'ytd12' },
                 ],
                 lastNode: true
             },
             {
                 name: 'Expenses and Payments', isFirstChild: true,
                 children: [
-                    { name: 'Purchase', isFirstChild: true },
-                    { name: 'Fuel Expense' },
-                    { name: 'Material Expense' },
-                    { name: 'Miscellaneous Expense', isLastChild: true }
+                    { name: 'Purchase', isFirstChild: true, path: 'ytd13' },
+                    { name: 'Fuel Expense', path: 'ytd14' },
+                    { name: 'Material Expense', path: 'ytd15' },
+                    { name: 'Miscellaneous Expense', isLastChild: true, path: 'ytd16' }
                 ],
                 lastNode: true
             },
-            { name: 'Other Payment Issue', isLastChild: true },
+            { name: 'Other Payment Issue', isLastChild: true, path: 'ytd17' },
         ]
     },
     {
@@ -90,12 +90,12 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
         isMain: true,
         icon: 'account_circle',
         children: [
-            { name: 'Labour Rule', isFirstChild: true, },
-            { name: 'Add Labour' },
-            { name: 'View / Edit Labour' },
-            { name: 'Labour Link / Unlink' },
-            { name: 'Labour Advance' },
-            { name: 'Labour Advance Refund', isLastChild: true },
+            { name: 'Labour Rule', isFirstChild: true, path: 'ytd18' },
+            { name: 'Add Labour', path: 'ytd19' },
+            { name: 'View / Edit Labour', path: 'ytd20' },
+            { name: 'Labour Link / Unlink', path: 'ytd21' },
+            { name: 'Labour Advance', path: 'ytd22' },
+            { name: 'Labour Advance Refund', isLastChild: true, path: 'ytd23' },
         ]
     },
     {
@@ -103,8 +103,8 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
         isMain: true,
         icon: 'notifications',
         children: [
-            { name: 'Vehicle Service Head', isFirstChild: true, },
-            { name: 'Vehicle Service Maintenance', isLastChild: true },
+            { name: 'Vehicle Service Head', isFirstChild: true, path: 'ytd24' },
+            { name: 'Vehicle Service Maintenance', isLastChild: true, path: 'ytd25' },
         ]
     },
 

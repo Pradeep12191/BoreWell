@@ -9,7 +9,7 @@
                 <ng-container *ngIf="node.isMain; else leafNodeTpl">
                     <li class="mat-tree-node main-tree-node" routerLinkActive="active" [class.path-link]="node.path"
                         [class.main-node]="node.path">
-                        <a class="main-node-link" (click)="showLoader(); closeSidenavOnMobile()" [routerLink]="node.path">
+                        <a class="main-node-link" (click)="closeSidenavOnMobile()" [routerLink]="node.path">
                             <div class="main-icon-container">
                                 <mat-icon>{{ node.icon }}</mat-icon>
                             </div>
@@ -24,7 +24,8 @@
                     <li class="mat-tree-node leaf-node" routerLinkActive="active" [class.first-child]="node.isFirstChild"
                         [class.child]="!node.isMain" [class.last-node-dashed]="!node.isLastChild">
                         <!-- use a disabled button to provide padding for tree leaf -->
-                        <a class="child-link" (click)="showLoader(); closeSidenavOnMobile()" [class.path-link]="node.path" [routerLink]="node.path">
+                        <a class="child-link" (click)="closeSidenavOnMobile()" [class.path-link]="node.path"
+                            [routerLink]="node.path">
                             <span class="tree-label">
                                 {{node.name}}
                             </span>
@@ -48,13 +49,26 @@
                             <mat-icon>{{ node.icon }}</mat-icon>
                         </div>
                         <span [class.child-label]="!node.isMain" class="main-node-label tree-label">
+                            <div class="plus-btn" [class.child-plus-btn]="!node.isMain">
+                                <div class="plus-vertical" [@rotatePlus]="treeControl.isExpanded(node) ? 'opened': 'closed'"></div>
+                                <div class="plus-horizontal"></div>
+                            </div>
                             {{node.name}}
                         </span>
+                        <!-- <ng-template #leafSpan>
+                            <span class="main-node-label tree-label">
+                                <div class="plus-btn">
+                                    <div class="plus-vertical" [@rotatePlus]="treeControl.isExpanded(node) ? 'opened': 'closed'"></div>
+                                    <div class="plus-horizontal"></div>
+                                </div>
+                                {{node.name}}
+                            </span>
+                        </ng-template> -->
                     </a>
                     <!-- <span class="tree-label">
                   {{node.name}}
               </span> -->
-                    <ul [class.last-node-ul]="node.lastNode" class="node-ul" [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                    <ul [class.last-node-ul]="node.lastNode" class="node-ul" [@expand]="treeControl.isExpanded(node) ? 'expanded': 'collapsed'">
                         <ng-container matTreeNodeOutlet></ng-container>
                     </ul>
                 </li>
@@ -63,7 +77,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="spinner-container" *ngIf="loading; else contentTpl">
-            <mat-spinner diameter="50" strokeWidth="2"></mat-spinner>
+            <mat-spinner diameter="40" strokeWidth="2"></mat-spinner>
         </div>
         <ng-template #contentTpl>
             <div fxLayout class="layout-container" @fadeIn>

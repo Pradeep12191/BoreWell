@@ -72,7 +72,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <div class="m-b-16">
                     {{ 'POINT_ENTRY.AGENT_TYPE.LABEL' | translate }} *
             </div>
             <div fxLayout.lt-md="column" fxLayoutGap="20px">
@@ -86,7 +86,7 @@
                 </mat-radio-group>
             </div>
         </div>
-        <div class="m-t-75">
+        <div class="m-t-42">
             <point-entry-details [form]="basicInfoForm.get('pointEntry')"></point-entry-details>
         </div>
         <div class="m-t-20">
@@ -98,14 +98,14 @@
         <div class="m-t-20">
             <hammer-details [form]="basicInfoForm.get('hammerDetails')"></hammer-details>
         </div>
-        <div fxLayout="column" fxLayoutGap="20px" class="m-t-30">
+        <div fxLayout="column" class="m-t-30">
             <div fxLayout fxLayout.lt-md="column">
                 <mat-form-field fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.OVERALL_AMT' | translate}}</mat-label>
                     <input type="text" formCOntrolName="overallTotalAmt" matInput>
                 </mat-form-field>
             </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                 <mat-form-field fxFlex="50" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.TOTAL_AMT' | translate}}</mat-label>
                     <input formControlName="totalAmt" matInput>

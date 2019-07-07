@@ -9,26 +9,28 @@
             <mat-checkbox color="primary">{{ 'POINT_ENTRY.HAMMER_DETAILS.HAMMER_CALC' | translate }}</mat-checkbox>
         </div>
 
-        <div *ngFor="let hammerCtrl of hammerFormArray.controls; let i = index" formArrayName="hammers"
-            fxLayout fxLayoutGap="20px" fxLayout.lt-md="column">
+        <div *ngFor="let hammerCtrl of hammerFormArray.controls; let i = index" formArrayName="hammers" fxLayout
+            fxLayoutGap="20px" fxLayout.lt-md="row wrap" fxLayoutGap.lt-md="10px">
             <ng-container [formGroup]="hammerCtrl">
-                <mat-form-field [appearance]="appearance">
+                <mat-form-field fxFlex fxFlex.lt-md="calc(66% - 10px)" class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.SELECT_HAMMER' | translate }}</mat-label>
                     <mat-select formControlName="hammer">
                         <mat-option *ngFor="let hammer of hammers" [value]="hammer.value">{{ hammer.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field [appearance]="appearance">
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.LAST_SCALE' | translate }}</mat-label>
                     <input type="text" formControlName="lastScale" matInput>
                 </mat-form-field>
-                <!-- <mat-form-field>
-                    <input type="text" formControlName="hammerScale" placeholder="Hammer Scale" matInput>
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.FEET' | translate }}</mat-label>
+                    <input type="text" formControlName="feet" matInput>
                 </mat-form-field>
-                <mat-form-field>
-                    <input type="text" formControlName="reducedSize" placeholder="Reduced Size" matInput>
-                </mat-form-field> -->
-                <mat-form-field [appearance]="appearance">
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.FEET' | translate }}</mat-label>
+                    <input type="text" formControlName="feet" matInput>
+                </mat-form-field>
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field m-r-10" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.HAMMER_DETAILS.FEET' | translate }}</mat-label>
                     <input type="text" formControlName="feet" matInput>
                 </mat-form-field>

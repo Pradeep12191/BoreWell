@@ -17,37 +17,32 @@
                     translate }}</mat-checkbox>
             </div>
         </div>
-        <div fxLayout formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls" fxLayout="column"
-            fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-            <div fxLayout.lt-md="column" fxLayout fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                <ng-container [formGroup]="feetCtrl">
-                    <div fxFlex="75" fxLayout fxLayoutGap="20px" fxLayoutGap.lt-md="10px">
-                        <mat-form-field fxFlex="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
-                            <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.START_FEET' | translate }}</mat-label>
-                            <input type="text" formControlName="startFeet" matInput>
-                        </mat-form-field>
+        <div fxLayout formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls" fxLayout
+            fxLayoutGap.lt-md="10px" fxLayoutGap="20px" fxLayout.lt-md="row wrap">
+            <ng-container [formGroup]="feetCtrl">
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.START_FEET' | translate }}</mat-label>
+                    <input type="text" formControlName="startFeet" matInput>
+                </mat-form-field>
 
-                        <mat-form-field fxFlex="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
-                            <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.END_FEET' | translate }}</mat-label>
-                            <input type="text" formControlName="endFeet" matInput>
-                        </mat-form-field>
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)"  class="calc-field" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.END_FEET' | translate }}</mat-label>
+                    <input type="text" formControlName="endFeet" matInput>
+                </mat-form-field>
 
-                        <mat-form-field fxFlex="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
-                            <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
-                            <input type="text" formControlName="amtPerFeet" matInput>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="25" ngClass.lt-md="m-r-10">
-                        <mat-form-field fxFlex fxFlex.lt-md="33" class="calc-field" [appearance]="appearance">
-                            <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT' | translate }}</mat-label>
-                            <input type="text" formControlName="amt" matInput>
-                        </mat-form-field>
-                    </div>
-                    <div ngClass.lt-md="m-b-10" *ngIf="feetsFormArray.length > 1" fxLayout fxLayoutAlign="end center">
-                        <span class="remove-btn" (click)="removeLastFeet()">{{ 'BTN.REMOVE' | translate}}</span>
-                    </div>
-                </ng-container>
-            </div>
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
+                    <input type="text" formControlName="amtPerFeet" matInput>
+                </mat-form-field>
+
+                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" ngClass.lt-md="last-field" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT' | translate }}</mat-label>
+                    <input type="text" formControlName="amt" matInput>
+                </mat-form-field>
+                <div ngClass.lt-md="m-b-10 m-r-10" fxFlex.lt-md="calc(33% - 10px)" *ngIf="feetsFormArray.length > 1" fxLayout fxLayoutAlign="end center">
+                    <span class="remove-btn" (click)="removeLastFeet()">{{ 'BTN.REMOVE' | translate}}</span>
+                </div>
+            </ng-container>
         </div>
         <div class="m-b-16" fxLayout fxLayoutAlign="end">
             <button (click)="addMoreFeet()" mat-raised-button color="primary">{{ 'BTN.ADD_MORE' | translate}}</button>

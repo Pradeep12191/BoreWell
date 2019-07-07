@@ -4,17 +4,17 @@
             {{ 'POINT_ENTRY.OTHER_CHARGES.TITLE' | translate }}
         </mat-panel-title>
     </mat-expansion-panel-header>
-    <div fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="column">
         <div formArrayName="charges" *ngFor="let chargeCtrl of chargesFormArray.controls; let i = index" fxLayout
-            fxLayout.lt-md="column" fxLayoutGap="20px">
+            fxLayoutGap="20px" fxLayoutGap.lt-md="10px">
             <ng-container [formGroup]="chargeCtrl">
-                <mat-form-field fxFlex="40" [appearance]="appearance">
+                <mat-form-field class="calc-field" fxFlex.lt-md fxFlex="40" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.OTHER_CHARGES.SELECT_CHARGES' | translate }}</mat-label>
                     <mat-select formControlName="charge">
                         <mat-option [value]="charge.value" *ngFor="let charge of charges">{{ charge.display }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field fxFlex="40" [appearance]="appearance">
+                <mat-form-field class="calc-field" fxFlex.lt-md fxFlex="40" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.OTHER_CHARGES.CHARGE_AMT' | translate }}</mat-label>
                     <input type="text" matInput formControlName="chargeAmt">
                 </mat-form-field>

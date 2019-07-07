@@ -102,6 +102,12 @@ body{
     }
 }
 
+@for $i from 1 through 100{
+    .max-width-#{$i} {
+        max-width: #{$i} + '%'
+    }
+}
+
 .splash-shine{
     position: fixed;
     height: 100%;
@@ -111,3 +117,8 @@ body{
     background: linear-gradient(to right, #FFD194, #D1913C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
 }
 
+mat-form-field.calc-field{
+    .mat-form-field-infix{
+         width: 0px;
+     }
+ }

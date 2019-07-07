@@ -3,3 +3,7 @@ mat-form-field.calc-field{
         width: 0px;
     }
 }
+
+.last-field{
+    max-width: calc(33% - 10px);
+}

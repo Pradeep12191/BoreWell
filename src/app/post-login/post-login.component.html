@@ -63,7 +63,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="spinner-container" *ngIf="loading; else contentTpl">
-            <mat-spinner></mat-spinner>
+            <mat-spinner diameter="50" strokeWidth="2"></mat-spinner>
         </div>
         <ng-template #contentTpl>
             <div fxLayout class="layout-container" @fadeIn>

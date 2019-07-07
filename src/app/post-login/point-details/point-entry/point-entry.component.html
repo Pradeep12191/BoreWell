@@ -7,8 +7,8 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div fxLayout="column" fxLayoutGap="10px">
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+        <div fxLayout="column">
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                 <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.SELECT_RIG' | translate }}</mat-label>
                     <mat-select formControlName="rig" required>
@@ -29,10 +29,11 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                 <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</mat-label>
                     <input matInput formControlName="partyName" type="text" required>
+                    <mat-error>Party Name is required</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.PARTY_STATE' | translate }}</mat-label>
@@ -43,7 +44,7 @@
                 </mat-form-field>
                 <div fxHide.lt-md fxFlex="33"></div>
             </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                 <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</mat-label>
                     <mat-select formControlName="partyCity">

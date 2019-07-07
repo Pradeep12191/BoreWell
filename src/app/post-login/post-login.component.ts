@@ -51,7 +51,7 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.loader.hideLoader();
+       this.loader.hideLoader();
       }
     });
     this.loaderSubscription = this.loader.loader$.subscribe((status) => {

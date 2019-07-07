@@ -96,6 +96,12 @@ body{
     }
 }
 
+@for $i from 1 through 100{
+    .m-r-#{$i} {
+        margin-right: #{$i}px
+    }
+}
+
 .splash-shine{
     position: fixed;
     height: 100%;

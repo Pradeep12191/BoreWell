@@ -6,5 +6,7 @@ export interface NavItem{
     isLastChild?: boolean;
     lastNode?: boolean;
     icon?: string;
-    path?: string
+    path?: string;
+    level: number;
+    paddingLeft: number;
 }

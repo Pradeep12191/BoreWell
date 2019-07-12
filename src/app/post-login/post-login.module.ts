@@ -11,6 +11,7 @@ import { PostLoginComponent } from './post-login.component';
 import { SharedModule } from '../shared.module';
 import { HeaderComponent } from '../header/header.component';
 import { S404Component } from '../404/404.component';
+import { MobileSidenavComponent } from './mobile-sidenav/mobile-sidenav.component';
 
 
 
@@ -28,7 +29,8 @@ import { S404Component } from '../404/404.component';
         DashboardComponent,
         PostLoginComponent,
         HeaderComponent,
-        S404Component
+        S404Component,
+        MobileSidenavComponent
     ]
 })
 export class PostLoginModule{

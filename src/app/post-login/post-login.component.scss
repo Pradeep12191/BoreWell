@@ -5,9 +5,15 @@
 .select-lang-btn{
     padding-left: 0px;
 }
+.side-logo-container{
+    height: 200px;
+}
 
 mat-sidenav-container{
     height: calc(100% - 64px);
+    &.mobile-container{
+        height: 100%;
+    }
   }
 
   mat-sidenav{
@@ -279,7 +285,7 @@ li.menu-node-list{
 }
 
 mat-tree, mat-sidenav{
-    background-color: rgb(43, 50, 58);
+    background-color: rgb(43, 50, 58);  
 }
 
 .leaf-node{
@@ -357,6 +363,12 @@ mat-tree{
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+mat-sidenav.mobile{
+    &::ng-deep .mat-drawer-inner-container{
+        overflow: hidden;
+    }
 }

@@ -30,6 +30,10 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   treeControl = new NestedTreeControl<NavItem>(node => node.children);
   dataSource = new MatTreeNestedDataSource<NavItem>();
 
+  get isMobile(){
+    return this.mediaObserver.isActive('lt-md')
+  }
+
   constructor(
     private mediaObserver: MediaObserver,
     private loader: LoaderService,

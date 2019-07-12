@@ -1,7 +1,9 @@
-<app-header (toggleSidenav)="sidenav.toggle()"></app-header>
+<app-header class="desktop-header" *ngIf="!isMobile" (toggleSidenav)="sidenav.toggle()"></app-header>
 
-<mat-sidenav-container>
-    <mat-sidenav class="mat-elevation-z2" [opened]="openSideNav" #sidenav [mode]="isSmallDevice ? 'over' : 'side'">
+<mat-sidenav-container [class.mobile-container]="isMobile">
+
+    <mat-sidenav *ngIf="!isMobile; else mobileSidenavTpl" class="mat-elevation-z2" [opened]="openSideNav" #sidenav
+        [mode]="isSmallDevice ? 'over' : 'side'">
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="nav-tree">
             <!-- This is the tree node template for leaf nodes -->
 
@@ -75,7 +77,15 @@
             </mat-nested-tree-node>
         </mat-tree>
     </mat-sidenav>
+    <ng-template #mobileSidenavTpl>
+        <mat-sidenav class="mat-elevation-z2 mobile" [opened]="openSideNav" #sidenav [mode]="isSmallDevice ? 'over' : 'side'">
+            <mat-toolbar class="side-logo-container" color="primary"></mat-toolbar>
+            <mobile-sidenav (linkClick)="closeSidenavOnMobile()"></mobile-sidenav>
+        </mat-sidenav>
+    </ng-template>
+
     <mat-sidenav-content>
+        <app-header *ngIf="isMobile" (toggleSidenav)="sidenav.toggle()"></app-header>
         <div class="spinner-container" *ngIf="loading; else contentTpl">
             <mat-spinner diameter="40" strokeWidth="2"></mat-spinner>
         </div>

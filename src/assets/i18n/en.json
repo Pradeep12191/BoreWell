@@ -58,6 +58,9 @@
         "COMMISSION_AMT": "Commission Amount",
         "REMARKS": "Remarks"
     },
+    "ADD_VEHICLE":{
+        "VEHICLE_TYPE": "Vehicle Type"
+    },
     "BTN": {
         "ADD_MORE": "ADD MORE",
         "CLEAR": "CLEAR",

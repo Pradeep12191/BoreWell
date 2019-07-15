@@ -30,9 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    PostLoginModule,
     BrowserAnimationsModule,
-    MaterialModule,
     HttpClientModule,
     FlexLayoutModule,
     TranslateModule.forRoot({

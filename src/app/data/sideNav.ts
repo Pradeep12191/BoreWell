@@ -23,7 +23,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 name: 'Vehicle',
                 isFirstChild: true,
                 children: [
-                    { name: 'Add Vehicle', isFirstChild: true, path: 'ytd1', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'Add Vehicle', isFirstChild: true, path: 'master/vehicle/addVehicle', level: 2, paddingLeft: LEVEL_2_PADDING,  },
                     { name: 'View / Edit Vehicle', path: 'ytd2', level: 2, paddingLeft: LEVEL_2_PADDING },
                     { name: 'Vehicle Link / Unlink', isLastChild: true, path: 'ytd3', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],

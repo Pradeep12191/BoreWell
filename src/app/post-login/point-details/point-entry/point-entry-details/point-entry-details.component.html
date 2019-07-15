@@ -17,25 +17,26 @@
                     translate }}</mat-checkbox>
             </div>
         </div>
+        <!-- fxFlex.lt-md="calc(33% - 10px)" fxLayout.lt-md="column" ngClass.lt-md="last-field" -->
         <div fxLayout formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls" fxLayout
-            fxLayoutGap.lt-md="10px" fxLayoutGap="20px" fxLayout.lt-md="row wrap">
+            fxLayoutGap.lt-md="0px" fxLayoutGap="20px" fxLayout.lt-md="column">
             <ng-container [formGroup]="feetCtrl">
-                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
+                <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.START_FEET' | translate }}</mat-label>
                     <input type="text" formControlName="startFeet" matInput>
                 </mat-form-field>
 
-                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)"  class="calc-field" [appearance]="appearance">
+                <mat-form-field fxFlex  class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.END_FEET' | translate }}</mat-label>
                     <input type="text" formControlName="endFeet" matInput>
                 </mat-form-field>
 
-                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" class="calc-field" [appearance]="appearance">
+                <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
                     <input type="text" formControlName="amtPerFeet" matInput>
                 </mat-form-field>
 
-                <mat-form-field fxFlex fxFlex.lt-md="calc(33% - 10px)" ngClass.lt-md="last-field" [appearance]="appearance">
+                <mat-form-field fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT' | translate }}</mat-label>
                     <input type="text" formControlName="amt" matInput>
                 </mat-form-field>

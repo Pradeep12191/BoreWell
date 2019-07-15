@@ -122,3 +122,8 @@ mat-form-field.calc-field{
          width: 0px;
      }
  }
+
+ mat-card-header{
+     background-color:$panel-header-color;
+     color: white;
+ }

@@ -10,6 +10,7 @@ const routes: Routes = [
         path: '', component: PostLoginComponent, children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'pointDetails', loadChildren: () => import('./point-details/point-entry/point-entry.module').then(mod => mod.PointEntryModule) },
+            { path: 'master/vehicle/addVehicle', loadChildren: () => import('./master/add-vehicle/add-vehicle.module').then(mod => mod.AddVehicleModule) },
             { path: '**', component: S404Component }
         ]
     }

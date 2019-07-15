@@ -21,7 +21,6 @@ import { MobileSidenavComponent } from './mobile-sidenav/mobile-sidenav.componen
         MaterialModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        PointEntryModule,
         PostLoginRoutingModule,
         SharedModule,
     ],

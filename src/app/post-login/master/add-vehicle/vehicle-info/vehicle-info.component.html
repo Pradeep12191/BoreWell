@@ -1,6 +1,53 @@
 <ng-container [formGroup]="form">
-    <mat-form-field [appearance]="appearance">
-        <mat-label>{{ 'ADD_VEHICLE.VEHICLE_TYPE' | translate }}</mat-label>
-        <input matInput formControlName="vehicleType">
-    </mat-form-field>
+    <div fxLayout="column">
+        <div fxLayout fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.VEHICLE_TYPE' | translate }}</mat-label>
+                <mat-select formControlName="vehicleType" required>
+                    <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.BORE_SIZE' | translate }}</mat-label>
+                <mat-select formControlName="boreSize" required>
+                    <mat-option *ngFor="let boreSize of boreSizes" [value]="boreSize.value">{{ boreSize.display }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.REG_NO' | translate }}</mat-label>
+                <input formControlName="registrationNumber" matInput required>
+            </mat-form-field>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.OWNER' | translate }}</mat-label>
+                <input formControlName="ownedBy" matInput required>
+            </mat-form-field>
+        </div>
+        <div fxLayout>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.REG_ADDR' | translate }}</mat-label>
+                <textarea formControlName="registrationAddress" matInput cols="30" rows="3"></textarea>
+            </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.MANUFACTURER' | translate }}</mat-label>
+                <input matInput formControlName="manufacturer">
+            </mat-form-field>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.YEAR_MANUFACTURE' | translate }}</mat-label>
+                <input matInput formControlName="yearOfManufacture">
+            </mat-form-field>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.ENGINE_NUMBER' | translate }}</mat-label>
+                <input matInput formControlName="engineNumber">
+            </mat-form-field>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'ADD_VEHICLE.CHASSIS_NUMBER' | translate }}</mat-label>
+                <input matInput formControlName="chassisNumber">
+            </mat-form-field>
+        </div>
+    </div>
+
 </ng-container>

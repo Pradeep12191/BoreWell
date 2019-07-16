@@ -25,7 +25,7 @@
             "AMOUNT": "Amount",
             "TOTAL_FEET_AMOUNT": "Total Feet Amount",
             "CASING_DEPTH": "Casing Depth",
-            "CASING_DEPTH_RATE":"Casing Depth Rate",
+            "CASING_DEPTH_RATE": "Casing Depth Rate",
             "CASING_FEET_AMOUNT": "Casing Feet Amount"
         },
         "OTHER_CHARGES": {
@@ -33,19 +33,19 @@
             "SELECT_CHARGES": "Select Charges",
             "CHARGE_AMT": "Charge Amount"
         },
-        "RPM_DETAILS" :{
+        "RPM_DETAILS": {
             "TITLE": "RPM Details / BIT Details",
             "UPLOAD": "Upload End RPM File",
             "START_RPM": "Start RPM",
             "END_RPM": "End RPM",
             "TOTAL_RPM": "Total RPM",
-            "BIT_CALC" :"Bit Calculations",
+            "BIT_CALC": "Bit Calculations",
             "SELECT_BIT": "Select Bit",
             "LAST_BIT_SCALE": "Last Bit Scale",
             "FEET": "Feet",
             "MSG": "Bit Scale must be in MM"
         },
-        "HAMMER_DETAILS":{
+        "HAMMER_DETAILS": {
             "TITLE": "Hammer Details",
             "HAMMER_CALC": "Hammer Calculations",
             "SELECT_HAMMER": "Select Hammer",
@@ -58,13 +58,65 @@
         "COMMISSION_AMT": "Commission Amount",
         "REMARKS": "Remarks"
     },
-    "ADD_VEHICLE":{
-        "VEHICLE_TYPE": "Vehicle Type"
+    "ADD_VEHICLE": {
+        "VEHICLE_TYPE": "Vehicle Type",
+        "BORE_SIZE": "Bore Size",
+        "REG_NO": "Vehicle Registration Number (Ex: TN34 A1234)",
+        "OWNER": "Vehicle Owned By",
+        "REG_ADDR": "Registration Address",
+        "MANUFACTURER": "Vehicle Manufacturer",
+        "YEAR_MANUFACTURE": "Year Of Manufacture",
+        "ENGINE_NUMBER": "Engine Number",
+        "CHASSIS_NUMBER": "Chassis Number",
+        "REG_CERT": "Register Certificate (Image)",
+        "CONTACT_DETAILS": {
+            "TITLE": "Contact Details",
+            "CONTACT_TYPE": "Contact Type",
+            "MOBILE_NUMBER": "Mobile Number",
+            "MSG": "(Contact Details For Text Messaging Reminder)"
+        },
+        "INSURANCE_DETAILS": {
+            "TITLE": "Insurance Details",
+            "COMPANY_DETAILS": "Insurance Company Details",
+            "INSURANCE": "Insurance (Image)"
+        },
+        "LABOUR_INSURANCE_DETAILS": {
+            "TITLE": "Labour Insurance Details",
+            "COMPANY_DETAILS": "Insurance Company Details"
+        },
+        "PERMIT_DETAILS": {
+            "TITLE": "Permit Details",
+            "STATE": "State Permit Details"
+        },
+        "ROAD_TAX": {
+            "TITLE" : "Road Tax"   
+        },
+        "FITNESS_CERT":{
+            "TITLE": "Fitness Certificate"
+        },
+        "POLLUTION_CERT":{
+            "TITLE": "Pollution Certificate"
+        },
+        "GENERAL": {
+            "VALID_UPTO": "Valid Upto",
+            "REMIND": "Remind Me Before",
+            "1_DAY": "1 Day",
+            "2_DAY": "2 Days",
+            "7_DAY": "7 Days",
+            "30_DAY": "30 Days"
+        },
+        "STEP_LABEL":{
+            "VEHICLE_INFO": "Info",
+            "VEHICLE_DETAILS": "Details",
+            "VEHICLE_CERT": "Certificates"
+        }
     },
     "BTN": {
         "ADD_MORE": "ADD MORE",
         "CLEAR": "CLEAR",
         "SAVE": "SAVE",
-        "REMOVE": "Remove"
+        "REMOVE": "Remove",
+        "NEXT": "NEXT",
+        "BACK": "BACK"
     }
 }

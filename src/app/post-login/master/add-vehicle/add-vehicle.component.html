@@ -1,43 +1,43 @@
 <mat-card>
     <mat-horizontal-stepper labelPosition="bottom" #stepper [formGroup]="vehicleForm">
+        <ng-template matStepperIcon="number">
+        </ng-template>
         <mat-step [stepControl]="vehicleForm.get('info')">
             <ng-container [formGroup]="vehicleForm.get('info')">
-                <ng-template matStepLabel>Vehicle Info</ng-template>
+                <ng-template matStepLabel>{{ 'ADD_VEHICLE.STEP_LABEL.VEHICLE_INFO' | translate }}</ng-template>
                 <vehicle-info [form]="vehicleForm.get('info')"></vehicle-info>
-                <div>
-                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                <div fxLayout fxLayoutAlign="end">
+                    <div>
+                        <button mat-raised-button color="primary" matStepperNext>{{ 'BTN.NEXT' | translate }}</button>
+                    </div>
                 </div>
             </ng-container>
         </mat-step>
         <mat-step [stepControl]="vehicleForm.get('details')">
             <ng-container [formGroup]="vehicleForm.get('details')">
-                <ng-template matStepLabel>Vehicle Info</ng-template>
+                <ng-template matStepLabel>{{ 'ADD_VEHICLE.STEP_LABEL.VEHICLE_DETAILS' | translate }}</ng-template>
                 <vehicle-details [form]="vehicleForm.get('details')"></vehicle-details>
-                <div>
-                    <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                <div fxLayout fxLayoutAlign="space-between">
+                    <div>
+                        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
                 </div>
             </ng-container>
         </mat-step>
-        <!-- <mat-step [stepControl]="secondFormGroup" optional>
-                    <form [formGroup]="secondFormGroup">
-                        <ng-template matStepLabel>Fill out your address</ng-template>
-                        <mat-form-field>
-                            <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                        </mat-form-field>
-                        <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button matStepperNext>Next</button>
-                        </div>
-                    </form>
-                </mat-step>
-                <mat-step>
-                    <ng-template matStepLabel>Done</ng-template>
-                    You are now done.
-                    <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button (click)="stepper.reset()">Reset</button>
-                    </div>
-                </mat-step> -->
+        <mat-step  [stepControl]="vehicleForm.get('cerificate')">
+            <ng-template matStepLabel>{{ 'ADD_VEHICLE.STEP_LABEL.VEHICLE_CERT' | translate }}</ng-template>
+            <vehicle-certificates [form]="vehicleForm.get('cerificate')"></vehicle-certificates>
+            <div fxLayout fxLayoutAlign="space-between">
+                <div>
+                    <button color="primary" mat-raised-button (click)="stepper.reset()">{{ 'BTN.CLEAR' | translate }}</button>
+                </div>
+                <div>
+                    <button color="primary" mat-raised-button (click)="save()">{{ 'BTN.SAVE' | translate }}</button>
+                </div>
+            </div>
+        </mat-step>
     </mat-horizontal-stepper>
 </mat-card>

@@ -1,0 +1,31 @@
+<mat-card [formGroup]="form" class="m-b-25">
+    <mat-card-header>
+        <mat-card-title>{{ 'ADD_VEHICLE.INSURANCE_DETAILS.TITLE' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column">
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0">
+                <mat-form-field fxFlex [appearance]="appearance">
+                    <mat-label>{{ 'ADD_VEHICLE.INSURANCE_DETAILS.COMPANY_DETAILS' | translate }}</mat-label>
+                    <textarea formControlName="companyDetails" cols="10" rows="2" matInput></textarea>
+                </mat-form-field>
+                <mat-form-field fxFlex [appearance]="appearance">
+                    <mat-label>{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</mat-label>
+                    <input matInput formControlName="validUpto" required readonly [matDatepicker]="dp">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp>
+                    </mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxLayout ngClass.gt-sm="m-b-15" ngClass.lt-md="m-b-10">
+                {{ 'ADD_VEHICLE.GENERAL.REMIND' | translate }}
+            </div>
+            <div formGroupName="remindBefore" fxLayout class="m-l-16" fxLayoutGap="20px" fxLayout.lt-md="row wrap">
+                    <mat-checkbox formControlName="oneDay" ngClass.lt-md="m-b-10" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{ 'ADD_VEHICLE.GENERAL.1_DAY' | translate }}</mat-checkbox>
+                    <mat-checkbox formControlName="twoDays" ngClass.lt-md="m-b-10" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{ 'ADD_VEHICLE.GENERAL.2_DAY' | translate }}</mat-checkbox>
+                    <mat-checkbox formControlName="sevenDays" fxFlex.lt-md="calc(50% - 20px)"color="primary">{{ 'ADD_VEHICLE.GENERAL.7_DAY' | translate }}</mat-checkbox>
+                    <mat-checkbox formControlName="thirtyDays" class="m-r-20" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{ 'ADD_VEHICLE.GENERAL.30_DAY' | translate }}</mat-checkbox>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

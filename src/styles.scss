@@ -103,6 +103,12 @@ body{
 }
 
 @for $i from 1 through 100{
+    .m-l-#{$i} {
+        margin-left: #{$i}px
+    }
+}
+
+@for $i from 1 through 100{
     .max-width-#{$i} {
         max-width: #{$i} + '%'
     }
@@ -123,7 +129,41 @@ mat-form-field.calc-field{
      }
  }
 
- mat-card-header{
-     background-color:$panel-header-color;
-     color: white;
+ .error{
+     font-weight: bold;
+     color: crimson;
+ }
+
+ .text-center{
+     text-align: center;
+ }
+
+
+
+ mat-card{
+    mat-card-content{
+        padding: 16px;
+    }
+    mat-card-header{
+        background-color:$panel-header-color;
+        color: white;
+    }
+    &.mat-card{
+        border-radius: 0px;
+        padding: 0px;
+        .mat-card-header  .mat-card-title{
+            margin-top: 12px
+        }
+    }
+    
+ }
+
+ mat-form-field.custom{
+    .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+    .mat-form-field-label-wrapper { top: -1.5em; }
+    
+    .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+        transform: translateY(-1.1em) scale(.75);
+        width: 133.33333%;
+    }
  }

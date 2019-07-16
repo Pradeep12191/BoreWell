@@ -11,10 +11,18 @@ export class VehicleInfoComponent {
     @Input() form: FormGroup;
 
     appearance;
-
+    types = [
+        { value: '1', display: 'Rig' },
+        { value: '2', display: 'Support' },
+        { value: '3', display: 'Others' },
+    ]
+    boreSizes = [
+        { value: '1', display: '4 1/2' },
+        { value: '1', display: '6 1/2' },
+    ]
     constructor(
         private config: ConfigService
-    ){
+    ) {
         this.appearance = this.config.getConfig('formAppearance');
     }
 }

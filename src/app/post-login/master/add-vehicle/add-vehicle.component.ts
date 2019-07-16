@@ -23,7 +23,7 @@ export class AddVehicleComponent implements OnInit {
                 registrationNumber: [null, Validators.required],
                 ownedBy: null,
                 registrationAddress: null,
-                manufacture: null,
+                manufacturer: null,
                 yearOfManufacture: null,
                 engineNumber: null,
                 chassisNumber: null
@@ -50,7 +50,7 @@ export class AddVehicleComponent implements OnInit {
                         thirtyDays: null
                     })
                 }),
-                permit: this.fb.array([this.avs.permitDetailsForm()])
+                permits: this.fb.array([this.avs.permitDetailsForm()])
             }),
             cerificate: this.fb.group({
                 roadTax: this.avs.certificateForm(),
@@ -60,5 +60,7 @@ export class AddVehicleComponent implements OnInit {
         });
     }
 
-    pu
+    save() {
+        console.log( JSON.stringify(this.vehicleForm.value, null, 2))
+    }
 }

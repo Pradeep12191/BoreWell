@@ -1,4 +1,6 @@
+
 {
+    "LANG": "English",
     "POINT_ENTRY": {
         "BASIC_INFO": "Basic Info",
         "SELECT_RIG": "Select RIG",
@@ -124,6 +126,18 @@
         "PISTON_NUMBER": "Piston Number",
         "CONTROL_TUBE_NUMBER": "Control Tube Number (MM)"
     },
+    "ADD_BIT": {
+        "TITLE": "Add Drill Bit",
+        "PURCHASE_DATE": "Drill Bit Purchase Date",
+        "TYPE": "Bit Type",
+        "DRILLING": "Drill/OB Bit",
+        "VEHICLE": "Select the Vehicle",
+        "NAME": "Bit Name",
+        "DISTRIBUTOR_DETAILS": "Bit Distributor Details",
+        "SIZE": "Bit Size",
+        "NUMBER": "Bit Number",
+        "INITIAL_SCALE": "Bit Intial Scale (MM)"
+    },
     "BTN": {
         "ADD_MORE": "ADD MORE",
         "CLEAR": "CLEAR",
@@ -132,6 +146,9 @@
         "NEXT": "NEXT",
         "BACK": "BACK",
         "ADD_NEW_COMPANY_NAME": "ADD NEW COMPANY NAME",
-        "ADD_NEW_DISTRIBUTOR": "ADD NEW DISTRIBUTOR"
+        "ADD_NEW_DISTRIBUTOR": "ADD NEW DISTRIBUTOR",
+        "ADD_NEW_SIZE": "ADD NEW SIZE"
     }
+    
+
 }

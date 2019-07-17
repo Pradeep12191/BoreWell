@@ -38,7 +38,7 @@
 
             <!-- This is the tree node template for expandable nodes -->
             <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                <li [class.dashed-border]="!node.isMain && !node.isLastChild" [class.child]="!node.isMain"
+                <li (click)="setActive(node)" [class.dashed-border]="!node.isMain && !node.isLastChild" [class.child]="!node.isMain"
                     [class.first-child]="node.isFirstChild" class="main-tree-node main-node-has-child"
                     matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
                     <!-- <button mat-icon-button >
@@ -52,7 +52,7 @@
                         </div>
                         <span [class.child-label]="!node.isMain" class="main-node-label tree-label">
                             <div class="plus-btn" [class.child-plus-btn]="!node.isMain">
-                                <div class="plus-vertical" [@rotatePlus]="treeControl.isExpanded(node) ? 'opened': 'closed'"></div>
+                                <div class="plus-vertical" [@rotatePlus]="isExpand(node)"></div>
                                 <div class="plus-horizontal"></div>
                             </div>
                             {{node.name}}
@@ -70,7 +70,7 @@
                     <!-- <span class="tree-label">
                   {{node.name}}
               </span> -->
-                    <ul [class.last-node-ul]="node.lastNode" class="node-ul" [@expand]="treeControl.isExpanded(node) ? 'expanded': 'collapsed'">
+                    <ul [class.last-node-ul]="node.lastNode" class="node-ul" [@expand]="isExpand(node)">
                         <ng-container matTreeNodeOutlet></ng-container>
                     </ul>
                 </li>

@@ -9,6 +9,7 @@ import { LoaderService } from '../services/loader-service';
 import { Subscription } from 'rxjs';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { FADE_IN_ANIMATION, ROTATE_PLUS_ANIMATION, EXPAND } from '../animations';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-post-login',
@@ -29,16 +30,21 @@ export class PostLoginComponent implements OnInit, OnDestroy {
 
   treeControl = new NestedTreeControl<NavItem>(node => node.children);
   dataSource = new MatTreeNestedDataSource<NavItem>();
+  isMobileSideNav = true;
+  activeMainNode;
+  activeSubNode;
 
   get isMobile(){
-    return this.mediaObserver.isActive('lt-md')
+    return this.mediaObserver.isActive('lt-md') && this.isMobileSideNav
   }
 
   constructor(
     private mediaObserver: MediaObserver,
     private loader: LoaderService,
-    private router: Router
+    private router: Router,
+    private config: ConfigService
   ) {
+    this.isMobileSideNav = this.config.getConfig('mobileNav');
     this.dataSource.data = SIDE_NAV_ITEMS;
     this.mediaObserver.media$.subscribe((media) => {
       if (media.mqAlias === 'xs' || media.mqAlias === 'sm') {
@@ -80,6 +86,20 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   showLoader() {
     this.loader.showLoader();
   }
+
+  isExpand(node) {
+    if (node.isMain) {
+        return this.activeMainNode === node ?'expanded' : 'collapsed'
+    }
+    return this.activeSubNode === node ? 'expanded' : 'collapsed'
+}
+
+setActive(node){
+    if(node.isMain){
+        this.activeMainNode = this.activeMainNode === node ? null : node;
+    }
+    return this.activeSubNode = this.activeSubNode === node ? null : node;
+}
 
 
 }

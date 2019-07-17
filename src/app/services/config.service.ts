@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+interface url{
+    name: string;
+    url: string;
+}
 
 @Injectable()
 export class ConfigService {
@@ -20,5 +24,9 @@ export class ConfigService {
             .then((response) => {
                 this.config = response
             })
+    }
+
+    getUrl(name){
+        return (this.config['urls'] as url[]).find(url => url.name === name).url;
     }
 }

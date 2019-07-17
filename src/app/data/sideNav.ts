@@ -44,7 +44,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
             {
                 name: 'Bit',
                 children: [
-                    { name: 'Add Bit', isFirstChild: true, path: 'ytd6', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'Add Bit', isFirstChild: true, path: 'master/bit/addBit', level: 2, paddingLeft: LEVEL_2_PADDING },
                     { name: 'View Bit', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,

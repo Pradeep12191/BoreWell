@@ -9,16 +9,18 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent {
     @Output() toggleSidenav = new EventEmitter();
     languages;
-
+    selectedLanguage;
     constructor(
         private translate: TranslateService,
     ) {
         this.languages = [
             { id: 'en', display: 'English' },
-            { id: 'ta', display: 'Tamil' }
+            { id: 'ta', display: 'தமிழ்' }
         ]
+        this.selectedLanguage = this.languages[0];
     }
     changeLang(lang) {
-        this.translate.use(lang.id)
+        this.translate.use(lang.id);
+        this.selectedLanguage = lang;
     }
 }

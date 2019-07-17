@@ -11,6 +11,7 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'pointDetails', loadChildren: () => import('./point-details/point-entry/point-entry.module').then(mod => mod.PointEntryModule) },
             { path: 'master/vehicle/addVehicle', loadChildren: () => import('./master/add-vehicle/add-vehicle.module').then(mod => mod.AddVehicleModule) },
+            { path: 'master/hammer/addHammer', loadChildren: () => import('./master/add-hammer/add-hammer.module').then(mod => mod.AddHammerModule) },
             { path: '**', component: S404Component }
         ]
     }

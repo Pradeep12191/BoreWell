@@ -111,12 +111,27 @@
             "VEHICLE_CERT": "Certificates"
         }
     },
+    "ADD_HAMMER": {
+        "TITLE": "Add Hammer",
+        "PURCHASE_DATE": "Hammer Purchase Date",
+        "NAME": "Hammer Name",
+        "COMPANY_NAME": "Hammer Company Name",
+        "DISTRIBUTOR_DETAILS": "Hammer Distributor Details",
+        "SELECT_RIG": "Select RIG",
+        "HAMMER_NUMBER": "Hammer Number",
+        "BARREL_SCALE": "Barrel Scale (MM)",
+        "SPECH_SET_SIZE": "Spech Set Size",
+        "PISTON_NUMBER": "Piston Number",
+        "CONTROL_TUBE_NUMBER": "Control Tube Number (MM)"
+    },
     "BTN": {
         "ADD_MORE": "ADD MORE",
         "CLEAR": "CLEAR",
         "SAVE": "SAVE",
         "REMOVE": "Remove",
         "NEXT": "NEXT",
-        "BACK": "BACK"
+        "BACK": "BACK",
+        "ADD_NEW_COMPANY_NAME": "ADD NEW COMPANY NAME",
+        "ADD_NEW_DISTRIBUTOR": "ADD NEW DISTRIBUTOR"
     }
 }

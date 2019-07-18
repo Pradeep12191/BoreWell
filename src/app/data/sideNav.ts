@@ -31,16 +31,16 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 level: 1,
                 paddingLeft: LEVEL_1_PADDING
             },
-            {
-                name: 'Tyre',
-                children: [
-                    { name: 'Add New Tyre', isFirstChild: true, path: 'ytd4', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Tyre Link / Unlink', isLastChild: true, path: 'ytd5', level: 2, paddingLeft: LEVEL_2_PADDING },
-                ],
-                lastNode: true,
-                level: 1,
-                paddingLeft: LEVEL_1_PADDING
-            },
+            // {
+            //     name: 'Tyre',
+            //     children: [
+            //         { name: 'Add New Tyre', isFirstChild: true, path: 'ytd4', level: 2, paddingLeft: LEVEL_2_PADDING },
+            //         { name: 'Tyre Link / Unlink', isLastChild: true, path: 'ytd5', level: 2, paddingLeft: LEVEL_2_PADDING },
+            //     ],
+            //     lastNode: true,
+            //     level: 1,
+            //     paddingLeft: LEVEL_1_PADDING
+            // },
             {
                 name: 'Bit',
                 children: [

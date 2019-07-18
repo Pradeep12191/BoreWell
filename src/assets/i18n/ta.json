@@ -59,6 +59,84 @@
         "COMMISSION_AMT": "கமிஷன் தொகை",
         "REMARKS": "குறிப்புகள்"
     },
+    "ADD_VEHICLE": {
+    "VEHICLE_TYPE": "வாகன வகை தேர்வு செய்க",
+    "BORE_SIZE": "போர்   அளவு",
+    "REG_NO": "வாகன பதிவு எண் (Ex: TN34 A1234)",
+    "OWNER": "வாகன உரிமையாளர்",
+    "REG_ADDR": "வாகன பதிவு முகவரி",
+    "MANUFACTURER": "வாகன உற்பத்தியாளர்",
+    "YEAR_MANUFACTURE": "தயாரிப்பு  செய்த வருடம்",
+    "ENGINE_NUMBER": "என்ஜின் நம்பர் ",
+    "CHASSIS_NUMBER": "சாஸ்ஸிஸ்  நம்பர்",
+    "REG_CERT": "Register Certificate (Image)",
+    "CONTACT_DETAILS": {
+      "TITLE": "தொடர்பு விபரங்கள்",
+      "CONTACT_TYPE": "தொடர்பு வகை தேர்வு செய்க",
+      "MOBILE_NUMBER": "மொபைல் நம்பர் ",
+      "MSG": "((மெசேஜ் அனுப்ப தொடர்பு விவரங்கள்))"
+    },
+    "INSURANCE_DETAILS": {
+      "TITLE": "இன்சூரன்ஸ் விவரங்கள்",
+      "COMPANY_DETAILS": "இன்சூரன்ஸ் கம்பெனி விவரங்கள்",
+      "INSURANCE": "Insurance (Image)"
+    },
+    "LABOUR_INSURANCE_DETAILS": {
+      "TITLE": "லேபர்  இன்சூரன்ஸ்  விவரங்கள்",
+      "COMPANY_DETAILS": "இன்சூரன்ஸ் கம்பெனி விவரங்கள்"
+    },
+    "PERMIT_DETAILS": {
+      "TITLE": "பெர்மிட்  விவரங்கள்",
+      "STATE": "மாநில  பெர்மிட்  விவரங்கள்"
+    },
+    "ROAD_TAX": {
+      "TITLE" : "சாலை வரி"
+    },
+    "FITNESS_CERT":{
+      "TITLE": "தகுதிச் சான்றிதழ் (FC)"
+    },
+    "POLLUTION_CERT":{
+      "TITLE": "மாசு சான்றிதழ்"
+    },
+    "GENERAL": {
+      "VALID_UPTO": "முடிவு தேதி",
+      "REMIND": "முன் ஞாபகப்படுத்து",
+      "1_DAY": "1 நாள்",
+      "2_DAY": "2 நாட்கள்",
+      "7_DAY": "7 நாட்கள்",
+      "30_DAY": "30 நாட்கள்"
+    },
+    "STEP_LABEL":{
+      "VEHICLE_INFO": "Info",
+      "VEHICLE_DETAILS": "Details",
+      "VEHICLE_CERT": "Certificates"
+    }
+  },
+    "ADD_HAMMER": {
+    "TITLE": "ஹேம்மரை சேர்க்க",
+    "PURCHASE_DATE": "ஹேம்மர் வாங்கிய  தேதி",
+    "NAME": "ஹேம்மர் பெயர்",
+    "COMPANY_NAME": "ஹேம்மர் கம்பெனியை தேர்வு செய்க",
+    "DISTRIBUTOR_DETAILS": "ஹேம்மர் டிஸ்ட்ரிபியூட்டரை தேர்வு செய்க",
+    "SELECT_RIG": "ரிக் வாகனத்தை தேர்வு செய்க",
+    "HAMMER_NUMBER": "ஹேம்மர் நம்பர்",
+    "BARREL_SCALE": "பேரல் அளவு(MM)",
+    "SPECH_SET_SIZE": "ஸ்பீச் செட் அளவு",
+    "PISTON_NUMBER": "பிஸ்டன் நம்பர்",
+    "CONTROL_TUBE_NUMBER": "கன்ட்ரோல் ட்யூப் நம்பர் (MM)"
+  },
+    "ADD_BIT": {
+    "TITLE": "ட்ரில் பிட்டை சேர்க்க",
+    "PURCHASE_DATE": "ட்ரில் பிட் வாங்கிய  தேதி்",
+    "TYPE": "பிட் வகை",
+    "DRILLING": "டிரில்லிங் /OB பிட்",
+    "VEHICLE": "வாகனத்தை தேர்வு செய்க",
+    "NAME": "பிட் பெயர்",
+    "DISTRIBUTOR_DETAILS": "பிட் டிஸ்ட்ரிபியூட்டர் விவரங்கள்",
+    "SIZE": "பிட் அளவு",
+    "NUMBER": "பிட் நம்பர்",
+    "INITIAL_SCALE": "பிட் ஆரம்ப அளவு (MM)"
+  },
     "BTN": {
         "ADD_MORE": "மேலும் சேர்க்க",
         "CLEAR": "ரத்து",

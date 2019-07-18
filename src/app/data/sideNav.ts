@@ -53,10 +53,20 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
             },
             {
                 name: 'Hammer',
-                isLastChild: true,
                 children: [
                     { name: 'Add Hammer', isFirstChild: true, path: 'master/hammer/addHammer', level: 2, paddingLeft: LEVEL_2_PADDING },
                     { name: 'View Hammer', isLastChild: true, path: 'ytd9', level: 2, paddingLeft: LEVEL_2_PADDING },
+                ],
+                lastNode: true,
+                level: 1,
+                paddingLeft: LEVEL_1_PADDING
+            },
+            {
+                name: 'Agent',
+                isLastChild: true,
+                children: [
+                    { name: 'Add Agent', isFirstChild: true, path: 'master/agent/addAgent', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'View Agent', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,

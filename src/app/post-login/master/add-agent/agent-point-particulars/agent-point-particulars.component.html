@@ -1,0 +1,40 @@
+<mat-card class="m-b-25" [formGroup]="form">
+    <mat-card-header>
+        <mat-card-title>{{ 'ADD_AGENT.POINT.TITLE' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0" fxLayoutGap="10px" *ngFor="let pointCtrl of pointFormArray.controls" formArrayName="particulars">
+            <ng-container [formGroup]="pointCtrl">
+                <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                    <mat-label>{{ 'ADD_AGENT.POINT.START_FEET' | translate }}</mat-label>
+                    <input formControlName="startFeet" matInput readonly>
+                </mat-form-field>
+                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                    <mat-label>{{ 'ADD_AGENT.POINT.END_FEET' | translate }}</mat-label>
+                    <input formControlName="endFeet" matInput>
+                </mat-form-field>
+                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                    <mat-label>{{ 'ADD_AGENT.POINT.PER_FEET' | translate }}</mat-label>
+                    <input formControlName="perFeet" matInput>
+                </mat-form-field>
+                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                    <mat-label>{{ 'ADD_AGENT.POINT.PARTICULARS' | translate }}</mat-label>
+                    <input formControlName="particulars" matInput>
+                </mat-form-field>
+                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                    <mat-label>{{ 'ADD_AGENT.POINT.AMOUNT' | translate }}</mat-label>
+                    <input formControlName="amount" matInput>
+                </mat-form-field>
+            </ng-container>
+        </div>
+        <div *ngIf="pointFormArray.controls.length > 1" fxLayout fxLayoutAlign="end">
+            <div (click)="removeLastPoint()" class="remove-btn m-b-10">{{'BTN.REMOVE' | translate }}</div>
+        </div>
+        <div fxLayout fxLayoutAlign="end">
+            <div>
+                <button (click)="addPoint()" color="primary" mat-raised-button>{{ 'BTN.ADD_MORE' | translate }}</button>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

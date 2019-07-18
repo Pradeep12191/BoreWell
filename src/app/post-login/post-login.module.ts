@@ -12,6 +12,7 @@ import { SharedModule } from '../shared.module';
 import { HeaderComponent } from '../header/header.component';
 import { S404Component } from '../404/404.component';
 import { MobileSidenavComponent } from './mobile-sidenav/mobile-sidenav.component';
+import { StateResolver } from '../guards/resolveGuard/state.resolver';
 
 
 
@@ -30,7 +31,8 @@ import { MobileSidenavComponent } from './mobile-sidenav/mobile-sidenav.componen
         HeaderComponent,
         S404Component,
         MobileSidenavComponent
-    ]
+    ],
+    providers: [StateResolver]
 })
 export class PostLoginModule{
 

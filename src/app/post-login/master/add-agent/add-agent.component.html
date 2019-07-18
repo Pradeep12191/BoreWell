@@ -1,0 +1,42 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ 'ADD_AGENT.TITLE' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-horizontal-stepper labelPosition="bottom" #stepper [formGroup]="agentForm">
+        <ng-template matStepperIcon="number">
+        </ng-template>
+        <mat-step [stepControl]="agentForm.get('info')">
+            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.INFO' | translate }}</ng-template>
+            <agent-info [form]="agentForm.get('info')"></agent-info>
+            <div fxLayout fxLayoutAlign="end">
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>{{ 'BTN.NEXT' | translate }}</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="agentForm.get('point')">
+            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.POINT' | translate }}</ng-template>
+            <agent-point-particulars [form]="agentForm.get('point')"></agent-point-particulars>
+            <div fxLayout fxLayoutAlign="space-between">
+                <div>
+                    <button mat-raised-button color="primary" matStepperPrevious>{{ 'BTN.BACK' | translate }}</button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>{{ 'BTN.NEXT' | translate }}</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="agentForm.get('commission')">
+            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.COMMISSION' | translate }}</ng-template>
+            <agent-commission-particulars [form]="agentForm.get('commission')"></agent-commission-particulars>
+            <div fxLayout fxLayoutAlign="space-between">
+                <div>
+                    <button mat-raised-button (click)="resetForm()" color="primary">{{ 'BTN.CLEAR' | translate }}</button>
+                </div>
+                <div>
+                    <button mat-raised-button (click)="saveAgent()" color="primary" >{{ 'BTN.SAVE' | translate }}</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-card>

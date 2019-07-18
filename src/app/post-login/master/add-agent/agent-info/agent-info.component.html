@@ -1,0 +1,30 @@
+<div fxLayout="column" [formGroup]="form">
+    <mat-form-field fxFlex [appearance]="appearance">
+        <mat-label>{{ 'ADD_AGENT.OFFICE_NAME' | translate }}</mat-label>
+        <input formControlName="officeName" matInput required>
+    </mat-form-field>
+    <mat-form-field fxFlex [appearance]="appearance">
+        <mat-label>{{ 'ADD_AGENT.NAME' | translate }}</mat-label>
+        <input formControlName="name" matInput required>
+    </mat-form-field>
+    <mat-form-field fxFlex [appearance]="appearance">
+        <mat-label>{{ 'ADD_AGENT.STATE' | translate }}</mat-label>
+        <mat-select formControlName="state">
+            <mat-option *ngFor="let state of states" [value]="state">{{ state.state }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex [appearance]="appearance">
+        <mat-label>{{ 'ADD_AGENT.TYPE' | translate }}</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex [appearance]="appearance">
+        <mat-label>{{ 'ADD_AGENT.ADDRESS' | translate }}</mat-label>
+        <textarea cols="30" rows="5" formControlName="address" matInput></textarea>
+    </mat-form-field>
+    <mat-form-field fxFlex [appearance]="appearance">
+        <mat-label>{{ 'ADD_AGENT.NUMBER' | translate }}</mat-label>
+        <input formControlName="mobileNumber" matInput required>
+    </mat-form-field>
+</div>

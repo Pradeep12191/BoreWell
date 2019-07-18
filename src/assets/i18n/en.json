@@ -138,6 +138,36 @@
         "NUMBER": "Bit Number",
         "INITIAL_SCALE": "Bit Intial Scale (MM)"
     },
+    "ADD_AGENT": {
+        "TITLE": "ADD AGENT",
+        "OFFICE_NAME":"Agent Office Name",
+        "NAME": "Agent Name",
+        "STATE": "Agent State",
+        "TYPE": "Agent Type",
+        "ADDRESS": "Address",
+        "NUMBER": "Mobile Number",
+        "POINT": {
+            "TITLE": "Agent Point Particulars",
+            "START_FEET" :"Start Feet",
+            "END_FEET": "End Feet",
+            "PER_FEET": "Per Feet",
+            "PARTICULARS": "Particulars",
+            "AMOUNT": "Amount"
+        },
+        "COMMISSION":{
+            "TITLE": "Commission Particulars",
+            "TYPE": "Drilling Commission Type",
+            "PER_FEET": "Drilling Commission Per Feet",
+            "CASING_TYPE": "Casing Commission Type",
+            "CASING_PER_FEET": "Casing Commission Per Feet",
+            "CASING_PAYMENT_TYPE": "Casing Payment Type"
+        },
+        "STEP_LABEL":{
+            "INFO": "Info",
+            "POINT": "Point",
+            "COMMISSION": "Commission"
+        }
+    },
     "BTN": {
         "ADD_MORE": "ADD MORE",
         "CLEAR": "CLEAR",

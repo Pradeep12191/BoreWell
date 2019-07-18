@@ -5,11 +5,11 @@
     "urls": [
         {
             "name": "addHammer",
-            "url": "someUrl/live"
+            "url": "rigapi1/webapi/resource/addHammer"
         },
         {
             "name": "addBit",
-            "url": ""
+            "url": "rigapi1/webapi/resource/addbit"
         }
     ]
 }

@@ -13,7 +13,7 @@
         },
         {
             "name": "addVehicle",
-            "url": ""
+            "url": "rigapi1/webapi/resource/addVehicle"
         },
         {
             "name": "state",
@@ -21,7 +21,7 @@
         },
         {
             "name": "addAgent",
-            "url": "rigapi1/webapi/resource/statelist"
+            "url": "rigapi1/webapi/resource/addAgent"
         }
     ]
 }

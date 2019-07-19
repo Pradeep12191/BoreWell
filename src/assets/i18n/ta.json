@@ -137,6 +137,36 @@
     "NUMBER": "பிட் நம்பர்",
     "INITIAL_SCALE": "பிட் ஆரம்ப அளவு (MM)"
   },
+    "ADD_AGENT": {
+    "TITLE": "ஏஜென்ட் பதிவு",
+    "OFFICE_NAME":"ஏஜென்ட் அலுவலகத்தின் பெயர்",
+    "NAME": "ஏஜென்ட் பெயர்",
+    "STATE": "மாநிலம்  தேர்வு  செய்க",
+    "TYPE": "ஏஜென்ட் வகை",
+    "ADDRESS": "முகவரி",
+    "NUMBER": "மொபைல் நம்பர்",
+    "POINT": {
+      "TITLE": "ஏஜென்ட் பாயிண்ட் விவரங்கள்",
+      "START_FEET" :"ஆரம்ப  அடி",
+      "END_FEET": "இறுதி  அடி",
+      "PER_FEET": "அடி ஒன்றுக்கு",
+      "PARTICULARS": "விவரங்கள்",
+      "AMOUNT": "தொகை"
+    },
+    "COMMISSION":{
+      "TITLE": "கமிஷன் விவரங்கள்",
+      "TYPE": "டிரில்லிங்  கமிஷன்  வகை",
+      "PER_FEET": "டிரில்லிங்  கமிஷன் அடி ஒன்றுக்கு ",
+      "CASING_TYPE": "கேசிங்  கமிஷன் வகை",
+      "CASING_PER_FEET": "கேசிங்  கமிஷன் அடி ஒன்றுக்கு",
+      "CASING_PAYMENT_TYPE": "கேசிங் கட்டணம் வகை"
+    },
+    "STEP_LABEL":{
+      "INFO": "Info",
+      "POINT": "Point",
+      "COMMISSION": "Commission"
+    }
+  },
     "BTN": {
         "ADD_MORE": "மேலும் சேர்க்க",
         "CLEAR": "ரத்து",

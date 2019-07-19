@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
     MatToolbarModule, MatSidenavModule, MatExpansionModule, MatFormFieldModule,
-    MatInputModule, MatRadioModule, MatButtonModule, MatMenuModule, MatSelectModule, MatTreeModule, MatIconModule, MatDatepickerModule, MatCheckboxModule, MatProgressSpinnerModule, MatCardModule, MatStepperModule
+    MatInputModule, MatRadioModule, MatButtonModule, MatMenuModule, MatSelectModule, MatTreeModule, MatIconModule, MatDatepickerModule, MatCheckboxModule, MatProgressSpinnerModule, MatCardModule, MatStepperModule, MatSnackBarModule, MatDividerModule
 } from '@angular/material';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 
@@ -48,7 +48,9 @@ export const MY_FORMATS = {
         MatCheckboxModule,
         MatProgressSpinnerModule,
         MatCardModule,
-        MatStepperModule
+        MatStepperModule,
+        MatSnackBarModule,
+        MatDividerModule
     ],
     providers: [
         // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your

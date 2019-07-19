@@ -3,27 +3,28 @@
         <mat-card-title>{{ 'ADD_AGENT.POINT.TITLE' | translate }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0" fxLayoutGap="10px" *ngFor="let pointCtrl of pointFormArray.controls" formArrayName="particulars">
+        <div [class.dashed]="pointFormArray.controls.length > 1 && !lastCtrl" fxLayout fxLayout.lt-md="row wrap" fxLayoutGap.lt-md="10px" fxLayoutGap="10px"
+            *ngFor="let pointCtrl of pointFormArray.controls; let lastCtrl = last" formArrayName="particulars">
             <ng-container [formGroup]="pointCtrl">
-                <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'ADD_AGENT.POINT.START_FEET' | translate }}</mat-label>
-                    <input formControlName="startFeet" matInput readonly>
+                    <input poistiveNumber formControlName="startFeet" matInput readonly>
                 </mat-form-field>
-                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.END_FEET' | translate }}</mat-label>
-                    <input formControlName="endFeet" matInput>
+                    <input (input)="calcParticulars(pointCtrl)" poistiveNumber formControlName="endFeet" matInput>
                 </mat-form-field>
-                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.PER_FEET' | translate }}</mat-label>
-                    <input formControlName="perFeet" matInput>
+                    <input (input)="calcParticulars(pointCtrl)" poistiveNumber formControlName="perFeet" matInput>
                 </mat-form-field>
-                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.PARTICULARS' | translate }}</mat-label>
-                    <input formControlName="particulars" matInput>
+                    <input readonly formControlName="particulars" matInput>
                 </mat-form-field>
-                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                <mat-form-field class="m-r-10" fxFlex.lt-md="calc(100% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.AMOUNT' | translate }}</mat-label>
-                    <input formControlName="amount" matInput>
+                    <input readonly formControlName="amount" matInput>
                 </mat-form-field>
             </ng-container>
         </div>

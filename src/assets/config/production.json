@@ -1,0 +1,27 @@
+{
+    "formAppearance" : "outline",
+    "apiUrl": "http://103.207.4.72:8080/",
+    "mobileNav": false,
+    "urls": [
+        {
+            "name": "addHammer",
+            "url": "rigapi1/webapi/resource/addHammer"
+        },
+        {
+            "name": "addBit",
+            "url": "rigapi1/webapi/resource/addbit"
+        },
+        {
+            "name": "addVehicle",
+            "url": "rigapi1/webapi/resource/addVehicle"
+        },
+        {
+            "name": "state",
+            "url": "rigapi1/webapi/resource/statelist"
+        },
+        {
+            "name": "addAgent",
+            "url": "rigapi1/webapi/resource/addAgent"
+        }
+    ]
+}

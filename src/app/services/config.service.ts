@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 interface url{
     name: string;
@@ -19,7 +19,11 @@ export class ConfigService {
         return this.config[key]
     }
     public load() {
-       return this.http.get('assets/config/developement.json')
+        let url = 'assets/config/developement.json'
+        if(!isDevMode()){
+            url = 'assets/config/production.json'
+        }
+       return this.http.get(url)
             .toPromise()
             .then((response) => {
                 this.config = response

@@ -22,6 +22,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import { CustomPreloadingStrategy } from './services/pre-load.service';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -72,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       useClass: ErrorInterceptorService,
       multi: true
     },
+    CustomPreloadingStrategy,
     AuthGuard,
     LoginGuard,
     ConfigService,

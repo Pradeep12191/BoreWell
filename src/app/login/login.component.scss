@@ -6,7 +6,56 @@
 }
 
 .login-card-content{
-    padding: 42px 25px 42px 25px;
+    padding: 32px
+}
+
+.mobile-card{
+    height: 100%;
+    width: 100%;
+}
+
+.shift-top{
+    margin-top: 15px !important;
+    width: 100%;
+}
+
+    // .logo-overlay{
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     height: 100%;
+    //     width: 100%;
+    //     background: rgba(255, 255, 255, 0.3);
+    //     z-index: 4;
+    //     border-radius: 50%;
+    // }
+
+.mat-progress-bar.mobile-progress{
+    z-index: 3;
+    position: absolute;
+    top: 0;
+}
+.logo-container{
+    margin-bottom: 25px;
+    height: 98px;
+    position: relative;
+    margin-left: -25px;
+    margin-right: -25px;
+    .line{
+        // border-bottom: 1px solid #eee;
+    }
+    .logo{
+        height: 164px;
+        width: 164px;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -109px;
+        margin-left: -82px;
+        background-image: url(/assets/images/rig_logo.png);
+        background-size: cover;
+    }
 }
 
 .onlogin-overlay{

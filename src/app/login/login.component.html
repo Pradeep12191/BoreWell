@@ -1,21 +1,24 @@
-<div class="login-page">
-    <div fxLayout>
-        <div fxFlex="35"></div>
-        <mat-card @fadeIn class="m-t-100 login-card" cla fxFlex>
-            <mat-progress-bar *ngIf="onLogin" mode="indeterminate"></mat-progress-bar>
-            <div *ngIf="onLogin" class="onlogin-overlay">
-
+<div class="login-page" fxLayout fxLayoutAlign.lt-md="start start" fxLayoutAlign="center center">
+    <div fxLayout ngClass.lt-md="mobile-card">
+        <mat-card fxLayout.lt-md fxLayoutAlign.lt-md="center center" @fadeIn class="login-card" fxFlex>
+            <mat-progress-bar ngClass.lt-md="mobile-progress" *ngIf="onLogin" mode="indeterminate"></mat-progress-bar>
+            <div *ngIf="onLogin" class="onlogin-overlay"> 
             </div>
-            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" ngClass.lt-md="shift-top">
                 <mat-card-content class="login-card-content" fxLayout="column">
-
-                    <mat-form-field appearance="outline" fxFlex class="m-b-20">
+                    <div fxLayout fxLayoutAlign="center center" class="logo-container">
+                        <div fxFlex class="line"></div>
+                        <div class="logo">
+                            <!-- <div class="logo-overlay"></div> -->
+                        </div>
+                    </div>
+                    <mat-form-field appearance="outline" fxFlex class="m-b-10">
                         <mat-label>User Name</mat-label>
                         <input formControlName="username" autocomplete="off" type="text" matInput required>
                         <mat-icon color="primary" matPrefix>account_circle</mat-icon>
                         <mat-error *ngIf="loginForm.get('username').invalid">Username is required</mat-error>
                     </mat-form-field>
-                    <mat-form-field fxFlex class="m-b-42" appearance="outline">
+                    <mat-form-field fxFlex class="m-b-10" appearance="outline">
                         <mat-label>Password</mat-label>
                         <input formControlName="password" type="password" matInput required>
                         <mat-icon color="primary" matPrefix>lock</mat-icon>
@@ -26,9 +29,6 @@
                 </mat-card-content>
             </form>
         </mat-card>
-
-
-        <div fxFlex="35"></div>
     </div>
 
 </div>

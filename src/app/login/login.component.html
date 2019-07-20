@@ -1,1 +1,28 @@
-<a routerLink="/postlogin/dashboard">Login</a>
+<div class="login-page">
+    <div fxLayout>
+        <div fxFlex="35"></div>
+        <mat-card @fadeIn class="m-t-100" fxFlex>
+            <form (ngSubmit)="onSubmit()" [formGroup]="">
+                <mat-card-content class="login-card" fxLayout="column">
+
+                    <mat-form-field appearance="outline" fxFlex class="m-b-20">
+                        <mat-label>User Name</mat-label>
+                        <input type="text" matInput>
+                        <mat-icon color="primary" matPrefix>account_circle</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field fxFlex class="m-b-42" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput>
+                        <mat-icon color="primary" matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                    <button class="m-t-10" color="primary" mat-flat-button>LOGIN</button>
+
+                </mat-card-content>
+            </form>
+        </mat-card>
+
+
+        <div fxFlex="35"></div>
+    </div>
+
+</div>

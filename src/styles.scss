@@ -109,8 +109,26 @@ body{
 }
 
 @for $i from 1 through 100{
+    .p-t-#{$i} {
+        padding-top: #{$i}px
+    }
+}
+
+@for $i from 1 through 100{
     .max-width-#{$i} {
         max-width: #{$i} + '%'
+    }
+}
+
+@for $i from 1 through 100{
+    .p-#{$i} {
+        padding: #{$i} + 'px'
+    }
+}
+
+@for $i from 1 through 100{
+    .p-b-#{$i} {
+        padding-bottom: #{$i} + 'px'
     }
 }
 

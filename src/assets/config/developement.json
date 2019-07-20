@@ -4,6 +4,10 @@
     "mobileNav": false,
     "urls": [
         {
+            "name": "auth",
+            "url": "rigapi1/webapi/resource/login"
+        },
+        {
             "name": "addHammer",
             "url": "rigapi1/webapi/resource/addHammer"
         },

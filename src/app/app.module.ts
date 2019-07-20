@@ -17,7 +17,11 @@ import { LoaderService } from './services/loader-service';
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressBarModule } from '@angular/material';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { AuthService } from './services/auth.service';
-
+import { ToastrModule } from 'ngx-toastr';
+import { CookieService } from 'ngx-cookie-service';
+import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -48,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
@@ -57,14 +62,23 @@ export function HttpLoaderFactory(http: HttpClient) {
       deps: [ConfigService],
       multi: true
     },
-    ConfigService,
-    LoaderService,
-    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
+      multi: true
+    },
+    AuthGuard,
+    LoginGuard,
+    ConfigService,
+    LoaderService,
+    AuthService,
+    CookieService,
+
   ],
   bootstrap: [AppComponent]
 })

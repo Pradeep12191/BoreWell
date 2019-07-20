@@ -14,10 +14,18 @@ export class AuthInterceptorService implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const decodeStr = this.auth.username + ':' + this.auth.password;
         const encodeStr = btoa(decodeStr);
-        const modifiedRequest = req.clone({
-            body: { user: this.auth.username, ...req.body },
-            headers: req.headers.append('Authorization', encodeStr)
-        })
+        let modifiedRequest;
+        if (req.method === 'POST') {
+            modifiedRequest = req.clone({
+                body: { user: this.auth.username, ...req.body },
+                headers: req.headers.append('Authorization', encodeStr)
+            })
+        } else if (req.method === 'GET') {
+            modifiedRequest = req.clone({
+                headers: req.headers.append('Authorization', encodeStr)
+            })
+        }
+
         return next.handle(modifiedRequest);
     }
 }

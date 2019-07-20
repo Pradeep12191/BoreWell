@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent {
     selectedLanguage;
     constructor(
         private translate: TranslateService,
+        private auth: AuthService
     ) {
         this.languages = [
             { id: 'en', display: 'English' },
@@ -22,5 +24,9 @@ export class HeaderComponent {
     changeLang(lang) {
         this.translate.use(lang.id);
         this.selectedLanguage = lang;
+    }
+
+    logout() {
+        this.auth.logOut()
     }
 }

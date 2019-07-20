@@ -5,6 +5,18 @@
     width: 100%;
 }
 
-.login-card{
+.login-card-content{
     padding: 42px 25px 42px 25px;
+}
+
+.onlogin-overlay{
+    position: absolute;
+    height: 98%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.login-card{
+    position: relative;
 }

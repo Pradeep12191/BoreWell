@@ -18,7 +18,10 @@
         </mat-menu>
     </div>
     <span class="space"></span>
-    <button fxHide.lt-md style="margin-right: 50px;" mat-button>test@test.com</button>
+    <button [matMenuTriggerFor]="userMenu" fxFlex="60" fxHide.lt-md mat-button>
+        test@test.com
+        <i class="material-icons">arrow_drop_down</i>
+    </button>
     <button [matMenuTriggerFor]="settingsMenu" fxHide.gt-sm mat-icon-button>
         <mat-icon>more_vert</mat-icon>
     </button>
@@ -27,7 +30,14 @@
             <mat-icon>language</mat-icon>
             Language
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+            Log Out
+        </button>
+    </mat-menu>
+
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">
             <mat-icon>power_settings_new</mat-icon>
             Log Out
         </button>

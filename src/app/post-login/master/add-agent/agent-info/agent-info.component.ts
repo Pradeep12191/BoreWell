@@ -23,7 +23,9 @@ export class AgentInfoComponent implements OnDestroy {
         private route: ActivatedRoute
     ) {
         this.routeDataSubscription = this.route.data.subscribe((data) => {
-            this.states = data.states
+            if (data.states && data.states.length) {
+                this.states = data.states.filter((state) => !(state.state === 'ALL INDIA PERMIT'))
+            }
         })
         this.appearance = this.config.getConfig('formAppearance')
     }

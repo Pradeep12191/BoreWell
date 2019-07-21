@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private translate: TranslateService,
         private auth: AuthService,
         private route: ActivatedRoute,
-        private common: CommonService
+        public common: CommonService
     ) {
         this.languages = [
             { id: 'en', display: 'English' },

@@ -1,18 +1,18 @@
-<app-header class="desktop-header" *ngIf="!isMobile" (toggleSidenav)="sidenav.toggle()"></app-header>
-
+<!-- <app-header class="desktop-header"  (toggleSidenav)="sidenav.toggle()"></app-header> -->
+<router-outlet *ngIf="!isMobile" name="header"></router-outlet>
 <mat-sidenav-container [class.mobile-container]="isMobile">
 
-    <mat-sidenav *ngIf="!isMobile; else mobileSidenavTpl" class="mat-elevation-z2" [opened]="openSideNav" #sidenav
+    <mat-sidenav [class.classic]="classicSidenav" *ngIf="!isMobile; else mobileSidenavTpl" class="mat-elevation-z2" [opened]="openSideNav" #sidenav
         [mode]="isSmallDevice ? 'over' : 'side'">
-        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="nav-tree">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="nav-tree" [class.classic]="classicSidenav">
             <!-- This is the tree node template for leaf nodes -->
 
-            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+            <mat-tree-node [class.classic]="classicSidenav" *matTreeNodeDef="let node" matTreeNodeToggle>
                 <ng-container *ngIf="node.isMain; else leafNodeTpl">
-                    <li class="mat-tree-node main-tree-node" routerLinkActive="active" [class.path-link]="node.path"
+                    <li class="mat-tree-node main-tree-node" [class.classic]="classicSidenav" routerLinkActive="active" [class.path-link]="node.path"
                         [class.main-node]="node.path">
                         <a class="main-node-link" (click)="closeSidenavOnMobile()" [routerLink]="node.path">
-                            <div class="main-icon-container">
+                            <div [class.classic]="classicSidenav" class="main-icon-container">
                                 <mat-icon>{{ node.icon }}</mat-icon>
                             </div>
                             <span class="main-node-label tree-label">
@@ -24,9 +24,9 @@
                 </ng-container>
                 <ng-template #leafNodeTpl>
                     <li class="mat-tree-node leaf-node" routerLinkActive="active" [class.first-child]="node.isFirstChild"
-                        [class.child]="!node.isMain" [class.last-node-dashed]="!node.isLastChild">
+                        [class.child]="!node.isMain" [class.last-node-dashed]="!node.isLastChild" [class.classic]="classicSidenav">
                         <!-- use a disabled button to provide padding for tree leaf -->
-                        <a class="child-link" (click)="closeSidenavOnMobile()" [class.path-link]="node.path"
+                        <a class="child-link" [class.classic]="classicSidenav" (click)="closeSidenavOnMobile()" [class.path-link]="node.path"
                             [routerLink]="node.path">
                             <span class="tree-label">
                                 {{node.name}}
@@ -38,7 +38,7 @@
 
             <!-- This is the tree node template for expandable nodes -->
             <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                <li (click)="setActive(node)" [class.dashed-border]="!node.isMain && !node.isLastChild" [class.child]="!node.isMain"
+                <li (click)="setActive(node)" [class.classic]="classicSidenav" [class.dashed-border]="!node.isMain && !node.isLastChild" [class.child]="!node.isMain"
                     [class.first-child]="node.isFirstChild" class="main-tree-node main-node-has-child"
                     matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
                     <!-- <button mat-icon-button >
@@ -46,12 +46,12 @@
                   {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                 </mat-icon>
               </button> -->
-                    <a [class.child-link]="!node.isMain" [class.path-link]="node.path" class="main-node-link mat-tree-node">
-                        <div *ngIf="node.isMain" class="main-icon-container has-child">
+                    <a [class.child-link]="!node.isMain" [class.classic]="classicSidenav" [class.path-link]="node.path" class="main-node-link mat-tree-node">
+                        <div *ngIf="node.isMain" [class.classic]="classicSidenav" class="main-icon-container has-child">
                             <mat-icon>{{ node.icon }}</mat-icon>
                         </div>
                         <span [class.child-label]="!node.isMain" class="main-node-label tree-label">
-                            <div class="plus-btn" [class.child-plus-btn]="!node.isMain">
+                            <div class="plus-btn" [class.classic]="classicSidenav" [class.child-plus-btn]="!node.isMain">
                                 <div class="plus-vertical" [@rotatePlus]="isExpand(node)"></div>
                                 <div class="plus-horizontal"></div>
                             </div>
@@ -85,7 +85,8 @@
     </ng-template>
 
     <mat-sidenav-content>
-        <app-header *ngIf="isMobile" (toggleSidenav)="sidenav.toggle()"></app-header>
+        <!-- <app-header *ngIf="isMobile" (toggleSidenav)="sidenav.toggle()"></app-header> -->
+        <router-outlet *ngIf="isMobile" name="header"></router-outlet>
         <div class="spinner-container" *ngIf="loading; else contentTpl">
             <mat-spinner diameter="40" strokeWidth="2"></mat-spinner>
         </div>

@@ -2,10 +2,15 @@
     "formAppearance" : "outline",
     "apiUrl": "http://103.207.4.72:8080/",
     "mobileNav": false,
+    "classicSidenav": true,
     "urls": [
         {
             "name": "auth",
             "url": "rigapi1/webapi/resource/login"
+        },
+        {
+            "name": "userInfo",
+            "url": "rigapi1/webapi/resource/userbasicinfo"
         },
         {
             "name": "addHammer",

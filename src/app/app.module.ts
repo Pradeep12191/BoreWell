@@ -23,6 +23,7 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { CustomPreloadingStrategy } from './services/pre-load.service';
+import { CommonService } from './services/common.service';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -80,7 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoaderService,
     AuthService,
     CookieService,
-
+    CommonService
   ],
   bootstrap: [AppComponent]
 })

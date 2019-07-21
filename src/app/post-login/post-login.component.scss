@@ -1,3 +1,6 @@
+// $mobile-color: rgb(235, 83, 13);
+$classic-color: #006064;
+
 .menu{
     margin-right: 15px
 }
@@ -139,6 +142,7 @@ li.menu-node-list{
     //         background-color: rgba(255, 255, 255, 0.1)
     //     }
     // }
+
     
     cursor: pointer;
 
@@ -161,6 +165,11 @@ li.menu-node-list{
             width: 40px;
             border-radius: 999px;
             margin-left: 10px;
+            &.classic{
+                mat-icon{
+                    color: $classic-color;
+                }
+            }
             mat-icon{
                 position: absolute;
                 top: 7px;
@@ -181,7 +190,7 @@ li.menu-node-list{
             .main-icon-container{
                 background-color: white;
                 mat-icon{
-                    color: #0aa89e;
+                    color: $classic-color;
                 }
             }
         }
@@ -192,6 +201,12 @@ li.menu-node-list{
         padding: 8px 0px 8px 16px;
         &.child-link{
             position: relative;
+            &.classic{
+                &::before{
+                    border-bottom-color: $classic-color;
+                    border-bottom-width: 2px;
+                }
+            }
             &::before{
                 content: '';
                 position: absolute;
@@ -221,6 +236,18 @@ li.menu-node-list{
                 &.child-plus-btn{
                     left: -14px
                 }
+                &.classic{
+                    height: 10px;
+                    width: 10px;
+                    .plus-vertical{
+                        border-left: 2px solid $classic-color;
+                        left: 42%;
+                    }
+                    .plus-horizontal{
+                        border-bottom: 2px solid $classic-color;
+                        top: 42%;
+                    }
+                }
                 .plus-vertical{
                     height: 100%;
                     border-left: 1px solid rgba(255, 255, 255, 0.55);
@@ -234,23 +261,7 @@ li.menu-node-list{
                     top: 49%;
                 }
             }
-            // &::before{
-            //     content: '';
-            //     position: absolute;
-            //     top: 3px;
-            //     left: -60px;
-            //     height: 7px;
-            //     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            //     transition: all linear 2s;
-            // }
-            // &::after{
-            //     content: '';
-            //     position: absolute;
-            //     top: 0px;
-            //     left: -57px;
-            //     height: 7px;
-            //     border-right: 1px solid rgba(255, 255, 255, 0.3);
-            // }
+    
             &.child-label{
                 margin-left: 20px;
                 &::after{
@@ -267,6 +278,12 @@ li.menu-node-list{
 
     &.dashed-border{
         position: relative;
+        &.classic{
+            &::before{
+                border-left-color: $classic-color;
+                border-left-width: 2px;
+            }
+        }
         &::before{
             content: '';
             border-left: 1px dashed rgba(255, 255, 255, 0.3);
@@ -285,12 +302,21 @@ li.menu-node-list{
 }
 
 mat-tree, mat-sidenav{
+    &.classic{
+        background-color: white;
+    }
     background-color: rgb(43, 50, 58);  
 }
 
 .leaf-node{
     &.last-node-dashed{
         position: relative;
+        &.classic{
+            &::before{
+                border-left-color: $classic-color;
+                border-left-width: 2px;
+            }
+        }
         &::before{
             content: '';
             border-left: 1px dashed rgba(255, 255, 255, 0.3);
@@ -308,6 +334,12 @@ mat-tree, mat-sidenav{
     }
     a.child-link{
         position: relative;
+        &.classic{
+            &::before{
+                border-bottom-color: $classic-color;
+                border-bottom-width: 2px;
+            }
+        }
         &::before{
             content: '';
             position: absolute;
@@ -322,7 +354,15 @@ mat-tree, mat-sidenav{
 
 mat-tree{
     padding-top: 15px;
-
+    &.classic{
+        .tree-label{
+            color: $classic-color;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: bold;
+            margin-left: 5px;
+        }    
+    }
     .tree-label{
         color: rgba(255, 255, 255, 0.55);
         font-size: 12px;
@@ -349,9 +389,29 @@ mat-tree{
     }
 
     .path-link:not(.active){
+        transition: background-color ease-in 0.3s;
+        &.classic{
+            &:hover{
+                background-color: $classic-color;
+                span{
+                    color: white;
+                }
+                .main-icon-container{
+                    background-color: white;
+                }
+            }
+        }
         &:hover{
            background-color:  rgba(183, 181, 181, 0.1);
         }
+    }
+    &.classic{
+        .active{
+            background-color:  $classic-color;
+            span{
+                color: white
+            }
+        }    
     }
     .active{
         background-color:  rgba(183, 181, 181, 0.1);

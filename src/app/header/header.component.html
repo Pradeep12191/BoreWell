@@ -1,12 +1,12 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-    <button mat-icon-button (click)="toggleSidenav.emit()">
+    <button mat-icon-button (click)="common.toggleSidenav()">
         <i class="material-icons">menu</i>
     </button>
-    <span>AMMAN BORE WELLS</span>
+    <span class="text-transform-upper">{{ companyName }}</span>
     <span class="space"></span>
-    <span fxHide.lt-md>Admin</span>
+    <!-- <span fxHide.lt-md>Admin</span> -->
     <span class="space"></span>
-    <div fxHide.lt-md fxLayout="column">
+    <div class="m-r-25" fxHide.lt-md fxLayout="column">
         <span>Select Language</span>
         <div>
             <button class="select-lang-btn" mat-button [matMenuTriggerFor]="langMenu">{{ 'LANG' | translate }}
@@ -17,10 +17,10 @@
             <button (click)="changeLang(lang)" *ngFor="let lang of languages" mat-menu-item>{{ lang.display }}</button>
         </mat-menu>
     </div>
-    <span class="space"></span>
-    <button [matMenuTriggerFor]="userMenu" fxFlex="60" fxHide.lt-md mat-button>
-        test@test.com
-        <i class="material-icons">arrow_drop_down</i>
+    <button class="avatar-btn" [matMenuTriggerFor]="userMenu" fxHide.lt-md >
+        <div class="img-container">
+            <span class="avatar-text">{{ userIntial }}</span>
+        </div>
     </button>
     <button [matMenuTriggerFor]="settingsMenu" fxHide.gt-sm mat-icon-button>
         <mat-icon>more_vert</mat-icon>
@@ -36,10 +36,30 @@
         </button>
     </mat-menu>
 
-    <mat-menu #userMenu="matMenu">
-        <button mat-menu-item (click)="logout()">
+    <mat-menu #userMenu="matMenu" class="profile-menu-panel">
+        <div fxLayout class="profile-card">
+            <div class="profile-pic"></div>
+            <div class="profile-details" fxLayout="column">
+                <div class="profile-name truncate-text text-transform-caps">{{ userName }}</div>
+                <div class="profile-email truncate-text">test@test.com</div>
+                <div class="profile-role truncate-text text-transform-caps">{{ userRole }}</div>
+            </div>
+        </div>
+        <div class="profile-items">
+            <ul>
+                <li (click)="logout()">
+                    <div fxLayout>
+                        <div class="item-icon">
+                            <mat-icon>exit_to_app</mat-icon>
+                        </div>
+                        <div class="item-label">Sign out</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- <button mat-menu-item (click)="logout()">
             <mat-icon>power_settings_new</mat-icon>
             Log Out
-        </button>
+        </button> -->
     </mat-menu>
 </mat-toolbar>

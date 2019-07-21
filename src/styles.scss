@@ -185,3 +185,22 @@ mat-form-field.calc-field{
         width: 133.33333%;
     }
  }
+
+ .text-transform-upper{
+     text-transform: uppercase;
+ }
+
+ .text-transform-caps{
+    text-transform: capitalize;
+}
+ .profile-menu-panel{
+    margin-right: 62px;
+    // padding: 16px;
+    margin-top: -42px;
+    border-radius: 0px !important;
+    min-width: 300px !important;
+    max-width: 300px;
+    .mat-menu-content{
+        padding: 0px !important;
+    }
+ }

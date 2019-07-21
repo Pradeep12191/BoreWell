@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
+import * as moment from 'moment';
+
 @Injectable()
 export class AuthService {
     private _username: string = null;
@@ -32,7 +34,7 @@ export class AuthService {
 
     set username(name) {
         if (name) {
-            this.cookie.set('username', name);
+            this.cookie.set('username', name, moment().add(50, 'day').toDate());
             this._username = name;
         } else {
             this.cookie.delete('username');
@@ -43,7 +45,7 @@ export class AuthService {
 
     set password(password) {
         if (password) {
-            this.cookie.set('password', password);
+            this.cookie.set('password', password, moment().add(50, 'day').toDate());
             this._password = password;
         } else {
             this.cookie.delete('password');

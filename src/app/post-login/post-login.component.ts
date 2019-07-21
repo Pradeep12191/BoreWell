@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { FADE_IN_ANIMATION, ROTATE_PLUS_ANIMATION, EXPAND } from '../animations';
 import { ConfigService } from '../services/config.service';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-post-login',
@@ -25,6 +26,7 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   sideNavItems = SIDE_NAV_ITEMS;
   loading;
   loaderSubscription: Subscription;
+  sidenavSubcription: Subscription;
 
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
 
@@ -33,18 +35,25 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   isMobileSideNav = true;
   activeMainNode;
   activeSubNode;
+  classicSidenav;
 
-  get isMobile(){
+  get isMobile() {
     return this.mediaObserver.isActive('lt-md') && this.isMobileSideNav
+  }
+
+  get isClassic(){
+    return 
   }
 
   constructor(
     private mediaObserver: MediaObserver,
     private loader: LoaderService,
     private router: Router,
-    private config: ConfigService
+    private config: ConfigService,
+    private common: CommonService
   ) {
     this.isMobileSideNav = this.config.getConfig('mobileNav');
+    this.classicSidenav = this.config.getConfig('classicSidenav');
     this.dataSource.data = SIDE_NAV_ITEMS;
     this.mediaObserver.media$.subscribe((media) => {
       if (media.mqAlias === 'xs' || media.mqAlias === 'sm') {
@@ -71,10 +80,14 @@ export class PostLoginComponent implements OnInit, OnDestroy {
     this.loaderSubscription = this.loader.loader$.subscribe((status) => {
       this.loading = status
     })
+    this.sidenavSubcription = this.common.toggleSidenavObs().subscribe(() => {
+      this.sidenav.toggle()
+    })
   }
 
   ngOnDestroy() {
     if (this.loaderSubscription) { this.loaderSubscription.unsubscribe(); }
+    if (this.sidenavSubcription) { this.sidenavSubcription.unsubscribe(); }
   }
 
   closeSidenavOnMobile() {
@@ -89,17 +102,17 @@ export class PostLoginComponent implements OnInit, OnDestroy {
 
   isExpand(node) {
     if (node.isMain) {
-        return this.activeMainNode === node ?'expanded' : 'collapsed'
+      return this.activeMainNode === node ? 'expanded' : 'collapsed'
     }
     return this.activeSubNode === node ? 'expanded' : 'collapsed'
-}
+  }
 
-setActive(node){
-    if(node.isMain){
-        this.activeMainNode = this.activeMainNode === node ? null : node;
+  setActive(node) {
+    if (node.isMain) {
+      this.activeMainNode = this.activeMainNode === node ? null : node;
     }
     return this.activeSubNode = this.activeSubNode === node ? null : node;
-}
+  }
 
 
 }

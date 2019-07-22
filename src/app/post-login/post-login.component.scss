@@ -155,7 +155,7 @@ li.menu-node-list{
     }
     .main-node-link{
         position: relative;
-        width: 100%;
+        width: 89%;
         padding: 17px 0;
         .main-icon-container{
             position: absolute;
@@ -198,7 +198,7 @@ li.menu-node-list{
         
     }
     &.child a{
-        padding: 8px 0px 8px 16px;
+        padding: 8px 8px 8px 16px;
         &.child-link{
             position: relative;
             &.classic{
@@ -303,7 +303,7 @@ li.menu-node-list{
 
 mat-tree, mat-sidenav{
     &.classic{
-        background-color: white;
+        background-color: #e5e6e6;
     }
     background-color: rgb(43, 50, 58);  
 }
@@ -330,7 +330,7 @@ mat-tree, mat-sidenav{
         }
     }
     &.child a{
-        padding: 8px 0px 8px 16px;
+        padding: 8px 8px 8px 16px;
     }
     a.child-link{
         position: relative;
@@ -382,7 +382,8 @@ mat-tree{
     a{
         transition: 150ms all linear;
         text-decoration: none;
-        width: 100%;
+        width: 92%;
+        padding-right: 10px;
         &:focus{
             outline: none
         }

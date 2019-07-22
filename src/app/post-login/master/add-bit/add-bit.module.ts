@@ -6,6 +6,7 @@ import { MaterialModule } from '../../../material.module';
 import { SharedModule } from '../../../shared.module';
 import { AddBitComponent } from './add-bit.component';
 import { AddBitRoutingModule } from './add-bit-routing.module';
+import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
 
 
 @NgModule({
@@ -18,9 +19,13 @@ import { AddBitRoutingModule } from './add-bit-routing.module';
         AddBitRoutingModule
     ],
     declarations: [
-        AddBitComponent
+        AddBitComponent,
+        AddDistributorDialogComponent
+    ],
+    entryComponents: [
+        AddDistributorDialogComponent
     ]
 })
-export class AddBitModule{
+export class AddBitModule {
 
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../../services/config.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
+import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
 
 @Component({
     templateUrl: './add-bit.component.html',
@@ -34,7 +36,8 @@ export class AddBitComponent implements OnInit {
     constructor(
         private configService: ConfigService,
         private fb: FormBuilder,
-        private http: HttpClient
+        private http: HttpClient,
+        private dialog: MatDialog
     ) {
         this.appearance = this.configService.getConfig('formAppearance');
         const bitUrl = this.configService.getUrl('addBit');
@@ -56,13 +59,19 @@ export class AddBitComponent implements OnInit {
         })
     }
 
+    openAddDistributorDialog() {
+        this.dialog.open(AddDistributorDialogComponent,
+            { data: { title: 'ADD_BIT.ADD_BIT_DISTRIBUTOR' } }
+        )
+    }
+
     saveBit() {
         console.log(JSON.stringify(this.addBitForm.value, null, 2));
         if (this.url) {
             this.http.post(this.url, this.addBitForm.value).subscribe((response) => {
                 if (response) {
                     console.log(JSON.stringify(response, null, 2))
-                }else{
+                } else {
                     console.log('No Response')
                 }
             });

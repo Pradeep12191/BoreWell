@@ -14,8 +14,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const decodeStr = this.auth.username + ':' + this.auth.password;
         const encodeStr = btoa(decodeStr);
-        let modifiedRequest;
-        if (req.method === 'POST') {
+        let modifiedRequest = req.clone();
+        if (req.method === 'POST' || req.method === 'PUT') {
             modifiedRequest = req.clone({
                 body: { user: this.auth.username, ...req.body },
                 headers: req.headers.append('Authorization', encodeStr)

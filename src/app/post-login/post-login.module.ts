@@ -35,9 +35,9 @@ import { UserInfoResolver } from '../guards/resolveGuard/user-info.resolver';
     ],
     providers: [
         StateResolver,
-        UserInfoResolver 
-    ]
+        UserInfoResolver
+    ],
 })
-export class PostLoginModule{
+export class PostLoginModule {
 
 }

@@ -44,7 +44,7 @@
                 </mat-form-field>
                 <div fxFlex="35" fxLayout>
                     <div>
-                        <button ngClass.lt-md="m-b-16" ngClass.gt-sm="m-t-12" mat-raised-button color="primary">{{
+                        <button (click)="openAddDistributorDialog()" ngClass.lt-md="m-b-16" ngClass.gt-sm="m-t-12" mat-raised-button color="primary">{{
                             'BTN.ADD_NEW_DISTRIBUTOR' |
                             translate }}</button>
                     </div>

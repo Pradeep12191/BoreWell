@@ -31,6 +31,10 @@
         {
             "name": "addAgent",
             "url": "rigapi1/webapi/resource/addAgent"
+        },
+        {
+            "name": "updateLang",
+            "url": "rigapi1/webapi/resource/updatelanguage"
         }
     ]
 }

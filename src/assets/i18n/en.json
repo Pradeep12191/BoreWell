@@ -136,7 +136,8 @@
         "DISTRIBUTOR_DETAILS": "Bit Distributor Details",
         "SIZE": "Bit Size",
         "NUMBER": "Bit Number",
-        "INITIAL_SCALE": "Bit Intial Scale (MM)"
+        "INITIAL_SCALE": "Bit Intial Scale (MM)",
+        "ADD_BIT_DISTRIBUTOR": "Add Bit Distributor"
     },
     "ADD_AGENT": {
         "TITLE": "ADD AGENT",

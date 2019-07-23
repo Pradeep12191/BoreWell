@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
+import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
 
 @Component({
     templateUrl: './add-bit.component.html',
@@ -19,7 +20,6 @@ export class AddBitComponent implements OnInit {
         { value: '2', display: 'Old' }
     ];
     distributors = [
-        { value: '1', display: 'RAJ REDDY' }
     ];
     vehicles = [
         { value: '1', display: 'KA01MP7396' },
@@ -30,8 +30,6 @@ export class AddBitComponent implements OnInit {
         { value: '2', display: 'OB Bit' }
     ];
     sizes = [
-        { value: '1', display: '135' },
-        { value: '2', display: '5' }
     ]
     constructor(
         private configService: ConfigService,
@@ -60,9 +58,30 @@ export class AddBitComponent implements OnInit {
     }
 
     openAddDistributorDialog() {
-        this.dialog.open(AddDistributorDialogComponent,
-            { data: { title: 'ADD_BIT.ADD_BIT_DISTRIBUTOR' } }
+        const dialogRef = this.dialog.open(AddDistributorDialogComponent,
+            {
+                data: { title: 'ADD_BIT.BIT_DISTRIBUTOR.TITLE' }
+            }
         )
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.distributors.push({
+                    value: result.distributor_name,
+                    display: result.distributor_name
+                })
+            }
+        })
+    }
+
+    openAddSizeDialog() {
+        const sizeDialog = this.dialog.open(AddBitSizeDialogComponent, {
+            data: { title: 'ADD_BIT.BIT_SIZE.TITLE' }
+        })
+        sizeDialog.afterClosed().subscribe((result) => {
+            if (result) {
+                this.sizes.push({ value: result.size, display: result.size })
+            }
+        })
     }
 
     saveBit() {

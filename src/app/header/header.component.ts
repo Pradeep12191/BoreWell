@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.selectedLanguage = lang;
             this.toastr.success('Language changed successfully', null, { timeOut: 1000 })
         }, (err: HttpErrorResponse) => {
-            if (err.status !== 404) {
+            if (err) {
                 this.toastr.error('Unable to update language')
             }
         })

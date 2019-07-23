@@ -1,5 +1,5 @@
 {
-    "formAppearance" : "outline",
+    "formAppearance": "outline",
     "apiUrl": "http://103.207.4.72:8080/",
     "mobileNav": false,
     "classicSidenav": true,
@@ -35,6 +35,18 @@
         {
             "name": "updateLang",
             "url": "rigapi1/webapi/resource/updatelanguage"
+        },
+        {
+            "name": "addbit_distributor",
+            "url": "rigapi1/webapi/resource/addbit_distributor"
+        },
+        {
+            "name": "bitlist",
+            "url": "rigapi1/webapi/resource/getbitlist"
+        },
+        {
+            "name": "addbit_size",
+            "url": "rigapi1/webapi/resource/addbit_size"
         }
     ]
 }

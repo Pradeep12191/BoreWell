@@ -7,7 +7,15 @@ import { SharedModule } from '../../../shared.module';
 import { AddBitComponent } from './add-bit.component';
 import { AddBitRoutingModule } from './add-bit-routing.module';
 import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
+import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material';
+import { DirectiveModule } from '../../../directives/directive.module';
 
+const matDialogConfig: MatDialogConfig = {
+    width: '700px',
+    hasBackdrop: true,
+    position: { top: '50px' }
+}
 
 @NgModule({
     imports: [
@@ -16,14 +24,20 @@ import { AddDistributorDialogComponent } from './dialog/add-distributor/add-dist
         FlexLayoutModule,
         ReactiveFormsModule,
         SharedModule,
-        AddBitRoutingModule
+        AddBitRoutingModule,
+        DirectiveModule
     ],
     declarations: [
         AddBitComponent,
-        AddDistributorDialogComponent
+        AddDistributorDialogComponent,
+        AddBitSizeDialogComponent
     ],
     entryComponents: [
-        AddDistributorDialogComponent
+        AddDistributorDialogComponent,
+        AddBitSizeDialogComponent
+    ],
+    providers: [
+        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: matDialogConfig }
     ]
 })
 export class AddBitModule {

@@ -24,6 +24,10 @@ export class ErrorInterceptorService implements HttpInterceptor {
                 // server side error
                 if (err.status === 404) {
                     this.toastr.error('Service unavilable at this moment', "Error", { timeOut: 2000 })
+                    return throwError(null)
+                }
+                if (err.status === 0) {
+                    this.toastr.error('Unknown Error occured', "Error", { timeOut: 2000 })
                 }
             }
             return throwError(err)

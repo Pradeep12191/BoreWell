@@ -1,11 +1,21 @@
 <h1 mat-dialog-title>{{title | translate}}</h1>
-<div mat-dialog-content>
-  <!-- <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput>
-  </mat-form-field> -->
+<div mat-dialog-content [formGroup]="addDistributorForm">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <mat-form-field [appearance]="appearance">
+      <mat-label>{{ 'ADD_BIT.BIT_DISTRIBUTOR.NAME' | translate }}</mat-label>
+      <input matInput formControlName="distributor_name">
+    </mat-form-field>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>{{ 'ADD_BIT.BIT_DISTRIBUTOR.ADDRESS' | translate }}</mat-label>
+      <textarea rows="5" matInput formControlName="distributor_address"></textarea>
+    </mat-form-field>
+  </div>
 </div>
 <div mat-dialog-actions>
-  <!-- <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+    <div>
+        <button mat-raised-button mat-dialog-close>{{ 'BTN.CANCEL' | translate }}</button>
+      </div>
+      <div>
+        <button mat-raised-button (click)="sumbit()" color="primary">{{ 'BTN.SUBMIT' | translate }}</button>
+      </div>
 </div>

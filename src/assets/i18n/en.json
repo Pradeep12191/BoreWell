@@ -137,7 +137,15 @@
         "SIZE": "Bit Size",
         "NUMBER": "Bit Number",
         "INITIAL_SCALE": "Bit Intial Scale (MM)",
-        "ADD_BIT_DISTRIBUTOR": "Add Bit Distributor"
+        "BIT_DISTRIBUTOR": {
+            "TITLE": "Add Bit Distributor",
+            "NAME": "Bit Distributor",
+            "ADDRESS": "Bit Distributor Address"
+        },
+        "BIT_SIZE": {
+            "TITLE": "Add Bit Size",
+            "NAME": "Bit Size"
+        }
     },
     "ADD_AGENT": {
         "TITLE": "ADD AGENT",
@@ -176,6 +184,8 @@
         "REMOVE": "Remove",
         "NEXT": "NEXT",
         "BACK": "BACK",
+        "SUBMIT": "SUBMIT",
+        "CANCEL": "CANCEL",
         "ADD_NEW_COMPANY_NAME": "ADD NEW COMPANY NAME",
         "ADD_NEW_DISTRIBUTOR": "ADD NEW DISTRIBUTOR",
         "ADD_NEW_SIZE": "ADD NEW SIZE"

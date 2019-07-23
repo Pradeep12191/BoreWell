@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+<div mat-dialog-content [formGroup]="sizeForm">
+    <div fxLayout="column" fxLayoutGap="20px">
+        <mat-form-field [appearance]="appearance">
+            <mat-label>{{ 'ADD_BIT.BIT_SIZE.NAME' | translate }}</mat-label>
+            <input poistiveNumber matInput formControlName="size">
+        </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <div>
+        <button mat-raised-button mat-dialog-close>{{ 'BTN.CANCEL' | translate }}</button>
+    </div>
+    <div>
+        <button mat-raised-button (click)="sumbit()" color="primary">{{ 'BTN.SUBMIT' | translate }}</button>
+    </div>
+</div>

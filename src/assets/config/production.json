@@ -22,6 +22,22 @@
         {
             "name": "addAgent",
             "url": "rigapi1/webapi/resource/addAgent"
+        },
+        {
+            "name": "updateLang",
+            "url": "rigapi1/webapi/resource/updatelanguage"
+        },
+        {
+            "name": "addbit_distributor",
+            "url": "rigapi1/webapi/resource/addbit_distributor"
+        },
+        {
+            "name": "bitlist",
+            "url": "rigapi1/webapi/resource/getbitlist"
+        },
+        {
+            "name": "addbit_size",
+            "url": "rigapi1/webapi/resource/addbit_size"
         }
     ]
 }

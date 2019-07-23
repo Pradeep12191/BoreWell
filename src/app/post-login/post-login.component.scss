@@ -20,7 +20,7 @@ mat-sidenav-container{
   }
 
   mat-sidenav{
-    width: 240px;
+    width: 262px;
     ::ng-deep .mat-drawer-inner-container{
         overflow-x: hidden;
     }
@@ -211,7 +211,7 @@ li.menu-node-list{
                 content: '';
                 position: absolute;
                 border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-                width: 17px;
+                width: 27px;
                 left: 0px;
                 top: 15px;
             }
@@ -344,7 +344,7 @@ mat-tree, mat-sidenav{
             content: '';
             position: absolute;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-            width: 15px;
+            width: 23px;
             left: 0px;
             top: 16px;
         }
@@ -360,7 +360,8 @@ mat-tree{
             font-size: 14px;
             font-style: normal;
             font-weight: bold;
-            margin-left: 5px;
+            margin-left: 20px;
+            display: inline-block
         }    
     }
     .tree-label{

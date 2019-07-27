@@ -5,7 +5,7 @@
     <mat-card-content>
         <div [class.dashed]="pointFormArray.controls.length > 1 && !lastCtrl" fxLayout fxLayout.lt-md="row wrap" fxLayoutGap.lt-md="10px" fxLayoutGap="10px"
             *ngFor="let pointCtrl of pointFormArray.controls; let lastCtrl = last" formArrayName="particulars">
-            <ng-container [formGroup]="pointCtrl">
+            <form [formGroup]="pointCtrl" fxLayout fxLayout.lt-md="row wrap" fxLayoutGap.lt-md="10px" fxLayoutGap="10px">
                 <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'ADD_AGENT.POINT.START_FEET' | translate }}</mat-label>
                     <input poistiveNumber formControlName="startFeet" matInput readonly>
@@ -26,7 +26,7 @@
                     <mat-label>{{ 'ADD_AGENT.POINT.AMOUNT' | translate }}</mat-label>
                     <input readonly formControlName="amount" matInput>
                 </mat-form-field>
-            </ng-container>
+            </form>
         </div>
         <div *ngIf="pointFormArray.controls.length > 1" fxLayout fxLayoutAlign="end">
             <div (click)="removeLastPoint()" class="remove-btn m-b-10">{{'BTN.REMOVE' | translate }}</div>

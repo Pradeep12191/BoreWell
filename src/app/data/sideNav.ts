@@ -5,7 +5,7 @@ const LEVEL_2_PADDING = 45;
 
 export const SIDE_NAV_ITEMS: NavItem[] = [
     {
-        name: 'Dashboard',
+        name: 'NAV.DASHBOARD',
         isMain: true,
         icon: 'home',
         path: 'dashboard',
@@ -13,19 +13,19 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
         paddingLeft: LEVEL_0_PADDING
     },
     {
-        name: 'Master',
+        name: 'NAV.MASTER',
         isMain: true,
         icon: 'insert_chart_outlined',
         level: 0,
         paddingLeft: LEVEL_0_PADDING,
         children: [
             {
-                name: 'Vehicle',
+                name: 'NAV.VEHICLE',
                 isFirstChild: true,
                 children: [
-                    { name: 'Add Vehicle', isFirstChild: true, path: 'master/vehicle/addVehicle', level: 2, paddingLeft: LEVEL_2_PADDING, },
-                    { name: 'View / Edit Vehicle', path: 'ytd2', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Vehicle Link / Unlink', isLastChild: true, path: 'ytd3', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.ADD_VEHICLE', isFirstChild: true, path: 'master/vehicle/addVehicle', level: 2, paddingLeft: LEVEL_2_PADDING, },
+                    { name: 'NAV.VIEW_VEHICLE', path: 'ytd2', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.LINK_VEHICLE', isLastChild: true, path: 'ytd3', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,
@@ -42,31 +42,31 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
             //     paddingLeft: LEVEL_1_PADDING
             // },
             {
-                name: 'Bit',
+                name: 'NAV.BIT',
                 children: [
-                    { name: 'Add Bit', isFirstChild: true, path: 'master/bit/addBit', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'View Bit', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.ADD_BIT', isFirstChild: true, path: 'master/bit/addBit', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.VIEW_BIT', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,
                 paddingLeft: LEVEL_1_PADDING
             },
             {
-                name: 'Hammer',
+                name: 'NAV.HAMMER',
                 children: [
-                    { name: 'Add Hammer', isFirstChild: true, path: 'master/hammer/addHammer', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'View Hammer', isLastChild: true, path: 'ytd9', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.ADD_HAMMER', isFirstChild: true, path: 'master/hammer/addHammer', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.VIEW_HAMMER', isLastChild: true, path: 'ytd9', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,
                 paddingLeft: LEVEL_1_PADDING
             },
             {
-                name: 'Agent',
+                name: 'NAV.AGENT',
                 isLastChild: true,
                 children: [
-                    { name: 'Add Agent', isFirstChild: true, path: 'master/agent/addAgent', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'View Agent', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.ADD_AGENT', isFirstChild: true, path: 'master/agent/addAgent', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.VIEW_AGENT', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,
@@ -75,14 +75,14 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
         ]
     },
     {
-        name: 'Point Details',
+        name: 'NAV.POINT_DETAILS',
         icon: 'account_circle',
         paddingLeft: LEVEL_0_PADDING,
         isMain: true,
         level: 0,
         children: [
             {
-                name: 'Point Entry', isFirstChild: true,
+                name: 'NAV.POINT_ENTRY', isFirstChild: true,
                 isLastChild: true, path: 'pointDetails/pointEntry', level: 1,
                 paddingLeft: LEVEL_1_PADDING
             }
@@ -123,118 +123,118 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
     //     ]
     // },
     {
-        name: 'Labour Management Details',
+        name: 'NAV.LABOUR_MANAGEMENT_DETAILS',
         isMain: true,
         icon: 'account_circle',
         paddingLeft: LEVEL_0_PADDING,
         level: 0,
         children: [
-            { name: 'Labour Rule', isFirstChild: true, path: 'ytd18', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Add Labour', path: 'ytd19', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'View / Edit Labour', path: 'ytd20', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Labour Link / Unlink', path: 'ytd21', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Labour Advance', path: 'ytd22', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Labour Advance Refund', isLastChild: true, path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.LABOUR_RULE', isFirstChild: true, path: 'ytd18', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.ADD_LABOUR', path: 'ytd19', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.VIEW_LABOUR', path: 'ytd20', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.LABOUR_LINK', path: 'ytd21', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.LABOUR_ADVANCE', path: 'ytd22', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.LABOUR_ADVANCE_REFUND', isLastChild: true, path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
         ]
     },
     {
-        name: 'Reports',
+        name: 'NAV.REPORTS.TITLE',
         isMain: true,
         icon: 'library_books',
         paddingLeft: LEVEL_0_PADDING,
         level: 0,
         children: [
             {
-                name: 'Point Details', isFirstChild: true, path: 'ytd18',
+                name: 'NAV.REPORTS.POINT_DETAILS.TITLE', isFirstChild: true, path: 'ytd18',
                 children: [
-                    { name: 'Drill Log', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'RPM Details', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Point Report', isLastChild: true, path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.POINT_DETAILS.DRILL_LOG', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.POINT_DETAILS.RPM_DETAILS', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.POINT_DETAILS.POINT_REPORT', isLastChild: true, path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 level: 1, paddingLeft: LEVEL_1_PADDING
             },
-            { name: 'Agent Balance Sheet', path: 'ytd19', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Agent Details', path: 'ytd20', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.REPORTS.AGENT_BALANCE_SHEET', path: 'ytd19', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.REPORTS.AGENT_DETAILS', path: 'ytd20', level: 1, paddingLeft: LEVEL_1_PADDING },
             {
-                name: 'Vehicle', path: 'ytd21', level: 1,
+                name: 'NAV.REPORTS.VEHICLE.TITLE', path: 'ytd21', level: 1,
                 children: [
-                    { name: 'Vehicle Report', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Vehicle Pair / Unpair Report', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Vehicle Service Remainder', path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Dark Km Entry', isLastChild: true, path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.VEHICLE.REPORT', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.VEHICLE.PAIR_REPORT', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.VEHICLE.SERVICE_REMAINDER', path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.VEHICLE.DARK_ENTRY', isLastChild: true, path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 paddingLeft: LEVEL_1_PADDING
             },
-            { name: 'Tyre', path: 'ytd22', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Bit', path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Hammer', path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.REPORTS.TYRE', path: 'ytd22', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.REPORTS.BIT', path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.REPORTS.HAMMER', path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
             {
-                name: 'Receipts and Advance', path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING,
+                name: 'NAV.REPORTS.RECEIPTS.TITLE', path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING,
                 children: [
-                    { name: 'Amount Receipt', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Receipts & Advances', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.RECEIPTS.AMT', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.RECEIPTS.ADVANCES', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ]
             },
             {
-                name: 'Expenses and Payments', path: 'ytd23', level: 1,
+                name: 'NAV.REPORTS.EXPENSES.TITLE', path: 'ytd23', level: 1,
                 children: [
-                    { name: 'Fuel Expense', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Material Expense', path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Miscellaneous Expense', path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Other Payment Issue', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.EXPENSES.FUEL', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.EXPENSES.MATERIAL', path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.EXPENSES.MISCELLANEOUS', path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.EXPENSES.OTHER', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 paddingLeft: LEVEL_1_PADDING
             },
             {
-                name: 'Daily Credit & Debit Reports',
+                name: 'NAV.REPORTS.CREDIT.TITLE',
                 children: [
-                    { name: 'Manager Wise', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Vehicle Wise', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.CREDIT.MANAGER', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.CREDIT.VEHICLE', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING
             },
             {
-                name: 'Balance Reports',
+                name: 'NAV.REPORTS.BALANCE.TITLE',
                 children: [
-                    { name: 'Manager Wise', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Vehicle Wise', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Company Wise', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.BALANCE.MANAGER', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.BALANCE.VEHICLE', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.BALANCE.COMPANY', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING
             },
             {
-                name: 'Labour',
+                name: 'NAV.REPORTS.LABOUR.TITLE',
                 children: [
-                    { name: 'Labour Details', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Labour Advance Refund', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Date Wise Labour Advance Refund', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Labour Advance Issued', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.LABOUR.DETAILS', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.LABOUR.ADVANCE_REFUND', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.LABOUR.DATE', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.LABOUR.ISSUED', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING
             },
             {
-                name: 'General Alert',
+                name: 'NAV.REPORTS.GENERAL.TITLE',
                 children: [
-                    { name: 'Vehicle Insurance', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Labour Insurance', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Permit Details', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Road Tax', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Fitness Certificate', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'Pollution Certificate', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.GENERAL.VEHICLE', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.GENERAL.LABOUR', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.GENERAL.PERMIT', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.GENERAL.ROAD_TAX', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.GENERAL.FITNESS', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.GENERAL.POLLUTION', isLastChild: true, path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 isLastChild: true, path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING
             },
         ]
     },
     {
-        name: 'Services',
+        name: 'NAV.SERVICES.TITLE',
         isMain: true,
         icon: 'notifications',
         paddingLeft: LEVEL_0_PADDING,
         level: 0,
         children: [
-            { name: 'Vehicle Service Head', isFirstChild: true, path: 'ytd24', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'Vehicle Service Maintenance', isLastChild: true, path: 'ytd25', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.SERVICES.HEAD', isFirstChild: true, path: 'ytd24', level: 1, paddingLeft: LEVEL_1_PADDING },
+            { name: 'NAV.SERVICES.MAINTENANCE', isLastChild: true, path: 'ytd25', level: 1, paddingLeft: LEVEL_1_PADDING },
         ]
     },
 

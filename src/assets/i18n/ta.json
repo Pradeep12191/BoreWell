@@ -1,65 +1,65 @@
 {
-    "LANG": "தமிழ்",
-    "POINT_ENTRY": {
-        "BASIC_INFO": "அடிப்படை தகவல்",
-        "SELECT_RIG": "ரிக் தேர்ந்தெடு",
-        "DATE": "தேதி",
-        "SELECT_BORE_TYPE": "போர்  வகை தேர்ந்தெடு",
-        "PARTY_NAME": "பார்ட்டி  பெயர்",
-        "PARTY_STATE": "பார்ட்டி  மாநிலம் தேர்ந்தெடு",
-        "PARTY_CITY": "பார்ட்டி  சிட்டி",
-        "PARTY_MOBILE_NUMBER": "பார்ட்டி  மொபைல் நம்பர்",
-        "CASING_TYPE": "கேசிங் வகை",
-        "PIPE_SELECTION": "பைப் வகை தேர்ந்தெடு",
-        "AGENT_TYPE": {
-            "LABEL": "ஏஜென்ட்  வகை",
-            "AGENT": "ஏஜென்ட்",
-            "SELF": "Self"
-        },
-        "POINT_ENTRY": {
-            "TITLE": "பாயிண்ட் என்ட்ரி",
-            "TOTAL_FEET": "மொத்த அடி",
-            "SHOW_HIDE_START_FEET": "Show/Hide Start Feet",
-            "START_FEET": "Start Feet",
-            "END_FEET": "முடிவு அடி",
-            "AMOUNT_PER_FEET": "தொகை ஒரு அடிக்கு",
-            "AMOUNT": "தொகை",
-            "TOTAL_FEET_AMOUNT": "மொத்த அடி தொகை",
-            "CASING_DEPTH": "கேசிங் டெப்த்",
-            "CASING_DEPTH_RATE": "கேசிங் டெப்த்  ரேட்",
-            "CASING_FEET_AMOUNT": "கேசிங் அடி தொகை"
-        },
-        "OTHER_CHARGES": {
-            "TITLE": "பிற கட்டணங்கள்",
-            "SELECT_CHARGES": "கட்டணங்கள் தேர்ந்தெடு",
-            "CHARGE_AMT": "கட்டண தொகை "
-        },
-        "RPM_DETAILS": {
-            "TITLE": "RPM விவரங்கள்  / பிட்  விவரங்கள் ",
-            "UPLOAD": "இறுதி Rpm  பதிவேற்று ",
-            "START_RPM": " ஆரம்ப RPM",
-            "END_RPM": "இறுதி Rpm",
-            "TOTAL_RPM": "மொத்த RPM",
-            "BIT_CALC": "பிட் கணக்கீடுகள்",
-            "SELECT_BIT": "பிட் தேர்ந்தெடு ",
-            "LAST_BIT_SCALE": "கடைசி பிட் ஸ்கேல்",
-            "FEET": "அடி ",
-            "MSG": "Bit Scale must be in MM"
-        },
-        "HAMMER_DETAILS": {
-            "TITLE": "ஹேம்மர்  விவரங்கள்",
-            "HAMMER_CALC": "ஹேம்மர்  கணக்கீடுகள்",
-            "SELECT_HAMMER": "ஹேம்மர் தேர்ந்தெடு",
-            "LAST_SCALE": "கடைசி அளவு",
-            "FEET": "அடி",
-            "MSG": "Hammer Scale must be in MM"
-        },
-        "OVERALL_AMT": "பெரும்  மொத்த தொகை ",
-        "TOTAL_AMT": "மொத்த தொகை",
-        "COMMISSION_AMT": "கமிஷன் தொகை",
-        "REMARKS": "குறிப்புகள்"
+  "LANG": "தமிழ்",
+  "POINT_ENTRY": {
+    "BASIC_INFO": "அடிப்படை தகவல்",
+    "SELECT_RIG": "ரிக் தேர்ந்தெடு",
+    "DATE": "தேதி",
+    "SELECT_BORE_TYPE": "போர்  வகை தேர்ந்தெடு",
+    "PARTY_NAME": "பார்ட்டி  பெயர்",
+    "PARTY_STATE": "பார்ட்டி  மாநிலம் தேர்ந்தெடு",
+    "PARTY_CITY": "பார்ட்டி  சிட்டி",
+    "PARTY_MOBILE_NUMBER": "பார்ட்டி  மொபைல் நம்பர்",
+    "CASING_TYPE": "கேசிங் வகை",
+    "PIPE_SELECTION": "பைப் வகை தேர்ந்தெடு",
+    "AGENT_TYPE": {
+      "LABEL": "ஏஜென்ட்  வகை",
+      "AGENT": "ஏஜென்ட்",
+      "SELF": "Self"
     },
-    "ADD_VEHICLE": {
+    "POINT_ENTRY": {
+      "TITLE": "பாயிண்ட் என்ட்ரி",
+      "TOTAL_FEET": "மொத்த அடி",
+      "SHOW_HIDE_START_FEET": "Show/Hide Start Feet",
+      "START_FEET": "Start Feet",
+      "END_FEET": "முடிவு அடி",
+      "AMOUNT_PER_FEET": "தொகை ஒரு அடிக்கு",
+      "AMOUNT": "தொகை",
+      "TOTAL_FEET_AMOUNT": "மொத்த அடி தொகை",
+      "CASING_DEPTH": "கேசிங் டெப்த்",
+      "CASING_DEPTH_RATE": "கேசிங் டெப்த்  ரேட்",
+      "CASING_FEET_AMOUNT": "கேசிங் அடி தொகை"
+    },
+    "OTHER_CHARGES": {
+      "TITLE": "பிற கட்டணங்கள்",
+      "SELECT_CHARGES": "கட்டணங்கள் தேர்ந்தெடு",
+      "CHARGE_AMT": "கட்டண தொகை "
+    },
+    "RPM_DETAILS": {
+      "TITLE": "RPM விவரங்கள்  / பிட்  விவரங்கள் ",
+      "UPLOAD": "இறுதி Rpm  பதிவேற்று ",
+      "START_RPM": " ஆரம்ப RPM",
+      "END_RPM": "இறுதி Rpm",
+      "TOTAL_RPM": "மொத்த RPM",
+      "BIT_CALC": "பிட் கணக்கீடுகள்",
+      "SELECT_BIT": "பிட் தேர்ந்தெடு ",
+      "LAST_BIT_SCALE": "கடைசி பிட் ஸ்கேல்",
+      "FEET": "அடி ",
+      "MSG": "Bit Scale must be in MM"
+    },
+    "HAMMER_DETAILS": {
+      "TITLE": "ஹேம்மர்  விவரங்கள்",
+      "HAMMER_CALC": "ஹேம்மர்  கணக்கீடுகள்",
+      "SELECT_HAMMER": "ஹேம்மர் தேர்ந்தெடு",
+      "LAST_SCALE": "கடைசி அளவு",
+      "FEET": "அடி",
+      "MSG": "Hammer Scale must be in MM"
+    },
+    "OVERALL_AMT": "பெரும்  மொத்த தொகை ",
+    "TOTAL_AMT": "மொத்த தொகை",
+    "COMMISSION_AMT": "கமிஷன் தொகை",
+    "REMARKS": "குறிப்புகள்"
+  },
+  "ADD_VEHICLE": {
     "VEHICLE_TYPE": "வாகன வகை தேர்வு செய்க",
     "BORE_SIZE": "போர்   அளவு",
     "REG_NO": "வாகன பதிவு எண் (Ex: TN34 A1234)",
@@ -90,12 +90,12 @@
       "STATE": "மாநில  பெர்மிட்  விவரங்கள்"
     },
     "ROAD_TAX": {
-      "TITLE" : "சாலை வரி"
+      "TITLE": "சாலை வரி"
     },
-    "FITNESS_CERT":{
+    "FITNESS_CERT": {
       "TITLE": "தகுதிச் சான்றிதழ் (FC)"
     },
-    "POLLUTION_CERT":{
+    "POLLUTION_CERT": {
       "TITLE": "மாசு சான்றிதழ்"
     },
     "GENERAL": {
@@ -106,13 +106,13 @@
       "7_DAY": "7 நாட்கள்",
       "30_DAY": "30 நாட்கள்"
     },
-    "STEP_LABEL":{
+    "STEP_LABEL": {
       "VEHICLE_INFO": "Info",
       "VEHICLE_DETAILS": "Details",
       "VEHICLE_CERT": "Certificates"
     }
   },
-    "ADD_HAMMER": {
+  "ADD_HAMMER": {
     "TITLE": "ஹேம்மரை சேர்க்க",
     "PURCHASE_DATE": "ஹேம்மர் வாங்கிய  தேதி",
     "NAME": "ஹேம்மர் பெயர்",
@@ -125,7 +125,7 @@
     "PISTON_NUMBER": "பிஸ்டன் நம்பர்",
     "CONTROL_TUBE_NUMBER": "கன்ட்ரோல் ட்யூப் நம்பர் (MM)"
   },
-    "ADD_BIT": {
+  "ADD_BIT": {
     "TITLE": "ட்ரில் பிட்டை சேர்க்க",
     "PURCHASE_DATE": "ட்ரில் பிட் வாங்கிய  தேதி்",
     "TYPE": "பிட் வகை",
@@ -137,9 +137,9 @@
     "NUMBER": "பிட் நம்பர்",
     "INITIAL_SCALE": "பிட் ஆரம்ப அளவு (MM)"
   },
-    "ADD_AGENT": {
+  "ADD_AGENT": {
     "TITLE": "ஏஜென்ட் பதிவு",
-    "OFFICE_NAME":"ஏஜென்ட் அலுவலகத்தின் பெயர்",
+    "OFFICE_NAME": "ஏஜென்ட் அலுவலகத்தின் பெயர்",
     "NAME": "ஏஜென்ட் பெயர்",
     "STATE": "மாநிலம்  தேர்வு  செய்க",
     "TYPE": "ஏஜென்ட் வகை",
@@ -147,13 +147,13 @@
     "NUMBER": "மொபைல் நம்பர்",
     "POINT": {
       "TITLE": "ஏஜென்ட் பாயிண்ட் விவரங்கள்",
-      "START_FEET" :"ஆரம்ப  அடி",
+      "START_FEET": "ஆரம்ப  அடி",
       "END_FEET": "இறுதி  அடி",
       "PER_FEET": "அடி ஒன்றுக்கு",
       "PARTICULARS": "விவரங்கள்",
       "AMOUNT": "தொகை"
     },
-    "COMMISSION":{
+    "COMMISSION": {
       "TITLE": "கமிஷன் விவரங்கள்",
       "TYPE": "டிரில்லிங்  கமிஷன்  வகை",
       "PER_FEET": "டிரில்லிங்  கமிஷன் அடி ஒன்றுக்கு ",
@@ -161,16 +161,107 @@
       "CASING_PER_FEET": "கேசிங்  கமிஷன் அடி ஒன்றுக்கு",
       "CASING_PAYMENT_TYPE": "கேசிங் கட்டணம் வகை"
     },
-    "STEP_LABEL":{
+    "STEP_LABEL": {
       "INFO": "Info",
       "POINT": "Point",
       "COMMISSION": "Commission"
     }
   },
-    "BTN": {
-        "ADD_MORE": "மேலும் சேர்க்க",
-        "CLEAR": "ரத்து",
-        "SAVE": "சேமி ",
-        "REMOVE": "அகற்று"
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "MASTER": "Master",
+    "VEHICLE": "Vehicle",
+    "ADD_VEHICLE": "Add Vehicle",
+    "VIEW_VEHICLE": "View / Edit Vehicle",
+    "LINK_VEHICLE": "Vehicle Link / Unlink",
+    "BIT": "Bit",
+    "ADD_BIT": "Add Bit",
+    "VIEW_BIT": "View Bit",
+    "HAMMER": "Hammer",
+    "ADD_HAMMER": "Add Hammer",
+    "VIEW_HAMMER": "View Hammer",
+    "AGENT": "Agent",
+    "ADD_AGENT": "Add Agent",
+    "VIEW_AGENT": "View Agent",
+    "POINT_DETAILS": "Point Details",
+    "POINT_ENTRY": "Point Entry",
+    "LABOUR_MANAGEMENT_DETAILS": "Labour Management Details",
+    "LABOUR_RULE": "Labour Rule",
+    "ADD_LABOUR": "Add Labour",
+    "VIEW_LABOUR": "View / Edit Labour",
+    "LABOUR_LINK": "Labour Link / Unlink",
+    "LABOUR_ADVANCE": "Labour Advance",
+    "LABOUR_ADVANCE_REFUND": "Labour Advance Refund",
+    "REPORTS": {
+      "TITLE": "Reports",
+      "POINT_DETAILS": {
+        "TITLE": "Point Details",
+        "DRILL_LOG": "Drill Log",
+        "RPM_DETAILS": "RPM Details",
+        "POINT_REPORT": "Point Report"
+      },
+      "AGENT_BALANCE_SHEET": "Agent Balance Sheet",
+      "AGENT_DETAILS": "Agent Details",
+      "VEHICLE": {
+        "TITLE": "Vehicle",
+        "REPORT": "Vehicle Report",
+        "PAIR_REPORT": "Vehicle Pair / Unpair Report",
+        "SERVICE_REMAINDER": "Vehicle Service Remainder",
+        "DARK_ENTRY": "Dark Km Entry"
+      },
+      "TYRE": "Tyre",
+      "BIT": "Bit",
+      "HAMMER": "Hammer",
+      "RECEIPTS": {
+        "TITLE": "Receipts and Advance",
+        "AMT": "Amount Receipt",
+        "ADVANCES": "Receipts & Advances"
+      },
+      "EXPENSES": {
+        "TITLE": "Expenses and Payments",
+        "FUEL": "Fuel Expense",
+        "MATERIAL": "Material Expense",
+        "MISCELLANEOUS": "Miscellaneous Expense",
+        "OTHER": "Other Payment Issue"
+      },
+      "CREDIT": {
+        "TITLE": "Daily Credit & Debit Reports",
+        "MANAGER": "Manager Wise",
+        "VEHICLE": "Vehicle Wise"
+      },
+      "BALANCE": {
+        "TITLE": "Balance Reports",
+        "MANAGER": "Manager Wise",
+        "VEHICLE": "Vehicle Wise",
+        "COMPANY": "Company Wise"
+      },
+      "LABOUR": {
+        "TITLE": "Labour Reports",
+        "DETAILS": "Labour Details",
+        "ADVANCE_REFUND": "Advance Refund",
+        "DATE": "Date Wise Labour Advance Refund",
+        "ISSUED": "Labour Advanced Issued"
+      },
+      "GENERAL": {
+        "TITLE": "General Alert",
+        "VEHICLE": "Vehicle Insurance",
+        "LABOUR": "Labour Insurance",
+        "PERMIT": "Permit Details",
+        "ROAD_TAX": "Road Tax",
+        "FITNESS": "Fitness Certificate",
+        "POLLUTION": "Polltuion Certificate"
+      }
+    },
+    "SERVICES": {
+      "TITLE": "Services",
+      "HEAD": "Vehicle Service Head",
+      "MAINTENANCE": "Vehicle Service Maintena"
     }
+  },
+  "BTN": {
+    "ADD_MORE": "மேலும் சேர்க்க",
+    "CLEAR": "ரத்து",
+    "SAVE": "சேமி ",
+    "REMOVE": "அகற்று"
+  }
 }

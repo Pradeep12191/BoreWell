@@ -16,7 +16,7 @@
                                 <mat-icon>{{ node.icon }}</mat-icon>
                             </div>
                             <span class="main-node-label tree-label">
-                                {{node.name}}
+                                {{node.name | translate }}
                             </span>
                         </a>
                         <!-- use a disabled button to provide padding for tree leaf -->
@@ -29,7 +29,7 @@
                         <a class="child-link" [class.classic]="classicSidenav" (click)="closeSidenavOnMobile()" [class.path-link]="node.path"
                             [routerLink]="node.path">
                             <span class="tree-label">
-                                {{node.name}}
+                                {{node.name | translate}}
                             </span>
                         </a>
                     </li>
@@ -40,7 +40,7 @@
             <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
                 <li (click)="setActive(node)" [class.classic]="classicSidenav" [class.dashed-border]="!node.isMain && !node.isLastChild" [class.child]="!node.isMain"
                     [class.first-child]="node.isFirstChild" class="main-tree-node main-node-has-child"
-                    matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+                    matTreeNodeToggle>
                     <!-- <button mat-icon-button >
                 <mat-icon class="mat-icon-rtl-mirror">
                   {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
@@ -55,7 +55,7 @@
                                 <div class="plus-vertical" [@rotatePlus]="isExpand(node)"></div>
                                 <div class="plus-horizontal"></div>
                             </div>
-                            {{node.name}}
+                            {{node.name | translate}}
                         </span>
                         <!-- <ng-template #leafSpan>
                             <span class="main-node-label tree-label">

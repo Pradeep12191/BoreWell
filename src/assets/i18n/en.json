@@ -1,4 +1,3 @@
-
 {
     "LANG": "English",
     "POINT_ENTRY": {
@@ -91,12 +90,12 @@
             "STATE": "State Permit Details"
         },
         "ROAD_TAX": {
-            "TITLE" : "Road Tax"   
+            "TITLE": "Road Tax"
         },
-        "FITNESS_CERT":{
+        "FITNESS_CERT": {
             "TITLE": "Fitness Certificate"
         },
-        "POLLUTION_CERT":{
+        "POLLUTION_CERT": {
             "TITLE": "Pollution Certificate"
         },
         "GENERAL": {
@@ -107,7 +106,7 @@
             "7_DAY": "7 Days",
             "30_DAY": "30 Days"
         },
-        "STEP_LABEL":{
+        "STEP_LABEL": {
             "VEHICLE_INFO": "Info",
             "VEHICLE_DETAILS": "Details",
             "VEHICLE_CERT": "Certificates"
@@ -149,7 +148,7 @@
     },
     "ADD_AGENT": {
         "TITLE": "ADD AGENT",
-        "OFFICE_NAME":"Agent Office Name",
+        "OFFICE_NAME": "Agent Office Name",
         "NAME": "Agent Name",
         "STATE": "Agent State",
         "TYPE": "Agent Type",
@@ -157,13 +156,13 @@
         "NUMBER": "Mobile Number",
         "POINT": {
             "TITLE": "Agent Point Particulars",
-            "START_FEET" :"Start Feet",
+            "START_FEET": "Start Feet",
             "END_FEET": "End Feet",
             "PER_FEET": "Per Feet",
             "PARTICULARS": "Particulars",
             "AMOUNT": "Amount"
         },
-        "COMMISSION":{
+        "COMMISSION": {
             "TITLE": "Commission Particulars",
             "TYPE": "Drilling Commission Type",
             "PER_FEET": "Drilling Commission Per Feet",
@@ -171,10 +170,101 @@
             "CASING_PER_FEET": "Casing Commission Per Feet",
             "CASING_PAYMENT_TYPE": "Casing Payment Type"
         },
-        "STEP_LABEL":{
+        "STEP_LABEL": {
             "INFO": "Info",
             "POINT": "Point",
             "COMMISSION": "Commission"
+        }
+    },
+    "NAV": {
+        "DASHBOARD": "Dashboard",
+        "MASTER": "Master",
+        "VEHICLE": "Vehicle",
+        "ADD_VEHICLE": "Add Vehicle",
+        "VIEW_VEHICLE": "View / Edit Vehicle",
+        "LINK_VEHICLE": "Vehicle Link / Unlink",
+        "BIT": "Bit",
+        "ADD_BIT": "Add Bit",
+        "VIEW_BIT": "View Bit",
+        "HAMMER": "Hammer",
+        "ADD_HAMMER": "Add Hammer",
+        "VIEW_HAMMER": "View Hammer",
+        "AGENT": "Agent",
+        "ADD_AGENT": "Add Agent",
+        "VIEW_AGENT": "View Agent",
+        "POINT_DETAILS": "Point Details",
+        "POINT_ENTRY": "Point Entry",
+        "LABOUR_MANAGEMENT_DETAILS": "Labour Management Details",
+        "LABOUR_RULE": "Labour Rule",
+        "ADD_LABOUR": "Add Labour",
+        "VIEW_LABOUR": "View / Edit Labour",
+        "LABOUR_LINK": "Labour Link / Unlink",
+        "LABOUR_ADVANCE": "Labour Advance",
+        "LABOUR_ADVANCE_REFUND": "Labour Advance Refund",
+        "REPORTS": {
+            "TITLE": "Reports",
+            "POINT_DETAILS": {
+                "TITLE": "Point Details",
+                "DRILL_LOG": "Drill Log",
+                "RPM_DETAILS": "RPM Details",
+                "POINT_REPORT": "Point Report"
+            },
+            "AGENT_BALANCE_SHEET": "Agent Balance Sheet",
+            "AGENT_DETAILS": "Agent Details",
+            "VEHICLE": {
+                "TITLE": "Vehicle",
+                "REPORT": "Vehicle Report",
+                "PAIR_REPORT": "Vehicle Pair / Unpair Report",
+                "SERVICE_REMAINDER": "Vehicle Service Remainder",
+                "DARK_ENTRY": "Dark Km Entry"
+            },
+            "TYRE": "Tyre",
+            "BIT": "Bit",
+            "HAMMER": "Hammer",
+            "RECEIPTS": {
+                "TITLE": "Receipts and Advance",
+                "AMT": "Amount Receipt",
+                "ADVANCES": "Receipts & Advances"
+            },
+            "EXPENSES": {
+                "TITLE": "Expenses and Payments",
+                "FUEL": "Fuel Expense",
+                "MATERIAL": "Material Expense",
+                "MISCELLANEOUS": "Miscellaneous Expense",
+                "OTHER": "Other Payment Issue"
+            },
+            "CREDIT": {
+                "TITLE": "Daily Credit & Debit Reports",
+                "MANAGER": "Manager Wise",
+                "VEHICLE": "Vehicle Wise"
+            },
+            "BALANCE": {
+                "TITLE": "Balance Reports",
+                "MANAGER": "Manager Wise",
+                "VEHICLE": "Vehicle Wise",
+                "COMPANY": "Company Wise"
+            },
+            "LABOUR": {
+                "TITLE": "Labour Reports",
+                "DETAILS": "Labour Details",
+                "ADVANCE_REFUND": "Advance Refund",
+                "DATE": "Date Wise Labour Advance Refund",
+                "ISSUED": "Labour Advanced Issued"
+            },
+            "GENERAL":{
+                "TITLE":"General Alert",
+                "VEHICLE": "Vehicle Insurance",
+                "LABOUR": "Labour Insurance",
+                "PERMIT": "Permit Details",
+                "ROAD_TAX": "Road Tax",
+                "FITNESS": "Fitness Certificate",
+                "POLLUTION": "Polltuion Certificate"
+            }
+        },
+        "SERVICES":{
+            "TITLE": "Services",
+            "HEAD": "Vehicle Service Head",
+            "MAINTENANCE": "Vehicle Service Maintenance"
         }
     },
     "BTN": {
@@ -190,6 +280,4 @@
         "ADD_NEW_DISTRIBUTOR": "ADD NEW DISTRIBUTOR",
         "ADD_NEW_SIZE": "ADD NEW SIZE"
     }
-    
-
 }

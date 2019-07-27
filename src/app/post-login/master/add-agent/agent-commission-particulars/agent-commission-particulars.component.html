@@ -1,39 +1,41 @@
-<mat-card [formGroup]="form" class="m-b-25">
-    <mat-card-header>
-        <mat-card-title>
-            {{ 'ADD_AGENT.COMMISSION.TITLE' | translate }}
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="25px" fxLayoutGap.lt-md="0">
-            <mat-form-field fxFlex [appearance]="appearance">
-                <mat-label>{{ 'ADD_AGENT.COMMISSION.TYPE' | translate }}</mat-label>
-                <mat-select formControlName="type">
-                    <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field fxFlex [appearance]="appearance">
-                <mat-label>{{ 'ADD_AGENT.COMMISSION.PER_FEET' | translate }}</mat-label>
-                <input formControlName="perFeet" matInput>
-            </mat-form-field>
-        </div>
-        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="25px" fxLayoutGap.lt-md="0">
-            <mat-form-field fxFlex [appearance]="appearance">
-                <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_TYPE' | translate }}</mat-label>
-                <mat-select formControlName="casingType">
-                    <mat-option *ngFor="let casingType of casingTypes" [value]="casingType.value">{{ casingType.display }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field fxFlex [appearance]="appearance">
-                <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_PER_FEET' | translate }}</mat-label>
-                <input formControlName="casingPerFeet" matInput>
-            </mat-form-field>
-            <mat-form-field fxFlex [appearance]="appearance">
-                <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_PAYMENT_TYPE' | translate }}</mat-label>
-                <mat-select formControlName="casingPaymentType">
-                    <mat-option *ngFor="let casingPaymentType of casingPaymentTypes" [value]="casingPaymentType.value">{{ casingPaymentType.display }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-    </mat-card-content>
-</mat-card>
+<form [formGroup]="form">
+        <mat-card class="m-b-25">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ 'ADD_AGENT.COMMISSION.TITLE' | translate }}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout fxLayout.lt-md="column" fxLayoutGap="25px" fxLayoutGap.lt-md="0">
+                        <mat-form-field fxFlex [appearance]="appearance">
+                            <mat-label>{{ 'ADD_AGENT.COMMISSION.TYPE' | translate }}</mat-label>
+                            <mat-select formControlName="type">
+                                <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex [appearance]="appearance">
+                            <mat-label>{{ 'ADD_AGENT.COMMISSION.PER_FEET' | translate }}</mat-label>
+                            <input formControlName="perFeet" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout fxLayout.lt-md="column" fxLayoutGap="25px" fxLayoutGap.lt-md="0">
+                        <mat-form-field fxFlex [appearance]="appearance">
+                            <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_TYPE' | translate }}</mat-label>
+                            <mat-select formControlName="casingType">
+                                <mat-option *ngFor="let casingType of casingTypes" [value]="casingType.value">{{ casingType.display }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex [appearance]="appearance">
+                            <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_PER_FEET' | translate }}</mat-label>
+                            <input formControlName="casingPerFeet" matInput>
+                        </mat-form-field>
+                        <mat-form-field fxFlex [appearance]="appearance">
+                            <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_PAYMENT_TYPE' | translate }}</mat-label>
+                            <mat-select formControlName="casingPaymentType">
+                                <mat-option *ngFor="let casingPaymentType of casingPaymentTypes" [value]="casingPaymentType.value">{{ casingPaymentType.display }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+</form>

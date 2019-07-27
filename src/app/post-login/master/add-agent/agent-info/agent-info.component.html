@@ -1,4 +1,4 @@
-<div fxLayout="column" [formGroup]="form">
+<form fxLayout="column" [formGroup]="form">
     <mat-form-field fxFlex [appearance]="appearance">
         <mat-label>{{ 'ADD_AGENT.OFFICE_NAME' | translate }}</mat-label>
         <input formControlName="officeName" matInput required>
@@ -27,4 +27,4 @@
         <mat-label>{{ 'ADD_AGENT.NUMBER' | translate }}</mat-label>
         <input formControlName="mobileNumber" matInput required>
     </mat-form-field>
-</div>
+</form>

@@ -3,7 +3,7 @@
         <mat-card-title>{{ 'ADD_AGENT.POINT.TITLE' | translate }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div [class.dashed]="pointFormArray.controls.length > 1 && !lastCtrl" fxLayout fxLayout.lt-md="row wrap" fxLayoutGap.lt-md="10px" fxLayoutGap="10px"
+        <div [class.dashed]="pointFormArray.controls.length > 1 && !lastCtrl" 
             *ngFor="let pointCtrl of pointFormArray.controls; let lastCtrl = last" formArrayName="particulars">
             <form [formGroup]="pointCtrl" fxLayout fxLayout.lt-md="row wrap" fxLayoutGap.lt-md="10px" fxLayoutGap="10px">
                 <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex class="calc-field" [appearance]="appearance">
@@ -33,7 +33,7 @@
         </div>
         <div fxLayout fxLayoutAlign="end">
             <div>
-                <button (click)="addPoint()" color="primary" mat-raised-button>{{ 'BTN.ADD_MORE' | translate }}</button>
+                <button type="button" (click)="addPoint()" color="primary" mat-raised-button>{{ 'BTN.ADD_MORE' | translate }}</button>
             </div>
         </div>
 

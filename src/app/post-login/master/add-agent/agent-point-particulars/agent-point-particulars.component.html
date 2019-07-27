@@ -12,15 +12,15 @@
                 </mat-form-field>
                 <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.END_FEET' | translate }}</mat-label>
-                    <input tabindex="1" (input)="calcParticulars(pointCtrl)" poistiveNumber formControlName="endFeet" matInput>
+                    <input  (input)="calcParticulars(pointCtrl)" poistiveNumber formControlName="endFeet" matInput>
                 </mat-form-field>
                 <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.PER_FEET' | translate }}</mat-label>
-                    <input tabindex="1" (input)="calcParticulars(pointCtrl)" poistiveNumber formControlName="perFeet" matInput>
+                    <input  (input)="calcParticulars(pointCtrl)" poistiveNumber formControlName="perFeet" matInput>
                 </mat-form-field>
                 <mat-form-field fxFlex.lt-md="calc(50% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.PARTICULARS' | translate }}</mat-label>
-                    <input tabindex="1" readonly formControlName="particulars" matInput>
+                    <input  readonly formControlName="particulars" matInput>
                 </mat-form-field>
                 <mat-form-field class="m-r-10" fxFlex.lt-md="calc(100% - 10px)" fxFlex [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'ADD_AGENT.POINT.AMOUNT' | translate }}</mat-label>

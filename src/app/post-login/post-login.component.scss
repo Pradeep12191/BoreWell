@@ -159,7 +159,8 @@ li.menu-node-list{
         padding: 17px 0;
         .main-icon-container{
             position: absolute;
-            top: 4px;
+            // top: 4px;
+            top: calc(50% - 20px);
             left: 6px;
             height: 40px;
             width: 40px;
@@ -232,9 +233,10 @@ li.menu-node-list{
                 height: 7px;
                 width: 7px;
                 left: -60px;
-                top: 3px;
+                top: calc(50% - 5px);
                 &.child-plus-btn{
-                    left: -14px
+                    left: -14px;
+                    top: 3px;
                 }
                 &.classic{
                     height: 10px;
@@ -346,7 +348,7 @@ mat-tree, mat-sidenav{
             border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
             width: 23px;
             left: 0px;
-            top: 16px;
+            top: 15px;
         }
     }
     

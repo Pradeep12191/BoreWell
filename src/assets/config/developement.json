@@ -1,6 +1,6 @@
 {
     "formAppearance": "outline",
-    "apiUrl": "localhost:8080/",
+    "apiUrl": "http://103.207.4.72:8080/",
     "mobileNav": false,
     "classicSidenav": true,
     "urls": [

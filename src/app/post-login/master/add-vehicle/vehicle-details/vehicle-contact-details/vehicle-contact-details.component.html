@@ -1,37 +1,40 @@
-<mat-card class="m-b-25" [formGroup]="form">
-    <mat-card-header>
-        <mat-card-title>{{ 'ADD_VEHICLE.CONTACT_DETAILS.TITLE' | translate }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div fxLayout="column">
-            <div class="m-b-20" fxLayout fxLayoutAlign="center">
-                <span class="error text-center">{{ 'ADD_VEHICLE.CONTACT_DETAILS.MSG' | translate }}</span>
-            </div>
-            <div fxLayout *ngFor="let contactCtrl of contactFormArray.controls; let i = index" formArrayName="contacts"
-                fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0">
-                <ng-container [formGroup]="contactCtrl">
-                    <mat-form-field [appearance]="appearance" fxFlex>
-                        <mat-label>{{ 'ADD_VEHICLE.CONTACT_DETAILS.CONTACT_TYPE' | translate }}</mat-label>
-                        <mat-select formControName="type" required>
-                            <mat-option *ngFor="let contactType of contactTypes" [value]="contactType.value">{{
-                                contactType.display }}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field [appearance]="appearance" fxFlex>
-                        <mat-label>{{ 'ADD_VEHICLE.CONTACT_DETAILS.MOBILE_NUMBER' | translate }}</mat-label>
-                        <input formControlName="mobileNumber" matInput required>
-                    </mat-form-field>
-                    <div fxLayout="column" fxLayoutAlign.lt-md="end end" ngClass.lt-md="m-b-10" fxLayoutAlign="center center"
-                        *ngIf="contactFormArray.length > 1">
-                        <span class="remove-btn" (click)="removeContact(i)">{{ 'BTN.REMOVE' | translate }}</span>
+<form [formGroup]="form">
+    <mat-card class="m-b-25">
+        <mat-card-header>
+            <mat-card-title>{{ 'ADD_VEHICLE.CONTACT_DETAILS.TITLE' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div class="m-b-20" fxLayout fxLayoutAlign="center">
+                    <span class="error text-center">{{ 'ADD_VEHICLE.CONTACT_DETAILS.MSG' | translate }}</span>
+                </div>
+                <div fxLayout *ngFor="let contactCtrl of contactFormArray.controls; let i = index" formArrayName="contacts"
+                    fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0">
+                    <ng-container [formGroup]="contactCtrl">
+                        <mat-form-field [appearance]="appearance" fxFlex>
+                            <mat-label>{{ 'ADD_VEHICLE.CONTACT_DETAILS.CONTACT_TYPE' | translate }}</mat-label>
+                            <mat-select formControName="type" required>
+                                <mat-option *ngFor="let contactType of contactTypes" [value]="contactType.value">{{
+                                    contactType.display }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field [appearance]="appearance" fxFlex>
+                            <mat-label>{{ 'ADD_VEHICLE.CONTACT_DETAILS.MOBILE_NUMBER' | translate }}</mat-label>
+                            <input formControlName="mobileNumber" matInput required>
+                        </mat-form-field>
+                        <div fxLayout="column" fxLayoutAlign.lt-md="end end" ngClass.lt-md="m-b-10" fxLayoutAlign="center center"
+                            *ngIf="contactFormArray.length > 1">
+                            <span class="remove-btn" (click)="removeContact(i)">{{ 'BTN.REMOVE' | translate }}</span>
+                        </div>
+                    </ng-container>
+                </div>
+                <div fxLayout fxLayoutAlign="end">
+                    <div>
+                        <button type="button" mat-raised-button color="primary" (click)="addContact()">{{ 'BTN.ADD_MORE' | translate
+                            }}</button>
                     </div>
-                </ng-container>
-            </div>
-            <div fxLayout fxLayoutAlign="end">
-                <div>
-                    <button mat-raised-button color="primary" (click)="addContact()">{{ 'BTN.ADD_MORE' | translate }}</button>
                 </div>
             </div>
-        </div>
-    </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+</form>

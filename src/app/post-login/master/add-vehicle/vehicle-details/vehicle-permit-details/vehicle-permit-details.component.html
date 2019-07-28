@@ -1,48 +1,52 @@
-<mat-card [formGroup]="form" class="m-b-25">
-    <mat-card-header>
-        <mat-card-title>{{ 'ADD_VEHICLE.PERMIT_DETAILS.TITLE' | translate }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div fxLayout="column" formArrayName="permits" *ngFor="let permitCtrl of permitFormArray.controls; let i = index">
-            <ng-container [formGroup]="permitCtrl">
-                <div fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0">
-                    <mat-form-field fxFlex [appearance]="appearance" *ngIf="states">
-                        <mat-label>{{ 'ADD_VEHICLE.PERMIT_DETAILS.STATE' | translate }}</mat-label>
-                        <mat-select formControlName="state">
-                            <mat-option *ngFor="let state of states" [value]="state.state">{{ state.state }}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field fxFlex [appearance]="appearance">
-                        <mat-label>{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</mat-label>
-                        <input matInput formControlName="validUpto" required readonly [matDatepicker]="dp">
-                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                        <mat-datepicker #dp>
-                        </mat-datepicker>
-                    </mat-form-field>
-                </div>
-                <div fxLayout ngClass.gt-sm="m-b-15" ngClass.lt-md="m-b-10">
-                    {{ 'ADD_VEHICLE.GENERAL.REMIND' | translate }}
-                </div>
-                <div formGroupName="remindBefore" fxLayout class="m-l-16" fxLayoutGap="20px" fxLayout.lt-md="row wrap">
-                    <mat-checkbox formControlName="oneDay" ngClass.lt-md="m-b-10" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{
-                        'ADD_VEHICLE.GENERAL.1_DAY' | translate }}</mat-checkbox>
-                    <mat-checkbox formControlName="twoDays" ngClass.lt-md="m-b-10" fxFlex.lt-md="calc(50% - 20px)"
-                        color="primary">{{ 'ADD_VEHICLE.GENERAL.2_DAY' | translate }}</mat-checkbox>
-                    <mat-checkbox formControlName="sevenDays" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{
-                        'ADD_VEHICLE.GENERAL.7_DAY' | translate }}</mat-checkbox>
-                    <mat-checkbox formControlName="thirtyDays" class="m-r-20" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{
-                        'ADD_VEHICLE.GENERAL.30_DAY' | translate }}</mat-checkbox>
-                </div>
-                <div class="m-t-10 m-b-10" *ngIf="permitFormArray.length > 1" fxLayout fxLayoutAlign="end">
-                    <span (click)="removePermit(i)" class="remove-btn">{{ 'BTN.REMOVE' | translate }}</span>
-                </div>
-            </ng-container>
-        </div>
-        <div fxLayout fxLayoutAlign="end">
-            <div>
-                <button (click)="addPermit()" color="primary" mat-raised-button>{{ 'BTN.ADD_MORE' | translate }}</button>
+<form [formGroup]="form">
+    <mat-card class="m-b-25">
+        <mat-card-header>
+            <mat-card-title>{{ 'ADD_VEHICLE.PERMIT_DETAILS.TITLE' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column" formArrayName="permits" *ngFor="let permitCtrl of permitFormArray.controls; let i = index">
+                <ng-container [formGroup]="permitCtrl">
+                    <div fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0">
+                        <mat-form-field fxFlex [appearance]="appearance" *ngIf="states">
+                            <mat-label>{{ 'ADD_VEHICLE.PERMIT_DETAILS.STATE' | translate }}</mat-label>
+                            <mat-select formControlName="state">
+                                <mat-option *ngFor="let state of states" [value]="state.state">{{ state.state }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex [appearance]="appearance">
+                            <mat-label>{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</mat-label>
+                            <input matInput formControlName="validUpto" required readonly [matDatepicker]="dp">
+                            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                            <mat-datepicker #dp>
+                            </mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout ngClass.gt-sm="m-b-15" ngClass.lt-md="m-b-10">
+                        {{ 'ADD_VEHICLE.GENERAL.REMIND' | translate }}
+                    </div>
+                    <div formGroupName="remindBefore" fxLayout class="m-l-16" fxLayoutGap="20px" fxLayout.lt-md="row wrap">
+                        <mat-checkbox formControlName="oneDay" ngClass.lt-md="m-b-10" fxFlex.lt-md="calc(50% - 20px)"
+                            color="primary">{{
+                            'ADD_VEHICLE.GENERAL.1_DAY' | translate }}</mat-checkbox>
+                        <mat-checkbox formControlName="twoDays" ngClass.lt-md="m-b-10" fxFlex.lt-md="calc(50% - 20px)"
+                            color="primary">{{ 'ADD_VEHICLE.GENERAL.2_DAY' | translate }}</mat-checkbox>
+                        <mat-checkbox formControlName="sevenDays" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{
+                            'ADD_VEHICLE.GENERAL.7_DAY' | translate }}</mat-checkbox>
+                        <mat-checkbox formControlName="thirtyDays" class="m-r-20" fxFlex.lt-md="calc(50% - 20px)" color="primary">{{
+                            'ADD_VEHICLE.GENERAL.30_DAY' | translate }}</mat-checkbox>
+                    </div>
+                    <div class="m-t-10 m-b-10" *ngIf="permitFormArray.length > 1" fxLayout fxLayoutAlign="end">
+                        <span (click)="removePermit(i)" class="remove-btn">{{ 'BTN.REMOVE' | translate }}</span>
+                    </div>
+                </ng-container>
             </div>
-        </div>
+            <div fxLayout fxLayoutAlign="end">
+                <div>
+                    <button (click)="addPermit()" type="button" color="primary" mat-raised-button>{{ 'BTN.ADD_MORE' |
+                        translate }}</button>
+                </div>
+            </div>
 
-    </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+</form>

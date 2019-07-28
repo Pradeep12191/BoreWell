@@ -7,6 +7,8 @@ import { AddDistributorDialogComponent } from './dialog/add-distributor/add-dist
 import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     templateUrl: './add-bit.component.html',
@@ -39,7 +41,9 @@ export class AddBitComponent implements OnInit {
         private fb: FormBuilder,
         private http: HttpClient,
         private dialog: MatDialog,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private toastr: ToastrService,
+        private common: CommonService
     ) {
         this.appearance = this.configService.getConfig('formAppearance');
         const bitUrl = this.configService.getUrl('addBit');
@@ -100,15 +104,23 @@ export class AddBitComponent implements OnInit {
         })
     }
 
+    resetForm() {
+        this.addBitForm.reset();
+        this.common.scrollTop();
+    }
+
     saveBit() {
         console.log(JSON.stringify(this.addBitForm.value, null, 2));
         if (this.url) {
             this.http.post(this.url, this.addBitForm.value).subscribe((response) => {
-                if (response) {
-                    console.log(JSON.stringify(response, null, 2))
-                } else {
-                    console.log('No Response')
+                this.toastr.success('Bit Added Sucessfully', null, { timeOut: 1500 })
+                this.addBitForm.reset();
+                this.common.scrollTop();
+            }, (err) => {
+                if (err) {
+                    this.toastr.error('Error while saving Bit', null, { timeOut: 1500 })
                 }
+
             });
         }
     }

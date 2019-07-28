@@ -436,3 +436,23 @@ mat-sidenav.mobile{
         overflow: hidden;
     }
 }
+
+mat-card.save-spinner{
+    position: absolute;
+    top: calc(50% - 33px);
+    left: calc(50% - 82px);
+    border-radius: 4px;
+    padding: 16px;
+    min-width: 164px;
+
+}
+
+.save-loader-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}

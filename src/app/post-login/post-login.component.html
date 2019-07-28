@@ -1,4 +1,12 @@
 <!-- <app-header class="desktop-header"  (toggleSidenav)="sidenav.toggle()"></app-header> -->
+<div class="save-loader-overlay" *ngIf="saving">
+    <mat-card fxLayoutAlign="start center" fxLayout fxLayoutGap="20px" class="save-spinner">
+        <mat-spinner diameter="35" strokeWidth="2"></mat-spinner>
+        <div>
+            Saving...
+        </div>
+    </mat-card>
+</div>
 <router-outlet *ngIf="!isMobile" name="header"></router-outlet>
 <mat-sidenav-container [class.mobile-container]="isMobile">
 
@@ -84,7 +92,7 @@
         </mat-sidenav>
     </ng-template>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content #sidenavContent>
         <!-- <app-header *ngIf="isMobile" (toggleSidenav)="sidenav.toggle()"></app-header> -->
         <router-outlet *ngIf="isMobile" name="header"></router-outlet>
         <div class="spinner-container" *ngIf="loading; else contentTpl">

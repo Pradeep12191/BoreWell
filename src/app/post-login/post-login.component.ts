@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
 
 import { SIDE_NAV_ITEMS } from '../data'
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -25,10 +25,14 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   isSmallDevice;
   sideNavItems = SIDE_NAV_ITEMS;
   loading;
+  saving;
   loaderSubscription: Subscription;
   sidenavSubcription: Subscription;
+  scrollTopSubscription: Subscription;
+  saveLoaderSubscription: Subscription;
 
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
+  @ViewChild('sidenavContent', { static: false, read: ElementRef }) sidenavContent: ElementRef
 
   treeControl = new NestedTreeControl<NavItem>(node => node.children);
   dataSource = new MatTreeNestedDataSource<NavItem>();
@@ -41,8 +45,8 @@ export class PostLoginComponent implements OnInit, OnDestroy {
     return this.mediaObserver.isActive('lt-md') && this.isMobileSideNav
   }
 
-  get isClassic(){
-    return 
+  get isClassic() {
+    return
   }
 
   constructor(
@@ -83,11 +87,22 @@ export class PostLoginComponent implements OnInit, OnDestroy {
     this.sidenavSubcription = this.common.toggleSidenavObs().subscribe(() => {
       this.sidenav.toggle()
     })
+
+    this.saveLoaderSubscription = this.loader.saveLoaderObs().subscribe((status) => {
+      this.saving = status;
+    })
+
+    this.scrollTopSubscription = this.common.scrollTopObs().subscribe(() => {
+      console.log(this.sidenavContent);
+      (this.sidenavContent.nativeElement as HTMLElement).scrollTop = 0
+    })
   }
 
   ngOnDestroy() {
     if (this.loaderSubscription) { this.loaderSubscription.unsubscribe(); }
     if (this.sidenavSubcription) { this.sidenavSubcription.unsubscribe(); }
+    if (this.scrollTopSubscription) { this.scrollTopSubscription.unsubscribe(); }
+    if (this.saveLoaderSubscription) { this.saveLoaderSubscription.unsubscribe(); }
   }
 
   closeSidenavOnMobile() {

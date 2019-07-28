@@ -9,4 +9,6 @@ export class PositiveNumberDirective {
         return e.charCode >= 48 && e.charCode <= 57
     }
     @HostBinding('autocomplete') autocomplete = 'off'
+    @HostBinding('pattern') pattern = '[0-9]*'
+    @HostBinding('attr.inputmode') inputmode = 'numeric'
 }

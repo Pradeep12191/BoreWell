@@ -31,7 +31,7 @@
             <agent-commission-particulars [form]="agentForm.get('commission')"></agent-commission-particulars>
             <div fxLayout fxLayoutAlign="space-between">
                 <div>
-                    <button mat-raised-button (click)="resetForm()" color="primary">{{ 'BTN.CLEAR' | translate }}</button>
+                    <button mat-raised-button (click)="stepper.reset()" color="primary">{{ 'BTN.CLEAR' | translate }}</button>
                 </div>
                 <div>
                     <button mat-raised-button (click)="saveAgent()" color="primary" >{{ 'BTN.SAVE' | translate }}</button>

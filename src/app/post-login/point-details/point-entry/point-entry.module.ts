@@ -12,6 +12,7 @@ import { BitDetailsComponent } from './bit-details/bit-details.component';
 import { HammerDetailsComponent } from './hammer-details/hammer-details.component';
 import { SharedModule } from '../../../shared.module';
 import { PointEntryResolve } from '../../../guards/resolveGuard/point-entry.guard';
+import { DirectiveModule } from '../../../directives/directive.module';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { PointEntryResolve } from '../../../guards/resolveGuard/point-entry.guar
         FlexLayoutModule,
         ReactiveFormsModule,
         PointEntryRoutingModule,
-        SharedModule
+        SharedModule,
+        DirectiveModule
     ],
     declarations: [
         PointEntryComponent,

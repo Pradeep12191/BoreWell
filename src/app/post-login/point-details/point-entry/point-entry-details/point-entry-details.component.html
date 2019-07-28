@@ -23,7 +23,7 @@
             <ng-container [formGroup]="feetCtrl">
                 <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.START_FEET' | translate }}</mat-label>
-                    <input type="text" formControlName="startFeet" matInput>
+                    <input pattern="[0-9]*" poistiveNumber inputmode="numeric" formControlName="startFeet" matInput>
                 </mat-form-field>
 
                 <mat-form-field fxFlex  class="calc-field" [appearance]="appearance">

@@ -19,10 +19,10 @@ export class AddVehicleService {
             state: null,
             validUpto: null,
             remindBefore: this.fb.group({
-                oneDay: null,
-                twoDays: null,
-                sevenDays: null,
-                thirtyDays: null
+                oneDay: false,
+                twoDays: false,
+                sevenDays: false,
+                thirtyDays: false
             })
         })
     }
@@ -31,10 +31,10 @@ export class AddVehicleService {
         return this.fb.group({
             validUpto: null,
             remindBefore: this.fb.group({
-                oneDay: null,
-                twoDays: null,
-                sevenDays: null,
-                thirtyDays: null
+                oneDay: false,
+                twoDays: false,
+                sevenDays: false,
+                thirtyDays: false
             })
         })
     }

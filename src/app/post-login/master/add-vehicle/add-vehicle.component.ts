@@ -43,20 +43,20 @@ export class AddVehicleComponent implements OnInit {
                     companyDetails: null,
                     validUpto: null,
                     remindBefore: this.fb.group({
-                        oneDay: null,
-                        twoDays: null,
-                        sevenDays: null,
-                        thirtyDays: null
+                        oneDay: false,
+                        twoDays: false,
+                        sevenDays: false,
+                        thirtyDays: false
                     })
                 }),
                 labourInsurance: this.fb.group({
                     companyDetails: null,
                     validUpto: null,
                     remindBefore: this.fb.group({
-                        oneDay: null,
-                        twoDays: null,
-                        sevenDays: null,
-                        thirtyDays: null
+                        oneDay: false,
+                        twoDays: false,
+                        sevenDays: false,
+                        thirtyDays: false
                     })
                 }),
                 permits: this.fb.array([this.avs.permitDetailsForm()])

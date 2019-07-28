@@ -27,7 +27,7 @@
                 <mat-form-field fxFlex [appearance]="appearance">
                     <mat-label>{{ 'ADD_BIT.VEHICLE' | translate }}</mat-label>
                     <mat-select formControlName="vehicle">
-                        <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle.value">{{ vehicle.display }}</mat-option>
+                        <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle.registrationNumber">{{ vehicle.registrationNumber }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <div fxLayout>
@@ -40,7 +40,7 @@
                     <mat-form-field fxFlex="65" [appearance]="appearance">
                         <mat-label>{{ 'ADD_BIT.DISTRIBUTOR_DETAILS' | translate }}</mat-label>
                         <mat-select formControlName="distributorDetails">
-                            <mat-option *ngFor="let distributor of distributors" [value]="distributor.value">{{ distributor.display }}</mat-option>
+                            <mat-option *ngFor="let distributor of distributors" [value]="distributor.distributor_name">{{ distributor.distributor_name }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <div fxFlex="35" fxLayout>
@@ -56,8 +56,8 @@
                     <mat-form-field fxFlex="65" [appearance]="appearance">
                         <mat-label>{{ 'ADD_BIT.SIZE' | translate }}</mat-label>
                         <mat-select formControlName="size">
-                            <mat-option *ngFor="let size of sizes" [value]="size.value">{{
-                                size.display }}</mat-option>
+                            <mat-option *ngFor="let size of sizes" [value]="size.size">{{
+                                size.size }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <div fxFlex="35" fxLayout>

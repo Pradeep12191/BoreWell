@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
 import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './add-bit.component.html',
@@ -14,10 +16,11 @@ export class AddBitComponent implements OnInit {
     appearance;
     addBitForm: FormGroup;
     baseUrl;
-    url
+    url;
+    routeSubscription: Subscription
     types = [
-        { value: '1', display: 'New' },
-        { value: '2', display: 'Old' }
+        { value: 'new', display: 'New' },
+        { value: 'new', display: 'Old' }
     ];
     distributors = [
     ];
@@ -26,8 +29,8 @@ export class AddBitComponent implements OnInit {
         { value: '2', display: 'KA01MP7396' },
     ];
     drillings = [
-        { value: '1', display: 'Drilling Bit' },
-        { value: '2', display: 'OB Bit' }
+        { value: 'drilling bit', display: 'Drilling Bit' },
+        { value: 'ob bit', display: 'OB Bit' }
     ];
     sizes = [
     ]
@@ -35,12 +38,26 @@ export class AddBitComponent implements OnInit {
         private configService: ConfigService,
         private fb: FormBuilder,
         private http: HttpClient,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private route: ActivatedRoute
     ) {
         this.appearance = this.configService.getConfig('formAppearance');
         const bitUrl = this.configService.getUrl('addBit');
         this.baseUrl = this.configService.getConfig('apiUrl');
         this.url = this.baseUrl + bitUrl;
+        this.routeSubscription = this.route.data.subscribe((data) => {
+            if (data) {
+                if (data.bitSizes) {
+                    this.sizes = data.bitSizes
+                }
+                if (data.distributors) {
+                    this.distributors = data.distributors
+                }
+                if (data.vehicles) {
+                    this.vehicles = data.vehicles;
+                }
+            }
+        })
     }
 
     ngOnInit() {
@@ -66,8 +83,7 @@ export class AddBitComponent implements OnInit {
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
                 this.distributors.push({
-                    value: result.distributor_name,
-                    display: result.distributor_name
+                    distributor_name: result.distributor_name
                 })
             }
         })
@@ -79,7 +95,7 @@ export class AddBitComponent implements OnInit {
         })
         sizeDialog.afterClosed().subscribe((result) => {
             if (result) {
-                this.sizes.push({ value: result.size, display: result.size })
+                this.sizes.push({ size: result.size })
             }
         })
     }

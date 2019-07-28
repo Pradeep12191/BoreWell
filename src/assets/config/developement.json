@@ -48,6 +48,18 @@
         {
             "name": "addbit_size",
             "url": "rigapi1/webapi/resource/addbit_size"
+        },
+        {
+            "name": "vehicle_list",
+            "url": "rigapi1/webapi/resource/getvehiclenames"
+        },
+        {
+            "name": "distributor_list",
+            "url": "rigapi1/webapi/resource/getbitdistributor_list"
+        },
+        {
+            "name": "bitsize_list",
+            "url": "rigapi1/webapi/resource/getbitsize_list"
         }
     ]
 }

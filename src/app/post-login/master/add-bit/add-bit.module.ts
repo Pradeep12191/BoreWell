@@ -10,6 +10,9 @@ import { AddDistributorDialogComponent } from './dialog/add-distributor/add-dist
 import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material';
 import { DirectiveModule } from '../../../directives/directive.module';
+import { BitSizeResolver } from '../../../guards/resolveGuard/bit-size-list.resolver';
+import { DistributorsResolver } from '../../../guards/resolveGuard/distributors.resolver';
+import { VehiclesResolver } from '../../../guards/resolveGuard/vehicles.resolver';
 
 const matDialogConfig: MatDialogConfig = {
     width: '700px',
@@ -37,6 +40,9 @@ const matDialogConfig: MatDialogConfig = {
         AddBitSizeDialogComponent
     ],
     providers: [
+        BitSizeResolver,
+        DistributorsResolver,
+        VehiclesResolver,
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: matDialogConfig }
     ]
 })

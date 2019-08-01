@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../../services/config.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDatepickerInputEvent } from '@angular/material';
 import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
 import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from '../../../services/common.service';
+import { Moment } from 'moment';
 
 @Component({
     templateUrl: './add-bit.component.html',
@@ -112,7 +113,10 @@ export class AddBitComponent implements OnInit {
     saveBit() {
         console.log(JSON.stringify(this.addBitForm.value, null, 2));
         if (this.url) {
-            this.http.post(this.url, this.addBitForm.value).subscribe((response) => {
+            this.http.post(this.url, {
+                ...this.addBitForm.value,
+                purchaseDate: this.addBitForm.value.purchaseDate ? (this.addBitForm.value.purchaseDate as Moment).format('DD/MM/YYYY') : null
+            }).subscribe((response) => {
                 this.toastr.success('Bit Added Sucessfully', null, { timeOut: 1500 })
                 this.addBitForm.reset();
                 this.common.scrollTop();
@@ -124,4 +128,8 @@ export class AddBitComponent implements OnInit {
             });
         }
     }
+
+    // onDateChange(event: MatDatepickerInputEvent<Moment>) {
+    //    this.addBitForm.get('purchaseDate').setValue(event.value.format('DD/MM/YYYY'))
+    // }
 }

@@ -1,0 +1,38 @@
+<mat-table *ngIf="bits?.length" mat-table [dataSource]="bitDataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Bit Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Bit Name </mat-header-cell>
+        <mat-cell *matCellDef="let bit"> {{bit.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Bit Size Column -->
+    <ng-container matColumnDef="number">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Bit Number </mat-header-cell>
+        <mat-cell *matCellDef="let bit"> {{bit.number}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <mat-header-cell fxFlex="10" *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let bit" fxFlex="10">
+            <button mat-icon-button color="primary">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef fxFlex="10"></mat-header-cell>
+        <mat-cell *matCellDef="let bit" fxFlex="10">
+            <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let bit; columns: displayedColumns;"></mat-row>
+</mat-table>

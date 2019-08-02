@@ -20,6 +20,7 @@ const routes: Routes = [
             { path: 'master/vehicle/addVehicle', loadChildren: () => import('./master/add-vehicle/add-vehicle.module').then(mod => mod.AddVehicleModule) },
             { path: 'master/hammer/addHammer', loadChildren: () => import('./master/add-hammer/add-hammer.module').then(mod => mod.AddHammerModule) },
             { path: 'master/bit/addBit', loadChildren: () => import('./master/add-bit/add-bit.module').then(mod => mod.AddBitModule) },
+            { path: 'master/bit/viewBit', loadChildren: () => import('./master/bit/view-bit/view-bit.module').then(mod => mod.ViewBitModule) },
             { path: 'master/agent/addAgent', loadChildren: () => import('./master/add-agent/add-agent.module').then(mod => mod.AddAgentModule) },
             { path: '**', component: S404Component }
         ]

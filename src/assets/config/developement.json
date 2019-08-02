@@ -60,6 +60,10 @@
         {
             "name": "bitsize_list",
             "url": "rigapi1/webapi/resource/getbitsize_list"
+        },
+        {
+            "name": "view_bit",
+            "url": "rigapi1/webapi/resource/viewbitlist"
         }
     ]
 }

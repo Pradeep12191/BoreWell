@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material';
 export class ViewBitComponent {
     bits: Bit[];
     bitDataSource: MatTableDataSource<Bit>;
-    displayedColumns: string[] = ['name', 'number', 'delete', 'edit'];
+    displayedColumns: string[] = ['serialNo', 'name', 'size', 'number', 'purchaseDate', 'type', 'drilling', 'distributorDetails', 'intialScale', 'edit', 'delete', ];
     constructor(
         private route: ActivatedRoute
     ) {

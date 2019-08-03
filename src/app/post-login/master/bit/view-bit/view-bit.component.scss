@@ -1,0 +1,27 @@
+.table-container{
+    overflow: auto;
+    width: 1000px;
+}
+
+mat-table{
+    min-width: 1200px;
+}
+
+.mat-column-name{
+    border-right: 1px solid #e0e0e0;
+    left: 64px !important;
+}
+
+.mat-column-size{
+    padding-left: 16px;
+}
+
+.mat-column-edit{
+    right: 60px !important;
+    border-left: 1px solid #e0e0e0;
+    box-sizing: content-box !important;
+}
+
+.mat-column-serialNo{
+    max-width: 40px;
+}

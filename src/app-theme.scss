@@ -2,6 +2,38 @@
 
 @include mat-core();
 
+@mixin mat-table-theme($theme) {
+    $primary: map-get($theme, primary);
+    mat-header-row{
+        
+        mat-header-cell.mat-header-cell{
+            background-color: mat-color($primary);
+            color: white;
+            font-size: 14px;
+        }
+    }
+    mat-cell{
+        background-color: white;
+    }
+    // .mat-table-sticky:first-child {
+    //     border-right: 1px solid #e0e0e0;
+    //   }
+    mat-row{
+        border-bottom-color: rgba(0,0,0,.12);
+        &:hover{
+            // background-color:  rgba(229, 230, 230, 0.25);
+        }
+    }
+    mat-row:nth-of-type(odd){
+        // background-color:rgba(242, 243, 243, 0.35);
+    }
+
+
+    // mat-cell.mat-cell{
+    //     color: white;
+    // }
+}
+
 $bore-well-primary: mat-palette($mat-cyan, 900, 500, A400);
 $bore-well-accent:  mat-palette($mat-pink, A200, A100, A400);
 $bore-well-warn:  mat-palette($mat-red);
@@ -9,4 +41,7 @@ $bore-well-warn:  mat-palette($mat-red);
 $bore-well-theme: mat-light-theme($bore-well-primary, $bore-well-accent, $bore-well-warn);
 
 @include angular-material-theme($bore-well-theme);
+@include mat-table-theme($bore-well-theme);
+
+
 

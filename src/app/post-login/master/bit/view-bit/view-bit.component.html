@@ -1,38 +1,81 @@
-<mat-table *ngIf="bits?.length" mat-table [dataSource]="bitDataSource" class="mat-elevation-z8">
+<div class="table-container mat-elevation-z8">
+    <mat-table *ngIf="bits?.length" mat-table [dataSource]="bitDataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+        <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Bit Name Column -->
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Bit Name </mat-header-cell>
-        <mat-cell *matCellDef="let bit"> {{bit.name}} </mat-cell>
-    </ng-container>
+        <!-- Bit Name Column -->
+        <ng-container matColumnDef="name" sticky>
+            <mat-header-cell *matHeaderCellDef> Bit Name </mat-header-cell>
+            <mat-cell *matCellDef="let bit">
+                <div fxLayout fxLayoutGap="25px">
+                    <div fxLayout fxLayoutAlign="center center" fxFlex>{{bit.name}}</div>
+                    <div>
+                        <button class="view-btn" mat-flat-button color="primary">VIEW</button>
+                    </div>
+                </div>
 
-    <!-- Bit Size Column -->
-    <ng-container matColumnDef="number">
-        <mat-header-cell mat-header-cell *matHeaderCellDef> Bit Number </mat-header-cell>
-        <mat-cell *matCellDef="let bit"> {{bit.number}} </mat-cell>
-    </ng-container>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="delete">
-        <mat-header-cell fxFlex="10" *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let bit" fxFlex="10">
-            <button mat-icon-button color="primary">
-                <mat-icon>delete_outline</mat-icon>
-            </button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="serialNo" sticky>
+            <mat-header-cell *matHeaderCellDef> S.No </mat-header-cell>
+            <mat-cell *matCellDef="let bit; let i = index"> {{i + 1}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef fxFlex="10"></mat-header-cell>
-        <mat-cell *matCellDef="let bit" fxFlex="10">
-            <button mat-icon-button color="primary">
-                <mat-icon>edit</mat-icon>
-            </button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="distributorDetails">
+            <mat-header-cell *matHeaderCellDef> Distributor Name</mat-header-cell>
+            <mat-cell class="text-transform-upper" *matCellDef="let bit">{{ bit.distributorDetails }} </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let bit; columns: displayedColumns;"></mat-row>
-</mat-table>
+        <ng-container matColumnDef="purchaseDate">
+            <mat-header-cell *matHeaderCellDef> Date</mat-header-cell>
+            <mat-cell *matCellDef="let bit">{{ bit.purchaseDate }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="drilling">
+            <mat-header-cell *matHeaderCellDef> Drilling</mat-header-cell>
+            <mat-cell *matCellDef="let bit">{{ bit.drilling }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef>Bit Type</mat-header-cell>
+            <mat-cell *matCellDef="let bit">{{ bit.type }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="size">
+            <mat-header-cell fxFlex="80px" *matHeaderCellDef> Bit Size </mat-header-cell>
+            <mat-cell fxFlex="80px" *matCellDef="let bit"> {{bit.size}} </mat-cell>
+        </ng-container>
+
+        <!-- Bit Number Column -->
+        <ng-container matColumnDef="number">
+            <mat-header-cell fxFlex="100px" *matHeaderCellDef> Bit Number </mat-header-cell>
+            <mat-cell fxFlex="100px" *matCellDef="let bit"> {{bit.number}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="intialScale">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>Bit Intial Scale </mat-header-cell>
+            <mat-cell *matCellDef="let bit"> {{bit.intialScale}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete" stickyEnd>
+            <mat-header-cell fxFlex="60px" *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let bit" fxLayout fxLayoutAlign="center center" fxFlex="60px">
+                <button mat-icon-button color="primary">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="edit" stickyEnd>
+            <mat-header-cell *matHeaderCellDef fxFlex="60px"></mat-header-cell>
+            <mat-cell *matCellDef="let bit" fxFlex="60px" fxLayout fxLayoutAlign="center center">
+                <button mat-icon-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let bit; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

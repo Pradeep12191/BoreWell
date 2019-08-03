@@ -24,8 +24,8 @@
             // background-color:  rgba(229, 230, 230, 0.25);
         }
     }
-    mat-row:nth-of-type(odd){
-        // background-color:rgba(242, 243, 243, 0.35);
+    mat-row:nth-of-type(odd) mat-cell.mat-cell{
+        background-color: rgb(247, 247, 247);
     }
 
 

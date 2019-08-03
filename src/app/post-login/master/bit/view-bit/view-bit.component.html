@@ -34,11 +34,11 @@
         </ng-container>
         <ng-container matColumnDef="drilling">
             <mat-header-cell *matHeaderCellDef> Drilling</mat-header-cell>
-            <mat-cell *matCellDef="let bit">{{ bit.drilling }} </mat-cell>
+            <mat-cell class="text-transform-caps" *matCellDef="let bit">{{ bit.drilling }} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="type">
             <mat-header-cell *matHeaderCellDef>Bit Type</mat-header-cell>
-            <mat-cell *matCellDef="let bit">{{ bit.type }} </mat-cell>
+            <mat-cell class="text-transform-caps" *matCellDef="let bit">{{ bit.type }} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="size">

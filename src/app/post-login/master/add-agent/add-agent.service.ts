@@ -10,7 +10,7 @@ export class AddAgentService {
 
     }
 
-    buildPointForm(startFeet = 0) {
+    buildPointForm(startFeet = '0') {
         return this.fb.group({
             startFeet,
             endFeet: null,

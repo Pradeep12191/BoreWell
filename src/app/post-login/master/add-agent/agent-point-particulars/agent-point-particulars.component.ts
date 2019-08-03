@@ -29,7 +29,7 @@ export class AgentPointParticularsComponent {
         const lastEndFeet = lastFormGroup.get('endFeet').value;
         const lastPerfeet = lastFormGroup.get('perFeet').value;
         if (lastEndFeet && lastPerfeet) {
-            this.pointFormArray.push(this.aes.buildPointForm(+lastEndFeet + 1))
+            this.pointFormArray.push(this.aes.buildPointForm((+lastEndFeet + 1).toString()))
         } else {
             this.snackBar.open('Please Fill Fields', null, { duration: 1000 });
         }
@@ -61,7 +61,7 @@ export class AgentPointParticularsComponent {
             return;
         }
         pointCtrl.get('particulars').setValue(particulars);
-        pointCtrl.get('amount').setValue(amount);
+        pointCtrl.get('amount').setValue(amount.toString());
     }
 
 }

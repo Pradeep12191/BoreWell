@@ -90,6 +90,12 @@ body{
     }
 }
 
+@for $i from 1 through 24{
+    .font-#{$i} {
+        font-size: #{$i}px
+    }
+}
+
 @for $i from 1 through 100{
     .m-b-#{$i} {
         margin-bottom: #{$i}px
@@ -151,6 +157,14 @@ mat-form-field.calc-field{
      font-weight: bold;
      color: crimson;
  }
+
+.bold{
+    font-weight: bold;
+}
+
+.width-100{
+    width: 100% 
+}
 
  .text-center{
      text-align: center;

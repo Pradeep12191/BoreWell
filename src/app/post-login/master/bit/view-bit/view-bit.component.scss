@@ -3,25 +3,39 @@
     width: 1000px;
 }
 
-mat-table{
+mat-table.fixed-table{
     min-width: 1200px;
 }
 
-.mat-column-name{
+.mat-column-name.mat-table-sticky{
     border-right: 1px solid #e0e0e0;
     left: 64px !important;
 }
 
 .mat-column-size{
-    padding-left: 16px;
+    // padding-left: 16px;
 }
 
-.mat-column-edit{
+.mat-column-edit.mat-table-sticky{
     right: 60px !important;
     border-left: 1px solid #e0e0e0;
     box-sizing: content-box !important;
 }
 
+.mat-column-more_details{
+    cursor: pointer;
+}
+
+.detail-row{
+    overflow: hidden;
+}
+
+.width-100{
+    width: 100%
+}
+
+
 .mat-column-serialNo{
-    max-width: 40px;
+    min-width: 64px;
+    max-width: 64px;
 }

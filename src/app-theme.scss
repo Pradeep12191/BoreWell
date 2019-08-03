@@ -24,8 +24,13 @@
             // background-color:  rgba(229, 230, 230, 0.25);
         }
     }
-    mat-row:nth-of-type(odd) mat-cell.mat-cell{
+    mat-row:nth-child(4n +1) mat-cell.mat-cell, mat-row:nth-child(4n) mat-cell.mat-cell{
         background-color: rgb(247, 247, 247);
+    }
+
+    .arrow{
+        border: 5px solid transparent;
+        border-top-color: mat-color($primary);
     }
 
 

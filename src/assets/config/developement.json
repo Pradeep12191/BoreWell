@@ -64,6 +64,14 @@
         {
             "name": "view_bit",
             "url": "rigapi1/webapi/resource/viewbitlist"
+        },
+        {
+            "name": "vehicle_types",
+            "url": "rigapi1/webapi/resource/vehicle_type"
+        },
+        {
+            "name": "bore_size",
+            "url": "rigapi1/webapi/resource/boresize"
         }
     ]
 }

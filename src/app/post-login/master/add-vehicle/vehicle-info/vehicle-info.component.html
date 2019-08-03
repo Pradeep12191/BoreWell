@@ -4,13 +4,13 @@
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'ADD_VEHICLE.VEHICLE_TYPE' | translate }}</mat-label>
                 <mat-select formControlName="vehicleType" required>
-                    <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
+                    <mat-option *ngFor="let type of types" [value]="type.vehicle_type">{{ type.vehicle_type }}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'ADD_VEHICLE.BORE_SIZE' | translate }}</mat-label>
                 <mat-select formControlName="boreSize" required>
-                    <mat-option *ngFor="let boreSize of boreSizes" [value]="boreSize.value">{{ boreSize.display }}</mat-option>
+                    <mat-option *ngFor="let boreSize of boreSizes" [value]="boreSize.boresize">{{ boreSize.boresize }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

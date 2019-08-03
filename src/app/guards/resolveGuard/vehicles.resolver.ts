@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import { ConfigService } from '../../services/config.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class VehiclesResolver implements Resolve<any>{
     constructor(
         private config: ConfigService,

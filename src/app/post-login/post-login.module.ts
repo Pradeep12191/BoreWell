@@ -14,6 +14,8 @@ import { S404Component } from '../404/404.component';
 import { MobileSidenavComponent } from './mobile-sidenav/mobile-sidenav.component';
 import { StateResolver } from '../guards/resolveGuard/state.resolver';
 import { UserInfoResolver } from '../guards/resolveGuard/user-info.resolver';
+import { VehicleTypeResolver } from '../guards/resolveGuard/vehicle/vehicle-type.resolver';
+import { BoreSizeResolver } from '../guards/resolveGuard/vehicle/bore-size.resolver';
 
 
 
@@ -35,7 +37,9 @@ import { UserInfoResolver } from '../guards/resolveGuard/user-info.resolver';
     ],
     providers: [
         StateResolver,
-        UserInfoResolver
+        UserInfoResolver,
+        VehicleTypeResolver,
+        BoreSizeResolver
     ],
 })
 export class PostLoginModule {

@@ -3,7 +3,9 @@ import { Observable, timer, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ConfigService } from '../../services/config.service';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class StateResolver implements Resolve<any>{
     constructor(
         private config: ConfigService,

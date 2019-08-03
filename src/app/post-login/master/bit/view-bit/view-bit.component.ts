@@ -27,11 +27,15 @@ export class ViewBitComponent {
                 this.bitDataSource = new MatTableDataSource<Bit>(this.bits);
             }
         });
-        
+
+        this.displayedColumns = ['serialNo', 'name', 'size', 'edit', 'delete', 'more_details'];
+        this.sticky = false;
+        this.isMobile = true;
+
         if (this.mediaObs.isActive('lt-md')) {
-            this.displayedColumns = ['serialNo', 'name', 'size', 'edit', 'delete', 'more_details'];
-            this.sticky = false;
-            this.isMobile = true;
+            // this.displayedColumns = ['serialNo', 'name', 'size', 'edit', 'delete', 'more_details'];
+            // this.sticky = false;
+            // this.isMobile = true;
         }
 
     }

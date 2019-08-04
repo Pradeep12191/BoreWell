@@ -76,6 +76,10 @@
         {
             "name": "view_vehicle_list",
             "url": "rigapi1/webapi/resource/viewvehiclelist"
+        },
+        {
+            "name": "contact_types",
+            "url": "rigapi1/webapi/resource/contact_type"
         }
     ]
 }

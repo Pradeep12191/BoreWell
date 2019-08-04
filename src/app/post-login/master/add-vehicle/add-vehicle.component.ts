@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddVehicleService } from './add-vehicle.service';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { MatStepper } from '@angular/material';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     templateUrl: 'add-vehicle.component.html',
@@ -11,18 +14,21 @@ import { HttpClient } from '@angular/common/http';
 export class AddVehicleComponent implements OnInit {
     vehicleForm: FormGroup;
     baseUrl;
-    url
+    url;
+    @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
     constructor(
         private fb: FormBuilder,
         private avs: AddVehicleService,
         private config: ConfigService,
-        private http: HttpClient
+        private http: HttpClient,
+        private toastr: ToastrService,
+        private common: CommonService
     ) {
         const vehicleUrl = this.config.getUrl('addVehicle');
         this.baseUrl = this.config.getConfig('apiUrl');
         this.url = this.baseUrl + vehicleUrl;
     }
-    
+
 
     ngOnInit() {
         this.vehicleForm = this.fb.group({
@@ -115,10 +121,12 @@ export class AddVehicleComponent implements OnInit {
         console.log(JSON.stringify(vehicleObj, null, 2))
         if (this.url) {
             this.http.post(this.url, vehicleObj).subscribe((response) => {
-                if (response) {
-                    console.log(JSON.stringify(response, null, 2))
-                }else{
-                    console.log('No Response')
+                this.toastr.success('Vehicle Added Sucessfully', null, { timeOut: 1500 })
+                this.stepper.reset();
+                this.common.scrollTop();
+            }, (err) => {
+                if(err){
+                    this.toastr.error('Error while saving Vehicle', null, { timeOut: 1500 })
                 }
             });
         }

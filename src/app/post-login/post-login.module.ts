@@ -16,6 +16,7 @@ import { StateResolver } from '../guards/resolveGuard/state.resolver';
 import { UserInfoResolver } from '../guards/resolveGuard/user-info.resolver';
 import { VehicleTypeResolver } from '../guards/resolveGuard/vehicle/vehicle-type.resolver';
 import { BoreSizeResolver } from '../guards/resolveGuard/vehicle/bore-size.resolver';
+import { ContactTypeResolver } from '../guards/resolveGuard/select-option/contact-type.resolver.';
 
 
 
@@ -39,7 +40,8 @@ import { BoreSizeResolver } from '../guards/resolveGuard/vehicle/bore-size.resol
         StateResolver,
         UserInfoResolver,
         VehicleTypeResolver,
-        BoreSizeResolver
+        BoreSizeResolver,
+        ContactTypeResolver
     ],
 })
 export class PostLoginModule {

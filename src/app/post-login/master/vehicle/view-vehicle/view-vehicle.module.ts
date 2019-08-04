@@ -4,9 +4,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../material.module';
 import { SharedModule } from '../../../../shared.module';
-import { ViewBitRoutingModule } from './view-bit-routing.module';
-import { ViewBitComponent } from './view-bit.component';
-import { BitListResolver } from '../../../../guards/resolveGuard/bit/bit-list.resolver';
+import { VehicleListResolver } from '../../../../guards/resolveGuard/vehicle/vehicle-list.resolver';
+import { ViewVehicleComponent } from './view-vehicle.component';
+import { ViewVehicleRoutingModule } from './view-vehicle-routing.module';
 import { ExpandTableModule } from '../../../../expand-table/expand-table.module';
 
 @NgModule({
@@ -16,16 +16,16 @@ import { ExpandTableModule } from '../../../../expand-table/expand-table.module'
         FlexLayoutModule,
         ReactiveFormsModule,
         SharedModule,
-        ViewBitRoutingModule,
+        ViewVehicleRoutingModule,
         ExpandTableModule
     ],
     declarations: [
-        ViewBitComponent
+        ViewVehicleComponent
     ],
     providers: [
-        BitListResolver
+        VehicleListResolver
     ]
 })
-export class ViewBitModule {
+export class ViewVehicleModule {
 
 }

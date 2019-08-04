@@ -72,6 +72,10 @@
         {
             "name": "bore_size",
             "url": "rigapi1/webapi/resource/boresize"
+        },
+        {
+            "name": "view_vehicle_list",
+            "url": "rigapi1/webapi/resource/viewvehiclelist"
         }
     ]
 }

@@ -24,7 +24,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 isFirstChild: true,
                 children: [
                     { name: 'NAV.ADD_VEHICLE', isFirstChild: true, path: 'master/vehicle/addVehicle', level: 2, paddingLeft: LEVEL_2_PADDING, },
-                    { name: 'NAV.VIEW_VEHICLE', path: 'ytd2', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.VIEW_VEHICLE', path: 'master/vehicle/viewVehicle', level: 2, paddingLeft: LEVEL_2_PADDING },
                     { name: 'NAV.LINK_VEHICLE', isLastChild: true, path: 'ytd3', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,

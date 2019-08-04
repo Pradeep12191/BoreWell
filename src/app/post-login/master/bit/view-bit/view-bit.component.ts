@@ -4,6 +4,7 @@ import { Bit } from '../Bit';
 import { MatTableDataSource } from '@angular/material';
 import { MediaObserver } from '@angular/flex-layout';
 import { EXPAND, ROTATE_ARROW_ANIMATION } from '../../../../animations';
+import { Column } from '../../../../expand-table/Column';
 
 @Component({
     templateUrl: './view-bit.component.html',
@@ -15,6 +16,14 @@ export class ViewBitComponent {
     expandedBit;
     bitDataSource: MatTableDataSource<Bit>;
     displayedColumns: string[] = ['serialNo', 'name', 'size', 'number', 'purchaseDate', 'type', 'drilling', 'distributorDetails', 'intialScale', 'edit', 'delete',];
+    public columns: Column[] = [
+        { id: 'serialNo', name: 'S.No.', type: 'index', width: '10' },
+        { id: 'name', name: 'Bit Name', type: 'string', width: '30' },
+        { id: 'size', name: 'Bit Size', type: 'string', width: '30' },
+        { id: 'edit', name: '', type: 'button', width: '10' },
+        { id: 'delete', name: '', type: 'button', width: '10' },
+        { id: 'more_details', name: '', type: 'toggle', width: '10', },
+    ]
     sticky = true;
     isMobile = false;
     constructor(

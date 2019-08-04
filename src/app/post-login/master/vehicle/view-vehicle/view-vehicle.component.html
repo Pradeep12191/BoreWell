@@ -1,0 +1,84 @@
+<!-- <mat-table [dataSource]="vehicleDataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+    <ng-container matColumnDef="serialNo">
+        <mat-header-cell *matHeaderCellDef> S.No. </mat-header-cell>
+        <mat-cell *matCellDef="let vehicle; let i = dataIndex"> {{i + 1}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="registrationNumber">
+        <mat-header-cell *matHeaderCellDef> Vehicle No. </mat-header-cell>
+        <mat-cell *matCellDef="let vehicle"> {{ vehicle.registrationNumber }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> Vehicle Type </mat-header-cell>
+        <mat-cell *matCellDef="let vehicle"> {{ vehicle.type }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ownedBy">
+        <mat-header-cell *matHeaderCellDef> Owned By </mat-header-cell>
+        <mat-cell *matCellDef="let vehicle"> {{ vehicle.ownedBy }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="registrationAddress">
+        <mat-header-cell *matHeaderCellDef> Reg. Address </mat-header-cell>
+        <mat-cell *matCellDef="let vehicle"> {{ vehicle.registrationAddress }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit" [stickyEnd]="sticky">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="isMobile ? '10' : '60px'"></mat-header-cell>
+        <mat-cell *matCellDef="let bit" [fxFlex]="isMobile ? '10' : '60px'" fxLayout fxLayoutAlign="center center">
+            <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete" [stickyEnd]="sticky">
+        <mat-header-cell [fxFlex]="isMobile ? '10' : '60px'" *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let bit" fxLayout fxLayoutAlign="center center" [fxFlex]="isMobile ? '10': '60px'">
+            <button mat-icon-button color="primary">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table> -->
+
+<expand-table [columns]="columns" [dataSource]="vehicleDataSource">
+    <ng-container *expandDetails="let vehicle">
+        <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="10px">
+                <div fxFlex="30" class="bold font-12">Vehicle Type</div>
+                <div class="bold">:</div>
+                <div>{{ vehicle.type }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">Bore Size</div>
+                <div class="bold">:</div>
+                <div>{{ vehicle.bore_size }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">Vehicle No.</div>
+                <div class="bold">:</div>
+                <div>{{ vehicle.registrationAddress }}</div>
+            </div>
+            <div class="header" fxLayout="column" fxLayoutAlign="center center">
+                <div>Contact Details</div>
+                <div>(Contact Details For Text Messaging Reminder)</div>
+            </div>
+            <!-- <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        Contact Details
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                </mat-card-content>
+            </mat-card> -->
+        </div>
+    </ng-container>
+</expand-table>

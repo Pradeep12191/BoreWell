@@ -1,0 +1,44 @@
+<mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+    <ng-container *ngFor="let col of columns">
+        <ng-container [matColumnDef]="col.id">
+            <mat-header-cell [fxFlex]="col.width" [fxFlex.lt-md]="col.mobileWidth" *matHeaderCellDef>
+                {{ col.name }}
+            </mat-header-cell>
+            <mat-cell [fxFlex]="col.width" [fxFlex.lt-md]="col.mobileWidth" *matCellDef="let row; let i = dataIndex">
+                <ng-container *ngIf="col.type === 'index'">{{ i + 1 }}</ng-container>
+                <ng-container *ngIf="col.type === 'string'">{{ row[col.id] }}</ng-container>
+                <ng-container *ngIf="col.type === 'button'">
+                    <ng-container *ngIf="col.id === 'edit'">
+                        <button mat-icon-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </ng-container>
+                    <ng-container *ngIf="col.id === 'delete'">
+                        <button mat-icon-button color="primary">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="col.type === 'toggle'">
+                    <div fxLayout fxLayoutAlign="center center" class="arrow-container" (click)="expandedRow = expandedRow === row ? null : row">
+                        <div [@rotateArrow]="expandedRow === row ? 'expanded': 'collapsed'" class="arrow"></div>
+                    </div>
+                </ng-container>
+            </mat-cell>
+            <!-- <ng-container *ngIf="col.type === 'string' || col.type === 'button'">
+                <mat-cell *matCellDef="let row"> {{ row[col.id] }} </mat-cell>
+            </ng-container> -->
+        </ng-container>
+    </ng-container>
+    <ng-container matColumnDef="expandedDetail">
+        <mat-cell *matCellDef="let row">
+            <ng-template [ngTemplateOutlet]="detailsTpl" [ngTemplateOutletContext]="{$implicit: row}"></ng-template>
+        </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row [@expand]="expandedRow === row ? 'expanded': 'collapsed'" class="detail-row" *matRowDef="let row; columns: ['expandedDetail']"></mat-row>
+</mat-table>

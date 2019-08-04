@@ -4,6 +4,7 @@ import { MatIconModule, MatButtonModule, MatTableModule } from '@angular/materia
 import { CommonModule } from '@angular/common';
 import { ExpandTableComponent } from './expand-table.component';
 import { ExpandDetailsDirective } from './expand-deatils.directive';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
     imports: [
@@ -11,7 +12,8 @@ import { ExpandDetailsDirective } from './expand-deatils.directive';
         MatIconModule,
         MatButtonModule,
         MatTableModule,
-        CommonModule
+        CommonModule,
+        SharedModule
     ],
     declarations: [
         ExpandTableComponent,

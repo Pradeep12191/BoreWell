@@ -2,32 +2,32 @@
     <ng-container *expandDetails="let bit">
         <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold  font-12" fxFlex="30">Distributor Name</div>
+                <div class="bold  font-12" fxFlex="30">{{ 'ADD_BIT.BIT_DISTRIBUTOR.NAME_COL' | translate}}</div>
                 <div class="bold">:</div>
-                <div class="text-transform-upper">{{bit.distributorDetails}}</div>
+                <div class="text-transform-upper">{{ bit.distributorDetails }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold font-12" fxFlex="30">Bit Number</div>
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_BIT.NUMBER' | translate }}</div>
                 <div class="bold">:</div>
                 <div>{{bit.number}}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold font-12" fxFlex="30">Date</div>
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_BIT.PURCHASE_DATE' | translate }}</div>
                 <div class="bold">:</div>
                 <div>{{ bit.purchaseDate }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold font-12" fxFlex="30">Bit Type</div>
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_BIT.TYPE' | translate }}</div>
                 <div class="bold">:</div>
                 <div>{{ bit.type }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold font-12" fxFlex="30">Drilling</div>
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_BIT.DRILLING' | translate }}</div>
                 <div class="bold">:</div>
                 <div>{{ bit.drilling }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold font-12" fxFlex="30">Initial Scale</div>
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_BIT.INITIAL_SCALE' | translate }}</div>
                 <div class="bold">:</div>
                 <div>{{ bit.intialScale }}</div>
             </div>

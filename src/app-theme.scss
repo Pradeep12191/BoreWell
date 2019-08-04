@@ -5,9 +5,9 @@
 @mixin mat-table-theme($theme) {
     $primary: map-get($theme, primary);
     mat-header-row{
-        
+        background-color: mat-color($primary);
         mat-header-cell.mat-header-cell{
-            background-color: mat-color($primary);
+            
             color: white;
             font-size: 14px;
         }

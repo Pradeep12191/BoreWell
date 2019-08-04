@@ -15,11 +15,10 @@ export class ViewBitComponent {
     bits: Bit[];
     expandedBit;
     bitDataSource: MatTableDataSource<Bit>;
-    displayedColumns: string[] = ['serialNo', 'name', 'size', 'number', 'purchaseDate', 'type', 'drilling', 'distributorDetails', 'intialScale', 'edit', 'delete',];
     public columns: Column[] = [
-        { id: 'serialNo', name: 'S.No.', type: 'index', width: '10' },
-        { id: 'name', name: 'Bit Name', type: 'string', width: '30' },
-        { id: 'size', name: 'Bit Size', type: 'string', width: '30' },
+        { id: 'serialNo', name: 'COLUMN.SERIAL_NO', type: 'index', width: '10' },
+        { id: 'name', name: 'ADD_BIT.NAME', type: 'string', width: '30' },
+        { id: 'size', name: 'ADD_BIT.SIZE', type: 'string', width: '30' },
         { id: 'edit', name: '', type: 'button', width: '10' },
         { id: 'delete', name: '', type: 'button', width: '10' },
         { id: 'more_details', name: '', type: 'toggle', width: '10', },
@@ -37,7 +36,6 @@ export class ViewBitComponent {
             }
         });
 
-        this.displayedColumns = ['serialNo', 'name', 'size', 'edit', 'delete', 'more_details'];
         this.sticky = false;
         this.isMobile = true;
 

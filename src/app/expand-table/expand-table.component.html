@@ -3,7 +3,7 @@
     <ng-container *ngFor="let col of columns">
         <ng-container [matColumnDef]="col.id">
             <mat-header-cell [fxFlex]="col.width" [fxFlex.lt-md]="col.mobileWidth" *matHeaderCellDef>
-                {{ col.name }}
+                {{ col.name | translate }}
             </mat-header-cell>
             <mat-cell [fxFlex]="col.width" [fxFlex.lt-md]="col.mobileWidth" *matCellDef="let row; let i = dataIndex">
                 <ng-container *ngIf="col.type === 'index'">{{ i + 1 }}</ng-container>

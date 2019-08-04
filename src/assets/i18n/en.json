@@ -62,12 +62,14 @@
     "ADD_VEHICLE": {
         "VEHICLE_TYPE": "Vehicle Type",
         "BORE_SIZE": "Bore Size",
+        "VEHICLE_NO": "Vehicle No.",
         "REG_NO": "Vehicle Registration Number (Ex: TN34 A1234)",
         "OWNER": "Vehicle Owned By",
         "REG_ADDR": "Registration Address",
         "MANUFACTURER": "Vehicle Manufacturer",
-        "YEAR_MANUFACTURE": "Year Of Manufacture",
+        "YEAR_MANUFACTURE": "Year Of Manufacturer",
         "ENGINE_NUMBER": "Engine Number",
+        "ENGINE_NO": "Engine No.",
         "CHASSIS_NUMBER": "Chassis Number",
         "REG_CERT": "Register Certificate (Image)",
         "CONTACT_DETAILS": {

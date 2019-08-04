@@ -4,6 +4,7 @@ import { ConfigService } from '../../../../../services/config.service';
 import { AddVehicleService } from '../../add-vehicle.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'vehicle-contact-details',
@@ -24,7 +25,8 @@ export class VehicleContactDetailsComponent {
     constructor(
         private config: ConfigService,
         private aes: AddVehicleService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private snackBar: MatSnackBar
     ) {
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscription = this.route.data.subscribe((data) => {
@@ -37,6 +39,9 @@ export class VehicleContactDetailsComponent {
     }
 
     addContact() {
+        if (this.contactFormArray.invalid) {
+            return this.snackBar.open('Please Fill Fields', null, { duration: 1000 })
+        }
         this.contactFormArray.push(this.aes.contactForm())
     }
 

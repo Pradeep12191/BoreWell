@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-horizontal-stepper labelPosition="bottom" #stepper [formGroup]="vehicleForm">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper [formGroup]="vehicleForm" linear>
         <ng-template matStepperIcon="number">
         </ng-template>
         <mat-step [stepControl]="vehicleForm.get('info')">

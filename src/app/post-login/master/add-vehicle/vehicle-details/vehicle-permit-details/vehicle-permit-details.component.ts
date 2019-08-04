@@ -41,7 +41,7 @@ export class VehiclePermitDetailsComponent implements OnDestroy {
         const lastState = lastCtrl.get('state').value;
         const lastValid = lastCtrl.get('validUpto').value;
 
-        if (lastState && lastValid) {
+        if (this.permitFormArray.valid) {
             this.permitFormArray.push(this.avs.permitDetailsForm())
         } else {
             this.snackbar.open('Please Fill Permit Detail', null, { duration: 1000 })

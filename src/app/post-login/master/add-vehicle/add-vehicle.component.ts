@@ -76,6 +76,9 @@ export class AddVehicleComponent implements OnInit {
     }
 
     save() {
+        if (this.vehicleForm.invalid) {
+            return this.toastr.error('Please fill all required fields *', null, { timeOut: 1500 })
+        }
         const formValue = this.vehicleForm.value;
         const vehicleObj = {
             type: formValue.info.vehicleType,
@@ -118,14 +121,13 @@ export class AddVehicleComponent implements OnInit {
             pollution_thirtyDays: formValue.cerificate.pollution.remindBefore.thirtyDays,
 
         }
-        console.log(JSON.stringify(vehicleObj, null, 2))
         if (this.url) {
             this.http.post(this.url, vehicleObj).subscribe((response) => {
                 this.toastr.success('Vehicle Added Sucessfully', null, { timeOut: 1500 })
                 this.stepper.reset();
                 this.common.scrollTop();
             }, (err) => {
-                if(err){
+                if (err) {
                     this.toastr.error('Error while saving Vehicle', null, { timeOut: 1500 })
                 }
             });

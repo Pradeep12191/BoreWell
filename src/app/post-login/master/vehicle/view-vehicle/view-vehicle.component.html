@@ -17,9 +17,9 @@
                 <div>{{ vehicle.registrationNumber }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
-                <div class="bold font-12" fxFlex="30">Owned By</div>
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_VEHICLE.OWNER' | translate }}</div>
                 <div class="bold">:</div>
-                <div>{{ vehicle.owner }}</div>
+                <div>{{ vehicle.ownedBy }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
                 <div class="bold font-12" fxFlex="30">{{ 'ADD_VEHICLE.REG_ADDR' | translate }}</div>
@@ -40,6 +40,11 @@
                 <div class="bold font-12" fxFlex="30">{{ 'ADD_VEHICLE.ENGINE_NO' | translate }}</div>
                 <div class="bold">:</div>
                 <div>{{ vehicle.engineNumber }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_VEHICLE.CHASSIS_NUMBER' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ vehicle.chassisNumber }}</div>
             </div>
             <div class="header" fxLayout="column" fxLayoutAlign="center center">
                 <div>{{ 'ADD_VEHICLE.CONTACT_DETAILS.TITLE' | translate }}</div>
@@ -73,7 +78,7 @@
                 <div fxFlex="30" class="bold font-12">{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' |
                     translate }}</div>
                 <div class="bold">:</div>
-                <div>{{ vehicle.insurance_validUpto | date: 'dd-MM-yyy' }}</div>
+                <div>{{ vehicle.insurance_validUpto | date: 'dd-MM-yyyy' }}</div>
             </div>
             <div class="header" fxLayout="column" fxLayoutAlign="center center">{{
                 'ADD_VEHICLE.LABOUR_INSURANCE_DETAILS.TITLE' | translate }}</div>
@@ -100,7 +105,7 @@
                     <div fxLayout fxLayoutGap="10px">
                         <div fxFlex="30" class="bold font-12">{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</div>
                         <div class="bold">:</div>
-                        <div>{{ permit.validUpto }}</div>
+                        <div>{{ permit.validUpto | date: 'dd-MM-yyyy'}}</div>
                     </div>
                 </ng-container>
             </ng-container>
@@ -110,7 +115,7 @@
             <div fxLayout fxLayoutGap="10px">
                 <div fxFlex="30" class="bold font-12">{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</div>
                 <div class="bold">:</div>
-                <div>{{ vehicle.roadTax_validUpto }}</div>
+                <div>{{ vehicle.roadTax_validUpto | date: 'dd-MM-yyyy'}}</div>
             </div>
             <div class="header" fxLayout="column" fxLayoutAlign="center center">
                 {{ 'ADD_VEHICLE.FITNESS_CERT.TITLE' | translate }}
@@ -118,7 +123,7 @@
             <div fxLayout fxLayoutGap="10px">
                 <div fxFlex="30" class="bold font-12">{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</div>
                 <div class="bold">:</div>
-                <div>{{ vehicle.fitness_validUpto }}</div>
+                <div>{{ vehicle.fitness_validUpto | date: 'dd-MM-yyyy' }}</div>
             </div>
             <div class="header" fxLayout="column" fxLayoutAlign="center center">
                 {{ 'ADD_VEHICLE.POLLUTION_CERT.TITLE' | translate }}
@@ -126,7 +131,7 @@
             <div fxLayout fxLayoutGap="10px">
                 <div fxFlex="30" class="bold font-12">{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</div>
                 <div class="bold">:</div>
-                <div>{{ vehicle.pollution_validUpto }}</div>
+                <div>{{ vehicle.pollution_validUpto | date: 'dd-MM-yyyy' }}</div>
             </div>
         </div>
     </ng-container>

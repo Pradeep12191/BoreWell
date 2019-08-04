@@ -16,8 +16,8 @@ export class AddVehicleService {
 
     public permitDetailsForm() {
         return this.fb.group({
-            state: null,
-            validUpto: null,
+            state: [null, Validators.required],
+            validUpto: [null, Validators.required],
             remindBefore: this.fb.group({
                 oneDay: false,
                 twoDays: false,

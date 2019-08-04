@@ -13,7 +13,7 @@
                     <ng-container [formGroup]="contactCtrl">
                         <mat-form-field [appearance]="appearance" fxFlex>
                             <mat-label>{{ 'ADD_VEHICLE.CONTACT_DETAILS.CONTACT_TYPE' | translate }}</mat-label>
-                            <mat-select formControName="type" required>
+                            <mat-select formControlName="type" required>
                                 <mat-option *ngFor="let contactType of contactTypes" [value]="contactType.contact_type">{{
                                     contactType.contact_type }}</mat-option>
                             </mat-select>

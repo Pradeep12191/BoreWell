@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{title | translate}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="addDistributorForm">
+        <div fxLayout="column" fxLayoutGap="20px">
+            <mat-form-field [appearance]="appearance">
+                <mat-label>{{ data.name.label | translate }}</mat-label>
+                <input matInput [formControlName]="data.name.control">
+            </mat-form-field>
+            <mat-form-field [appearance]="appearance">
+                <mat-label>{{ data.address.label | translate }}</mat-label>
+                <textarea rows="5" matInput [formControlName]="data.address.control"></textarea>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <div>
+        <button mat-raised-button mat-dialog-close>{{ 'BTN.CANCEL' | translate }}</button>
+    </div>
+    <div>
+        <button mat-raised-button (click)="sumbit()" color="primary">{{ 'BTN.SUBMIT' | translate }}</button>
+    </div>
+</div>

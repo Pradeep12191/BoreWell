@@ -6,13 +6,14 @@ import { MaterialModule } from '../../../material.module';
 import { SharedModule } from '../../../shared.module';
 import { AddBitComponent } from './add-bit.component';
 import { AddBitRoutingModule } from './add-bit-routing.module';
-import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
+// import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
 import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material';
 import { DirectiveModule } from '../../../directives/directive.module';
 import { BitSizeResolver } from '../../../guards/resolveGuard/bit-size-list.resolver';
 import { DistributorsResolver } from '../../../guards/resolveGuard/distributors.resolver';
 import { VehiclesResolver } from '../../../guards/resolveGuard/vehicles.resolver';
+import { DialogModule } from '../dialog/dialog.module';
 
 const matDialogConfig: MatDialogConfig = {
     width: '700px',
@@ -28,15 +29,16 @@ const matDialogConfig: MatDialogConfig = {
         ReactiveFormsModule,
         SharedModule,
         AddBitRoutingModule,
-        DirectiveModule
+        DirectiveModule,
+        DialogModule
     ],
     declarations: [
         AddBitComponent,
-        AddDistributorDialogComponent,
+        // AddDistributorDialogComponent,
         AddBitSizeDialogComponent
     ],
     entryComponents: [
-        AddDistributorDialogComponent,
+        // AddDistributorDialogComponent,
         AddBitSizeDialogComponent
     ],
     providers: [

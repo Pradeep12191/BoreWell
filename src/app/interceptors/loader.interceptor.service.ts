@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
 import { tap, delay } from 'rxjs/operators';
 import { LoaderService } from '../services/loader-service';
 import { timer } from 'rxjs';
@@ -15,11 +15,14 @@ export class LoaderInterceptorService implements HttpInterceptor {
         }
         return next.handle(req).pipe(
             tap((res) => {
-                if (req.method === 'POST') {
-                    this.loader.hideSaveLoader()
+                if (res instanceof HttpResponse) {
+                    if (req.method === 'POST') {
+                        this.loader.hideSaveLoader()
+                    }
                 }
+
             }),
-           
+
         )
     }
 }

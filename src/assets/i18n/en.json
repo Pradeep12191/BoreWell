@@ -125,7 +125,26 @@
         "BARREL_SCALE": "Barrel Scale (MM)",
         "SPECH_SET_SIZE": "Spech Set Size",
         "PISTON_NUMBER": "Piston Number",
-        "CONTROL_TUBE_NUMBER": "Control Tube Number (MM)"
+        "CONTROL_TUBE_NUMBER": "Control Tube Number (MM)",
+        "DISTRIBUTOR":{
+            "TITLE": "Add Hammer Distributor",
+            "NAME_COL": "Distributor Name",
+            "NAME": "Hammer Distributor Name",
+            "ADDRESS": "Hammer Distributor Address"
+        },
+        "COL_TITLE":{
+            "DISTRIBUTOR_NAME": "Distributor Name",
+            "NAME": "Name",
+            "NUMBER": "Number",
+            "COMPANY_NAME": "Company Name",
+            "PURCHASE_DATE": "Purchase Date",
+            "RIG": "Rig"
+        },
+        "COMPANY": {
+            "TITLE": "Add Hammer Company Name",
+            "NAME": "Hammer Company Name",
+            "ADDRESS": "Hammer Company Address"
+        }
     },
     "ADD_BIT": {
         "TITLE": "Add Drill Bit",

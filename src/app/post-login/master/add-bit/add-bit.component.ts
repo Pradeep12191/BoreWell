@@ -3,7 +3,7 @@ import { ConfigService } from '../../../services/config.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDatepickerInputEvent } from '@angular/material';
-import { AddDistributorDialogComponent } from './dialog/add-distributor/add-distributor.dialog.component';
+import { AddDistributorDialogComponent } from '../dialog/add-distributor/add-distributor.dialog.component';
 import { AddBitSizeDialogComponent } from './dialog/add-size/add-size.dialog.component';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -82,7 +82,18 @@ export class AddBitComponent implements OnInit {
     openAddDistributorDialog() {
         const dialogRef = this.dialog.open(AddDistributorDialogComponent,
             {
-                data: { title: 'ADD_BIT.BIT_DISTRIBUTOR.TITLE' }
+                data: {
+                    title: 'ADD_BIT.BIT_DISTRIBUTOR.TITLE',
+                    name: {
+                        label: 'ADD_BIT.BIT_DISTRIBUTOR.NAME',
+                        control: 'distributor_name'
+                    },
+                    address: {
+                        label: 'ADD_BIT.BIT_DISTRIBUTOR.ADDRESS',
+                        control: 'distributor_address'
+                    },
+                    urlName: 'addbit_distributor',
+                }
             }
         )
         dialogRef.afterClosed().subscribe((result) => {

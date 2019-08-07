@@ -1,0 +1,57 @@
+<expand-table [columns]="columns" [dataSource]="hammerDataSource">
+    <ng-container *expandDetails="let hammer">
+        <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold  font-12" fxFlex="30">{{ 'ADD_HAMMER.COL_TITLE.DISTRIBUTOR_NAME' | translate}}</div>
+                <div class="bold">:</div>
+                <div class="text-transform-upper">{{ hammer?.distributorDetails }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.COL_TITLE.NUMBER' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{hammer?.number}}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.COL_TITLE.PURCHASE_DATE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.purchaseDate | date: 'dd-MM-yyyy' }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.COL_TITLE.COMPANY_NAME' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.companyName }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.BARREL_SCALE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.barrelScale }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.CONTROL_TUBE_NUMBER' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.controlTubeNumber }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.PISTON_NUMBER' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.pistonNumber }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.COL_TITLE.RIG' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.rig }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30">{{ 'ADD_HAMMER.SPECH_SET_SIZE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ hammer?.spechSetSize }}</div>
+            </div>
+        </div>
+    </ng-container>
+</expand-table>
+
+<ng-template #emptyTpl>
+    <mat-card>
+        <mat-card-content>No Hammer Found.</mat-card-content>
+    </mat-card>
+</ng-template>

@@ -42,6 +42,26 @@
             "url": "rigapi1/webapi/resource/addbit_distributor"
         },
         {
+            "name": "addHammer_distributor",
+            "url": "rigapi1/webapi/resource/addHammer_distributor"
+        },
+        {
+            "name": "addHammer_company",
+            "url": "rigapi1/webapi/resource/addHammer_company"
+        },
+        {
+            "name": "gethammer_company_list",
+            "url": "rigapi1/webapi/resource/gethammer_company_list"
+        },
+        {
+            "name": "viewhammerlist",
+            "url": "rigapi1/webapi/resource/viewhammerlist"
+        },
+        {
+            "name": "gethammer_distributor_list",
+            "url": "rigapi1/webapi/resource/gethammer_distributor_list"
+        },
+        {
             "name": "bitlist",
             "url": "rigapi1/webapi/resource/getbitlist"
         },

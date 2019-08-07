@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ConfigService } from '../../../../../services/config.service';
+import { ConfigService } from '../../../../services/config.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
@@ -9,8 +9,12 @@ import { ToastrService } from 'ngx-toastr';
     templateUrl: './add-distributor.dialog.component.html',
     styleUrls: ['./add-distributor.dialog.component.scss']
 })
-export class AddDistributorDialogComponent {
+export class AddDistributorDialogComponent implements OnInit {
     title;
+    name;
+    nameControlName;
+    addressControlName;
+    address;
     addDistributorForm: FormGroup;
     appearance;
     distributorUrl;
@@ -23,14 +27,20 @@ export class AddDistributorDialogComponent {
         private dialogRef: MatDialogRef<AddDistributorDialogComponent>
     ) {
         this.title = data.title;
+        this.name = data.name;
+        this.address = data.address;
         const baseUrl = this.config.getConfig('apiUrl');
-        const url = this.config.getUrl('addbit_distributor');
+        const url = this.config.getUrl(data.urlName);
         this.distributorUrl = baseUrl + url;
         this.addDistributorForm = this.fb.group({
-            distributor_name: [null, Validators.required],
-            distributor_address: [null, Validators.required]
+            [data.name.control]: [null, Validators.required],
+            [data.address.control]: [null, Validators.required]
         })
         this.appearance = this.config.getConfig('formAppearance');
+    }
+
+    ngOnInit() {
+
     }
 
     sumbit() {

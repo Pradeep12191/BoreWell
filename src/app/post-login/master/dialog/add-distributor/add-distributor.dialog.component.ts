@@ -19,7 +19,7 @@ export class AddDistributorDialogComponent implements OnInit {
     appearance;
     distributorUrl;
     constructor(
-        @Inject(MAT_DIALOG_DATA) private data,
+        @Inject(MAT_DIALOG_DATA) public data,
         private fb: FormBuilder,
         private config: ConfigService,
         private http: HttpClient,

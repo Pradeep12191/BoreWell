@@ -12,7 +12,7 @@
                     </mat-form-field>
                     <mat-form-field fxFlex [appearance]="appearance">
                         <mat-label>{{ 'ADD_VEHICLE.GENERAL.VALID_UPTO' | translate }}</mat-label>
-                        <input matInput formControlName="validUpto" required readonly [matDatepicker]="dp">
+                        <input matInput formControlName="validUpto" readonly [matDatepicker]="dp">
                         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                         <mat-datepicker #dp>
                         </mat-datepicker>

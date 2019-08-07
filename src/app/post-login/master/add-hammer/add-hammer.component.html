@@ -51,8 +51,8 @@
                     <mat-form-field fxFlex [appearance]="appearance">
                         <mat-label>{{ 'ADD_HAMMER.SELECT_RIG' | translate }}</mat-label>
                         <mat-select formControlName="rig" required>
-                            <mat-option *ngFor="let rig of rigs" [value]="rig.value">{{
-                                rig.display }}</mat-option>
+                            <mat-option *ngFor="let rig of rigs" [value]="rig.registrationNumber">{{
+                                rig.registrationNumber }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

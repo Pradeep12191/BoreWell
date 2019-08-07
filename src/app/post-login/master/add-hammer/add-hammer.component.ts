@@ -22,9 +22,7 @@ export class AddHammerComponent implements OnInit, OnDestroy {
     baseUrl;
     companies = [];
     distributors = [];
-    rigs = [
-        { value: '1', display: 'KA01MP7396' }
-    ];
+    rigs = [];
     constructor(
         private configService: ConfigService,
         private fb: FormBuilder,
@@ -45,6 +43,9 @@ export class AddHammerComponent implements OnInit, OnDestroy {
                 }
                 if (data.distributors) {
                     this.distributors = data.distributors
+                }
+                if (data.rigs) {
+                    this.rigs = data.rigs
                 }
             }
         })

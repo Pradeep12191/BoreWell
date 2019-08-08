@@ -54,7 +54,7 @@ export class AddAgentComponent implements OnInit {
     resetForm() {
         this.agentForm.reset({
             point: {
-                particulars: [{ startFeet: '0', endFeet: '', perFeet: '', particulars: '', amount: '' }]
+                particulars: [{ startFeet: '0' }]
             }
         });
     }
@@ -82,11 +82,7 @@ export class AddAgentComponent implements OnInit {
             this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
                 this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 });
                 this.stepper.reset();
-                this.agentForm.reset({
-                    point: {
-                        particulars: [{ startFeet: '0', endFeet: '', perFeet: '', particulars: '', amount: '' }]
-                    }
-                });
+                this.resetForm();
                 this.common.scrollTop();
             }, (err) => {
                 if (err) {

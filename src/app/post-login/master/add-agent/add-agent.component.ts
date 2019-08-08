@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddAgentService } from './add-agent.service';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from '../../../services/common.service';
+import { MatStepper } from '@angular/material';
 
 @Component({
     templateUrl: 'add-agent.component.html',
@@ -13,6 +14,7 @@ import { CommonService } from '../../../services/common.service';
 export class AddAgentComponent implements OnInit {
     agentForm: FormGroup;
     addAgentUrl;
+    @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
     constructor(
         private fb: FormBuilder,
         private aes: AddAgentService,
@@ -50,7 +52,11 @@ export class AddAgentComponent implements OnInit {
     }
 
     resetForm() {
-        this.agentForm.reset();
+        this.agentForm.reset({
+            point: {
+                particulars: [{ startFeet: '0', endFeet: '', perFeet: '', particulars: '', amount: '' }]
+            }
+        });
     }
 
     saveAgent() {
@@ -74,8 +80,13 @@ export class AddAgentComponent implements OnInit {
 
         if (this.addAgentUrl) {
             this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
-                this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 })
-                this.agentForm.reset();
+                this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 });
+                this.stepper.reset();
+                this.agentForm.reset({
+                    point: {
+                        particulars: [{ startFeet: '0', endFeet: '', perFeet: '', particulars: '', amount: '' }]
+                    }
+                });
                 this.common.scrollTop();
             }, (err) => {
                 if (err) {

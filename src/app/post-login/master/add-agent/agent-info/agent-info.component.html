@@ -10,7 +10,7 @@
     <mat-form-field fxFlex [appearance]="appearance">
         <mat-label>{{ 'ADD_AGENT.STATE' | translate }}</mat-label>
         <mat-select formControlName="state">
-            <mat-option *ngFor="let state of states" [value]="state">{{ state.state }}</mat-option>
+            <mat-option *ngFor="let state of states" [value]="state.state">{{ state.state }}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex [appearance]="appearance">

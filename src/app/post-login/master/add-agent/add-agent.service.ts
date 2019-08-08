@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Injectable()
 export class AddAgentService {
@@ -13,10 +13,10 @@ export class AddAgentService {
     buildPointForm(startFeet = '0') {
         return this.fb.group({
             startFeet,
-            endFeet: '',
-            perFeet: '',
-            particulars: '',
-            amount: ''
+            endFeet: [null, Validators.required],
+            perFeet: [null, Validators.required],
+            particulars: [null, Validators.required],
+            amount: [null, Validators.required]
         })
     }
 }

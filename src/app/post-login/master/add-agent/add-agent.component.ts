@@ -54,7 +54,7 @@ export class AddAgentComponent implements OnInit {
     resetForm() {
         this.agentForm.reset({
             point: {
-                particulars: [{ startFeet: '0', endFeet: '', perFeet: '', particulars: '', amount: '' }]
+                particulars: [{ startFeet: '0' }]
             }
         });
     }

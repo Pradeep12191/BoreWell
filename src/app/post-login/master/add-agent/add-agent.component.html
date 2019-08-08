@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title>{{ 'ADD_AGENT.TITLE' | translate }}</mat-card-title>
     </mat-card-header>
-    <mat-horizontal-stepper labelPosition="bottom" #stepper [formGroup]="agentForm">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper linear [formGroup]="agentForm">
         <ng-template matStepperIcon="number">
         </ng-template>
         <mat-step [stepControl]="agentForm.get('info')">

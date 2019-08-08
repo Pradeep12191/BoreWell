@@ -3,13 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Bit } from '../Bit';
 import { MatTableDataSource } from '@angular/material';
 import { MediaObserver } from '@angular/flex-layout';
-import { EXPAND, ROTATE_ARROW_ANIMATION } from '../../../../animations';
 import { Column } from '../../../../expand-table/Column';
 
 @Component({
     templateUrl: './view-bit.component.html',
-    styleUrls: ['./view-bit.component.scss'],
-    animations: [EXPAND, ROTATE_ARROW_ANIMATION]
+    styleUrls: ['./view-bit.component.scss']
 })
 export class ViewBitComponent {
     bits: Bit[];

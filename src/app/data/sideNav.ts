@@ -66,7 +66,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 isLastChild: true,
                 children: [
                     { name: 'NAV.ADD_AGENT', isFirstChild: true, path: 'master/agent/addAgent', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'NAV.VIEW_AGENT', isLastChild: true, path: 'ytd7', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.VIEW_AGENT', isLastChild: true, path: 'master/agent/viewAgent', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,

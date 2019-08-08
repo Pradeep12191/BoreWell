@@ -198,6 +198,14 @@
             "INFO": "Info",
             "POINT": "Point",
             "COMMISSION": "Commission"
+        },
+        "COL": {
+            "OFFICE_NAME": "Office Name",
+            "NAME": "Name",
+            "STATE": "State",
+            "TYPE": "Type",
+            "ADDRESS": "Address",
+            "MOBILE": "Mobile No."
         }
     },
     "NAV": {

@@ -26,6 +26,9 @@ export class AgentInfoComponent implements OnDestroy {
             if (data.states && data.states.length) {
                 this.states = data.states.filter((state) => !(state.state === 'ALL INDIA PERMIT'))
             }
+            if (data.agentTypes && data.agentTypes.length) {
+                this.types = data.agentTypes
+            }
         })
         this.appearance = this.config.getConfig('formAppearance')
     }

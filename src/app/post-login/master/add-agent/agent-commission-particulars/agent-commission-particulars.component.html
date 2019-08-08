@@ -10,7 +10,7 @@
                         <mat-form-field fxFlex [appearance]="appearance">
                             <mat-label>{{ 'ADD_AGENT.COMMISSION.TYPE' | translate }}</mat-label>
                             <mat-select formControlName="type">
-                                <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
+                                <mat-option *ngFor="let type of types" [value]="type.drill_comm_type">{{ type.drill_comm_type }}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field fxFlex [appearance]="appearance">
@@ -22,7 +22,7 @@
                         <mat-form-field fxFlex [appearance]="appearance">
                             <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_TYPE' | translate }}</mat-label>
                             <mat-select formControlName="casingType">
-                                <mat-option *ngFor="let casingType of casingTypes" [value]="casingType.value">{{ casingType.display }}</mat-option>
+                                <mat-option *ngFor="let casingType of casingTypes" [value]="casingType.casing_comm_type">{{ casingType.casing_comm_type }}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field fxFlex [appearance]="appearance">
@@ -32,7 +32,7 @@
                         <mat-form-field fxFlex [appearance]="appearance">
                             <mat-label>{{ 'ADD_AGENT.COMMISSION.CASING_PAYMENT_TYPE' | translate }}</mat-label>
                             <mat-select formControlName="casingPaymentType">
-                                <mat-option *ngFor="let casingPaymentType of casingPaymentTypes" [value]="casingPaymentType.value">{{ casingPaymentType.display }}</mat-option>
+                                <mat-option *ngFor="let casingPaymentType of casingPaymentTypes" [value]="casingPaymentType.casing_payment_type">{{ casingPaymentType.casing_payment_type }}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>

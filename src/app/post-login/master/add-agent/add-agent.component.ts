@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddAgentService } from './add-agent.service';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
     templateUrl: 'add-agent.component.html',
@@ -15,7 +17,9 @@ export class AddAgentComponent implements OnInit {
         private fb: FormBuilder,
         private aes: AddAgentService,
         private config: ConfigService,
-        private http: HttpClient
+        private http: HttpClient,
+        private toastr: ToastrService,
+        private common: CommonService
     ) {
         const url = this.config.getUrl('addAgent');
         const baseUrl = this.config.getConfig('apiUrl');
@@ -30,7 +34,7 @@ export class AddAgentComponent implements OnInit {
                 state: [null, Validators.required],
                 type: [null, Validators.required],
                 address: null,
-                mobileNumber: null
+                mobileNumber: [null, Validators.required]
             }),
             point: this.fb.group({
                 particulars: this.fb.array([this.aes.buildPointForm()])
@@ -67,12 +71,15 @@ export class AddAgentComponent implements OnInit {
             commission_casingPaymentType: agentFormValue.commission.casingPaymentType,
         }
         console.log(JSON.stringify(agentObj, null, 2))
+
         if (this.addAgentUrl) {
             this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
-                if (response) {
-                    console.log(JSON.stringify(response, null, 2))
-                } else {
-                    console.log('No Response')
+                this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 })
+                this.agentForm.reset();
+                this.common.scrollTop();
+            }, (err) => {
+                if (err) {
+                    this.toastr.error('Error while saving Agent', null, { timeOut: 1500 })
                 }
             });
         }

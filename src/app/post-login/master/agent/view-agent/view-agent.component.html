@@ -1,0 +1,118 @@
+<expand-table [columns]="columns" [dataSource]="agentDataSource">
+    <ng-container *expandDetails="let agent">
+        <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold  font-12"  fxFlex.lt-md="50" fxFlex="30">{{ 'ADD_AGENT.COL.OFFICE_NAME' | translate}}</div>
+                <div class="bold">:</div>
+                <div class="text-transform-upper">{{ agent.officeName }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex.lt-md="50" fxFlex="30">{{ 'ADD_AGENT.COL.NAME' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.name }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex.lt-md="50" fxFlex="30">{{ 'ADD_AGENT.COL.STATE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.state }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex.lt-md="50" fxFlex="30">{{ 'ADD_AGENT.COL.TYPE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.type }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex.lt-md="50" fxFlex="30">{{ 'ADD_AGENT.COL.ADDRESS' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.address }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex.lt-md="50" fxFlex="30">{{ 'ADD_AGENT.COL.MOBILE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.mobileNumber }}</div>
+            </div>
+            <div class="header" fxLayout="column" fxLayoutAlign="center center">{{ 'ADD_AGENT.POINT.TITLE' | translate
+                }}</div>
+            <div fxLayout="column" fxLayoutGap="25px">
+                <ng-container *ngFor="let point of agent.points; let isLast = last">
+                    <div [class.dashed]="agent.points.length > 1 && !isLast && isMobile" *ngIf="point" fxLayout
+                        fxLayout.lt-md="column" fxLayoutGap="15px">
+                        <div fxFlex="40" fxLayoutGap="15px">
+                            <div fxLayout fxFlex fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex.lt-md="60" fxFlex="40">{{ 'ADD_AGENT.POINT.START_FEET'
+                                    | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point.startFeet }}</div>
+                            </div>
+                            <div fxLayout fxFlex fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex.lt-md="60" fxFlex="30">{{ 'ADD_AGENT.POINT.END_FEET' |
+                                    translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point.endFeet }}</div>
+                            </div>
+                        </div>
+                        <div fxFlex="40" fxLayoutGap="15px">
+                            <div fxLayout fxFlex fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex.lt-md="60" fxFlex="30">{{ 'ADD_AGENT.POINT.PER_FEET' |
+                                    translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point.perFeet }}</div>
+                            </div>
+                            <div fxLayout fxFlex fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex.lt-md="60" fxFlex="40">{{
+                                    'ADD_AGENT.POINT.PARTICULARS' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point.particulars }}</div>
+                            </div>
+                        </div>
+                        <div fxFlex="20" fxLayoutGap="15px" ngClass.lt-md="m-b-15">
+                            <div fxLayout fxFlex fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex.lt-md="29" fxFlex="30">{{ 'ADD_AGENT.POINT.AMOUNT' |
+                                    translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point.amount }}</div>
+                            </div>
+                            <!-- <div fxFlex fxShow.lt-md></div> -->
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="header" fxLayout="column" fxLayoutAlign="center center">{{ 'ADD_AGENT.COMMISSION.TITLE' |
+                translate
+                }}</div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30" fxFlex.lt-md="50">{{ 'ADD_AGENT.COMMISSION.TYPE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.commission_type }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30" fxFlex.lt-md="50">{{ 'ADD_AGENT.COMMISSION.PER_FEET' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.commission_perFeet }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30" fxFlex.lt-md="50">{{ 'ADD_AGENT.COMMISSION.CASING_TYPE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.commission_casingType }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30" fxFlex.lt-md="50">{{ 'ADD_AGENT.COMMISSION.CASING_PER_FEET' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.commission_casingPerFeet }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-12" fxFlex="30" fxFlex.lt-md="50">{{ 'ADD_AGENT.COMMISSION.CASING_PAYMENT_TYPE' | translate }}</div>
+                <div class="bold">:</div>
+                <div>{{ agent.commission_casingPaymentType }}</div>
+            </div>
+
+        </div>
+    </ng-container>
+</expand-table>
+
+<ng-template #emptyTpl>
+    <mat-card>
+        <mat-card-content>No Agent Found.</mat-card-content>
+    </mat-card>
+</ng-template>

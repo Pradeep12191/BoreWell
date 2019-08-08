@@ -1,7 +1,7 @@
 <form fxLayout="column" [formGroup]="form">
     <mat-form-field fxFlex [appearance]="appearance">
         <mat-label>{{ 'ADD_AGENT.OFFICE_NAME' | translate }}</mat-label>
-        <input formControlName="officeName" matInput required>
+        <input formControlName="officeName" matInput>
     </mat-form-field>
     <mat-form-field fxFlex [appearance]="appearance">
         <mat-label>{{ 'ADD_AGENT.NAME' | translate }}</mat-label>
@@ -15,8 +15,8 @@
     </mat-form-field>
     <mat-form-field fxFlex [appearance]="appearance">
         <mat-label>{{ 'ADD_AGENT.TYPE' | translate }}</mat-label>
-        <mat-select formControlName="type">
-            <mat-option *ngFor="let type of types" [value]="type.value">{{ type.display }}</mat-option>
+        <mat-select formControlName="type" required>
+            <mat-option *ngFor="let type of types" [value]="type.agenttype">{{ type.agenttype }}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex [appearance]="appearance">

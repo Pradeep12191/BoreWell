@@ -57,7 +57,12 @@
         "OVERALL_AMT": "Over All Total Amount",
         "TOTAL_AMT": "Total Amount",
         "COMMISSION_AMT": "Commission Amount",
-        "REMARKS": "Remarks"
+        "REMARKS": "Remarks",
+        "STEP_LABEL":{
+            "INFO": "Info",
+            "POINT_ENTRY": "Point Entry",
+            "OTHER_DETAILS": "Other Details"
+        }
     },
     "ADD_VEHICLE": {
         "VEHICLE_TYPE": "Vehicle Type",

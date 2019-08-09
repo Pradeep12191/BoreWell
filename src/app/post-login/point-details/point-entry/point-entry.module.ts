@@ -5,14 +5,17 @@ import { MaterialModule } from '../../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PointEntryRoutingModule } from './point-entry-routing.module';
-import { PointEntryDetailsComponent } from './point-entry-details/point-entry-details.component';
-import { OtherChargesComponent } from './other-charges/other-charges.component';
+import { PointEntryDetailsComponent } from './point/point-entry-details/point-entry-details.component';
+import { OtherChargesComponent } from './point/other-charges/other-charges.component';
 import { PointEntryService } from './point-entry.serice';
-import { BitDetailsComponent } from './bit-details/bit-details.component';
-import { HammerDetailsComponent } from './hammer-details/hammer-details.component';
+import { BitDetailsComponent } from './point/bit-details/bit-details.component';
+import { HammerDetailsComponent } from './point/hammer-details/hammer-details.component';
 import { SharedModule } from '../../../shared.module';
 import { PointEntryResolve } from '../../../guards/resolveGuard/point-entry.guard';
 import { DirectiveModule } from '../../../directives/directive.module';
+import { PointInfoComponent } from './point-info/point-info.component';
+import { PointOtherDetailsComponent } from './point-other-details/point-other-details.component';
+import { PointComponent } from './point/point.component';
 
 @NgModule({
     imports: [
@@ -29,7 +32,10 @@ import { DirectiveModule } from '../../../directives/directive.module';
         PointEntryDetailsComponent,
         OtherChargesComponent,
         BitDetailsComponent,
-        HammerDetailsComponent
+        HammerDetailsComponent,
+        PointInfoComponent,
+        PointOtherDetailsComponent,
+        PointComponent
     ],
     providers: [
         PointEntryService,

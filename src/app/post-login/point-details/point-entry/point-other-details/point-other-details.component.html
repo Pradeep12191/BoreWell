@@ -1,0 +1,26 @@
+<form [formGroup]="form">
+    <div fxLayout="column" class="m-t-30">
+        <div fxLayout fxLayout.lt-md="column">
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.OVERALL_AMT' | translate}}</mat-label>
+                <input type="text" formCOntrolName="overallTotalAmt" matInput>
+            </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
+            <mat-form-field fxFlex="50" [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.TOTAL_AMT' | translate}}</mat-label>
+                <input formControlName="totalAmt" matInput>
+            </mat-form-field>
+            <mat-form-field fxFlex="50" [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.COMMISSION_AMT' | translate}}</mat-label>
+                <input formControlName="commissionAmt" matInput>
+            </mat-form-field>
+        </div>
+        <div fxLayout>
+            <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.REMARKS' | translate}}</mat-label>
+                <textarea formControlName="remarks" matInput cols="30" rows="5"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>

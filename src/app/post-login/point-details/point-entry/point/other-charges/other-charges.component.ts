@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
-import { PointEntryService } from '../point-entry.serice';
-import { ConfigService } from '../../../../services/config.service';
+import { PointEntryService } from '../../point-entry.serice';
+import { ConfigService } from '../../../../../services/config.service';
 
 
 @Component({

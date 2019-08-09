@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { ConfigService } from '../../../../services/config.service';
+import { ConfigService } from '../../../../../services/config.service';
 
 @Component({
     selector: 'point-entry-details',

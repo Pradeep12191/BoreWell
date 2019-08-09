@@ -1,0 +1,30 @@
+<div fxLayout="column">
+    <div class="m-b-16">
+        {{ 'POINT_ENTRY.AGENT_TYPE.LABEL' | translate }} *
+    </div>
+    <div fxLayout.lt-md="column" fxLayoutGap="20px">
+        <mat-radio-group fxLayout fxFlex color="primary">
+            <div fxFlex fxLayout fxLayoutAlign="center center">
+                <mat-radio-button value="1" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.SELF' | translate
+                    }}</mat-radio-button>
+            </div>
+            <div fxFlex fxLayout fxLayoutAlign="center center">
+                <mat-radio-button value="2" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.AGENT' |
+                    translate }}</mat-radio-button>
+            </div>
+        </mat-radio-group>
+    </div>
+</div>
+<div class="m-t-42">
+    <point-entry-details [form]="form.get('pointEntry')"></point-entry-details>
+</div>
+<!-- <div class="m-t-20">
+    <other-charges [form]="basicInfoForm.get('otherCharges')"></other-charges>
+</div> -->
+<div class="m-t-20 m-b-20">
+    <bit-details [form]="form.get('bitDetails')"></bit-details>
+</div>
+<!-- <div class="m-t-20">
+    <hammer-details [form]="basicInfoForm.get('hammerDetails')"></hammer-details>
+</div> -->
+<!-- RPM Details -->

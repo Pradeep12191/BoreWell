@@ -1,140 +1,40 @@
-<ng-container [formGroup]="basicInfoForm">
-
-    <mat-expansion-panel class="bore-well-expansion-panel" disabled [hideToggle]="true" [expanded]="true">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{ 'POINT_ENTRY.BASIC_INFO' | translate }}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div fxLayout="column">
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.SELECT_RIG' | translate }}</mat-label>
-                    <mat-select formControlName="rig" required>
-                        <mat-option *ngFor="let rig of rigs" [value]="rig.value">{{ rig.display }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
-                    <input matInput required readonly [matDatepicker]="dp">
-                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                    <mat-datepicker #dp>
-                    </mat-datepicker>
-                </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.SELECT_BORE_TYPE' | translate }}</mat-label>
-                    <mat-select formControlName="boreType" required>
-                        <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.value">{{ boreType.display }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</mat-label>
-                    <input matInput formControlName="partyName" type="text" required>
-                    <mat-error>Party Name is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.PARTY_STATE' | translate }}</mat-label>
-                    <mat-select formControlName="partyState" required>
-                        <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{
-                            partyState.display }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div fxHide.lt-md fxFlex="33"></div>
-            </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</mat-label>
-                    <mat-select formControlName="partyCity">
-                        <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{
-                            partyCity.display }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</mat-label>
-                    <input type="text" formControlName="partyMobile" matInput>
-                </mat-form-field>
-
-                <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</mat-label>
-                    <mat-select formControlName="casingType">
-                        <mat-option [value]="casing.value" *ngFor="let casing of casingTypes">{{ casing.display }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-form-field fxFlex [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.PIPE_SELECTION' | translate }}</mat-label>
-                    <mat-select formControlName="pipeSelection">
-                        <mat-option [value]="pipe.value" *ngFor="let pipe of pipes">{{ pipe.display }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="m-b-16">
-                    {{ 'POINT_ENTRY.AGENT_TYPE.LABEL' | translate }} *
-            </div>
-            <div fxLayout.lt-md="column" fxLayoutGap="20px">
-                <mat-radio-group fxLayout fxFlex color="primary">
-                    <div fxFlex fxLayout fxLayoutAlign="center center">
-                        <mat-radio-button value="1" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.SELF' | translate }}</mat-radio-button>
-                    </div>
-                    <div fxFlex fxLayout fxLayoutAlign="center center">
-                        <mat-radio-button value="2" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.AGENT' | translate }}</mat-radio-button>
-                    </div>
-                </mat-radio-group>
-            </div>
-        </div>
-        <div class="m-t-42">
-            <point-entry-details [form]="basicInfoForm.get('pointEntry')"></point-entry-details>
-        </div>
-        <div class="m-t-20">
-            <other-charges [form]="basicInfoForm.get('otherCharges')"></other-charges>
-        </div>
-        <div class="m-t-20">
-            <bit-details [form]="basicInfoForm.get('bitDetails')"></bit-details>
-        </div>
-        <div class="m-t-20">
-            <hammer-details [form]="basicInfoForm.get('hammerDetails')"></hammer-details>
-        </div>
-        <div fxLayout="column" class="m-t-30">
-            <div fxLayout fxLayout.lt-md="column">
-                <mat-form-field fxFlex [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.OVERALL_AMT' | translate}}</mat-label>
-                    <input type="text" formCOntrolName="overallTotalAmt" matInput>
-                </mat-form-field>
-            </div>
-            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                <mat-form-field fxFlex="50" [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.TOTAL_AMT' | translate}}</mat-label>
-                    <input formControlName="totalAmt" matInput>
-                </mat-form-field>
-                <mat-form-field fxFlex="50" [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.COMMISSION_AMT' | translate}}</mat-label>
-                    <input formControlName="commissionAmt" matInput>
-                </mat-form-field>
-            </div>
-            <div fxLayout>
-                <mat-form-field fxFlex [appearance]="appearance">
-                    <mat-label>{{ 'POINT_ENTRY.REMARKS' | translate}}</mat-label>
-                    <textarea formControlName="remarks" matInput cols="30" rows="5"></textarea>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="m-t-20 m-b-20">
-            <div fxLayout>
+<mat-card>
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+        <ng-template matStepperIcon="number">
+        </ng-template>
+        <mat-step [stepControl]="pointForm.get('info')">
+            <ng-template matStepLabel>{{ 'POINT_ENTRY.STEP_LABEL.INFO' | translate }}</ng-template>
+            <point-info [form]="pointForm.get('info')"></point-info>
+            <div fxLayout fxLayoutAlign="end">
                 <div>
-                    <button mat-raised-button color="primary">{{ 'BTN.CLEAR' | translate }}</button>
-                </div>
-                <div fxFlex></div>
-                <div>
-                    <button (click)="saveClick()" mat-raised-button color="primary">{{ 'BTN.SAVE' | translate }}</button>
+                    <button mat-raised-button color="primary" matStepperNext>{{ 'BTN.NEXT' | translate }}</button>
                 </div>
             </div>
-        </div>
-    </mat-expansion-panel>
-
-
-
-</ng-container>
+        </mat-step>
+        <mat-step [stepControl]="pointForm.get('point')">
+            <ng-template matStepLabel>{{ 'POINT_ENTRY.STEP_LABEL.POINT_ENTRY' | translate }}</ng-template>
+            <point [form]="pointForm.get('point')"></point>
+            <div fxLayout fxLayoutAlign="space-between">
+                <div>
+                    <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="pointForm.get('cerificate')">
+            <ng-template matStepLabel>{{ 'POINT_ENTRY.STEP_LABEL.OTHER_DETAILS' | translate }}</ng-template>
+            <point-other-details [form]="pointForm.get('otherDetails')"></point-other-details>
+            <div fxLayout fxLayoutAlign="space-between">
+                <div>
+                    <button color="primary" mat-raised-button (click)="stepper.reset()">{{ 'BTN.CLEAR' | translate
+                        }}</button>
+                </div>
+                <div>
+                    <button color="primary" mat-raised-button (click)="save()">{{ 'BTN.SAVE' | translate }}</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-card>

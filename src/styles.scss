@@ -206,6 +206,11 @@ mat-form-field.calc-field{
     }
  }
 
+ .dashed{
+    border-bottom: 1px dashed #006064;
+    margin-bottom: 20px;
+}
+
  .text-transform-upper{
      text-transform: uppercase;
  }

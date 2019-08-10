@@ -19,12 +19,12 @@
 
                 <mat-form-field fxFlex.lt-md="calc(50% - 10px)" class="calc-field" fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.RPM_DETAILS.END_RPM' | translate }}</mat-label>
-                    <input (input)="calculateTotalRpm()" formControlName="endRpm" type="text" matInput>
+                    <input poistiveNumber (input)="calculateTotalRpm()" formControlName="endRpm" type="text" matInput>
                 </mat-form-field>
 
                 <mat-form-field class="calc-field m-r-10" fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.RPM_DETAILS.TOTAL_RPM' | translate }}</mat-label>
-                    <input formControlName="totalRpm" type="text" matInput>
+                    <input readonly formControlName="totalRpm" type="text" matInput>
                 </mat-form-field>
             </div>
             <!-- <div class="m-b-16">

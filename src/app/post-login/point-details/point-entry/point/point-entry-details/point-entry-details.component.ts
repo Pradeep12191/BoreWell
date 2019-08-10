@@ -48,19 +48,37 @@ export class PointEntryDetailsComponent {
 
     public onTotalFeetInput(event) {
         if (this.feetsFormArray.dirty) {
+            this.removeFeetControls()
             this.feetsFormArray.reset([{ startFeet: '0' }])
         }
     }
 
+    removeFeetControls() {
+        let controlLen = this.feetsFormArray.controls.length;
+        while (controlLen) {
+            if (controlLen === 1) {
+                break;
+            }
+            this.feetsFormArray.removeAt(controlLen - 1);
+            controlLen--;
+        }
+    }
+
     calculateFeetAmt(feetCtrl: FormGroup) {
-        const startFeet = feetCtrl.get('startFeet').value;
+        let startFeet = feetCtrl.get('startFeet').value;
         let endFeet = feetCtrl.get('endFeet').value;
         let amtPerFeet = feetCtrl.get('amtPerFeet').value;
-        let totalFeet = endFeet - startFeet;
+
         let amount = null;
 
         endFeet = endFeet ? +endFeet : 0;
         amtPerFeet = amtPerFeet ? +amtPerFeet : 0;
+        startFeet = startFeet ? +startFeet : 0;
+
+        if (startFeet > 0) {
+            startFeet = startFeet - 1;
+        }
+        let totalFeet = endFeet - startFeet;
 
         if (totalFeet <= 0) {
             totalFeet = 0;
@@ -110,6 +128,8 @@ export class PointEntryDetailsComponent {
         }
         if (+endFeet > +this.totalFeet) {
             feetCtrl.get('endFeet').setValue('');
+            feetCtrl.get('amt').setValue('');
+            this.updateTotalFeetAmount()
             return this.toastr.error('End feet cannot be more than total Feet', null, { timeOut: 2000 })
         }
     }

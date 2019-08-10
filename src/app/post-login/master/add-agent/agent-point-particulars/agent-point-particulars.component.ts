@@ -43,12 +43,16 @@ export class AgentPointParticularsComponent {
     calcParticulars(pointCtrl: FormGroup) {
         let endFeet = pointCtrl.get('endFeet').value;
         let perFeet = pointCtrl.get('perFeet').value;
-        const startFeet = pointCtrl.get('startFeet').value;
+        let startFeet = pointCtrl.get('startFeet').value;
         let particulars = null;
         let amount = null;
         let totalFeet = null;
         endFeet = endFeet ? +endFeet : 0;
         perFeet = perFeet ? +perFeet : 0;
+        startFeet = startFeet ? +startFeet : 0;
+        if (startFeet > 0) {
+            startFeet -= 1;
+        }
         totalFeet = endFeet - startFeet;
         if (totalFeet <= 0) {
             totalFeet = 0;

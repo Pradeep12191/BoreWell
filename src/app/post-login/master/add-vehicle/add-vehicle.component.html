@@ -5,10 +5,10 @@
         <mat-step [stepControl]="vehicleForm.get('info')">
             <ng-container [formGroup]="vehicleForm.get('info')">
                 <ng-template matStepLabel>{{ 'ADD_VEHICLE.STEP_LABEL.VEHICLE_INFO' | translate }}</ng-template>
-                <vehicle-info [form]="vehicleForm.get('info')"></vehicle-info>
+                <vehicle-info [form]="vehicleForm.get('info')" #vehicleInfo></vehicle-info>
                 <div fxLayout fxLayoutAlign="end">
                     <div>
-                        <button mat-raised-button color="primary" matStepperNext>{{ 'BTN.NEXT' | translate }}</button>
+                        <button mat-raised-button color="primary" [scrollToInvalid]="vehicleInfo" [form]="pointForm.get('info')" [stepper]="stepper">{{ 'BTN.NEXT' | translate }}</button>
                     </div>
                 </div>
             </ng-container>

@@ -9,7 +9,7 @@
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
-                <input matInput readonly formControlName="date" [matDatepicker]="dp">
+                <input matInput readonly formControlName="date" (click)="dp.open()" [matDatepicker]="dp">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp>
                 </mat-datepicker>

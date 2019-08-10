@@ -12,6 +12,9 @@ export class ScrollToInvalidDirective {
     @Input() form: FormGroup
     @HostListener('click') onClick() {
         this.stepper.next();
+        if (!this.comp.el) {
+            console.warn('scroll to invalid directive expects ')
+        }
         if (this.form.invalid) {
             // scroll to invalid control
             const firstInvalidControl = (this.comp.el.nativeElement as HTMLElement).querySelector('mat-form-field.ng-invalid');

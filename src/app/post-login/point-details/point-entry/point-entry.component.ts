@@ -134,7 +134,7 @@ export class PointEntryComponent implements OnInit {
     }
     console.log(JSON.stringify({
       ...pointEntryObj,
-      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD/MM/YYYY') : null
+      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null
     }, null, 2));
 
     this.http.post(this.pointUrl, {

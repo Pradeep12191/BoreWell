@@ -37,11 +37,11 @@ export class PointEntryService {
 
     public hammerFormBuilder(){
         return this.fb.group({
-            hammer: [null, Validators.required],
-            lastScale: [null, Validators.required],
-            hammerScale: [null, Validators.required],
-            reducedSize: [null, Validators.required],
-            feet: [null, Validators.required]
+            hammer: null,
+            lastScale: null,
+            hammerScale: null,
+            reducedSize: null,
+            feet: null
         })
     }
 }

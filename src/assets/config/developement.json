@@ -132,6 +132,10 @@
         {
             "name": "getpipe_type",
             "url": "rigapi1/webapi/resource/getpipe_type"
+        },
+        {
+            "name": "createpoint",
+            "url": "rigapi1/webapi/resource/createpoint"
         }
     ]
 }

@@ -9,7 +9,7 @@
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
-                <input matInput required readonly [matDatepicker]="dp">
+                <input matInput required readonly formControlName="date" [matDatepicker]="dp">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp>
                 </mat-datepicker>
@@ -47,7 +47,7 @@
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</mat-label>
-                <input type="text" formControlName="partyMobile" matInput>
+                <input poistiveNumber type="text" formControlName="partyMobile" matInput>
             </mat-form-field>
 
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">

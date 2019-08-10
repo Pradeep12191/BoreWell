@@ -74,11 +74,11 @@
                 <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                     <mat-form-field fxFlex [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH' | translate }}</mat-label>
-                        <input (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepth">
+                        <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepth">
                     </mat-form-field>
                     <mat-form-field fxFlex [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
-                        <input (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepthRate">
+                        <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepthRate">
                     </mat-form-field>
                 </div>
                 <!-- <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">

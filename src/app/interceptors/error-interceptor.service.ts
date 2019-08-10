@@ -19,14 +19,17 @@ export class ErrorInterceptorService implements HttpInterceptor {
             this.loader.hideLoader();
             if (err.error instanceof ErrorEvent) {
                 // client side error
+                this.loader.hideSaveLoader();
                 this.toastr.error('Check your internet connection', 'Error', { timeOut: 2000 })
             } else {
                 // server side error
                 if (err.status === 404) {
+                    this.loader.hideSaveLoader();
                     this.toastr.error('Service unavilable at this moment', "Error", { timeOut: 2000 })
                     return throwError(null)
                 }
                 if (err.status === 0) {
+                    this.loader.hideSaveLoader();
                     this.toastr.error('Unknown Error occured', "Error", { timeOut: 2000 })
                 }
             }

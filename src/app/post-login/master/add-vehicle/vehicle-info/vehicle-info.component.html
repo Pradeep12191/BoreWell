@@ -3,13 +3,13 @@
         <div fxLayout fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'ADD_VEHICLE.VEHICLE_TYPE' | translate }}</mat-label>
-                <mat-select formControlName="vehicleType" required>
+                <mat-select formControlName="vehicleType" required #requiredControl>
                     <mat-option *ngFor="let type of types" [value]="type.vehicle_type">{{ type.vehicle_type }}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'ADD_VEHICLE.BORE_SIZE' | translate }}</mat-label>
-                <mat-select formControlName="boreSize" required>
+                <mat-select formControlName="boreSize" required #requiredControl>
                     <mat-option *ngFor="let boreSize of boreSizes" [value]="boreSize.boresize">{{ boreSize.boresize }}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -17,11 +17,11 @@
         <div fxLayout fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'ADD_VEHICLE.REG_NO' | translate }}</mat-label>
-                <input formControlName="registrationNumber" matInput required>
+                <input formControlName="registrationNumber" matInput required #requiredControl="matInput">
             </mat-form-field>
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'ADD_VEHICLE.OWNER' | translate }}</mat-label>
-                <input formControlName="ownedBy" matInput required>
+                <input formControlName="ownedBy" matInput required #requiredControl="matInput">
             </mat-form-field>
         </div>
         <div fxLayout>

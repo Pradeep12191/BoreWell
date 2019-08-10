@@ -17,6 +17,7 @@ import { VehicleCertificatesComponent } from './vehicle-certificates/vehicle-cer
 import { VehiclePollutionCertificatesComponent } from './vehicle-certificates/vehicle-pollution-certificate/vehicle-pollution-certificate.component';
 import { VehicleRoadTaxComponent } from './vehicle-certificates/vehicle-road-tax/vehicle-road-tax.component';
 import { VehicleFitnessCertificatesComponent } from './vehicle-certificates/vehicle-fitness-certificate/vehicle-fitness-certificate.component';
+import { DirectiveModule } from '../../../directives/directive.module';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { VehicleFitnessCertificatesComponent } from './vehicle-certificates/vehi
         FlexLayoutModule,
         ReactiveFormsModule,
         AddVehicleRoutingModule,
-        SharedModule
+        SharedModule,
+        DirectiveModule
     ],
     declarations: [
         AddVehicleComponent,

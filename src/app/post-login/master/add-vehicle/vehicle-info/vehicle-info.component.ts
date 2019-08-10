@@ -1,8 +1,10 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ConfigService } from '../../../../services/config.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatSelect, MatFormFieldControl, MatInput } from '@angular/material';
+import { FocusableControl } from '../../../../interfaces/FocusableControl';
 
 @Component({
     selector: 'vehicle-info',
@@ -12,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class VehicleInfoComponent implements OnDestroy {
     @Input() form: FormGroup;
     private routeSubscription: Subscription;
+    @ViewChildren('requiredControl') requiredControls: QueryList<MatSelect>;
 
     appearance;
     types = [
@@ -25,7 +28,8 @@ export class VehicleInfoComponent implements OnDestroy {
     ]
     constructor(
         private config: ConfigService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        public el: ElementRef
     ) {
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscription = this.route.data.subscribe((data) => {

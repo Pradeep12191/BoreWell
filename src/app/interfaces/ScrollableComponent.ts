@@ -1,5 +1,7 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, QueryList } from '@angular/core';
+import { FocusableControl } from './FocusableControl';
 
 export interface ScrollableComponent {
-    el: ElementRef
+    el: ElementRef,
+    requiredControls: QueryList<FocusableControl>
 }

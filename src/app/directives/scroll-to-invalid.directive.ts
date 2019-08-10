@@ -12,18 +12,25 @@ export class ScrollToInvalidDirective {
     @Input() form: FormGroup
     @HostListener('click') onClick() {
         this.stepper.next();
-        if (!this.comp.el) {
-            console.warn('scroll to invalid directive expects ')
+        if (!this.comp.requiredControls) {
+            return console.warn('Property requiredControls is missing: scroll to invalid directive expects element reference')
         }
         if (this.form.invalid) {
             // scroll to invalid control
-            const firstInvalidControl = (this.comp.el.nativeElement as HTMLElement).querySelector('mat-form-field.ng-invalid');
-            const inputControl = firstInvalidControl.querySelector('input');
-            if (firstInvalidControl.contains(inputControl)) {
-                inputControl.focus()
-            } else {
-                firstInvalidControl.scrollIntoView({ behavior: 'smooth' });
-            }
+            this.comp.requiredControls.toArray().every((ctrl) => {
+                if (ctrl.ngControl.invalid) {
+                    ctrl.focus();
+                    return false;
+                }
+                return true;
+            })
+            // const firstInvalidControl = (this.comp.el.nativeElement as HTMLElement).querySelector('mat-form-field.ng-invalid');
+            // const inputControl = firstInvalidControl.querySelector('input');
+            // if (firstInvalidControl.contains(inputControl)) {
+            //     inputControl.focus()
+            // } else {
+            //     firstInvalidControl.scrollIntoView({ behavior: 'smooth' });
+            // }
         }
 
     }

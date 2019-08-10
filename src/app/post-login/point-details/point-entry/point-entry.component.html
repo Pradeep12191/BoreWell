@@ -4,15 +4,15 @@
 
 
 <mat-card>
-    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
         <ng-template matStepperIcon="number">
         </ng-template>
         <mat-step [stepControl]="pointForm.get('info')">
             <ng-template matStepLabel>{{ 'POINT_ENTRY.STEP_LABEL.INFO' | translate }}</ng-template>
-            <point-info [form]="pointForm.get('info')"></point-info>
+            <point-info [form]="pointForm.get('info')" #point></point-info>
             <div fxLayout fxLayoutAlign="end">
                 <div>
-                    <button mat-raised-button color="primary" matStepperNext>{{ 'BTN.NEXT' | translate }}</button>
+                    <button mat-raised-button color="primary" [scrollToInvalid]="point" [form]="pointForm.get('info')" [stepper]="stepper">{{ 'BTN.NEXT' | translate }}</button>
                 </div>
             </div>
         </mat-step>

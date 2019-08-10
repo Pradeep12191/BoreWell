@@ -3,20 +3,20 @@
         <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.SELECT_RIG' | translate }}</mat-label>
-                <mat-select formControlName="rig" required>
+                <mat-select formControlName="rig">
                     <mat-option *ngFor="let rig of rigs" [value]="rig.registrationNumber">{{ rig.registrationNumber }}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
-                <input matInput required readonly formControlName="date" [matDatepicker]="dp">
+                <input matInput readonly formControlName="date" [matDatepicker]="dp">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp>
                 </mat-datepicker>
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.SELECT_BORE_TYPE' | translate }}</mat-label>
-                <mat-select formControlName="boreType" required>
+                <mat-select formControlName="boreType">
                     <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.boretype">{{ boreType.boretype }}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -24,12 +24,12 @@
         <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</mat-label>
-                <input matInput formControlName="partyName" type="text" required>
+                <input matInput formControlName="partyName" type="text">
                 <!-- <mat-error>Party Name is required</mat-error> -->
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PARTY_STATE' | translate }}</mat-label>
-                <mat-select formControlName="partyState" required>
+                <mat-select formControlName="partyState">
                     <mat-option [value]="partyState.state" *ngFor="let partyState of partyStates">{{
                         partyState.state }}</mat-option>
                 </mat-select>
@@ -49,7 +49,6 @@
                 <mat-label>{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</mat-label>
                 <input poistiveNumber type="text" formControlName="partyMobile" matInput>
             </mat-form-field>
-
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</mat-label>
                 <mat-select formControlName="casingType">

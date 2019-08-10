@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ConfigService } from '../../../../services/config.service';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatFormField, MatInput } from '@angular/material';
 
 @Component({
     selector: 'point-info',
@@ -13,6 +14,7 @@ export class PointInfoComponent implements OnInit, OnDestroy {
     appearance;
     routeSubscription: Subscription
     @Input() form: FormGroup;
+    @ViewChild('formField', { static: false }) formField: MatInput
     rigs;
     boreTypes;
     partyStates;
@@ -21,9 +23,9 @@ export class PointInfoComponent implements OnInit, OnDestroy {
     pipeTypes;
     constructor(
         private config: ConfigService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        public el: ElementRef
     ) {
-
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscription = this.route.data.subscribe((data) => {
             if (data) {
@@ -39,7 +41,7 @@ export class PointInfoComponent implements OnInit, OnDestroy {
                 if (data.casingTypes) {
                     this.casingTypes = data.casingTypes;
                 }
-                if(data.boreTypes){
+                if (data.boreTypes) {
                     this.boreTypes = data.boreTypes;
                 }
             }

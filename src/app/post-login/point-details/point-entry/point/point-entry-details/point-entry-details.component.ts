@@ -103,7 +103,7 @@ export class PointEntryDetailsComponent {
                 totalAmount += +feetAmt;
             }
         })
-        this.pointEntryForm.get('totalFeetAmt').setValue(totalAmount);
+        this.pointEntryForm.get('totalFeetAmt').setValue(totalAmount.toString());
         this.updateOverallAmt();
     }
 
@@ -144,7 +144,7 @@ export class PointEntryDetailsComponent {
 
         casingAmt = casingDepth * casingDepthRate;
 
-        this.pointEntryForm.get('casingFeetAmt').setValue(casingAmt);
+        this.pointEntryForm.get('casingFeetAmt').setValue(casingAmt.toString());
         this.updateOverallAmt();
     }
 

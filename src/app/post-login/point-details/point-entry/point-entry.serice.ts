@@ -14,9 +14,9 @@ export class PointEntryService {
     public feetFormBuilder(startFeet = '0') {
         return this.fb.group({
             startFeet,
-            endFeet: [null, Validators.required],
-            amtPerFeet: [null, Validators.required],
-            amt: [null, Validators.required]
+            endFeet: '',
+            amtPerFeet: '',
+            amt: ''
         })
     }
 

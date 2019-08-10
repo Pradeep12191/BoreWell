@@ -38,7 +38,7 @@ export class BitDetailsComponent implements OnInit {
         startRpm = startRpm ? +startRpm : 0;
         endRpm = endRpm ? +endRpm : 0;
         totalRpm = endRpm - startRpm;
-        this.bitDetailsForm.get('totalRpm').setValue(totalRpm);
+        this.bitDetailsForm.get('totalRpm').setValue(totalRpm.toString());
     }
 
     removeBit(index) {

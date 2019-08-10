@@ -24,7 +24,7 @@ export class PointEntryComponent implements OnInit {
   pipes;
   appearance: string;
   pointUrl;
-  @ViewChild(MatStepper, {static: false}) stepper: MatStepper;
+  @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
 
   constructor(
     private fb: FormBuilder,
@@ -44,33 +44,33 @@ export class PointEntryComponent implements OnInit {
 
     this.pointForm = this.fb.group({
       info: this.fb.group({
-        rig: [null, Validators.required],
-        date: [null, Validators.required],
-        boreType: [null, Validators.required],
-        partyName: [null, Validators.required],
-        partyState: [null, Validators.required],
-        partyCity: [null, Validators.required],
-        partyMobile: [null, Validators.required],
-        casingType: [null, Validators.required],
-        pipeSelection: [null, Validators.required],
+        rig: '',
+        date: '',
+        boreType: '',
+        partyName: '',
+        partyState: '',
+        partyCity: '',
+        partyMobile: '',
+        casingType: '',
+        pipeSelection: '',
       }),
       point: this.fb.group({
         agentType: 'self',
         pointEntry: this.fb.group({
-          totalFeet: null,
+          totalFeet: '',
           feets: this.fb.array([this.pes.feetFormBuilder()]),
-          totalFeetAmt: null,
-          casingDepth: [null, Validators.required],
-          casingDepthRate: [null, Validators.required],
-          casingFeetAmt: null
+          totalFeetAmt: '',
+          casingDepth: '',
+          casingDepthRate: '',
+          casingFeetAmt: ''
         }),
         otherCharges: this.fb.group({
           charges: this.fb.array([this.pes.chargeFormBuilder()])
         }),
         bitDetails: this.fb.group({
           startRpm: '0',
-          endRpm: null,
-          totalRpm: null,
+          endRpm: '',
+          totalRpm: '',
           bits: this.fb.array([this.pes.bitFormBuilder()])
         }),
         hammerDetails: this.fb.group({
@@ -78,10 +78,10 @@ export class PointEntryComponent implements OnInit {
         }),
       }),
       otherDetails: this.fb.group({
-        overallTotalAmt: null,
-        totalAmt: null,
-        commissionAmt: null,
-        remarks: null
+        overallTotalAmt: '',
+        totalAmt: '',
+        commissionAmt: '',
+        remarks: ''
       })
     })
 
@@ -89,13 +89,16 @@ export class PointEntryComponent implements OnInit {
 
   resetForm() {
     this.pointForm.reset({
-        point: {
-          pointEntry:{
-            feets: [{ startFeet: '0' }]
+      point: {
+        pointEntry: {
+          feets: [{ startFeet: '0' }],
+          bitDetails: {
+            startRpm: '0'
           }
         }
+      }
     });
-}
+  }
 
 
   save() {
@@ -129,7 +132,11 @@ export class PointEntryComponent implements OnInit {
       commissionAmt: this.pointForm.value.otherDetails.commissionAmt,
       remarks: this.pointForm.value.otherDetails.remarks
     }
-    console.log(JSON.stringify(pointEntryObj, null, 2));
+    console.log(JSON.stringify({
+      ...pointEntryObj,
+      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD/MM/YYYY') : null
+    }, null, 2));
+
     this.http.post(this.pointUrl, {
       ...pointEntryObj,
       date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD/MM/YYYY') : null

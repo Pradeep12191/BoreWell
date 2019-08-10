@@ -57,7 +57,7 @@ export class PointEntryComponent implements OnInit {
           charges: this.fb.array([this.pes.chargeFormBuilder()])
         }),
         bitDetails: this.fb.group({
-          startRpm: null,
+          startRpm: '0',
           endRpm: null,
           totalRpm: null,
           bits: this.fb.array([this.pes.bitFormBuilder()])
@@ -76,7 +76,7 @@ export class PointEntryComponent implements OnInit {
 
   }
 
-  saveClick() {
+  save() {
     console.log(JSON.stringify(this.pointForm.value, null, 2));
     this.http.post('http://103.207.4.72:8080/borewell/webapi/resource/createpoint', this.pointForm.value).subscribe((response) => {
       console.log(response);

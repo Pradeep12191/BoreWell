@@ -1,12 +1,37 @@
 <form [formGroup]="form">
     <div fxLayout="column" class="m-t-30">
-        <div fxLayout fxLayout.lt-md="column">
-            <mat-form-field fxFlex [appearance]="appearance">
-                <mat-label>{{ 'POINT_ENTRY.OVERALL_AMT' | translate}}</mat-label>
-                <input type="text" formCOntrolName="overallTotalAmt" matInput>
-            </mat-form-field>
+        <div fxLayoutGap="25px" fxLayout="column" class="p-l-10 p-r-10 m-b-20">
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                    {{ 'POINT_ENTRY.OVERALL_AMT' | translate}}
+                </div>
+                <div>:</div>
+                <div fxFlex>{{ form.get('overallTotalAmt').value || 0 }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                    {{ 'POINT_ENTRY.TOTAL_AMT' | translate}}
+                </div>
+                <div>:</div>
+                <div fxFlex >{{ form.get('totalAmt').value || 0 }}</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                    {{ 'POINT_ENTRY.COMMISSION_AMT' | translate}}
+                </div>
+                <div>:</div>
+                <div fxFlex>{{ form.get('commissionAmt').value || 0 }}</div>
+            </div>
         </div>
-        <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
+
+
+        <!-- <div fxLayout fxLayout.lt-md="column"> -->
+            <!-- <mat-form-field fxFlex [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.OVERALL_AMT' | translate}}</mat-label>
+                <input type="text" formControlName="overallTotalAmt" matInput>
+            </mat-form-field> -->
+        <!-- </div> -->
+        <!-- <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
             <mat-form-field fxFlex="50" [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.TOTAL_AMT' | translate}}</mat-label>
                 <input formControlName="totalAmt" matInput>
@@ -15,7 +40,7 @@
                 <mat-label>{{ 'POINT_ENTRY.COMMISSION_AMT' | translate}}</mat-label>
                 <input formControlName="commissionAmt" matInput>
             </mat-form-field>
-        </div>
+        </div> -->
         <div fxLayout>
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.REMARKS' | translate}}</mat-label>

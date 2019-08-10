@@ -109,6 +109,12 @@ body{
 }
 
 @for $i from 1 through 100{
+    .m-r-n-#{$i} {
+        margin-right: -#{$i}px
+    }
+}
+
+@for $i from 1 through 100{
     .m-l-#{$i} {
         margin-left: #{$i}px
     }

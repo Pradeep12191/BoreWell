@@ -11,18 +11,18 @@
                     <span>{{ 'POINT_ENTRY.RPM_DETAILS.UPLOAD' | translate }}</span>
                 </div>
             </div>
-            <div fxLayout fxLayoutGap="40px" fxLayoutGap.lt-md="10px">
-                <mat-form-field class="calc-field" fxFlex [appearance]="appearance">
+            <div class="m-r-n-10" fxLayout="row wrap" fxLayoutGap="40px" fxLayoutGap.lt-md="10px">
+                <mat-form-field fxFlex.lt-md="calc(50% - 10px)" class="calc-field" fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.RPM_DETAILS.START_RPM' | translate }}</mat-label>
-                    <input formControlName="startRpm" type="text" matInput>
+                    <input readonly formControlName="startRpm" type="text" matInput>
                 </mat-form-field>
 
-                <mat-form-field class="calc-field" fxFlex [appearance]="appearance">
+                <mat-form-field fxFlex.lt-md="calc(50% - 10px)" class="calc-field" fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.RPM_DETAILS.END_RPM' | translate }}</mat-label>
-                    <input formControlName="endRpm" type="text" matInput>
+                    <input (input)="calculateTotalRpm()" formControlName="endRpm" type="text" matInput>
                 </mat-form-field>
 
-                <mat-form-field class="calc-field" fxFlex [appearance]="appearance">
+                <mat-form-field class="calc-field m-r-10" fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.RPM_DETAILS.TOTAL_RPM' | translate }}</mat-label>
                     <input formControlName="totalRpm" type="text" matInput>
                 </mat-form-field>

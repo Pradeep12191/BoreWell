@@ -134,12 +134,14 @@ export class PointEntryComponent implements OnInit {
     }
     console.log(JSON.stringify({
       ...pointEntryObj,
-      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null
+      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null,
+      pointno: '1'
     }, null, 2));
 
     this.http.post(this.pointUrl, {
       ...pointEntryObj,
-      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null
+      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null,
+      pointno: '1'
     }
     ).subscribe((response) => {
       this.toastr.success('Point Added Sucessfully', null, { timeOut: 1500 })

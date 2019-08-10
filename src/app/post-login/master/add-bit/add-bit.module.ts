@@ -12,7 +12,6 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig } from '@angular/material';
 import { DirectiveModule } from '../../../directives/directive.module';
 import { BitSizeResolver } from '../../../guards/resolveGuard/bit-size-list.resolver';
 import { DistributorsResolver } from '../../../guards/resolveGuard/distributors.resolver';
-import { VehiclesResolver } from '../../../guards/resolveGuard/vehicles.resolver';
 import { DialogModule } from '../dialog/dialog.module';
 
 const matDialogConfig: MatDialogConfig = {
@@ -44,7 +43,6 @@ const matDialogConfig: MatDialogConfig = {
     providers: [
         BitSizeResolver,
         DistributorsResolver,
-        VehiclesResolver,
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: matDialogConfig }
     ]
 })

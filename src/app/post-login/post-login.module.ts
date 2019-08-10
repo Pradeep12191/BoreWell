@@ -21,6 +21,10 @@ import { AgentTypeResolver } from '../guards/resolveGuard/select-option/agent-ty
 import { DrillingCommissionTypeResolver } from '../guards/resolveGuard/select-option/drilling-commission-type.resolver';
 import { CasingCommissionTypeResolver } from '../guards/resolveGuard/select-option/casing-commission-type.resolver';
 import { CasingPaymentTypeResolver } from '../guards/resolveGuard/select-option/casing-payment-type.resolver';
+import { BoreTypeResolver } from '../guards/resolveGuard/select-option/bore-type.resolver';
+import { CasingTypeResolver } from '../guards/resolveGuard/select-option/casing-type.resolver';
+import { PipeTypeResolver } from '../guards/resolveGuard/select-option/pipe-type.resolver';
+import { VehiclesResolver } from '../guards/resolveGuard/vehicles.resolver';
 
 
 
@@ -44,12 +48,16 @@ import { CasingPaymentTypeResolver } from '../guards/resolveGuard/select-option/
         StateResolver,
         UserInfoResolver,
         VehicleTypeResolver,
+        VehiclesResolver,
         BoreSizeResolver,
         ContactTypeResolver,
         AgentTypeResolver,
         DrillingCommissionTypeResolver,
         CasingCommissionTypeResolver,
-        CasingPaymentTypeResolver
+        CasingPaymentTypeResolver,
+        BoreTypeResolver,
+        CasingTypeResolver,
+        PipeTypeResolver
     ],
 })
 export class PostLoginModule {

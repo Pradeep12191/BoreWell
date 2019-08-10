@@ -1,53 +1,55 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ConfigService } from '../../../../services/config.service';
 import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'point-info',
     templateUrl: './point-info.component.html',
     styleUrls: ['./point-info.component.scss']
 })
-export class PointInfoComponent implements OnInit {
+export class PointInfoComponent implements OnInit, OnDestroy {
     appearance;
+    routeSubscription: Subscription
     @Input() form: FormGroup;
-    rigs = [
-        { value: '1', display: 'KA01MP7396' },
-        { value: '2', display: 'KA01MP7396' }
-    ];
-    boreTypes = [
-        { value: '1', display: 'New Bore' },
-        { value: '2', display: 'Re-Bore' },
-        { value: '3', display: 'Flushing' },
-    ];
-    partyStates = [
-        { value: '1', display: 'TamilNadu' },
-        { value: '2', display: 'Karnataka' },
-        { value: '3', display: 'Kerala' },
-    ];
-    partyCities = [
-        { value: '1', display: 'Chennai' },
-        { value: '2', display: 'Coimbatore' },
-        { value: '3', display: 'Madurai' },
-    ];
-    casingTypes = [
-        { value: '1', display: 'PVC' },
-        { value: '2', display: 'MS (Mild Steel)' },
-        { value: '3', display: 'Nill' },
-    ];
-    pipes = [
-        { value: '1', display: 'Agent Pipe' },
-        { value: '2', display: 'Party Pipe' },
-        { value: '3', display: 'Company Pipe' },
-        { value: '4', display: 'Nill' },
-    ]
+    rigs;
+    boreTypes;
+    partyStates;
+    partyCities;
+    casingTypes;
+    pipeTypes;
     constructor(
-        private config: ConfigService
+        private config: ConfigService,
+        private route: ActivatedRoute
     ) {
 
         this.appearance = this.config.getConfig('formAppearance');
+        this.routeSubscription = this.route.data.subscribe((data) => {
+            if (data) {
+                if (data.states) {
+                    this.partyStates = data.states
+                }
+                if (data.rigs) {
+                    this.rigs = data.rigs;
+                }
+                if (data.pipeTypes) {
+                    this.pipeTypes = data.pipeTypes;
+                }
+                if (data.casingTypes) {
+                    this.casingTypes = data.casingTypes;
+                }
+                if(data.boreTypes){
+                    this.boreTypes = data.boreTypes;
+                }
+            }
+        })
     }
 
     ngOnInit() {
         console.log(this.form);
+    }
+    ngOnDestroy() {
+        if (this.routeSubscription) { this.routeSubscription.unsubscribe(); }
     }
 }

@@ -10,7 +10,6 @@ import { MatDialogConfig, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { DialogModule } from '../dialog/dialog.module';
 import { HammerDistributorListResolver } from '../../../guards/resolveGuard/hammer/hammer-distributor-list.resolver';
 import { HammerCompanyListResolver } from '../../../guards/resolveGuard/hammer/hammer-company-list.resolver';
-import { VehiclesResolver } from '../../../guards/resolveGuard/vehicles.resolver';
 
 const matDialogConfig: MatDialogConfig = {
     width: '700px',
@@ -34,8 +33,7 @@ const matDialogConfig: MatDialogConfig = {
     providers: [
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: matDialogConfig },
         HammerDistributorListResolver,
-        HammerCompanyListResolver,
-        VehiclesResolver
+        HammerCompanyListResolver
     ]
 })
 export class AddHammerModule {

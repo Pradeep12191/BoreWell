@@ -4,7 +4,7 @@
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.SELECT_RIG' | translate }}</mat-label>
                 <mat-select formControlName="rig" required>
-                    <mat-option *ngFor="let rig of rigs" [value]="rig.value">{{ rig.display }}</mat-option>
+                    <mat-option *ngFor="let rig of rigs" [value]="rig.registrationNumber">{{ rig.registrationNumber }}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
@@ -17,7 +17,7 @@
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.SELECT_BORE_TYPE' | translate }}</mat-label>
                 <mat-select formControlName="boreType" required>
-                    <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.value">{{ boreType.display }}</mat-option>
+                    <mat-option *ngFor="let boreType of boreTypes" [value]="boreType.boretype">{{ boreType.boretype }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -30,8 +30,8 @@
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PARTY_STATE' | translate }}</mat-label>
                 <mat-select formControlName="partyState" required>
-                    <mat-option [value]="partyState.value" *ngFor="let partyState of partyStates">{{
-                        partyState.display }}</mat-option>
+                    <mat-option [value]="partyState.state" *ngFor="let partyState of partyStates">{{
+                        partyState.state }}</mat-option>
                 </mat-select>
             </mat-form-field>
             <div fxHide.lt-md fxFlex="33"></div>
@@ -39,10 +39,11 @@
         <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</mat-label>
-                <mat-select formControlName="partyCity">
+                <input matInput type="text" formControlName="partyCity">
+                <!-- <mat-select formControlName="partyCity">
                     <mat-option [value]="partyCity.value" *ngFor="let partyCity of partyCities">{{
                         partyCity.display }}</mat-option>
-                </mat-select>
+                </mat-select> -->
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</mat-label>
@@ -52,7 +53,7 @@
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</mat-label>
                 <mat-select formControlName="casingType">
-                    <mat-option [value]="casing.value" *ngFor="let casing of casingTypes">{{ casing.display }}</mat-option>
+                    <mat-option [value]="casing.casingtype" *ngFor="let casing of casingTypes">{{ casing.casingtype }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -60,7 +61,7 @@
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PIPE_SELECTION' | translate }}</mat-label>
                 <mat-select formControlName="pipeSelection">
-                    <mat-option [value]="pipe.value" *ngFor="let pipe of pipes">{{ pipe.display }}</mat-option>
+                    <mat-option [value]="pipe.pipeselection" *ngFor="let pipe of pipeTypes">{{ pipe.pipeselection }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

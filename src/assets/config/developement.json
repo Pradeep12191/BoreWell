@@ -120,6 +120,18 @@
         {
             "name": "casing_payment_types",
             "url": "rigapi1/webapi/resource/getcase_payment_type"
+        },
+        {
+            "name": "getbore_type",
+            "url":"rigapi1/webapi/resource/getbore_type"
+        },
+        {
+            "name": "getcasing_type",
+            "url": "rigapi1/webapi/resource/getcasing_type"
+        },
+        {
+            "name": "getpipe_type",
+            "url": "rigapi1/webapi/resource/getpipe_type"
         }
     ]
 }

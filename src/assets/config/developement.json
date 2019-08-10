@@ -27,7 +27,6 @@
         {
             "name": "state",
             "url": "rigapi1/webapi/resource/statelist"
-
         },
         {
             "name": "addAgent",
@@ -123,7 +122,7 @@
         },
         {
             "name": "getbore_type",
-            "url":"rigapi1/webapi/resource/getbore_type"
+            "url": "rigapi1/webapi/resource/getbore_type"
         },
         {
             "name": "getcasing_type",
@@ -136,6 +135,10 @@
         {
             "name": "createpoint",
             "url": "rigapi1/webapi/resource/createpoint"
+        },
+        {
+            "name": "viewpointlist",
+            "url": "rigapi1/webapi/resource/viewpointlist"
         }
     ]
 }

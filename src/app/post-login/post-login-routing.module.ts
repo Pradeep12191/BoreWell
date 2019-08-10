@@ -25,6 +25,7 @@ const routes: Routes = [
             { path: 'master/bit/viewBit', loadChildren: () => import('./master/bit/view-bit/view-bit.module').then(mod => mod.ViewBitModule) },
             { path: 'master/agent/addAgent', loadChildren: () => import('./master/add-agent/add-agent.module').then(mod => mod.AddAgentModule) },
             { path: 'master/agent/viewAgent', loadChildren: () => import('./master/agent/view-agent/view-agent.module').then(mod => mod.ViewAgentModule) },
+            { path: 'reports/pointDetails/pointReport', loadChildren: () => import('./reports/point-details/point-report/point-report.module').then(mod => mod.PointReportModule) },
             { path: '**', component: S404Component }
         ]
     }

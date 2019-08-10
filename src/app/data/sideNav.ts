@@ -149,7 +149,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 children: [
                     { name: 'NAV.REPORTS.POINT_DETAILS.DRILL_LOG', isFirstChild: true, path: 'ytd10', level: 2, paddingLeft: LEVEL_2_PADDING },
                     { name: 'NAV.REPORTS.POINT_DETAILS.RPM_DETAILS', path: 'ytd11', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'NAV.REPORTS.POINT_DETAILS.POINT_REPORT', isLastChild: true, path: 'ytd12', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.REPORTS.POINT_DETAILS.POINT_REPORT', isLastChild: true, path: 'reports/pointDetails/pointReport', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 level: 1, paddingLeft: LEVEL_1_PADDING
             },

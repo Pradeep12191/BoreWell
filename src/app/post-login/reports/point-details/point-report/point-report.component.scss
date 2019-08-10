@@ -1,0 +1,14 @@
+.m-b-25{
+    margin-bottom: 25px !important
+}
+
+.spinner-container{
+    height: 400px;
+    width: 100%;
+    position: relative;
+    mat-spinner{
+        position: absolute;
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+    }
+}

@@ -62,6 +62,12 @@
             "INFO": "Info",
             "POINT_ENTRY": "Point Entry",
             "OTHER_DETAILS": "Other Details"
+        },
+        "COL":{
+            "RIG": "Rig",
+            "POINT_NO": "Point No.",
+            "BORE_TYPE": "Bore Type",
+            "PARTY_STATE": "Party State"
         }
     },
     "ADD_VEHICLE": {

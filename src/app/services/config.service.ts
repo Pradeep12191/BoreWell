@@ -1,5 +1,6 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
 interface url {
     name: string;
     url: string;
@@ -10,7 +11,8 @@ export class ConfigService {
     private config;
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        // private auth: AuthService // error cyclic dependency
     ) {
 
     }
@@ -36,6 +38,15 @@ export class ConfigService {
             return urlObj.url;
         }
         return ''
-        
+    }
+
+    getAbsoluteUrl(name) {
+        const baseUrl = this.config['apiUrl'];
+        return baseUrl + this.getUrl(name);
+    }
+
+    getAbsoluteUrlWithUser(name) {
+        // return this.getAbsoluteUrl(name) + '/' + this.auth.username;
+        return ''
     }
 }

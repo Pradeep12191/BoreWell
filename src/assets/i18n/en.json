@@ -14,7 +14,8 @@
         "AGENT_TYPE": {
             "LABEL": "Agent Type",
             "AGENT": "Agent",
-            "SELF": "Self"
+            "SELF": "Self",
+            "SELECT_AGENT": "Select Agent"
         },
         "POINT_ENTRY": {
             "TITLE": "Point Entry",

@@ -22,7 +22,7 @@
             </div>
             <!-- fxFlex.lt-md="calc(33% - 10px)" fxLayout.lt-md="column" ngClass.lt-md="last-field" -->
             <div class="m-r-n-10" [class.dashed]="feetsFormArray.controls.length > 1 && !lastCtrl" fxLayout="row wrap"
-                formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls; let lastCtrl = last"
+                formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls; let lastCtrl = last; let ctrlIndex = index"
                 fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
                 <ng-container [formGroup]="feetCtrl">
                     <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
@@ -33,13 +33,13 @@
 
                     <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.END_FEET' | translate }}</mat-label>
-                        <input (change)="validateEndFeet(feetCtrl)" (input)="calculateFeetAmt(feetCtrl)" type="text"
+                        <input (change)="validateEndFeet(feetCtrl)" (input)="calculateFeetAmt(feetCtrl, ctrlIndex)" type="text"
                             poistiveNumber formControlName="endFeet" matInput>
                     </mat-form-field>
 
                     <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
-                        <input (input)="calculateFeetAmt(feetCtrl)" type="text" poistiveNumber formControlName="amtPerFeet"
+                        <input (input)="calculateFeetAmt(feetCtrl, ctrlIndex)" type="text" poistiveNumber formControlName="amtPerFeet"
                             matInput>
                     </mat-form-field>
 

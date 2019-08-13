@@ -1,22 +1,40 @@
-<div fxLayout="column">
-    <div class="m-b-16">
-        {{ 'POINT_ENTRY.AGENT_TYPE.LABEL' | translate }} *
-    </div>
-    <div fxLayout.lt-md="column" fxLayoutGap="20px">
-        <mat-radio-group fxLayout fxFlex color="primary">
-            <div fxFlex fxLayout fxLayoutAlign="center center">
-                <mat-radio-button value="1" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.SELF' | translate
-                    }}</mat-radio-button>
+<form [formGroup]="form">
+    <div fxLayout="column">
+        <div class="m-b-16">
+            {{ 'POINT_ENTRY.AGENT_TYPE.LABEL' | translate }} *
+        </div>
+        <div class="m-b-16" fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-radio-group formControlName="agentType" fxLayout fxFlex color="primary" (change)="onPointOptionChange($event)">
+                <div fxFlex fxLayout fxLayoutAlign="center center">
+                    <mat-radio-button value="self" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.SELF' | translate
+                        }}</mat-radio-button>
+                </div>
+                <div fxFlex fxLayout fxLayoutAlign="center center">
+                    <mat-radio-button value="agent" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.AGENT' |
+                        translate }}</mat-radio-button>
+                </div>
+            </mat-radio-group>
+        </div>
+        <ng-container *ngIf="!agentLoading; else loadingTpl">
+            <div fxLayout *ngIf="agentList" @fadeIn>
+                <mat-form-field class="width-100" [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.AGENT_TYPE.SELECT_AGENT' | translate }}</mat-label>
+                    <mat-select (selectionChange)="onAgentSelectChange($event)" formControlName="agentName">
+                        <mat-option [value]="agentName" *ngFor="let agentName of agentNames">{{ agentName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
-            <div fxFlex fxLayout fxLayoutAlign="center center">
-                <mat-radio-button value="2" labelPosition="before">{{ 'POINT_ENTRY.AGENT_TYPE.AGENT' |
-                    translate }}</mat-radio-button>
+        </ng-container>
+        <ng-template #loadingTpl>
+            <div class="spinner-container">
+                <mat-spinner diameter="40" strokeWidth="2"></mat-spinner>
             </div>
-        </mat-radio-group>
+        </ng-template>
     </div>
-</div>
-<div class="m-t-42">
-    <point-entry-details  [form]="form.get('pointEntry')"></point-entry-details>
+</form>
+
+<div [class.m-t-42]="pointOption === 'self'" [class.m-t-16]="pointOption === 'agent'">
+    <point-entry-details [form]="form.get('pointEntry')"></point-entry-details>
 </div>
 <!-- <div class="m-t-20">
     <other-charges [form]="basicInfoForm.get('otherCharges')"></other-charges>

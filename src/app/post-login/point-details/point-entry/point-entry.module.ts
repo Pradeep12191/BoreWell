@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PointEntryRoutingModule } from './point-entry-routing.module';
 import { PointEntryDetailsComponent } from './point/point-entry-details/point-entry-details.component';
 import { OtherChargesComponent } from './point/other-charges/other-charges.component';
-import { PointEntryService } from './point-entry.serice';
+import { PointEntryService } from './point-entry.service';
 import { BitDetailsComponent } from './point/bit-details/bit-details.component';
 import { HammerDetailsComponent } from './point/hammer-details/hammer-details.component';
 import { SharedModule } from '../../../shared.module';

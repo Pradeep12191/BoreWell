@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ConfigService } from '../../../../../services/config.service';
-import { PointEntryService } from '../../point-entry.serice';
+import { PointEntryService } from '../../point-entry.service';
 import { MatSnackBar } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { Agent } from '../../../../../models/Agent';
 
 @Component({
     selector: 'point-entry-details',
@@ -12,7 +14,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PointEntryDetailsComponent {
     @Input('form') pointEntryForm: FormGroup;
+    agentChangeSubcsription: Subscription;
+    pointOptionChangeSubscription: Subscription;
     public appearance;
+    public agentList: Agent[];
+    public agentNames;
+    public selectedAgent: Agent;
     get feetsFormArray() {
         return this.pointEntryForm.get('feets') as FormArray
     }
@@ -29,6 +36,37 @@ export class PointEntryDetailsComponent {
         private toastr: ToastrService
     ) {
         this.appearance = this.config.getConfig('formAppearance');
+        this.agentChangeSubcsription = this.pes.agentChangeObs().subscribe((event) => {
+            console.log(event.value);
+
+            this.selectedAgent = this.agentList.find((agent) => agent.name === event.value);
+            const points = this.selectedAgent.points.filter(point => point);
+            const feetPoints = points.map(point => {
+                return {
+                    startFeet: point.startFeet,
+                    endFeet: point.endFeet,
+                    amtPerFeet: point.perFeet,
+                    amt: point.amount
+                }
+            })
+            this.feetsFormArray.setValue([feetPoints[0]]);
+            if (feetPoints.length > 1) {
+                feetPoints.forEach((feetPoint, index) => {
+                    if (index === 0) return;
+                    this.feetsFormArray.push(this.fb.group(feetPoint))
+                })
+            }
+        })
+        this.pointOptionChangeSubscription = this.pes.pointOptionChangeObs().subscribe(({ optionName, data }) => {
+            if (optionName === 'self') {
+                this.selectedAgent = null;
+                this.removeFeetControls()
+                this.feetsFormArray.reset([{ startFeet: '0' }]);
+                this.pointEntryForm.get('totalFeet').reset()
+            }
+            this.agentList = data;
+            console.log(this.agentList)
+        })
     }
 
     public addMoreFeet() {
@@ -47,16 +85,23 @@ export class PointEntryDetailsComponent {
     }
 
     public onTotalFeetInput(event) {
+
+        if (this.selectedAgent) {
+            this.updateTotalFeetAmount()
+            return;
+        }
+
         if (this.feetsFormArray.dirty) {
             this.removeFeetControls()
             this.feetsFormArray.reset([{ startFeet: '0' }])
         }
     }
 
-    removeFeetControls() {
+    removeFeetControls(removeTill = 1) {
         let controlLen = this.feetsFormArray.controls.length;
         while (controlLen) {
-            if (controlLen === 1) {
+            // leave one control don't delete
+            if (controlLen === removeTill) {
                 break;
             }
             this.feetsFormArray.removeAt(controlLen - 1);
@@ -64,10 +109,12 @@ export class PointEntryDetailsComponent {
         }
     }
 
-    calculateFeetAmt(feetCtrl: FormGroup) {
+    calculateFeetAmt(feetCtrl: FormGroup, ctrlIndex: number) {
         let startFeet = feetCtrl.get('startFeet').value;
         let endFeet = feetCtrl.get('endFeet').value;
         let amtPerFeet = feetCtrl.get('amtPerFeet').value;
+
+
 
         let amount = null;
 
@@ -93,15 +140,29 @@ export class PointEntryDetailsComponent {
         }
 
         this.updateTotalFeetAmount();
+        this.removeFeetControls(ctrlIndex + 1);
     }
 
     updateTotalFeetAmount() {
         let totalAmount = 0;
         this.feetsFormArray.controls.forEach(ctrl => {
-            const feetAmt = ctrl.get('amt').value;
-            if (feetAmt) {
-                totalAmount += +feetAmt;
+            const feetAmt = +ctrl.get('amt').value;
+            const endFeet = +ctrl.get('endFeet').value;
+            let startFeet = +ctrl.get('startFeet').value;
+            const amtPerFeet = +ctrl.get('amtPerFeet').value;
+            const totalFeet = +this.totalFeet;
+            if (startFeet > 0) {
+                startFeet -= 1;
             }
+            if (totalFeet > +endFeet) {
+                if (feetAmt) {
+                    totalAmount += +feetAmt;
+                }
+            } else if (totalFeet > startFeet && totalFeet <= endFeet) {
+                const remainingFeet = totalFeet - startFeet
+                totalAmount += remainingFeet * amtPerFeet
+            }
+
         })
         this.pointEntryForm.get('totalFeetAmt').setValue(totalAmount.toString());
         this.updateOverallAmt();

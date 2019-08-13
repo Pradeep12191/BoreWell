@@ -1,0 +1,12 @@
+.spinner-container{
+    height: 100px;
+    width: 100%;
+    position: relative;
+    mat-spinner{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -20px;
+        margin-left: -20px;
+    }
+}

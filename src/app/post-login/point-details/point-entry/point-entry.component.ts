@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { PointEntryService } from './point-entry.serice';
+import { PointEntryService } from './point-entry.service';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../services/config.service';
 import { ToastrService } from 'ngx-toastr';
@@ -56,6 +56,7 @@ export class PointEntryComponent implements OnInit {
       }),
       point: this.fb.group({
         agentType: 'self',
+        agentName: '',
         pointEntry: this.fb.group({
           totalFeet: '',
           feets: this.fb.array([this.pes.feetFormBuilder()]),
@@ -118,6 +119,7 @@ export class PointEntryComponent implements OnInit {
       casingType: this.pointForm.value.info.casingType,
       pipeSelection: this.pointForm.value.info.pipeSelection,
       agentType: this.pointForm.value.point.agentType,
+      agentName: this.pointForm.value.point.agentName,
       totalFeet: this.pointForm.value.point.pointEntry.totalFeet,
       feets: this.pointForm.value.point.pointEntry.feets,
       totalFeetAmt: this.pointForm.value.point.pointEntry.totalFeetAmt,

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../services/auth.service';
+import { Agent } from '../../../models/Agent';
 
 export class AgentListResolver implements Resolve<any>{
     constructor(
@@ -18,6 +19,6 @@ export class AgentListResolver implements Resolve<any>{
     agentsUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get(this.agentsUrl + '/' + this.authService.username)
+        return this.http.get<Agent[]>(this.agentsUrl + '/' + this.authService.username)
     }
 }

@@ -154,7 +154,7 @@ export class PointEntryDetailsComponent {
             if (startFeet > 0) {
                 startFeet -= 1;
             }
-            if (totalFeet > +endFeet) {
+            if (totalFeet >= +endFeet) {
                 if (feetAmt) {
                     totalAmount += +feetAmt;
                 }

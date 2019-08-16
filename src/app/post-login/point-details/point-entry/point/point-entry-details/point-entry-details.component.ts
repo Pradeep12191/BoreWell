@@ -217,7 +217,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
                 ctrl.get('endFeet').setValue(currentEndFeet.toString());
                 ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
                 ctrl.get('amt').setValue(currentAmt);
-            } else if (totalFeet > startFeet && totalFeet <= endFeet) {
+            } else if (totalFeet > startFeet && totalFeet <= currentEndFeet) {
                 // update
                 if (ctrl.get('isDeleted').value) {
                     ctrl.get('isDeleted').setValue(false);

@@ -10,8 +10,8 @@
                 <div fxLayout fxLayout.lt-md="column">
                     <mat-form-field fxFlex [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.TOTAL_FEET' | translate }}</mat-label>
-                        <input poistiveNumber (input)="onTotalFeetInput($event)" formControlName="totalFeet" type="text" matInput
-                            placeholder="Total Feet">
+                        <input poistiveNumber (input)="onTotalFeetInput($event)" formControlName="totalFeet" type="text"
+                            matInput placeholder="Total Feet">
                     </mat-form-field>
                 </div>
                 <!-- <div class="m-b-16" fxLayout fxLayout.lt-md="column">
@@ -33,14 +33,14 @@
 
                     <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.END_FEET' | translate }}</mat-label>
-                        <input (change)="validateEndFeet(feetCtrl)" (input)="calculateFeetAmt(feetCtrl, ctrlIndex)" type="text"
-                            poistiveNumber formControlName="endFeet" matInput>
+                        <input (change)="validateEndFeet(feetCtrl)" (input)="calculateFeetAmt(feetCtrl, ctrlIndex)"
+                            type="text" poistiveNumber formControlName="endFeet" matInput>
                     </mat-form-field>
 
                     <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
-                        <input (input)="calculateFeetAmt(feetCtrl, ctrlIndex)" type="text" poistiveNumber formControlName="amtPerFeet"
-                            matInput>
+                        <input (input)="calculateFeetAmt(feetCtrl, ctrlIndex)" type="text" poistiveNumber
+                            formControlName="amtPerFeet" matInput>
                     </mat-form-field>
 
                     <mat-form-field fxFlex ngClass.lt-md="m-r-10" fxFlex.lt-md="calc(50%-10px)" [appearance]="appearance">
@@ -71,31 +71,64 @@
                         <input readonly type="text" matInput formControlName="totalFeetAmt">
                     </mat-form-field>
                 </div> -->
-                <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                    <mat-form-field fxFlex [appearance]="appearance">
-                        <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH' | translate }}</mat-label>
-                        <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepth">
-                    </mat-form-field>
-                    <mat-form-field fxFlex [appearance]="appearance">
-                        <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
-                        <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepthRate">
-                    </mat-form-field>
-                </div>
+
+
                 <!-- <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                     <mat-form-field fxFlex [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate }}</mat-label>
                         <input readonly type="text" matInput formControlName="casingFeetAmt" placeholder="Casing Feet Amount">
                     </mat-form-field>
                 </div> -->
-                <div fxLayout fxLayoutGap="10px">
-                    <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
-                        {{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate}}
-                    </div>
-                    <div class="bold">:</div>
-                    <div fxFlex>{{ pointEntryForm.get('casingFeetAmt').value || 0 }}</div>
-                </div>
+
             </div>
 
         </div>
     </mat-expansion-panel>
+    <!-- casing details -->
+    <mat-card class="m-t-20">
+        <mat-card-header>
+            <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.CASING' | translate }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
+                <mat-form-field fxFlex [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH' | translate }}</mat-label>
+                    <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepth">
+                </mat-form-field>
+                <mat-form-field fxFlex [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
+                    <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepthRate">
+                </mat-form-field>
+            </div>
+            <div fxLayout fxLayoutGap="10px" class="m-b-20">
+                <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                    {{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate}}
+                </div>
+                <div class="bold">:</div>
+                <div fxFlex>{{ pointEntryForm.get('casingFeetAmt').value || 0 }}</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="m-t-20">
+        <mat-card-header>
+            <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.OTHER_CHARGES' | translate }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
+                <mat-form-field fxFlex [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.ALLOWANCE' | translate }}</mat-label>
+                    <input poistiveNumber type="text" matInput formControlName="allowance">
+                </mat-form-field>
+                <div fxFlex></div>
+            </div>
+            <div fxLayout fxLayoutGap="10px" class="m-b-20">
+                <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                    {{ 'POINT_ENTRY.POINT_ENTRY.TOTAL_CHARGE_AMT' | translate}}
+                </div>
+                <div class="bold">:</div>
+                <div fxFlex>{{ pointEntryForm.get('allowance').value || 0 }}</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </form>

@@ -27,9 +27,13 @@
             "AMOUNT_PER_FEET": "Amount Per Feet",
             "AMOUNT": "Amount",
             "TOTAL_FEET_AMOUNT": "Total Feet Amount",
+            "CASING": "Casing Details",
             "CASING_DEPTH": "Casing Depth",
             "CASING_DEPTH_RATE": "Casing Depth Rate",
-            "CASING_FEET_AMOUNT": "Casing Feet Amount"
+            "CASING_FEET_AMOUNT": "Casing Feet Amount",
+            "OTHER_CHARGES": "Other Charges",
+            "ALLOWANCE": "Travel Allowance / Bata",
+            "TOTAL_CHARGE_AMT": "Total Charge Amount"
         },
         "OTHER_CHARGES": {
             "TITLE": "Other Charges",

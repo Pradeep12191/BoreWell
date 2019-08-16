@@ -64,10 +64,11 @@ export class PointEntryComponent implements OnInit {
           totalFeetAmt: '',
           casingDepth: '',
           casingDepthRate: '',
-          casingFeetAmt: ''
+          casingFeetAmt: '',
+          allowance: ''
         }),
         otherCharges: this.fb.group({
-          charges: this.fb.array([this.pes.chargeFormBuilder()])
+          charges: this.fb.array([this.pes.chargeFormBuilder()]),
         }),
         bitDetails: this.fb.group({
           startRpm: '0',

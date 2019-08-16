@@ -21,6 +21,7 @@ export class PointInfoComponent implements OnInit, OnDestroy {
     partyCities;
     casingTypes;
     pipeTypes;
+    pvcTypes;
     constructor(
         private config: ConfigService,
         private route: ActivatedRoute,
@@ -43,6 +44,9 @@ export class PointInfoComponent implements OnInit, OnDestroy {
                 }
                 if (data.boreTypes) {
                     this.boreTypes = data.boreTypes;
+                }
+                if (data.pvcTypes) {
+                    this.pvcTypes = data.pvcTypes;
                 }
             }
         })

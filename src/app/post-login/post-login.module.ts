@@ -25,6 +25,7 @@ import { BoreTypeResolver } from '../guards/resolveGuard/select-option/bore-type
 import { CasingTypeResolver } from '../guards/resolveGuard/select-option/casing-type.resolver';
 import { PipeTypeResolver } from '../guards/resolveGuard/select-option/pipe-type.resolver';
 import { VehiclesResolver } from '../guards/resolveGuard/vehicles.resolver';
+import { PVCTypeResolver } from '../guards/resolveGuard/select-option/pvc-type.resolver';
 
 
 
@@ -57,7 +58,8 @@ import { VehiclesResolver } from '../guards/resolveGuard/vehicles.resolver';
         CasingPaymentTypeResolver,
         BoreTypeResolver,
         CasingTypeResolver,
-        PipeTypeResolver
+        PipeTypeResolver,
+        PVCTypeResolver
     ],
 })
 export class PostLoginModule {

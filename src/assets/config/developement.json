@@ -139,6 +139,10 @@
         {
             "name": "viewpointlist",
             "url": "rigapi1/webapi/resource/viewpointlist"
+        },
+        {
+            "name": "getpvctype",
+            "url": "rigapi1/webapi/resource/getpvctype"
         }
     ]
 }

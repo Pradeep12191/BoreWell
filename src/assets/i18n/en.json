@@ -11,6 +11,7 @@
         "PARTY_MOBILE_NUMBER": "Party Mobile Number",
         "CASING_TYPE": "Casing Type",
         "PIPE_SELECTION": "Pipe Selection",
+        "PVC_TYPE": "PVC Type",
         "AGENT_TYPE": {
             "LABEL": "Agent Type",
             "AGENT": "Agent",

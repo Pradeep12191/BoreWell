@@ -53,6 +53,7 @@ export class PointEntryComponent implements OnInit {
         partyMobile: '',
         casingType: '',
         pipeSelection: '',
+        pvcType: ''
       }),
       point: this.fb.group({
         agentType: 'self',
@@ -117,6 +118,7 @@ export class PointEntryComponent implements OnInit {
       partyCity: this.pointForm.value.info.partyCity,
       partyMobile: this.pointForm.value.info.partyMobile,
       casingType: this.pointForm.value.info.casingType,
+      pvcType: this.pointForm.value.info.pvcType,
       pipeSelection: this.pointForm.value.info.pipeSelection,
       agentType: this.pointForm.value.point.agentType,
       agentName: this.pointForm.value.point.agentName,

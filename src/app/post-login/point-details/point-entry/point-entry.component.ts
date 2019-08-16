@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms'
 import { PointEntryService } from './point-entry.service';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../services/config.service';
@@ -101,6 +101,7 @@ export class PointEntryComponent implements OnInit {
         }
       }
     });
+    this.pes.removeControls(this.pointForm.get('point.pointEntry.feets') as FormArray);
   }
 
 

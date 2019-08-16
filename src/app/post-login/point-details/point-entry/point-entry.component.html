@@ -33,7 +33,7 @@
             <point-other-details [form]="pointForm.get('otherDetails')"></point-other-details>
             <div fxLayout fxLayoutAlign="space-between">
                 <div>
-                    <button color="primary" mat-raised-button (click)="stepper.reset()">{{ 'BTN.CLEAR' | translate
+                    <button color="primary" mat-raised-button (click)="stepper.reset(); resetForm()">{{ 'BTN.CLEAR' | translate
                         }}</button>
                 </div>
                 <div>

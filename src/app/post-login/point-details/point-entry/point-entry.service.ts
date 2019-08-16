@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PointEntryModule } from './point-entry.module';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MatRadioChange, MatSelectChange } from '@angular/material';
 import { Agent } from '../../../models/Agent';
@@ -35,8 +35,10 @@ export class PointEntryService {
         return this.fb.group({
             startFeet,
             endFeet: '',
+            totalFeet: '',
             amtPerFeet: '',
-            amt: ''
+            amt: '',
+            isDeleted: false
         })
     }
 
@@ -63,5 +65,17 @@ export class PointEntryService {
             reducedSize: null,
             feet: null
         })
+    }
+
+    public removeControls(formArray: FormArray, removeTill = 1) {
+        let controlLen = formArray.controls.length;
+        while (controlLen) {
+            // leave one control don't delete
+            if (controlLen === removeTill) {
+                break;
+            }
+            formArray.removeAt(controlLen - 1);
+            controlLen--;
+        }
     }
 }

@@ -45,29 +45,58 @@
 
             </div>
             <!-- fxFlex.lt-md="calc(33% - 10px)" fxLayout.lt-md="column" ngClass.lt-md="last-field" -->
-            <div class="m-r-n-10" [class.dashed]="feetsFormArray.controls.length > 1 && !lastCtrl" fxLayout="row wrap"
+            <div class="m-r-n-10" [class.dashed]="feetsFormArray.controls.length > 1 && !lastCtrl && !feetCtrl.get('isDeleted').value" fxLayout="row wrap"
                 formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls; let lastCtrl = last; let ctrlIndex = index"
-                fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
-                <ng-container [formGroup]="feetCtrl">
-                    <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
+                fxLayoutGap.lt-md="10px" fxLayoutGap="10px">
+                <ng-container [formGroup]="feetCtrl" *ngIf="!feetCtrl.get('isDeleted').value">
+                    <mat-form-field fxFlex="calc(20% - 10px)" fxFlex.lt-md="calc(47.5%-10px)" class="calc-field"
+                        [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.START_FEET' | translate }}</mat-label>
                         <input readonly pattern="[0-9]*" poistiveNumber inputmode="numeric" formControlName="startFeet"
                             matInput>
                     </mat-form-field>
-
-                    <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
+                    <div fxFlex="calc(5% - 10px)" class="hyphen-container" fxLayout="column" fxLayoutAlign="center center"
+                        fxFlex.lt-md="calc(5%-10px)">
+                        <div class="hyphen"></div>
+                    </div>
+                    <mat-form-field fxFlex="calc(20% - 10px)" fxFlex.lt-md="calc(47.5%-10px)" class="calc-field"
+                        [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.END_FEET' | translate }}</mat-label>
                         <input (change)="validateEndFeet(feetCtrl)" (input)="calculateFeetAmt(feetCtrl, ctrlIndex)"
                             type="text" poistiveNumber formControlName="endFeet" matInput>
                     </mat-form-field>
-
-                    <mat-form-field fxFlex fxFlex.lt-md="calc(50%-10px)" class="calc-field" [appearance]="appearance">
+                    <div fxHide.gt-sm fxLayoutGap="10px" fxFlex="calc(45% - 10px)">
+                        <div class="m-t-n-10" fxLayout fxLayoutAlign="end center" fxLayoutGap="5px">
+                            <div class="bold">{{ feetCtrl.get('totalFeet').value || 0 }}</div>
+                            <div class="bold">X</div>
+                        </div>
+                        <mat-form-field fxFlex class="calc-field"
+                            [appearance]="appearance">
+                            <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
+                            <input (input)="calculateFeetAmt(feetCtrl, ctrlIndex, 'amtPerFeet')" type="text"
+                                poistiveNumber formControlName="amtPerFeet" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div fxHide.lt-md fxFlex="calc(10% - 10px)" fxFlex.lt-md="calc(17.5%-10px)" class="m-t-n-10"
+                        fxLayout fxLayoutAlign="end center" fxLayoutGap="5px">
+                        <div class="bold">{{ feetCtrl.get('totalFeet').value || 0 }}</div>
+                        <div class="bold">X</div>
+                    </div>
+                    <mat-form-field fxHide.lt-md fxFlex="calc(20% - 10px)" fxFlex.lt-md="calc(30%-10px)" class="calc-field"
+                        [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT_PER_FEET' | translate }}</mat-label>
-                        <input (input)="calculateFeetAmt(feetCtrl, ctrlIndex)" type="text" poistiveNumber
+                        <input (input)="calculateFeetAmt(feetCtrl, ctrlIndex, 'amtPerFeet')" type="text" poistiveNumber
                             formControlName="amtPerFeet" matInput>
                     </mat-form-field>
-
-                    <mat-form-field fxFlex ngClass.lt-md="m-r-10" fxFlex.lt-md="calc(50%-10px)" [appearance]="appearance">
+                    <div fxFlex="calc(5% - 10px)" fxLayout="column" fxLayoutAlign="center center" class="m-t-n-18"
+                        fxFlex.lt-md="calc(5%-10px)">
+                        <div class="equal-container">
+                            <div class="equal-line m-b-3"></div>
+                            <div class="equal-line"></div>
+                        </div>
+                    </div>
+                    <mat-form-field fxFlex="calc(20% - 10px)" ngClass.lt-md="m-r-10" fxFlex.lt-md="calc(47.5%-10px)"
+                        [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMOUNT' | translate }}</mat-label>
                         <input readonly type="text" poistiveNumber formControlName="amt" matInput>
                     </mat-form-field>

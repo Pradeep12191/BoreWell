@@ -235,3 +235,21 @@ mat-form-field.calc-field{
      font-size: 12px;
      line-height: 24px;
  }
+
+ .hyphen-container{
+     position: relative;
+    .hyphen{
+        border:1px solid;
+        width: 5px;
+        top: calc(50% - 10px);
+        position: absolute;
+    }
+ }
+
+ .equal-container {
+     .equal-line{
+        border:1px solid;
+        width: 5px;
+     }
+ }
+

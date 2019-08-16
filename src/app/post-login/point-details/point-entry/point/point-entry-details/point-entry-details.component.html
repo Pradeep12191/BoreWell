@@ -20,6 +20,30 @@
                         translate }}</mat-checkbox>
                 </div> -->
             </div>
+            <div fxLayout="column">
+                <div fxLayout fxLayoutGap="10px" class="m-b-20">
+                    <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                        {{ 'POINT_ENTRY.POINT_ENTRY.TOTAL_FEET_AMOUNT' | translate}}
+                    </div>
+                    <div class="bold">:</div>
+                    <div fxFlex>{{ pointEntryForm.get('totalFeetAmt').value || 0 }}</div>
+                </div>
+                <!-- <div fxLayout>
+                            <mat-form-field fxFlex [appearance]="appearance">
+                                <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.TOTAL_FEET_AMOUNT' | translate }}</mat-label>
+                                <input readonly type="text" matInput formControlName="totalFeetAmt">
+                            </mat-form-field>
+                        </div> -->
+
+
+                <!-- <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
+                            <mat-form-field fxFlex [appearance]="appearance">
+                                <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate }}</mat-label>
+                                <input readonly type="text" matInput formControlName="casingFeetAmt" placeholder="Casing Feet Amount">
+                            </mat-form-field>
+                        </div> -->
+
+            </div>
             <!-- fxFlex.lt-md="calc(33% - 10px)" fxLayout.lt-md="column" ngClass.lt-md="last-field" -->
             <div class="m-r-n-10" [class.dashed]="feetsFormArray.controls.length > 1 && !lastCtrl" fxLayout="row wrap"
                 formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls; let lastCtrl = last; let ctrlIndex = index"
@@ -57,31 +81,6 @@
                 <button (click)="addMoreFeet()" type="button" mat-raised-button color="primary">{{ 'BTN.ADD_MORE' |
                     translate}}</button>
             </div>
-            <div fxLayout="column">
-                <div fxLayout fxLayoutGap="10px" class="m-b-20">
-                    <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
-                        {{ 'POINT_ENTRY.POINT_ENTRY.TOTAL_FEET_AMOUNT' | translate}}
-                    </div>
-                    <div class="bold">:</div>
-                    <div fxFlex>{{ pointEntryForm.get('totalFeetAmt').value || 0 }}</div>
-                </div>
-                <!-- <div fxLayout>
-                    <mat-form-field fxFlex [appearance]="appearance">
-                        <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.TOTAL_FEET_AMOUNT' | translate }}</mat-label>
-                        <input readonly type="text" matInput formControlName="totalFeetAmt">
-                    </mat-form-field>
-                </div> -->
-
-
-                <!-- <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
-                    <mat-form-field fxFlex [appearance]="appearance">
-                        <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate }}</mat-label>
-                        <input readonly type="text" matInput formControlName="casingFeetAmt" placeholder="Casing Feet Amount">
-                    </mat-form-field>
-                </div> -->
-
-            </div>
-
         </div>
     </mat-expansion-panel>
     <!-- casing details -->
@@ -118,7 +117,7 @@
             <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
                 <mat-form-field fxFlex [appearance]="appearance">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.ALLOWANCE' | translate }}</mat-label>
-                    <input poistiveNumber type="text" matInput formControlName="allowance">
+                    <input (input)="updateOverallAmt()" poistiveNumber type="text" matInput formControlName="allowance">
                 </mat-form-field>
                 <div fxFlex></div>
             </div>

@@ -129,6 +129,7 @@ export class PointEntryComponent implements OnInit {
       casingDepth: this.pointForm.value.point.pointEntry.casingDepth,
       casingDepthRate: this.pointForm.value.point.pointEntry.casingDepthRate,
       casingFeetAmt: this.pointForm.value.point.pointEntry.casingFeetAmt,
+      allowance: this.pointForm.value.point.pointEntry.allowance,
       startRpm: this.pointForm.value.point.bitDetails.startRpm,
       endRpm: this.pointForm.value.point.bitDetails.endRpm,
       totalRpm: this.pointForm.value.point.bitDetails.totalRpm,

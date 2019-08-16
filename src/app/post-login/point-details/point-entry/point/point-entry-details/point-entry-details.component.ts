@@ -172,10 +172,12 @@ export class PointEntryDetailsComponent {
         // overall amount will be the sum of total feet amount, casing amount
         let totalAmt = this.pointEntryForm.get('totalFeetAmt').value;
         let casingAmt = this.pointEntryForm.get('casingFeetAmt').value;
+        let otherCharges = this.pointEntryForm.get('allowance').value
         let overallAmt = 0;
         totalAmt = totalAmt ? +totalAmt : 0;
         casingAmt = casingAmt ? +casingAmt : 0;
-        overallAmt = totalAmt + casingAmt;
+        otherCharges = otherCharges ? +otherCharges: 0;
+        overallAmt = totalAmt + casingAmt + otherCharges;
         this.pointEntryForm.parent.parent.get('otherDetails.overallTotalAmt').setValue(overallAmt.toString())
     }
 

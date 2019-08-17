@@ -137,7 +137,7 @@ export class PointEntryComponent implements OnInit {
       agentType: this.pointForm.value.point.agentType,
       agentName: this.pointForm.value.point.agentName,
       totalFeet: this.pointForm.value.point.pointEntry.totalFeet,
-      feets: this.pointForm.value.point.pointEntry.feets,
+      feets,
       totalFeetAmt: this.pointForm.value.point.pointEntry.totalFeetAmt,
       casingDepth: this.pointForm.value.point.pointEntry.casingDepth,
       casingDepthRate: this.pointForm.value.point.pointEntry.casingDepthRate,

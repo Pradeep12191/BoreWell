@@ -23,8 +23,13 @@ export class PointEntryDetailsComponent implements OnDestroy {
     public agentNames;
     public selectedAgent: Agent;
     public totalFeetAmtInput$ = new Subject();
+    public showBtns = true;
     get feetsFormArray() {
         return this.pointEntryForm.get('feets') as FormArray
+    }
+
+    get feetsActiveControls() {
+        return this.feetsFormArray.controls.filter(ctrl => !ctrl.get('isDeleted').value)
     }
 
     get totalFeet() {
@@ -54,14 +59,17 @@ export class PointEntryDetailsComponent implements OnDestroy {
                 })
                 this.updateFeetsFormArray();
             }
+            this.showBtns = false;
         })
         this.pointOptionChangeSubscription = this.pes.pointOptionChangeObs().subscribe(({ optionName, data }) => {
             if (optionName === 'self') {
                 // reset on radio option changed to self
                 this.selectedAgent = null;
-                this.pes.removeControls(this.feetsFormArray)
+                this.pes.removeControls(this.feetsFormArray);
                 this.feetsFormArray.reset([{ startFeet: '0' }]);
-                this.pointEntryForm.get('totalFeet').reset()
+                this.pointEntryForm.get('totalFeet').reset();
+                this.pointEntryForm.get('totalFeetAmt').reset();
+                this.showBtns = true;
             }
             this.agentList = data;
         })
@@ -101,8 +109,8 @@ export class PointEntryDetailsComponent implements OnDestroy {
     }
 
     public addMoreFeet() {
-        const lastIndex = this.feetsFormArray.length - 1;
-        const lastFormGroup = this.feetsFormArray.at(lastIndex);
+        const lastIndex = this.feetsActiveControls.length - 1;
+        const lastFormGroup = this.feetsActiveControls[lastIndex];
         const lastEndFeet = lastFormGroup.get('endFeet').value;
         const lastPerfeet = lastFormGroup.get('amtPerFeet').value;
         if (lastEndFeet && lastPerfeet) {
@@ -157,10 +165,11 @@ export class PointEntryDetailsComponent implements OnDestroy {
             feetCtrl.get('amt').setValue(amount.toString());
         }
 
-        this.updateTotalFeetAmount();
+        
         if (ctrlName !== 'amtPerFeet') {
             this.pes.removeControls(this.feetsFormArray, ctrlIndex + 1);
         }
+        this.updateTotalFeetAmount();
 
     }
 
@@ -204,10 +213,6 @@ export class PointEntryDetailsComponent implements OnDestroy {
             if (startFeet > 0) {
                 startFeet -= 1;
             }
-
-
-
-
 
             if (totalFeet >= currentEndFeet) {
                 // do nothing - reset
@@ -322,7 +327,9 @@ export class PointEntryDetailsComponent implements OnDestroy {
     }
 
     public removeLastFeet() {
-        this.feetsFormArray.removeAt(this.feetsFormArray.length - 1);
+        const lastActiveControl = this.feetsActiveControls.length - 1;
+        this.feetsActiveControls[lastActiveControl].get('isDeleted').setValue(true);
+        // this.feetsFormArray.removeAt(this.feetsFormArray.length - 1);
         this.updateTotalFeetAmount();
     }
 }

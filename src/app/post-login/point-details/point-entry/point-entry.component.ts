@@ -72,7 +72,10 @@ export class PointEntryComponent implements OnInit {
           casingDepth: '',
           casingDepthRate: '',
           casingFeetAmt: '',
-          allowance: ''
+          allowance: '',
+          welding: '',
+          amtPerWelding: '',
+          weldingAmt: ''
         }),
         otherCharges: this.fb.group({
           charges: this.fb.array([this.pes.chargeFormBuilder()]),
@@ -143,6 +146,9 @@ export class PointEntryComponent implements OnInit {
       casingDepth: this.pointForm.value.point.pointEntry.casingDepth,
       casingDepthRate: this.pointForm.value.point.pointEntry.casingDepthRate,
       casingFeetAmt: this.pointForm.value.point.pointEntry.casingFeetAmt,
+      welding: this.pointForm.value.point.pointEntry.welding,
+      amtPerWelding: this.pointForm.value.point.pointEntry.amtPerWelding,
+      weldingAmt: this.pointForm.value.point.pointEntry.weldingAmt,
       allowance: this.pointForm.value.point.pointEntry.allowance,
       startRpm: this.pointForm.value.point.bitDetails.startRpm,
       endRpm: this.pointForm.value.point.bitDetails.endRpm,

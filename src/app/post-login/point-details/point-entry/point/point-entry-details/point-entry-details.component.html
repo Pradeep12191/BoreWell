@@ -1,5 +1,6 @@
 <form [formGroup]="pointEntryForm">
 
+    <!-- point entry details -->
     <mat-card class="m-t-20">
         <mat-card-header>
             <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.TITLE' | translate }} </mat-card-title>
@@ -114,6 +115,7 @@
             </div>
         </mat-card-content>
     </mat-card>
+
     <!-- casing details -->
     <mat-card class="m-t-20">
         <mat-card-header>
@@ -144,7 +146,7 @@
                     {{ pointEntryForm.get('casingFeetAmt').value || 0 }}
                 </div>
             </div>
-            <div fxLayout fxLayoutGap="10px" class="m-b-20">
+            <div fxLayout fxLayoutGap="10px" class="m-b-10">
                 <!-- <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
                     {{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate}}
                 </div>
@@ -154,6 +156,43 @@
         </mat-card-content>
     </mat-card>
 
+    <!-- Welding -->
+    <mat-card class="m-t-20">
+        <mat-card-header>
+            <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.WELDING' | translate }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
+                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.WELDING' | translate }}</mat-label>
+                    <input poistiveNumber (input)="calculateWeldingAmt()" type="text" matInput formControlName="welding">
+                </mat-form-field>
+                <div class="bold m-b-20" fxLayout="column" fxLayoutAlign="center center">X</div>
+                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMT_PER_WELDING' | translate }}</mat-label>
+                    <input poistiveNumber (input)="calculateWeldingAmt()" type="text" matInput formControlName="amtPerWelding">
+                </mat-form-field>
+                <div class="m-b-20" fxLayout fxLayoutAlign="center center">
+                    <div class="equal-container">
+                        <div class="equal-line m-b-3"></div>
+                        <div class="equal-line"></div>
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="center center" class="bold m-b-20">
+                    {{ pointEntryForm.get('weldingAmt').value || 0 }}
+                </div>
+            </div>
+            <div fxLayout fxLayoutGap="10px" class="m-b-10">
+                <!-- <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                        {{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate}}
+                    </div>
+                    <div class="bold">:</div>
+                    <div fxFlex>{{ pointEntryForm.get('casingFeetAmt').value || 0 }}</div> -->
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- other charges -->
     <mat-card class="m-t-20">
         <mat-card-header>
             <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.OTHER_CHARGES' | translate }} </mat-card-title>

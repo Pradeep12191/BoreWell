@@ -32,6 +32,9 @@
             "CASING_DEPTH": "Casing Depth",
             "CASING_DEPTH_RATE": "Casing Depth Rate",
             "CASING_FEET_AMOUNT": "Casing Feet Amount",
+            "WELDING": "Welding",
+            "AMT_PER_WELDING": "Amount Per Welding",
+            "WELDING_AMT": "Welding Amount",
             "OTHER_CHARGES": "Other Charges",
             "ALLOWANCE": "Travel Allowance / Bata",
             "TOTAL_CHARGE_AMT": "Total Charge Amount"

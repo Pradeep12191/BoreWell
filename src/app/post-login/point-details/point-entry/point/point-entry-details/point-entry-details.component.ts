@@ -60,7 +60,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
             //         if (index === 0) return;
             //         this.feetsFormArray.push(this.fb.group(feetPoint))
             //     })
-                
+
             // }
             this.showBtns = false;
             this.triggerPipe = !this.triggerPipe;
@@ -197,7 +197,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
 
         // set feets from selected agent
         // remove all ctrls
-        while(this.feetsFormArray.controls.length){
+        while (this.feetsFormArray.controls.length) {
             this.feetsFormArray.removeAt(this.feetsFormArray.controls.length - 1);
         }
 
@@ -369,7 +369,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
         const ctrl = this.feetsFormArray.controls[pointLen];
         if (ctrl) {
             const endFeet = ctrl.get('endFeet').value ? +ctrl.get('endFeet').value : 0;
-            if(this.totalFeet <= endFeet){
+            if (this.totalFeet <= endFeet) {
                 ctrl.get('isDeleted').setValue(true);
             }
         }
@@ -379,12 +379,14 @@ export class PointEntryDetailsComponent implements OnDestroy {
         // overall amount will be the sum of total feet amount, casing amount, other charges
         let totalAmt = this.pointEntryForm.get('totalFeetAmt').value;
         let casingAmt = this.pointEntryForm.get('casingFeetAmt').value;
-        let otherCharges = this.pointEntryForm.get('allowance').value
+        let otherCharges = this.pointEntryForm.get('allowance').value;
+        let weldingAmt = this.pointEntryForm.get('weldingAmt').value;
         let overallAmt = 0;
         totalAmt = totalAmt ? +totalAmt : 0;
         casingAmt = casingAmt ? +casingAmt : 0;
         otherCharges = otherCharges ? +otherCharges : 0;
-        overallAmt = totalAmt + casingAmt + otherCharges;
+        weldingAmt = weldingAmt ? +weldingAmt : 0;
+        overallAmt = totalAmt + casingAmt + otherCharges + weldingAmt;
         this.pointEntryForm.parent.parent.get('otherDetails.overallTotalAmt').setValue(overallAmt.toString())
     }
 
@@ -419,6 +421,20 @@ export class PointEntryDetailsComponent implements OnDestroy {
         casingAmt = casingDepth * casingDepthRate;
 
         this.pointEntryForm.get('casingFeetAmt').setValue(casingAmt.toString());
+        this.updateOverallAmt();
+    }
+
+    public calculateWeldingAmt() {
+        let welding = this.pointEntryForm.get('welding').value;
+        let amtPerWelding = this.pointEntryForm.get('amtPerWelding').value;
+        let weldingAmt = 0;
+
+        welding = welding ? +welding : 0;
+        amtPerWelding = amtPerWelding ? +amtPerWelding : 0;
+
+        weldingAmt = welding * amtPerWelding;
+
+        this.pointEntryForm.get('weldingAmt').setValue(weldingAmt.toString());
         this.updateOverallAmt();
     }
 

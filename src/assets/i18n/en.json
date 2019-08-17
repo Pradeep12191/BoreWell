@@ -4,6 +4,7 @@
         "BASIC_INFO": "Basic Info",
         "SELECT_RIG": "Select RIG",
         "DATE": "Date",
+        "NUMBER": "Point Number",
         "SELECT_BORE_TYPE": "Select Bore Type",
         "PARTY_NAME": "Party Name",
         "PARTY_STATE": "Select Party State",
@@ -11,7 +12,7 @@
         "PARTY_MOBILE_NUMBER": "Party Mobile Number",
         "CASING_TYPE": "Casing Type",
         "PIPE_SELECTION": "Pipe Selection",
-        "PVC_TYPE": "PVC Type",
+        "PVC_TYPE": "Pipe Type",
         "AGENT_TYPE": {
             "LABEL": "Agent Type",
             "AGENT": "Agent",

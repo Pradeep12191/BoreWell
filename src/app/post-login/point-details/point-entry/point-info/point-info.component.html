@@ -1,5 +1,12 @@
 <form [formGroup]="form">
     <div fxLayout="column">
+        <div fxLayout class="width-100">
+            <mat-form-field class="width-100" fxFlex.lt-md [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.NUMBER' | translate }}</mat-label>
+                <input poistiveNumber type="text" matInput formControlName="pointNumber">
+            </mat-form-field>
+            <!-- <div fxFlex fxHide.lt-md></div> -->
+        </div>
         <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.SELECT_RIG' | translate }}</mat-label>
@@ -57,7 +64,7 @@
             </mat-form-field>
             <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PVC_TYPE' | translate }}</mat-label>
-                <mat-select formControlName="pvcType">
+                <mat-select formControlName="pipeType">
                     <mat-option [value]="pvc.pvc_size" *ngFor="let pvc of pvcTypes">{{ pvc.pvc_size }}</mat-option>
                 </mat-select>
             </mat-form-field>

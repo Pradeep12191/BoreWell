@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
 export class activeControlsPipe implements PipeTransform {
     transform(controls: FormGroup[]) { 
         return controls.filter(ctrl => {
-            console.log(ctrl)
+            // console.log(ctrl)
             return !ctrl.get('isDeleted').value
         })
     }

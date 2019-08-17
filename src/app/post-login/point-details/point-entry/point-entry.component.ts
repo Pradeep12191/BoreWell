@@ -59,7 +59,8 @@ export class PointEntryComponent implements OnInit {
         partyMobile: '',
         casingType: '',
         pipeSelection: '',
-        pvcType: ''
+        pipeType: '',
+        pointNumber: ''
       }),
       point: this.fb.group({
         agentType: 'agent',
@@ -132,7 +133,7 @@ export class PointEntryComponent implements OnInit {
       partyCity: this.pointForm.value.info.partyCity,
       partyMobile: this.pointForm.value.info.partyMobile,
       casingType: this.pointForm.value.info.casingType,
-      pvcType: this.pointForm.value.info.pvcType,
+      pipeType: this.pointForm.value.info.pipeType,
       pipeSelection: this.pointForm.value.info.pipeSelection,
       agentType: this.pointForm.value.point.agentType,
       agentName: this.pointForm.value.point.agentName,
@@ -149,7 +150,8 @@ export class PointEntryComponent implements OnInit {
       overallTotalAmt: this.pointForm.value.otherDetails.overallTotalAmt,
       totalAmt: this.pointForm.value.otherDetails.totalAmt,
       commissionAmt: this.pointForm.value.otherDetails.commissionAmt,
-      remarks: this.pointForm.value.otherDetails.remarks
+      remarks: this.pointForm.value.otherDetails.remarks,
+      pointNumber: this.pointForm.value.info.pointNumber
     }
     console.log(JSON.stringify({
       ...pointEntryObj,

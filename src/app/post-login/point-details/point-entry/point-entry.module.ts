@@ -17,6 +17,7 @@ import { PointInfoComponent } from './point-info/point-info.component';
 import { PointOtherDetailsComponent } from './point-other-details/point-other-details.component';
 import { PointComponent } from './point/point.component';
 import { AgentListResolver } from '../../../guards/resolveGuard/agent/agent-list.resolver';
+import { activeControlsPipe } from './activeControls.pipe';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { AgentListResolver } from '../../../guards/resolveGuard/agent/agent-list
         HammerDetailsComponent,
         PointInfoComponent,
         PointOtherDetailsComponent,
-        PointComponent
+        PointComponent,
+        activeControlsPipe
     ],
     providers: [
         PointEntryService,

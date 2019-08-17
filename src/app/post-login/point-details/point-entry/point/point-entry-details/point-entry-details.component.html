@@ -45,10 +45,10 @@
 
             </div>
             <!-- fxFlex.lt-md="calc(33% - 10px)" fxLayout.lt-md="column" ngClass.lt-md="last-field" -->
-            <div class="m-r-n-10" [class.dashed]="ctrlIndex < feetsActiveControls.length - 1"
-                fxLayout="row wrap" formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls; let lastCtrl = last; let ctrlIndex = index"
+            <div class="m-r-n-10" [class.dashed]="!lastCtrl"
+                fxLayout="row wrap" formArrayName="feets" *ngFor="let feetCtrl of feetsFormArray.controls | activeControls : triggerPipe; let lastCtrl = last; let ctrlIndex = index"
                 fxLayoutGap.lt-md="10px" fxLayoutGap="10px">
-                <ng-container [formGroup]="feetCtrl" *ngIf="!feetCtrl.get('isDeleted').value">
+                <ng-container [formGroup]="feetCtrl">
                     <mat-form-field fxFlex="calc(20% - 10px)" fxFlex.lt-md="calc(47.5%-10px)" class="calc-field"
                         [appearance]="appearance">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.START_FEET' | translate }}</mat-label>

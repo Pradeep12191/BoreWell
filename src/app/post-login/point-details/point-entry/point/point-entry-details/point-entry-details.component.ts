@@ -24,11 +24,13 @@ export class PointEntryDetailsComponent implements OnDestroy {
     public selectedAgent: Agent;
     public totalFeetAmtInput$ = new Subject();
     public showBtns = true;
+    public triggerPipe = false;
     get feetsFormArray() {
         return this.pointEntryForm.get('feets') as FormArray
     }
 
     get feetsActiveControls() {
+        // console.log(this.feetsFormArray.controls)
         return this.feetsFormArray.controls.filter(ctrl => !ctrl.get('isDeleted').value)
     }
 
@@ -45,21 +47,23 @@ export class PointEntryDetailsComponent implements OnDestroy {
     ) {
         this.appearance = this.config.getConfig('formAppearance');
         this.agentChangeSubcsription = this.pes.agentChangeObs().subscribe((event) => {
-            console.log(event.value);
+            // console.log(event.value);
 
             this.selectedAgent = this.agentList.find((agent) => agent.name === event.value);
-            const feetPoints = this.getFeetPointsFromAgent();
-            this.pes.removeControls(this.feetsFormArray, 1);
-            // set feets from selected agent
-            this.feetsFormArray.setValue([feetPoints[0]]);
-            if (feetPoints.length > 1) {
-                feetPoints.forEach((feetPoint, index) => {
-                    if (index === 0) return;
-                    this.feetsFormArray.push(this.fb.group(feetPoint))
-                })
-                this.updateFeetsFormArray();
-            }
+            // const feetPoints = this.getFeetPointsFromAgent();
+            this.updateFeetsFormArray();
+            // this.pes.removeControls(this.feetsFormArray);
+            // // set feets from selected agent
+            // this.feetsFormArray.setValue([feetPoints[0]]);
+            // if (feetPoints.length > 1) {
+            //     feetPoints.forEach((feetPoint, index) => {
+            //         if (index === 0) return;
+            //         this.feetsFormArray.push(this.fb.group(feetPoint))
+            //     })
+                
+            // }
             this.showBtns = false;
+            this.triggerPipe = !this.triggerPipe;
         })
         this.pointOptionChangeSubscription = this.pes.pointOptionChangeObs().subscribe(({ optionName, data }) => {
             if (optionName === 'self') {
@@ -72,11 +76,13 @@ export class PointEntryDetailsComponent implements OnDestroy {
                 this.showBtns = true;
             }
             this.agentList = data;
+            this.triggerPipe = !this.triggerPipe;
         })
 
         this.totalFeetAmtInputSubscription = this.totalFeetAmtInput$.asObservable().pipe(distinctUntilChanged(), debounceTime(500)).subscribe(() => {
             this.updateFeetsFormArray();
             this.updateTotalFeetAmount();
+            this.triggerPipe = !this.triggerPipe;
         })
     }
 
@@ -121,6 +127,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
         } else {
             this.snackBar.open('Please Fill Fields', null, { duration: 1000 });
         }
+        this.triggerPipe = !this.triggerPipe;
     }
 
     public onTotalFeetInput(event) {
@@ -133,7 +140,10 @@ export class PointEntryDetailsComponent implements OnDestroy {
         if (this.feetsFormArray.dirty) {
             this.pes.removeControls(this.feetsFormArray)
             this.feetsFormArray.reset([{ startFeet: '0' }])
+            this.pointEntryForm.get('totalFeetAmt').setValue('');
+            this.triggerPipe = !this.triggerPipe;
         }
+
     }
 
     // feet amount will the amount per feet * total feet (start feet - end feet)
@@ -165,11 +175,20 @@ export class PointEntryDetailsComponent implements OnDestroy {
             feetCtrl.get('amt').setValue(amount.toString());
         }
 
-        
+
         if (ctrlName !== 'amtPerFeet') {
-            this.pes.removeControls(this.feetsFormArray, ctrlIndex + 1);
+            // this.pes.removeControls(this.feetsFormArray, ctrlIndex + 1);
+            const feetCtrls = this.feetsActiveControls;
+            let nextCtrl = feetCtrls[++ctrlIndex];
+            while (nextCtrl) {
+                nextCtrl.get('isDeleted').setValue(true);
+                nextCtrl = feetCtrls[++ctrlIndex];
+            }
+            this.triggerPipe = !this.triggerPipe;
+
         }
         this.updateTotalFeetAmount();
+
 
     }
 
@@ -177,13 +196,22 @@ export class PointEntryDetailsComponent implements OnDestroy {
         const feetPoints = this.getFeetPointsFromAgent();
 
         // set feets from selected agent
-        this.feetsFormArray.setValue(feetPoints);
+        // remove all ctrls
+        while(this.feetsFormArray.controls.length){
+            this.feetsFormArray.removeAt(this.feetsFormArray.controls.length - 1);
+        }
+
+        feetPoints.forEach((point, index) => {
+            this.feetsFormArray.push(this.fb.group(point));
+        })
+        // this.feetsFormArray.setValue(feetPoints);
         // if (feetPoints.length > 1) {
         //     feetPoints.forEach((feetPoint, index) => {
         //         if (index === 0) return;
         //         this.feetsFormArray.push(this.fb.group(feetPoint))
         //     })
         // }
+        // this.triggerPipe = !this.triggerPipe;
     }
 
     // on total feet change - remove the feets that are greated than total feet
@@ -196,20 +224,30 @@ export class PointEntryDetailsComponent implements OnDestroy {
             this.setFeetsFormArray();
             return;
         }
-        this.feetsFormArray.controls.forEach((ctrl, index) => {
-            // reset to actual value ----
+
+        this.setFeetsFormArray();
+
+        points.forEach((point, index) => {
             const currentEndFeet = points[index].endFeet ? + points[index].endFeet : 0;
             const currentTotlalPointFeet = points[index].totalFeet;
             const currentAmt = points[index].amt;
-            // reset ends here ----
+            const currentStartFeet = points[index].startFeet;
+            let ctrl = this.feetsFormArray.controls[index];
+
+            if (!ctrl) {
+                this.feetsFormArray.push(this.pes.feetFormBuilder());
+                ctrl = this.feetsFormArray.controls[index];
+                ctrl.get('endFeet').setValue(currentEndFeet);
+                ctrl.get('startFeet').setValue(currentStartFeet);
+                ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
+                ctrl.get('amt').setValue(currentAmt);
+            }
 
             const endFeet = ctrl.get('endFeet').value ? +ctrl.get('endFeet').value : 0;
             let startFeet = ctrl.get('startFeet').value ? +ctrl.get('startFeet').value : 0;
             const amtPerFeet = ctrl.get('amtPerFeet').value ? +ctrl.get('amtPerFeet').value : 0;
             let feetRange = 0;
             let amt = 0;
-
-
             if (startFeet > 0) {
                 startFeet -= 1;
             }
@@ -241,8 +279,55 @@ export class PointEntryDetailsComponent implements OnDestroy {
                     ctrl.get('isDeleted').setValue(true);
                 }
             }
-
         })
+        this.checkRemainingCtrls(points.length);
+        // this.feetsFormArray.controls.forEach((ctrl, index) => {
+        //     // reset to actual value ----
+        //     const currentEndFeet = points[index].endFeet ? + points[index].endFeet : 0;
+        //     const currentTotlalPointFeet = points[index].totalFeet;
+        //     const currentAmt = points[index].amt;
+        //     // reset ends here ----
+
+        //     const endFeet = ctrl.get('endFeet').value ? +ctrl.get('endFeet').value : 0;
+        //     let startFeet = ctrl.get('startFeet').value ? +ctrl.get('startFeet').value : 0;
+        //     const amtPerFeet = ctrl.get('amtPerFeet').value ? +ctrl.get('amtPerFeet').value : 0;
+        //     let feetRange = 0;
+        //     let amt = 0;
+
+
+        //     if (startFeet > 0) {
+        //         startFeet -= 1;
+        //     }
+
+        //     if (totalFeet >= currentEndFeet) {
+        //         // do nothing - reset
+        //         if (ctrl.get('isDeleted').value) {
+        //             ctrl.get('isDeleted').setValue(false);
+        //         }
+        //         ctrl.get('endFeet').setValue(currentEndFeet.toString());
+        //         ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
+        //         ctrl.get('amt').setValue(currentAmt);
+        //     } else if (totalFeet > startFeet && totalFeet <= currentEndFeet) {
+        //         // update
+        //         if (ctrl.get('isDeleted').value) {
+        //             ctrl.get('isDeleted').setValue(false);
+        //         }
+        //         ctrl.get('endFeet').setValue(totalFeet.toString());
+        //         feetRange = totalFeet - startFeet;
+        //         if (feetRange <= 0) {
+        //             feetRange = 0;
+        //         }
+
+        //         amt = feetRange * amtPerFeet;
+        //         ctrl.get('totalFeet').setValue(feetRange.toString());
+        //         ctrl.get('amt').setValue(amt.toString());
+        //     } else {
+        //         if (index !== 0) {
+        //             ctrl.get('isDeleted').setValue(true);
+        //         }
+        //     }
+
+        // })
     }
 
     // total Feet amount calulation.
@@ -277,6 +362,17 @@ export class PointEntryDetailsComponent implements OnDestroy {
         })
         this.pointEntryForm.get('totalFeetAmt').setValue(totalAmount.toString());
         this.updateOverallAmt();
+        // this.triggerPipe = !this.triggerPipe;
+    }
+
+    checkRemainingCtrls(pointLen) {
+        const ctrl = this.feetsFormArray.controls[pointLen];
+        if (ctrl) {
+            const endFeet = ctrl.get('endFeet').value ? +ctrl.get('endFeet').value : 0;
+            if(this.totalFeet <= endFeet){
+                ctrl.get('isDeleted').setValue(true);
+            }
+        }
     }
 
     updateOverallAmt() {
@@ -331,5 +427,6 @@ export class PointEntryDetailsComponent implements OnDestroy {
         this.feetsActiveControls[lastActiveControl].get('isDeleted').setValue(true);
         // this.feetsFormArray.removeAt(this.feetsFormArray.length - 1);
         this.updateTotalFeetAmount();
+        this.triggerPipe = !this.triggerPipe;
     }
 }

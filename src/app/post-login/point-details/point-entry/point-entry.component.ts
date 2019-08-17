@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Moment } from 'moment';
 import { MatStepper } from '@angular/material';
 import { CommonService } from '../../../services/common.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-point-entry',
@@ -24,6 +25,7 @@ export class PointEntryComponent implements OnInit {
   pipes;
   appearance: string;
   pointUrl;
+  agents;
   @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
 
   constructor(
@@ -32,12 +34,16 @@ export class PointEntryComponent implements OnInit {
     private http: HttpClient,
     private config: ConfigService,
     private toastr: ToastrService,
-    private common: CommonService
+    private common: CommonService,
+    private route: ActivatedRoute
   ) {
     this.appearance = this.config.getConfig('formAppearance');
     const baseUrl = this.config.getConfig('apiUrl');
     const url = this.config.getUrl('createpoint')
     this.pointUrl = baseUrl + url;
+    this.route.data.subscribe((data) => {
+      this.agents = data.agentList;
+    })
   }
 
   ngOnInit() {
@@ -56,7 +62,7 @@ export class PointEntryComponent implements OnInit {
         pvcType: ''
       }),
       point: this.fb.group({
-        agentType: 'self',
+        agentType: 'agent',
         agentName: '',
         pointEntry: this.fb.group({
           totalFeet: '',
@@ -93,6 +99,7 @@ export class PointEntryComponent implements OnInit {
   resetForm() {
     this.pointForm.reset({
       point: {
+        agentType: 'agent',
         pointEntry: {
           feets: [{ startFeet: '0' }],
           bitDetails: {
@@ -101,6 +108,7 @@ export class PointEntryComponent implements OnInit {
         }
       }
     });
+    this.agents = [...this.agents];
     this.pes.removeControls(this.pointForm.get('point.pointEntry.feets') as FormArray);
   }
 

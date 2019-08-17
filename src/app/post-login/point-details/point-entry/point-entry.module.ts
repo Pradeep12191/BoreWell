@@ -16,6 +16,7 @@ import { DirectiveModule } from '../../../directives/directive.module';
 import { PointInfoComponent } from './point-info/point-info.component';
 import { PointOtherDetailsComponent } from './point-other-details/point-other-details.component';
 import { PointComponent } from './point/point.component';
+import { AgentListResolver } from '../../../guards/resolveGuard/agent/agent-list.resolver';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { PointComponent } from './point/point.component';
     ],
     providers: [
         PointEntryService,
-        PointEntryResolve
+        PointEntryResolve,
+        AgentListResolver
     ]
 })
 export class PointEntryModule {

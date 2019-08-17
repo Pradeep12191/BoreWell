@@ -7,6 +7,7 @@ import { CasingTypeResolver } from '../../../guards/resolveGuard/select-option/c
 import { BoreTypeResolver } from '../../../guards/resolveGuard/select-option/bore-type.resolver';
 import { VehiclesResolver } from '../../../guards/resolveGuard/vehicles.resolver';
 import { PVCTypeResolver } from '../../../guards/resolveGuard/select-option/pvc-type.resolver';
+import { AgentListResolver } from '../../../guards/resolveGuard/agent/agent-list.resolver';
 
 const routes: Routes = [
     {
@@ -16,7 +17,8 @@ const routes: Routes = [
             pipeTypes: PipeTypeResolver,
             casingTypes: CasingTypeResolver,
             boreTypes: BoreTypeResolver,
-            pvcTypes: PVCTypeResolver
+            pvcTypes: PVCTypeResolver,
+            agentList: AgentListResolver
         }
     }
 ]

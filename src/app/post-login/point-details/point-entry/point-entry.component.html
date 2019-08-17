@@ -18,7 +18,7 @@
         </mat-step>
         <mat-step [stepControl]="pointForm.get('point')">
             <ng-template matStepLabel>{{ 'POINT_ENTRY.STEP_LABEL.POINT_ENTRY' | translate }}</ng-template>
-            <point [form]="pointForm.get('point')"></point>
+            <point [agents]="agents" [form]="pointForm.get('point')"></point>
             <div fxLayout fxLayoutAlign="space-between">
                 <div>
                     <button mat-raised-button color="primary" matStepperPrevious>Back</button>

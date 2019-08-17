@@ -44,7 +44,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
 
             this.selectedAgent = this.agentList.find((agent) => agent.name === event.value);
             const feetPoints = this.getFeetPointsFromAgent();
-
+            this.pes.removeControls(this.feetsFormArray, 1);
             // set feets from selected agent
             this.feetsFormArray.setValue([feetPoints[0]]);
             if (feetPoints.length > 1) {
@@ -301,6 +301,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
         if (+endFeet > +this.totalFeet) {
             feetCtrl.get('endFeet').setValue('');
             feetCtrl.get('amt').setValue('');
+            feetCtrl.get('totalFeet').setValue('');
             this.updateTotalFeetAmount()
             return this.toastr.error('End feet cannot be more than total Feet', null, { timeOut: 2000 })
         }

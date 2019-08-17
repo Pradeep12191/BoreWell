@@ -7,6 +7,8 @@ import { AuthService } from '../../../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { FADE_IN_ANIMATION } from '../../../../animations';
 import { Agent } from '../../../../models/Agent';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'point',
@@ -22,14 +24,30 @@ export class PointComponent {
     agentListUrl;
     agentList: Agent[];
     agentNames;
+    @Input() set agents(list) {
+        if (list) {
+            this.agentList = list;
+            this.agentNames = this.agentList.map(agent => agent.name);
+            this.pes.pointOptionChanged({ optionName: 'agent', data: list });
+        }
+    };
+    routeSubscription: Subscription;
     constructor(
         private config: ConfigService,
         private pes: PointEntryService,
         private auth: AuthService,
-        private http: HttpClient
+        private http: HttpClient,
+        private route: ActivatedRoute
     ) {
         this.agentListUrl = this.config.getAbsoluteUrl('viewagentlist') + '/' + this.auth.username;
         this.appearance = this.config.getConfig('formAppearance');
+        this.routeSubscription = this.route.data.subscribe((data) => {
+            if (data.agentList) {
+                this.agentList = data.agentList;
+                this.agentNames = this.agentList.map(agent => agent.name);
+                this.pes.pointOptionChanged({ optionName: 'agent', data: data.agentList });
+            }
+        })
     }
 
     onPointOptionChange(event: MatRadioChange) {

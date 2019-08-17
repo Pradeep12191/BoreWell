@@ -18,7 +18,6 @@ export class PointOtherDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.form.parent.get('point.bitDetails.totalRpm'));
         this.totalRpm = this.form.parent.get('point.bitDetails.totalRpm').value;
     }
 }

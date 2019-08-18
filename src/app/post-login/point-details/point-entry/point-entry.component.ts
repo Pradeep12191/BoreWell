@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Moment } from 'moment';
 import { MatStepper } from '@angular/material';
 import { CommonService } from '../../../services/common.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-point-entry',
@@ -35,7 +35,8 @@ export class PointEntryComponent implements OnInit {
     private config: ConfigService,
     private toastr: ToastrService,
     private common: CommonService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.appearance = this.config.getConfig('formAppearance');
     const baseUrl = this.config.getConfig('apiUrl');
@@ -51,7 +52,7 @@ export class PointEntryComponent implements OnInit {
     this.pointForm = this.fb.group({
       info: this.fb.group({
         rig: '',
-        date: '',
+        date: ['', Validators.required],
         boreType: '',
         partyName: '',
         partyState: '',
@@ -199,9 +200,12 @@ export class PointEntryComponent implements OnInit {
     }
     ).subscribe((response) => {
       this.toastr.success('Point Added Sucessfully', null, { timeOut: 1500 })
-      this.stepper.reset();
-      this.resetForm();
+      // this.stepper.reset();
+      // this.resetForm();
       this.common.scrollTop();
+      const date = this.pointForm.value.info.date;
+      const formattedDate = date ? (date as Moment).format('DD-MM-YYYY') : null
+      this.router.navigate(['../../reports/pointDetails/pointReport', formattedDate], {relativeTo: this.route})
     }, (err) => {
       if (err) {
         this.toastr.error('Error while saving Point', null, { timeOut: 1500 })

@@ -15,11 +15,19 @@ export class PointReportReolver implements Resolve<any> {
     ) {
         const apiUrl = this.config.getConfig('apiUrl');
         const pointUrl = this.config.getUrl('viewpointlist');
-        const todayDate = moment().format('DD-MM-YYYY');
-        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username + '/' + todayDate
+        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        const todayDate = moment().format('DD-MM-YYYY');
+        if (route.params) {
+            const date = route.params.date;
+            if (date) {
+                this.pointUrl = this.pointUrl + '/' + date
+            } else {
+                this.pointUrl = this.pointUrl + '/' + todayDate
+            }
+        }
         return this.http.get(this.pointUrl)
     }
 }

@@ -34,11 +34,24 @@ export class BitDetailsComponent implements OnInit {
     calculateTotalRpm() {
         let startRpm = this.bitDetailsForm.get('startRpm').value;
         let endRpm = this.bitDetailsForm.get('endRpm').value;
+        let totalFeet = this.bitDetailsForm.parent.get('pointEntry.totalFeet').value;
         let totalRpm = 0;
+        let totalFeetPerHour = 0;
         startRpm = startRpm ? +startRpm : 0;
         endRpm = endRpm ? +endRpm : 0;
+        totalFeet = totalFeet ? +totalFeet : 0;
         totalRpm = endRpm - startRpm;
+        if (totalRpm < 0) {
+            totalRpm = 0
+        }
+        totalFeetPerHour = (Math.round(totalFeet / totalRpm) * 10) / 10;
+        if (totalFeetPerHour < 0 || !totalFeetPerHour || totalRpm === 0) {
+            totalFeetPerHour = 0
+        }
+        const totalFeetPerHourStr = totalFeetPerHour.toString() + ' ft/hr'
+        
         this.bitDetailsForm.get('totalRpm').setValue(totalRpm.toString());
+        this.bitDetailsForm.get('totalFeetPerHour').setValue(totalFeetPerHourStr);
     }
 
     removeBit(index) {

@@ -94,9 +94,10 @@ export class PointEntryComponent implements OnInit {
           charges: this.fb.array([this.pes.chargeFormBuilder()]),
         }),
         bitDetails: this.fb.group({
-          startRpm: '0',
+          startRpm: '',
           endRpm: '',
           totalRpm: '',
+          totalFeetPerHour: '',
           bits: this.fb.array([this.pes.bitFormBuilder()])
         }),
         hammerDetails: this.fb.group({

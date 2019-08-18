@@ -123,9 +123,10 @@ export class PointEntryComponent implements OnInit {
       return this.toastr.error('Please fill all required fields *', null, { timeOut: 1500 })
     }
     const formValue = this.pointForm.value;
-    let feets = this.pointForm.value.point.pointEntry.feets;
+    let feets: any[] = this.pointForm.value.point.pointEntry.feets;
     if (feets.length) {
-      feets = feets.filter(feet => !feet.isDeleted)
+      feets = feets.filter(feet => !feet.isDeleted);
+      feets.forEach(feet => feet['feetDiff'] = feet.totalFeet)
     }
     const pointEntryObj = {
       rig: this.pointForm.value.info.rig,

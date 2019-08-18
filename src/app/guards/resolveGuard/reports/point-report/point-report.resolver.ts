@@ -13,13 +13,15 @@ export class PointReportReolver implements Resolve<any> {
         private config: ConfigService,
         private auth: AuthService
     ) {
-        const apiUrl = this.config.getConfig('apiUrl');
-        const pointUrl = this.config.getUrl('viewpointlist');
-        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        this.pointUrl = '';
         const todayDate = moment().format('DD-MM-YYYY');
+        const apiUrl = this.config.getConfig('apiUrl');
+        const pointUrl = this.config.getUrl('viewpointlist');
+        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
+
         if (route.params) {
             const date = route.params.date;
             if (date) {

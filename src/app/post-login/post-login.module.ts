@@ -26,6 +26,7 @@ import { CasingTypeResolver } from '../guards/resolveGuard/select-option/casing-
 import { PipeTypeResolver } from '../guards/resolveGuard/select-option/pipe-type.resolver';
 import { VehiclesResolver } from '../guards/resolveGuard/vehicles.resolver';
 import { PVCTypeResolver } from '../guards/resolveGuard/select-option/pvc-type.resolver';
+import { NullFilterPipe } from '../pipes/nullFilter.pipe';
 
 
 
@@ -43,7 +44,7 @@ import { PVCTypeResolver } from '../guards/resolveGuard/select-option/pvc-type.r
         PostLoginComponent,
         HeaderComponent,
         S404Component,
-        MobileSidenavComponent
+        MobileSidenavComponent,
     ],
     providers: [
         StateResolver,

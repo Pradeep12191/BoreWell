@@ -25,6 +25,13 @@ export class PointEntryDetailsComponent implements OnDestroy {
     public totalFeetAmtInput$ = new Subject();
     public showBtns = true;
     public triggerPipe = false;
+    public casingTypes = [
+        { name: 'PVC 7 Inch', depthControlName: 'Pvc7Depth', depthRateControlName: 'Pvc7DepthRate', amtControlName: 'Pvc7Amt' },
+        { name: 'PVC 10 Inch', depthControlName: 'Pvc10Depth', depthRateControlName: 'Pvc10DepthRate', amtControlName: 'Pvc10Amt' },
+        { name: 'PVC 12 Inch', depthControlName: 'Pvc12Depth', depthRateControlName: 'Pvc12DepthRate', amtControlName: 'Pvc12Amt' },
+        { name: 'MS, Medium', depthControlName: 'MsMediumDepth', depthRateControlName: 'MsMediumDepthRate', amtControlName: 'MsMediumAmt' },
+        { name: 'MS, Heavy', depthControlName: 'MsHeavyDepth', depthRateControlName: 'MsHeavyDepthRate', amtControlName: 'MsHeavyAmt' },
+    ]
     get feetsFormArray() {
         return this.pointEntryForm.get('feets') as FormArray
     }
@@ -378,7 +385,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
     updateOverallAmt() {
         // overall amount will be the sum of total feet amount, casing amount, other charges
         let totalAmt = this.pointEntryForm.get('totalFeetAmt').value;
-        let casingAmt = this.pointEntryForm.get('casingFeetAmt').value;
+        let casingAmt = this.pointEntryForm.get('totalCasingAmt').value;
         let otherCharges = this.pointEntryForm.get('allowance').value;
         let weldingAmt = this.pointEntryForm.get('weldingAmt').value;
         let overallAmt = 0;
@@ -410,9 +417,9 @@ export class PointEntryDetailsComponent implements OnDestroy {
         }
     }
 
-    public calculateCasingAmt() {
-        let casingDepth = this.pointEntryForm.get('casingDepth').value;
-        let casingDepthRate = this.pointEntryForm.get('casingDepthRate').value;
+    public calculateCasingAmt(depthCtrlName, depthRateCtrlName, amtCtrlName) {
+        let casingDepth = this.pointEntryForm.get(depthCtrlName).value;
+        let casingDepthRate = this.pointEntryForm.get(depthRateCtrlName).value;
         let casingAmt = 0;
 
         casingDepth = casingDepth ? +casingDepth : 0;
@@ -420,8 +427,20 @@ export class PointEntryDetailsComponent implements OnDestroy {
 
         casingAmt = casingDepth * casingDepthRate;
 
-        this.pointEntryForm.get('casingFeetAmt').setValue(casingAmt.toString());
+        this.pointEntryForm.get(amtCtrlName).setValue(casingAmt.toString());
+        this.updateCasingTotal();
         this.updateOverallAmt();
+    }
+
+    private updateCasingTotal() {
+        let totalAmt = 0;
+        this.casingTypes.forEach(casingType => {
+            let amt = this.pointEntryForm.get(casingType.amtControlName).value;
+            amt = amt ? +amt : 0;
+            totalAmt += amt;
+        })
+
+        this.pointEntryForm.get('totalCasingAmt').setValue(totalAmt);
     }
 
     public calculateWeldingAmt() {

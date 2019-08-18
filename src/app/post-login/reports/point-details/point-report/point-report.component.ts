@@ -20,8 +20,8 @@ import { ToastrService } from 'ngx-toastr';
 export class PointReportComponent implements OnDestroy {
     public columns: Column[] = [
         { id: 'serialNo', name: 'COLUMN.SERIAL_NO', type: 'index', width: '15' },
-        { id: 'pointno', name: 'POINT_ENTRY.COL.POINT_NO', type: 'string', width: '30' },
-        { id: 'rig', name: 'POINT_ENTRY.COL.RIG', type: 'string', width: '25' },
+        { id: 'pointno', name: 'POINT_ENTRY.COL.POINT_NO', type: 'string', width: '25' },
+        { id: 'rig', name: 'POINT_ENTRY.COL.RIG', type: 'string', width: '30' },
         { id: 'edit', name: '', type: 'button', width: '10' },
         { id: 'delete', name: '', type: 'button', width: '10' },
         { id: 'more_details', name: '', type: 'toggle', width: '10', },

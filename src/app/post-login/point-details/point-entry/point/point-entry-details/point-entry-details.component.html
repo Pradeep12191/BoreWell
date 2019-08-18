@@ -122,36 +122,38 @@
             <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.CASING' | translate }} </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="m-b-10" fxLayout fxLayoutGap="10px">
-                <div class="bold">{{ pointEntryForm.parent.parent.get('info.casingType').value }}</div>
-                <div class="bold">{{ pointEntryForm.parent.parent.get('info.pipeType').value }}</div>
-            </div>
-            <div fxLayout fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
-                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
-                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH' | translate }}</mat-label>
-                    <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepth">
-                </mat-form-field>
-                <div class="bold m-b-20" fxLayout="column" fxLayoutAlign="center center">X</div>
-                <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
-                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
-                    <input poistiveNumber (input)="calculateCasingAmt()" type="text" matInput formControlName="casingDepthRate">
-                </mat-form-field>
-                <div class="m-b-20" fxLayout fxLayoutAlign="center center">
-                    <div class="equal-container">
-                        <div class="equal-line m-b-3"></div>
-                        <div class="equal-line"></div>
+            <div fxLayout="column" *ngFor="let casing of casingTypes">
+                <div class="m-b-10 bold" fxLayout>
+                    {{ casing.name }}
+                </div>
+                <div fxLayout fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
+                    <mat-form-field fxFlex="45" [appearance]="appearance" class="calc-field">
+                        <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH' | translate }}</mat-label>
+                        <input poistiveNumber (input)="calculateCasingAmt(casing.depthControlName, casing.depthRateControlName, casing.amtControlName)" type="text" matInput [formControlName]="casing.depthControlName">
+                    </mat-form-field>
+                    <div fxFlex="1" class="bold m-b-20" fxLayout="column" fxLayoutAlign="center center">X</div>
+                    <mat-form-field fxFlex="45" [appearance]="appearance" class="calc-field">
+                        <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
+                        <input poistiveNumber (input)="calculateCasingAmt(casing.depthControlName, casing.depthRateControlName, casing.amtControlName)" type="text" matInput [formControlName]="casing.depthRateControlName">
+                    </mat-form-field>
+                    <div fxFlex="1" class="m-b-20" fxLayout fxLayoutAlign="center center">
+                        <div class="equal-container">
+                            <div class="equal-line m-b-3"></div>
+                            <div class="equal-line"></div>
+                        </div>
+                    </div>
+                    <div fxFlex="8" fxLayout="column" fxLayoutAlign="center center" class="bold m-b-20">
+                        {{ pointEntryForm.get(casing.amtControlName).value || 0 }}
                     </div>
                 </div>
-                <div fxLayout="column" fxLayoutAlign="center center" class="bold m-b-20">
-                    {{ pointEntryForm.get('casingFeetAmt').value || 0 }}
-                </div>
             </div>
+
             <div fxLayout fxLayoutGap="10px" class="m-b-10">
-                <!-- <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
+                <div class="bold font-14" fxFlex="30" fxFlex.lt-md>
                     {{ 'POINT_ENTRY.POINT_ENTRY.CASING_FEET_AMOUNT' | translate}}
                 </div>
                 <div class="bold">:</div>
-                <div fxFlex>{{ pointEntryForm.get('casingFeetAmt').value || 0 }}</div> -->
+                <div fxFlex>{{ pointEntryForm.get('totalCasingAmt').value || 0 }}</div>
             </div>
         </mat-card-content>
     </mat-card>

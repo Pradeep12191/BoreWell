@@ -66,6 +66,36 @@
                             <div class="bold">:</div>
                             <div>{{ point?.partyCity }}</div>
                         </div>
+                        <div class="header" fxLayout="column" fxLayoutAlign="center center">{{
+                            'POINT_ENTRY.POINT_ENTRY.TITLE' | translate }}</div>
+                        <div fxLayout="column" fxLayoutGap="10px">
+                            <div fxLayout fxLayoutGap="10px" class="bold col-header">
+                                <div class="text-center" fxFlex="17.5">Start Ft.</div>
+                                <div fxFlex="1">-</div>
+                                <div class="text-center" fxFlex="17.5">End Ft.</div>
+                                <div fxFlex="17.5">Total Ft.</div>
+                                <div fxFlex="1">x</div>
+                                <div fxFlex="17.5">Amt. Per Ft.</div>
+                                <div fxFlex="1">=</div>
+                                <div fxFlex="100">Amt.</div>
+                            </div>
+                            <div class="line m-t-5"></div>
+                            <div fxLayout="column">
+                                <ng-container *ngFor="let feet of point.feets | nullFilter; let last = last">
+                                    <div fxLayout fxLayoutGap="10px">
+                                        <div class="text-center" fxFlex="17.5">{{ feet.startFeet }}</div>
+                                        <div fxFlex="1">-</div>
+                                        <div class="text-center" fxFlex="17.5">{{ feet.endFeet }}</div>
+                                        <div fxFlex="17.5">{{ feet.totalFeet }}</div>
+                                        <div fxFlex="1">x</div>
+                                        <div fxFlex="17.5">{{ feet.amtPerFeet }}</div>
+                                        <div fxFlex="1">=</div>
+                                        <div class="text-right" fxFlex="100">{{ feet.amt }}</div>
+                                    </div>
+                                    <div *ngIf="!last" class="dashed m-t-5 m-b-5"></div>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
                 </ng-container>
             </expand-table>

@@ -56,26 +56,29 @@
                 <mat-label>{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</mat-label>
                 <input poistiveNumber type="text" formControlName="partyMobile" matInput>
             </mat-form-field>
-            <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
+            <!-- casing type commented -->
+            <!-- <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</mat-label>
                 <mat-select formControlName="casingType">
                     <mat-option [value]="casing.casingtype" *ngFor="let casing of casingTypes">{{ casing.casingtype }}</mat-option>
                 </mat-select>
-            </mat-form-field>
-            <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
+            </mat-form-field> -->
+            <!-- pipe type commented -->
+            <!-- <mat-form-field fxFlex="33" fxFlex.lt-md [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PVC_TYPE' | translate }}</mat-label>
                 <mat-select formControlName="pipeType">
                     <mat-option [value]="pvc.pvc_size" *ngFor="let pvc of pvcTypes">{{ pvc.pvc_size }}</mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
         </div>
-        <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
+        <!-- pipe selection commented -->
+        <!-- <div fxLayout fxLayout.lt-md="column" fxLayoutGap="20px">
             <mat-form-field fxFlex [appearance]="appearance">
                 <mat-label>{{ 'POINT_ENTRY.PIPE_SELECTION' | translate }}</mat-label>
                 <mat-select formControlName="pipeSelection">
                     <mat-option [value]="pipe.pipeselection" *ngFor="let pipe of pipeTypes">{{ pipe.pipeselection }}</mat-option>
                 </mat-select>
             </mat-form-field>
-        </div>
+        </div> -->
     </div>
 </form>

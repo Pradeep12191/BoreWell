@@ -175,6 +175,9 @@ mat-form-field.calc-field{
  .text-center{
      text-align: center;
  }
+ .text-right{
+     text-align: right;
+ }
 
 
 
@@ -194,6 +197,10 @@ mat-form-field.calc-field{
         }
     }
     
+ }
+
+ .line{
+    border-bottom: 1px solid;
  }
 
  mat-form-field.custom{

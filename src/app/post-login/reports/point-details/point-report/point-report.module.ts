@@ -8,6 +8,7 @@ import { PointReportRoutingModule } from './point-report-routing.module';
 import { PointReportComponent } from './point-report.component';
 import { ExpandTableModule } from '../../../../expand-table/expand-table.module';
 import { PointReportReolver } from '../../../../guards/resolveGuard/reports/point-report/point-report.resolver';
+import { PipesModule } from '../../../../pipes/pipes.module';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { PointReportReolver } from '../../../../guards/resolveGuard/reports/poin
         SharedModule,
         CommonModule,
         ExpandTableModule,
-        PointReportRoutingModule
+        PointReportRoutingModule,
+        PipesModule
     ],
     declarations: [
         PointReportComponent

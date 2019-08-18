@@ -69,9 +69,22 @@ export class PointEntryComponent implements OnInit {
           totalFeet: '',
           feets: this.fb.array([this.pes.feetFormBuilder()]),
           totalFeetAmt: '',
-          casingDepth: '',
-          casingDepthRate: '',
-          casingFeetAmt: '',
+          Pvc7Depth: '',
+          Pvc7DepthRate: '',
+          Pvc7Amt: '',
+          Pvc10Depth: '',
+          Pvc10DepthRate: '',
+          Pvc10Amt: '',
+          Pvc12Depth: '',
+          Pvc12DepthRate: '',
+          Pvc12Amt: '',
+          MsMediumDepth: '',
+          MsMediumDepthRate: '',
+          MsMediumAmt: '',
+          MsHeavyDepth: '',
+          MsHeavyDepthRate: '',
+          MsHeavyAmt: '',
+          totalCasingAmt: '',
           allowance: '',
           welding: '',
           amtPerWelding: '',
@@ -162,14 +175,12 @@ export class PointEntryComponent implements OnInit {
     }
     console.log(JSON.stringify({
       ...pointEntryObj,
-      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null,
-      pointno: '1'
+      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null
     }, null, 2));
 
     this.http.post(this.pointUrl, {
       ...pointEntryObj,
-      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null,
-      pointno: '1'
+      date: pointEntryObj.date ? (pointEntryObj.date as Moment).format('DD-MM-YYYY') : null
     }
     ).subscribe((response) => {
       this.toastr.success('Point Added Sucessfully', null, { timeOut: 1500 })

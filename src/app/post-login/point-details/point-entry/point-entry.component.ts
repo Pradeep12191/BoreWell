@@ -181,6 +181,7 @@ export class PointEntryComponent implements OnInit {
       startRpm: this.pointForm.value.point.bitDetails.startRpm,
       endRpm: this.pointForm.value.point.bitDetails.endRpm,
       totalRpm: this.pointForm.value.point.bitDetails.totalRpm,
+      totalFeetPerHour: this.pointForm.value.point.bitDetails.totalFeetPerHour,
       overallTotalAmt: this.pointForm.value.otherDetails.overallTotalAmt,
       totalAmt: this.pointForm.value.otherDetails.totalAmt,
       commissionAmt: this.pointForm.value.otherDetails.commissionAmt,

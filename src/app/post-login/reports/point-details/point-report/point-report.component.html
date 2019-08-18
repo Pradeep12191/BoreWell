@@ -18,7 +18,7 @@
     </div>
     <div fxLayout fxLayoutAlign="center center">
         <ng-container *ngIf="!fetchingData; else fetchingTpl">
-            <expand-table @fadeIn *ngIf="points?.length; else emptyTpl" fxFlex [columns]="columns" [dataSource]="pointDataSource">
+            <expand-table @fadeIn [data]="points" [expandFirstRow]="true" *ngIf="points?.length; else emptyTpl" fxFlex [columns]="columns" [dataSource]="pointDataSource">
                 <ng-container *expandDetails="let point">
                     <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
                         <div fxLayout fxLayoutGap="10px">

@@ -1,4 +1,4 @@
-<expand-table [columns]="columns" [dataSource]="bitDataSource">
+<expand-table [data]="bits" [expandFirstRow]="true" [columns]="columns" [dataSource]="bitDataSource">
     <ng-container *expandDetails="let bit">
         <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
             <div fxLayout fxLayoutGap="10px">

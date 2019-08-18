@@ -13,7 +13,9 @@ import { ROTATE_ARROW_ANIMATION, EXPAND } from '../animations';
 })
 export class ExpandTableComponent implements OnInit {
     @Input() columns: Column[];
+    @Input() data: any[];
     @Input() dataSource: MatTableDataSource<any>;
+    @Input() expandFirstRow;
     @ContentChild(ExpandDetailsDirective, { read: TemplateRef, static: false }) detailsTpl: TemplateRef<ExpandDetailsDirective>;
     displayedColumns = [];
     expandedRow;
@@ -28,6 +30,11 @@ export class ExpandTableComponent implements OnInit {
         this.displayedColumns = this.columns.map(col => col.id);
         if (this.mediaObs.isActive('lt-md')) {
             this.displayedColumns = this.columns.filter(col => !col.isDesktopOnly).map(col => col.id);
+        }
+        if (this.expandFirstRow) {
+            if (this.data && this.data.length) {
+                this.expandedRow = this.data[0]
+            }
         }
     }
 }

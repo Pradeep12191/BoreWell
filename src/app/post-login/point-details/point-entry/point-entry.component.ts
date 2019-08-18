@@ -187,7 +187,7 @@ export class PointEntryComponent implements OnInit {
       totalAmt: this.pointForm.value.otherDetails.totalAmt,
       commissionAmt: this.pointForm.value.otherDetails.commissionAmt,
       remarks: this.pointForm.value.otherDetails.remarks,
-      pointNumber: this.pointForm.value.info.pointNumber
+      pointno: this.pointForm.value.info.pointNumber
     }
     console.log(JSON.stringify({
       ...pointEntryObj,

@@ -1,148 +1,148 @@
 {
     "formAppearance": "outline",
-    "apiUrl": "http://103.207.4.72:8080/",
+    "apiUrl": "http://103.207.4.72:8080/rigapi2/webapi/resource/",
     "mobileNav": false,
     "classicSidenav": true,
     "urls": [
         {
             "name": "auth",
-            "url": "rigapi1/webapi/resource/login"
+            "url": "login"
         },
         {
             "name": "userInfo",
-            "url": "rigapi1/webapi/resource/userbasicinfo"
+            "url": "userbasicinfo"
         },
         {
             "name": "addHammer",
-            "url": "rigapi1/webapi/resource/addHammer"
+            "url": "addHammer"
         },
         {
             "name": "addBit",
-            "url": "rigapi1/webapi/resource/addbit"
+            "url": "addbit"
         },
         {
             "name": "addVehicle",
-            "url": "rigapi1/webapi/resource/addVehicle"
+            "url": "addVehicle"
         },
         {
             "name": "state",
-            "url": "rigapi1/webapi/resource/statelist"
+            "url": "statelist"
         },
         {
             "name": "addAgent",
-            "url": "rigapi1/webapi/resource/addAgent"
+            "url": "addAgent"
         },
         {
             "name": "updateLang",
-            "url": "rigapi1/webapi/resource/updatelanguage"
+            "url": "updatelanguage"
         },
         {
             "name": "addbit_distributor",
-            "url": "rigapi1/webapi/resource/addbit_distributor"
+            "url": "addbit_distributor"
         },
         {
             "name": "addHammer_distributor",
-            "url": "rigapi1/webapi/resource/addHammer_distributor"
+            "url": "addHammer_distributor"
         },
         {
             "name": "addHammer_company",
-            "url": "rigapi1/webapi/resource/addHammer_company"
+            "url": "addHammer_company"
         },
         {
             "name": "gethammer_company_list",
-            "url": "rigapi1/webapi/resource/gethammer_company_list"
+            "url": "gethammer_company_list"
         },
         {
             "name": "viewhammerlist",
-            "url": "rigapi1/webapi/resource/viewhammerlist"
+            "url": "viewhammerlist"
         },
         {
             "name": "gethammer_distributor_list",
-            "url": "rigapi1/webapi/resource/gethammer_distributor_list"
+            "url": "gethammer_distributor_list"
         },
         {
             "name": "bitlist",
-            "url": "rigapi1/webapi/resource/getbitlist"
+            "url": "getbitlist"
         },
         {
             "name": "addbit_size",
-            "url": "rigapi1/webapi/resource/addbit_size"
+            "url": "addbit_size"
         },
         {
             "name": "vehicle_list",
-            "url": "rigapi1/webapi/resource/getvehiclenames"
+            "url": "getvehiclenames"
         },
         {
             "name": "distributor_list",
-            "url": "rigapi1/webapi/resource/getbitdistributor_list"
+            "url": "getbitdistributor_list"
         },
         {
             "name": "bitsize_list",
-            "url": "rigapi1/webapi/resource/getbitsize_list"
+            "url": "getbitsize_list"
         },
         {
             "name": "view_bit",
-            "url": "rigapi1/webapi/resource/viewbitlist"
+            "url": "viewbitlist"
         },
         {
             "name": "vehicle_types",
-            "url": "rigapi1/webapi/resource/vehicle_type"
+            "url": "vehicle_type"
         },
         {
             "name": "bore_size",
-            "url": "rigapi1/webapi/resource/boresize"
+            "url": "boresize"
         },
         {
             "name": "view_vehicle_list",
-            "url": "rigapi1/webapi/resource/viewvehiclelist"
+            "url": "viewvehiclelist"
         },
         {
             "name": "contact_types",
-            "url": "rigapi1/webapi/resource/contact_type"
+            "url": "contact_type"
         },
         {
             "name": "viewagentlist",
-            "url": "rigapi1/webapi/resource/viewagentlist"
+            "url": "viewagentlist"
         },
         {
             "name": "agent_types",
-            "url": "rigapi1/webapi/resource/getagent_type"
+            "url": "getagent_type"
         },
         {
             "name": "drilling_commission_types",
-            "url": "rigapi1/webapi/resource/getdrill_comm_type"
+            "url": "getdrill_comm_type"
         },
         {
             "name": "casing_commission_types",
-            "url": "rigapi1/webapi/resource/getcase_comm_type"
+            "url": "getcase_comm_type"
         },
         {
             "name": "casing_payment_types",
-            "url": "rigapi1/webapi/resource/getcase_payment_type"
+            "url": "getcase_payment_type"
         },
         {
             "name": "getbore_type",
-            "url": "rigapi1/webapi/resource/getbore_type"
+            "url": "getbore_type"
         },
         {
             "name": "getcasing_type",
-            "url": "rigapi1/webapi/resource/getcasing_type"
+            "url": "getcasing_type"
         },
         {
             "name": "getpipe_type",
-            "url": "rigapi1/webapi/resource/getpipe_type"
+            "url": "getpipe_type"
         },
         {
             "name": "createpoint",
-            "url": "rigapi1/webapi/resource/createpoint"
+            "url": "createpoint"
         },
         {
             "name": "viewpointlist",
-            "url": "rigapi1/webapi/resource/viewpointlist"
+            "url": "viewpointlist"
         },
         {
             "name": "getpvctype",
-            "url": "rigapi1/webapi/resource/getpvctype"
+            "url": "getpvctype"
         }
     ]
 }

@@ -144,6 +144,18 @@ body{
     }
 }
 
+@for $i from 1 through 100{
+    .p-l-#{$i} {
+        padding-left: #{$i} + 'px'
+    }
+}
+
+@for $i from 1 through 100{
+    .p-r-#{$i} {
+        padding-right: #{$i} + 'px'
+    }
+}
+
 .splash-shine{
     position: fixed;
     height: 100%;
@@ -177,6 +189,10 @@ mat-form-field.calc-field{
  }
  .text-right{
      text-align: right;
+ }
+
+ .font-italic{
+     font-style: italic;
  }
 
 

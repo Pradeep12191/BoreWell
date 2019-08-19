@@ -27,7 +27,7 @@ export class PointReportReolver implements Resolve<any> {
             if (date) {
                 this.pointUrl = this.pointUrl + '/' + date
             } else {
-                this.pointUrl = this.pointUrl + '/' + todayDate
+                this.pointUrl = this.pointUrl + '/25'
             }
         }
         return this.http.get(this.pointUrl)

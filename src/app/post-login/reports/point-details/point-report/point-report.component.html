@@ -18,83 +18,193 @@
     </div>
     <div fxLayout fxLayoutAlign="center center">
         <ng-container *ngIf="!fetchingData; else fetchingTpl">
-            <expand-table @fadeIn [data]="points" [expandFirstRow]="true" *ngIf="points?.length; else emptyTpl" fxFlex [columns]="columns" [dataSource]="pointDataSource">
+            <expand-table @fadeIn [data]="points" [expandFirstRow]="true" *ngIf="points?.length; else emptyTpl" fxFlex
+                [columns]="columns" [dataSource]="pointDataSource">
                 <ng-container *expandDetails="let point">
-                    <div fxLayout="column" class="m-t-10 m-b-10 width-100" fxLayoutGap="10px">
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold  font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.POINT_NO' | translate}}</div>
-                            <div class="bold">:</div>
-                            <div class="text-transform-upper">{{ point?.pointno }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.RIG' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.rig }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.BORE_TYPE' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.boreType }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.casingType }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.DATE' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.date }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.partyName }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.partyMobile }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.PARTY_STATE' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.partyState }}</div>
-                        </div>
-                        <div fxLayout fxLayoutGap="10px">
-                            <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</div>
-                            <div class="bold">:</div>
-                            <div>{{ point?.partyCity }}</div>
-                        </div>
-                        <div class="header" fxLayout="column" fxLayoutAlign="center center">{{
-                            'POINT_ENTRY.POINT_ENTRY.TITLE' | translate }}</div>
-                        <div fxLayout="column" fxLayoutGap="10px">
-                            <div fxLayout fxLayoutGap="10px" class="bold col-header">
-                                <div class="text-center" fxFlex="17.5">Start Ft.</div>
-                                <div fxFlex="1">-</div>
-                                <div class="text-center" fxFlex="17.5">End Ft.</div>
-                                <div fxFlex="17.5">Total Ft.</div>
-                                <div fxFlex="1">x</div>
-                                <div fxFlex="17.5">Amt. Per Ft.</div>
-                                <div fxFlex="1">=</div>
-                                <div fxFlex="100">Amt.</div>
+                    <div fxLayout="column" fxFlex fxLayoutGap="15px" ngClass="mobile-view">
+                        <div fxLayout="column" class="m-t-10 m-b-10 width-100 p-l-10 p-r-10" fxLayoutGap="10px">
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold  font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.POINT_NO' | translate}}</div>
+                                <div class="bold">:</div>
+                                <div class="text-transform-upper">{{ point?.pointno }}</div>
                             </div>
-                            <div class="line m-t-5"></div>
-                            <div fxLayout="column">
-                                <ng-container *ngFor="let feet of point.feets | nullFilter; let last = last">
-                                    <div fxLayout fxLayoutGap="10px">
-                                        <div class="text-center" fxFlex="17.5">{{ feet.startFeet }}</div>
-                                        <div fxFlex="1">-</div>
-                                        <div class="text-center" fxFlex="17.5">{{ feet.endFeet }}</div>
-                                        <div fxFlex="17.5">{{ feet.totalFeet }}</div>
-                                        <div fxFlex="1">x</div>
-                                        <div fxFlex="17.5">{{ feet.amtPerFeet }}</div>
-                                        <div fxFlex="1">=</div>
-                                        <div class="text-right" fxFlex="100">{{ feet.amt }}</div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.RIG' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.rig }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.BORE_TYPE' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.boreType }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.casingType }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.DATE' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.date }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.partyName }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate
+                                    }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.partyMobile }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.PARTY_STATE' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.partyState }}</div>
+                            </div>
+                            <div fxLayout fxLayoutGap="10px">
+                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</div>
+                                <div class="bold">:</div>
+                                <div>{{ point?.partyCity }}</div>
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="card">
+                            <div class="section-title m-b-16" fxLayout="column" fxLayoutAlign="center start">{{
+                                'POINT_ENTRY.POINT_ENTRY.TITLE' | translate }}</div>
+                            <div fxLayout="column" fxLayoutGap="10px">
+                                <div fxLayout fxLayoutGap="10px" class="bold col-header">
+                                    <div class="text-center" fxFlex="17.5">Start Ft.</div>
+                                    <div fxFlex="1">-</div>
+                                    <div class="text-center" fxFlex="17.5">End Ft.</div>
+                                    <div class="text-center" fxFlex="17.5">Total Ft.</div>
+                                    <div fxFlex="1">x</div>
+                                    <div class="text-center" fxFlex="17.5">Amt. Per Ft.</div>
+                                    <div fxFlex="1">=</div>
+                                    <div class="text-right" fxFlex="100">Amt.</div>
+                                </div>
+                                <div class="line m-t-5"></div>
+                                <div fxLayout="column">
+                                    <ng-container *ngFor="let feet of point.feets | nullFilter; let last = last">
+                                        <div fxLayout fxLayoutGap="10px">
+                                            <div class="text-center" fxFlex="17.5">{{ feet.startFeet }}</div>
+                                            <div fxFlex="1">-</div>
+                                            <div class="text-center" fxFlex="17.5">{{ feet.endFeet }}</div>
+                                            <div class="text-center" fxFlex="17.5">{{ feet.feetDiff }}</div>
+                                            <div fxFlex="1">x</div>
+                                            <div class="text-center" fxFlex="17.5">{{ feet.amtPerFeet }}</div>
+                                            <div fxFlex="1">=</div>
+                                            <div class="text-right" fxFlex="100">{{ feet.amt }}</div>
+                                        </div>
+                                        <div *ngIf="!last" class="dashed m-t-5 m-b-5"></div>
+                                        <div *ngIf="last" class="m-t-10" fxLayout fxLayoutGap="10px">
+                                            <div class="footer-title">Total Feet</div>
+                                            <div class="footer-title">-</div>
+                                            <div class="font-italic line-space-1 amt-text" fxFlex>{{ point.totalFeet }}</div>
+                                        </div>
+                                    </ng-container>
+
+                                    <div class="m-t-n-16" fxLayout fxLayoutAlign="end center" fxLayoutGap="25px">
+                                        <div fxFlexAlign="end" fxFlex class="bold font-14 text-right total-amt">Total
+                                            Feet
+                                            Amount</div>
+                                        <div fxLayout="column">
+                                            <div class="total-line m-t-10 m-b-10" fxFlex="30"></div>
+                                            <div fxFlex="30" class="text-right total-amt amt-text">{{
+                                                point.totalFeetAmt }}</div>
+                                        </div>
                                     </div>
-                                    <div *ngIf="!last" class="dashed m-t-5 m-b-5"></div>
-                                </ng-container>
+                                </div>
                             </div>
+                        </div>
+                        <div fxLayout="column" class="card">
+                            <div class="section-title m-b-16">Casing Details</div>
+                            <div fxLayout="column">
+                                <div fxLayout fxLayoutGap="10px" class="table-header">
+                                    <div class="bold" fxFlex="40" fxLayoutAlign="start center">Pipe Type</div>
+                                    <div class="bold" fxFlex="15" fxLayoutAlign="center center">Casing Depth</div>
+                                    <div class="bold" fxLayout fxLayoutAlign="center center" fxFlex="7.5">x</div>
+                                    <div class="bold" fxFlex="15" fxLayoutAlign="center center">Casing Depth Rate</div>
+                                    <div class="bold" fxLayout fxLayoutAlign="center center" fxFlex="7.5">=</div>
+                                    <div class="bold text-right" fxLayoutAlign="end center" fxFlex="15">Amount</div>
+                                </div>
+                                <div class="line m-b-10 m-t-10"></div>
+                                <ng-container *ngFor="let casing of point.casingDetails; let last = last">
+                                    <div fxLayout fxLayoutGap="10px">
+                                        <div fxFlex="40">{{ casing.name }}</div>
+                                        <div fxFlex="15" class="text-center" fxLayoutAlign="center center">{{ casing.depth }}</div>
+                                        <div fxLayout fxLayoutAlign="center center" fxFlex="7.5" fxLayoutAlign="center center">x</div>
+                                        <div fxFlex="15" class="text-center" fxLayoutAlign="center center">{{ casing.depthRate }}</div>
+                                        <div fxLayout fxLayoutAlign="center center" fxFlex="7.5" fxLayoutAlign="center center">=</div>
+                                        <div fxFlex="15" class="text-right" fxLayoutAlign="end center">{{ casing.totalAmount }}</div>
+                                    </div>
+                                    <div *ngIf="!last" class="m-t-5 m-b-5 dashed"></div>
+                                </ng-container>
+                                <div fxLayout fxLayoutAlign="end center" fxLayoutGap="25px">
+                                    <div fxFlexAlign="end" fxFlex class="bold font-14 text-right total-amt">Total
+                                        Casing Amount</div>
+                                    <div fxLayout="column">
+                                        <div class="total-line m-t-10 m-b-10" fxFlex="30"></div>
+                                        <div fxFlex="30" class="text-right total-amt amt-text">{{ point.totalCasingAmt }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="card">
+                            <div fxLayout>
+                                <div fxFlex class="section-title m-b-16">Welding</div>
+                            </div>
+                            <div fxLayout>
+                                <div fxHide.lt-md fxFlex="20"></div>
+                                <div fxFlex fxLayout="column" fxLayoutGap="10px">
+                                    <div fxLayout fxLayoutGap="10px">
+                                        <div fxFlex="30" class="bold text-center">Welding</div>
+                                        <div fxFlex="10" class="bold text-center">x</div>
+                                        <div fxFlex="60" class="bold text-center">Amount per Welding</div>
+                                    </div>
+                                    <div fxLayout fxLayoutGap="10px">
+                                        <div fxFlex="30" class="text-center">{{ point.welding || 0 }}</div>
+                                        <div fxFlex="10" class="text-center">x</div>
+                                        <div fxFlex="60" class="text-center">{{ point.amtPerWelding || 0 }}</div>
+                                    </div>
+                                </div>
+                                <div fxLayout fxFlex="10" fxLayoutAlign="center end">=</div>
+                                <div fxFlex="14" fxLayout fxLayoutAlign="end end">
+                                    <div class="text-right total-amt amt-text">{{ point.weldingAmt || 0 }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="card">
+                            <div fxLayout>
+                                <div fxFlex class="section-title m-b-16">Other Charges</div>
+                            </div>
+                            <div fxLayout>
+                                <div fxFlex fxLayout fxLayoutAlign="end center">
+                                    <div fxFlex.lt-md="70" fxFlex="35" class="bold"> Bata / TravelAllowance </div>
+                                </div>
+                                <div class="bold text-center" fxFlex="10">-</div>
+                                <div fxFlex="14" class="text-right">{{ point.allowance }}</div>
+                            </div>
+                            <div fxLayout fxLayoutAlign="end center" fxLayoutGap="25px">
+                                <div fxFlexAlign="end" fxFlex class="bold font-14 text-right total-amt">Total
+                                    Other Charges</div>
+                                <div fxLayout="column">
+                                    <div class="total-line m-t-10 m-b-10" fxFlex="30"></div>
+                                    <div fxFlex="30" class="text-right total-amt amt-text">{{ point.allowance }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="p-15">
+                            <div fxLayout fxLayoutGap="25px">
+                                <div fxFlex class="final-title text-right">Overall Amount</div>
+                                <div fxLayout fxLayoutAlign="start center" class="text-right total-amt amt-text">{{ point.overallTotalAmt }}</div>
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="m-b-25">
+                            <div fxFlex class="seperation-line m-b-25"></div>
+                            <div class="bold m-b-10">Remarks</div>
+                            <div class="font-italic">{{ point.remarks }}</div>
                         </div>
                     </div>
                 </ng-container>

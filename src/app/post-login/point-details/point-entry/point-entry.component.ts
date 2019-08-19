@@ -61,7 +61,7 @@ export class PointEntryComponent implements OnInit {
         casingType: '',
         pipeSelection: '',
         pipeType: '',
-        pointNumber: ''
+        pointNumber: ['', Validators.required]
       }),
       point: this.fb.group({
         agentType: 'agent',
@@ -205,7 +205,7 @@ export class PointEntryComponent implements OnInit {
       this.common.scrollTop();
       const date = this.pointForm.value.info.date;
       const formattedDate = date ? (date as Moment).format('DD-MM-YYYY') : null
-      this.router.navigate(['../../reports/pointDetails/pointReport', formattedDate], {relativeTo: this.route})
+      this.router.navigate(['../../reports/pointDetails/pointReport', this.pointForm.value.info.pointNumber], {relativeTo: this.route})
     }, (err) => {
       if (err) {
         this.toastr.error('Error while saving Point', null, { timeOut: 1500 })

@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Column } from '../../../../expand-table/Column';
 import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import * as moment from 'moment';
 import { ConfigService } from '../../../../services/config.service';
@@ -61,7 +61,8 @@ export class PointReportComponent implements OnDestroy {
         this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
 
         this.dateForm = this.fb.group({
-            date: [moment()]
+            date: [moment()],
+            pointNo: ['', Validators.required] 
         })
     }
 
@@ -72,7 +73,8 @@ export class PointReportComponent implements OnDestroy {
     fetchData() {
         this.fetchingData = true;
         const selectedDate = (this.dateForm.get('date').value as moment.Moment).format('DD-MM-YYYY');
-        this.http.get(this.pointUrl + '/' + selectedDate).subscribe((points) => {
+        const selectedPoint = this.dateForm.get('pointNo').value;
+        this.http.get(this.pointUrl + '/' + selectedPoint).subscribe((points) => {
             this.fetchingData = false;
             this.points = points;
             this.pointDataSource = new MatTableDataSource<any>(this.points);

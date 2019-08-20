@@ -1,16 +1,20 @@
 <div fxLayout="column" fxLayoutGap="10px">
     <div fxLayout fxLayoutGap="10px">
         <ng-container [formGroup]="dateForm">
-            <mat-form-field class="m-l-10" [appearance]="appearance" (click)="dp.open()">
+            <!-- <mat-form-field class="m-l-10" [appearance]="appearance" (click)="dp.open()">
                 <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
                 <input matInput readonly formControlName="date" [matDatepicker]="dp">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp>
                 </mat-datepicker>
+            </mat-form-field> -->
+            <mat-form-field class="m-l-10" [appearance]="appearance">
+                <mat-label>{{ 'POINT_ENTRY.NUMBER' | translate }}</mat-label>
+                <input type="text" matInput formControlName="pointNo">
             </mat-form-field>
             <div fxLayout fxLayoutAlign="center center">
-                <button (click)="fetchData()" fxHide.lt-md mat-raised-button color="primary">Apply</button>
-                <button (click)="fetchData()" class="m-b-25" fxHide.gt-sm mat-mini-fab color="primary">
+                <button (click)="fetchData()" [disabled]="dateForm.get('pointNo').invalid" fxHide.lt-md mat-raised-button color="primary">Apply</button>
+                <button (click)="fetchData()" [disabled]="dateForm.get('pointNo').invalid" class="m-b-25" fxHide.gt-sm mat-mini-fab color="primary">
                     <mat-icon>refresh</mat-icon>
                 </button>
             </div>
@@ -63,78 +67,53 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=""></div>
-                        <!-- <div fxLayout="column" class="m-t-10 m-b-10 width-100 p-l-10 p-r-10" fxLayoutGap="10px">
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold  font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.POINT_NO' | translate}}</div>
-                                <div class="bold">:</div>
-                                <div class="text-transform-upper">{{ point?.pointno }}</div>
+                        <div fxLayout="column" class="card">
+                            <div class="section-title m-b-16">RPM Details</div>
+                            <div fxLayout>
+                                <div fxFlex fxLayout="column" fxLayoutGap="10px">
+                                    <div fxLayout fxLayoutGap="10px">
+                                        <div fxFlex="30" class="bold text-center">Start RPM</div>
+                                        <div fxFlex="10" class="bold text-center">-</div>
+                                        <div fxFlex="60" class="bold text-center">End RPM</div>
+                                    </div>
+                                    <div fxLayout fxLayoutGap="10px">
+                                        <div fxFlex="30" class="text-center">{{ point.startRpm || 0 }}</div>
+                                        <div fxFlex="10" class="text-center">-</div>
+                                        <div fxFlex="60" class="text-center">{{ point.endRpm || 0 }}</div>
+                                    </div>
+                                </div>
+                                <div fxLayoutAlign="center end" fxLayout fxFlex="10">=</div>
+                                <div class="total-text" fxLayoutAlign="start end" fxLayout fxFlex="30">{{ point.totalRpm || 0 }}</div>
                             </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.RIG' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.rig }}</div>
+                            <div fxLayout fxLayoutAlign="end end" class="m-t-10">
+                                <div fxFlex class="text-right">Total Feet Per Hour <span class="bold">{{ '(' + (point.totalFeet || 0) + '/' + (point.totalRpm || 0) + ')' }}</span> </div>
+                                <div fxFlex="10" class="text-center">=</div>
+                                <div class="total-text" fxFlex="30">{{ point.totalFeetPerHour || 0 }}&nbsp;ft/hr</div>
                             </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.BORE_TYPE' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.boreType }}</div>
-                            </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.CASING_TYPE' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.casingType }}</div>
-                            </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.DATE' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.date }}</div>
-                            </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_NAME' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.partyName }}</div>
-                            </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_MOBILE_NUMBER' | translate
-                                    }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.partyMobile }}</div>
-                            </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.COL.PARTY_STATE' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.partyState }}</div>
-                            </div>
-                            <div fxLayout fxLayoutGap="10px">
-                                <div class="bold font-12" fxFlex="30">{{ 'POINT_ENTRY.PARTY_CITY' | translate }}</div>
-                                <div class="bold">:</div>
-                                <div>{{ point?.partyCity }}</div>
-                            </div>
-                        </div> -->
+                        </div>
                         <div fxLayout="column" class="card">
                             <div class="section-title m-b-16" fxLayout="column" fxLayoutAlign="center start">{{
                                 'POINT_ENTRY.POINT_ENTRY.TITLE' | translate }}</div>
                             <div fxLayout fxLayoutAlign="start start" fxLayoutAlign.gt-sm="end start" class="m-b-15">
-                                <div fxFlex.lt-md="75" fxFlex="40" class="card font-italic" fxLayout="column">
+                                <div fxFlex.lt-md="100" fxFlex="40" class="card" fxLayout="column">
                                     <div class="m-t-15 m-b-5 bold ">Agent Details</div>
                                     <div class="header-divider m-b-10"></div>
                                     <div fxLayout="column" fxLayoutGap="5px">
                                         <div fxLayout>
-                                            <div fxFlex.gt-sm="30" fxFlex="40">Name</div>
-                                            <div fxFlex class="bold font-italic">Agent Name</div>
+                                            <div fxFlex.gt-sm="30" class="font-italic" fxFlex="40">Name</div>
+                                            <div fxFlex class="bold ">Agent Name</div>
                                         </div>
                                         <div fxLayout>
-                                            <div fxFlex.gt-sm="30" fxFlex="40">State</div>
-                                            <div fxFlex class="bold font-italic">Agent Name</div>
+                                            <div fxFlex.gt-sm="30" class="font-italic" fxFlex="40">State</div>
+                                            <div fxFlex class="bold">Agent Name</div>
                                         </div>
                                         <div fxLayout>
-                                            <div fxFlex.gt-sm="30" fxFlex="40">City</div>
-                                            <div fxFlex class="bold font-italic">Agent Name</div>
+                                            <div fxFlex.gt-sm="30" class="font-italic" fxFlex="40">City</div>
+                                            <div fxFlex class="bold">Agent Name</div>
                                         </div>
                                         <div fxLayout>
-                                            <div fxFlex.gt-sm="30" fxFlex="40">Mobile no.</div>
-                                            <div fxFlex class="bold font-italic">Agent Name</div>
+                                            <div fxFlex.gt-sm="30" class="font-italic" fxFlex="40">Mobile no.</div>
+                                            <div fxFlex class="bold">Agent Name</div>
                                         </div>
                                     </div>
 

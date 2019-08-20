@@ -50,9 +50,9 @@ export class PointReportComponent implements OnDestroy {
             if (data) {
                 if (data.points) {
                     this.points = data.points;
-                    this.points.forEach(point => {
-                        this.generateCasingDetails(point)
-                    })
+                    // this.points.forEach(point => {
+                    //     this.generateCasingDetails(point)
+                    // })
                     this.pointDataSource = new MatTableDataSource<any>(this.points);
                 }
             }

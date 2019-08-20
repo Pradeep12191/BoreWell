@@ -6,7 +6,7 @@ import { Directive, HostListener, HostBinding, Input } from '@angular/core';
 export class PositiveNumberDirective {
 
     @HostListener('keypress', ['$event']) onkeypress(e: KeyboardEvent) {
-        return e.charCode >= 48 && e.charCode <= 57
+        return (e.charCode >= 48 && e.charCode <= 57) || (e.charCode === 13)
     }
     @HostBinding('autocomplete') autocomplete = 'off'
     @HostBinding('pattern') pattern = '[0-9]*'

@@ -10,6 +10,7 @@ import { ExpandTableModule } from '../../../../expand-table/expand-table.module'
 import { PointReportReolver } from '../../../../guards/resolveGuard/reports/point-report/point-report.resolver';
 import { PipesModule } from '../../../../pipes/pipes.module';
 import { PointReportViewComponent } from './point-report-view/point-report-view.component';
+import { DirectiveModule } from '../../../../directives/directive.module';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { PointReportViewComponent } from './point-report-view/point-report-view.
         CommonModule,
         ExpandTableModule,
         PointReportRoutingModule,
-        PipesModule
+        PipesModule,
+        DirectiveModule
     ],
     declarations: [
         PointReportComponent,

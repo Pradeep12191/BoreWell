@@ -174,7 +174,7 @@ export class PointEntryComponent implements OnInit, OnDestroy {
     const formValue = this.pointForm.value;
     let selectedAgent: Agent = null
     if (this.selectedAgent) {
-      selectedAgent = selectedAgent;
+      selectedAgent = this.selectedAgent;
     } else {
       selectedAgent = EMPTY_AGENT;
     }

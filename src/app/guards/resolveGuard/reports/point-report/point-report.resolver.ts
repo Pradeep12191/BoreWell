@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../../../services/config.service';
 import { AuthService } from '../../../../services/auth.service';
 import * as moment from 'moment';
+import { of } from 'rxjs';
 
 export class PointReportReolver implements Resolve<any> {
 
@@ -23,11 +24,12 @@ export class PointReportReolver implements Resolve<any> {
         this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
 
         if (route.params) {
-            const date = route.params.date;
-            if (date) {
-                this.pointUrl = this.pointUrl + '/' + date
+            const pointno = route.params.pointno;
+            if (pointno) {
+                this.pointUrl = this.pointUrl + '/' + pointno
             } else {
-                this.pointUrl = this.pointUrl + '/25'
+                // this.pointUrl = this.pointUrl + '/25'
+                return of(null)
             }
         }
         return this.http.get(this.pointUrl)

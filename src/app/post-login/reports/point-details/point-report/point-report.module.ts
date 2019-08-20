@@ -9,6 +9,7 @@ import { PointReportComponent } from './point-report.component';
 import { ExpandTableModule } from '../../../../expand-table/expand-table.module';
 import { PointReportReolver } from '../../../../guards/resolveGuard/reports/point-report/point-report.resolver';
 import { PipesModule } from '../../../../pipes/pipes.module';
+import { PointReportViewComponent } from './point-report-view/point-report-view.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { PipesModule } from '../../../../pipes/pipes.module';
         PipesModule
     ],
     declarations: [
-        PointReportComponent
+        PointReportComponent,
+        PointReportViewComponent
     ],
     providers: [
         PointReportReolver

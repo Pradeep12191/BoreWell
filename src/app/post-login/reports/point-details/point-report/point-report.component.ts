@@ -33,7 +33,9 @@ export class PointReportComponent implements OnDestroy {
     public fetchingData;
     public pointUrl;
     private routeSubscritpion: Subscription;
-    public casingDetails = []
+    private routeQuerySubscription: Subscription;
+    public casingDetails = [];
+    public view = 'list';
 
     constructor(
         private route: ActivatedRoute,
@@ -56,18 +58,26 @@ export class PointReportComponent implements OnDestroy {
             }
         });
 
+        this.routeQuerySubscription = this.route.queryParamMap.subscribe((queryParamMap) => {
+            if (queryParamMap.get('view')) {
+                this.view = queryParamMap.get('view');
+            }
+
+        })
+
         const apiUrl = this.config.getConfig('apiUrl');
         const pointUrl = this.config.getUrl('viewpointlist');
         this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
 
         this.dateForm = this.fb.group({
             date: [moment()],
-            pointNo: ['', Validators.required] 
+            pointNo: ['', Validators.required]
         })
     }
 
     ngOnDestroy() {
         if (this.routeSubscritpion) { this.routeSubscritpion.unsubscribe(); }
+        if (this.routeQuerySubscription) { this.routeQuerySubscription.unsubscribe(); }
     }
 
     fetchData() {

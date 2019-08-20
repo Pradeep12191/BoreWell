@@ -249,7 +249,7 @@ export class PointEntryComponent implements OnInit, OnDestroy {
       this.common.scrollTop();
       const date = this.pointForm.value.info.date;
       const formattedDate = date ? (date as Moment).format('DD-MM-YYYY') : null
-      this.router.navigate(['../../reports/pointDetails/pointReport', this.pointForm.value.info.pointNumber], { relativeTo: this.route })
+      this.router.navigate(['../../reports/pointDetails/pointReport', this.pointForm.value.info.pointNumber], { relativeTo: this.route, queryParams: { view: 'report' } })
     }, (err) => {
       if (err) {
         this.toastr.error('Error while saving Point', null, { timeOut: 1500 })

@@ -1,0 +1,109 @@
+.m-l-n-16{
+    margin-left: -16px;
+}
+
+.header{
+    min-height: 42px;
+    background: gray;
+    color: white;
+    padding: 10px 8px;
+    line-height: 24px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: -16px;
+    margin-right: -16px;
+    div{
+        text-align: center;
+        
+    }
+}
+
+.total-line{
+    border-bottom: 1px solid
+}
+
+.total-amt{
+    font-size: 1.2rem;
+}
+
+.name-text{
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase
+}
+
+.section-title{
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    background: #5e6073;
+    color: white;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    &.contact-title{
+        font-size: 1rem;
+    }
+}
+
+.total-text{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.header-divider{
+    border: 1px dashed;
+}
+
+.m-b-5{
+    margin-bottom: 5px !important
+}
+
+.footer-title{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.final-title{
+    font-size: 1.7rem;
+}
+
+.m-t-n-16{
+    margin-top: -16px
+}
+
+.amt-text{
+    color: #f96d15;
+    font-weight: bold;
+}
+
+.line-space-1{
+    letter-spacing: 1px;
+}
+
+.card{
+    border-radius: 4px;
+    padding: 15px;
+    padding-top: 0px;
+    // background-color: #eee;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+}
+
+.mobile-view{
+    margin-left: -14px;
+    margin-right: -14px;
+}
+
+.seperation-line{
+    border-bottom: 1px dashed black
+}
+
+
+
+.primary-txt{
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 1.1
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms'
 import { PointEntryService } from './point-entry.service';
 import { HttpClient } from '@angular/common/http';
@@ -8,13 +8,31 @@ import { Moment } from 'moment';
 import { MatStepper } from '@angular/material';
 import { CommonService } from '../../../services/common.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Agent } from '../../../models/Agent';
+import { Subscription } from 'rxjs';
+
+const EMPTY_AGENT: Agent = {
+  address: '',
+  commission_casingPaymentType: '',
+  commission_casingPerFeet: '',
+  commission_casingType: '',
+  commission_perFeet: '',
+  commission_type: '',
+  mobileNumber: '',
+  name: '',
+  officeName: '',
+  points: [],
+  state: '',
+  type: '',
+  user: ''
+}
 
 @Component({
   selector: 'app-point-entry',
   templateUrl: './point-entry.component.html',
   styleUrls: ['./point-entry.component.scss']
 })
-export class PointEntryComponent implements OnInit {
+export class PointEntryComponent implements OnInit, OnDestroy {
 
   pointForm: FormGroup;
   rigs;
@@ -26,6 +44,9 @@ export class PointEntryComponent implements OnInit {
   appearance: string;
   pointUrl;
   agents;
+  selectedAgent: Agent;
+  agentChangeSubscription: Subscription;
+  pointOptionChangeSubscription: Subscription;
   @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
 
   constructor(
@@ -44,6 +65,15 @@ export class PointEntryComponent implements OnInit {
     this.pointUrl = baseUrl + url;
     this.route.data.subscribe((data) => {
       this.agents = data.agentList;
+    })
+
+    this.agentChangeSubscription = this.pes.agentChangeObs().subscribe(event => {
+      this.selectedAgent = this.agents.find((agent) => agent.name === event.value);
+    })
+    this.pes.pointOptionChangeObs().subscribe(event => {
+      if (event.optionName === 'self') {
+        this.selectedAgent = null;
+      }
     })
   }
 
@@ -115,6 +145,11 @@ export class PointEntryComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    if (this.agentChangeSubscription) { this.agentChangeSubscription.unsubscribe(); }
+    if (this.pointOptionChangeSubscription) { this.pointOptionChangeSubscription.unsubscribe(); }
+  }
+
   resetForm() {
     this.pointForm.reset({
       point: {
@@ -133,11 +168,16 @@ export class PointEntryComponent implements OnInit {
 
 
   save() {
-    console.log(this.pointForm)
     if (this.pointForm.invalid) {
       return this.toastr.error('Please fill all required fields *', null, { timeOut: 1500 })
     }
     const formValue = this.pointForm.value;
+    let selectedAgent: Agent = null
+    if (this.selectedAgent) {
+      selectedAgent = selectedAgent;
+    } else {
+      selectedAgent = EMPTY_AGENT;
+    }
     let feets: any[] = this.pointForm.value.point.pointEntry.feets;
     if (feets.length) {
       feets = feets.filter(feet => !feet.isDeleted);
@@ -187,7 +227,11 @@ export class PointEntryComponent implements OnInit {
       totalAmt: this.pointForm.value.otherDetails.totalAmt,
       commissionAmt: this.pointForm.value.otherDetails.commissionAmt,
       remarks: this.pointForm.value.otherDetails.remarks,
-      pointno: this.pointForm.value.info.pointNumber
+      pointno: this.pointForm.value.info.pointNumber,
+      agentOfficeName: selectedAgent.officeName,
+      agentAddress: selectedAgent.address,
+      agentMobileNo: selectedAgent.mobileNumber,
+      agentState: selectedAgent.state
     }
     console.log(JSON.stringify({
       ...pointEntryObj,
@@ -205,7 +249,7 @@ export class PointEntryComponent implements OnInit {
       this.common.scrollTop();
       const date = this.pointForm.value.info.date;
       const formattedDate = date ? (date as Moment).format('DD-MM-YYYY') : null
-      this.router.navigate(['../../reports/pointDetails/pointReport', this.pointForm.value.info.pointNumber], {relativeTo: this.route})
+      this.router.navigate(['../../reports/pointDetails/pointReport', this.pointForm.value.info.pointNumber], { relativeTo: this.route })
     }, (err) => {
       if (err) {
         this.toastr.error('Error while saving Point', null, { timeOut: 1500 })

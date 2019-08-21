@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import data from './point.sub.json';
 
 @Component({
     templateUrl: './point-report.component.html',
@@ -45,6 +46,7 @@ export class PointReportComponent implements OnDestroy {
         private auth: AuthService,
         private toastr: ToastrService
     ) {
+        // this.loadStub();
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscritpion = this.route.data.subscribe((data) => {
             if (data) {
@@ -78,6 +80,11 @@ export class PointReportComponent implements OnDestroy {
     ngOnDestroy() {
         if (this.routeSubscritpion) { this.routeSubscritpion.unsubscribe(); }
         if (this.routeQuerySubscription) { this.routeQuerySubscription.unsubscribe(); }
+    }
+
+    loadStub() {
+        this.points = data;
+        this.pointDataSource = new MatTableDataSource<any>(this.points);
     }
 
     fetchData() {

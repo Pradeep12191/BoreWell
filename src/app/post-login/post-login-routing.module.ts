@@ -11,7 +11,8 @@ const routes: Routes = [
     {
         path: '', component: PostLoginComponent, children: [
             {
-                path: '', component: HeaderComponent, outlet: 'header', resolve: {
+                path: '', component: HeaderComponent, outlet: 'header',
+                resolve: {
                     userInfo: UserInfoResolver
                 }
             },

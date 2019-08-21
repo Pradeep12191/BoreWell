@@ -1,14 +1,14 @@
-<div fxLayout="column" fxFlex fxLayoutGap="15px" [ngClass.lt-md]="viewOnly ? '' : 'mobile-view'">
+<div fxLayout="column" fxLayoutGap="15px" [ngClass.lt-md]="viewOnly ? '' : 'mobile-view'">
     <div fxLayout fxLayoutAlign="end" fxLayoutGap="25px">
         <button mat-mini-fab color="primary">
-            <mat-icon><img src="../../../../../../assets/icons/whatsapp.png" alt=""></mat-icon>
+            <mat-icon><img src="../../../../../../assets/images/whatsapp.png" alt=""></mat-icon>
         </button>
         <button mat-mini-fab color="primary">
             <mat-icon>email</mat-icon>
         </button>
     </div>
     <div class="m-t-16" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between" fxLayoutGap="10px">
-        <div fxLayout="column" fxLayoutGap="15px">
+        <div fxFlex="60" fxLayout="column" fxLayoutGap="15px">
             <div fxLayout>
                 <div class="primary-txt">{{ point.pointno }}</div>
             </div>
@@ -22,52 +22,52 @@
         <div fxFlex="40" fxFlex.lt-md="100" fxLayout="column" fxLayoutGap="10px" class="card">
             <div class="section-title m-b-16" ngClass.gt-sm="contact-title">Agent Information</div>
             <div fxLayout fxLayoutGap="15px">
-                <div fxFlex="15">Name</div>
+                <div fxFlex="17">Name</div>
                 <div>:</div>
                 <div class="bold text-transform-upper">{{ point.agentName }}</div>
             </div>
             <div fxLayout fxLayoutGap="15px">
-                <div fxFlex="15">City</div>
+                <div fxFlex="17">City</div>
                 <div>:</div>
                 <div class="bold">{{ point.agentCity }}</div>
             </div>
             <div fxLayout fxLayoutGap="15px">
-                <div fxFlex="15">State</div>
+                <div fxFlex="17">State</div>
                 <div>:</div>
                 <div class="bold">{{ point.agentState }}</div>
             </div>
             <div fxLayout fxLayoutGap="15px">
-                <div fxFlex="15">Mobile</div>
+                <div fxFlex="17">Mobile</div>
                 <div>:</div>
                 <div class="bold">{{ point.agentMobileNo }}</div>
             </div>
         </div>
     </div>
 
-    <div fxFlex="40" fxLayout="column" fxLayoutGap="10px" class="card">
+    <div fxFlex="40" fxFLex.lt-md="100" fxLayout="column" fxLayoutGap="10px" class="card">
         <div class="section-title">Party Information</div>
         <div fxLayout fxLayoutGap="15px">
-            <div fxFlex="15">Name</div>
+            <div fxFlex="17">Name</div>
             <div>:</div>
             <div class="bold text-transform-upper">{{ point.partyName }}</div>
         </div>
         <div fxLayout fxLayoutGap="15px">
-            <div fxFlex="15">City</div>
+            <div fxFlex="17">City</div>
             <div>:</div>
             <div class="bold">{{ point.partyCity }}</div>
         </div>
         <div fxLayout fxLayoutGap="15px">
-            <div fxFlex="15">State</div>
+            <div fxFlex="17">State</div>
             <div>:</div>
             <div class="bold">{{ point.partyState }}</div>
         </div>
         <div fxLayout fxLayoutGap="15px">
-            <div fxFlex="15">Mobile</div>
+            <div fxFlex="17">Mobile</div>
             <div>:</div>
             <div class="bold">{{ point.partyMobile }}</div>
         </div>
         <div fxLayout fxLayoutGap="15px">
-            <div fxFlex="15">Date</div>
+            <div fxFlex="17">Date</div>
             <div>:</div>
             <div class="bold">{{ point.date }}</div>
         </div>

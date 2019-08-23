@@ -1,113 +1,115 @@
-[
-    {
-        "agentName": "HARI KUMAR",
-        "agentType": "agent",
-        "allowance": "2000",
-        "amtPerWelding": "22",
-        "boreType": "New Bore",
-        "casingType": "",
-        "commissionAmt": "",
-        "date": "19-08-2019",
-        "endRpm": "55",
-        "feets": [
-            {
-                "amt": "23000",
-                "amtPerFeet": "115",
-                "endFeet": "200",
-                "feetDiff": "200",
-                "startFeet": "0"
-            },
-            {
-                "amt": "12500",
-                "amtPerFeet": "125",
-                "endFeet": "300",
-                "feetDiff": "100",
-                "startFeet": "201"
-            },
-            {
-                "amt": "13500",
-                "amtPerFeet": "135",
-                "endFeet": "400",
-                "feetDiff": "100",
-                "startFeet": "301"
-            },
-            {
-                "amt": "15500",
-                "amtPerFeet": "155",
-                "endFeet": "500",
-                "feetDiff": "100",
-                "startFeet": "401"
-            },
-            {
-                "amt": "20500",
-                "amtPerFeet": "205",
-                "endFeet": "600",
-                "feetDiff": "100",
-                "startFeet": "501"
-            },
-            {
-                "amt": "30500",
-                "amtPerFeet": "305",
-                "endFeet": "700",
-                "feetDiff": "100",
-                "startFeet": "601"
-            },
-            {
-                "amt": "40500",
-                "amtPerFeet": "405",
-                "endFeet": "800",
-                "feetDiff": "100",
-                "startFeet": "701"
-            },
-            {
-                "amt": "50500",
-                "amtPerFeet": "505",
-                "endFeet": "900",
-                "feetDiff": "100",
-                "startFeet": "801"
-            },
-            {
-                "amt": "54450",
-                "amtPerFeet": "605",
-                "endFeet": "990",
-                "feetDiff": "90",
-                "startFeet": "901"
-            }
-        ],
-        "msHeavyAmt": "250",
-        "msHeavyDepth": "5",
-        "msHeavyDepthRate": "50",
-        "msMediumAmt": "160",
-        "msMediumDepth": "4",
-        "msMediumDepthRate": "40",
-        "overallTotalAmt": "263764",
-        "partyCity": "coimbatore",
-        "partyMobile": "7894561230",
-        "partyName": "kumar",
-        "partyState": "TAMIL NADU",
-        "pipeSelection": "",
-        "pipeType": "",
-        "pointno": "1",
-        "pvc10Amt": "40",
-        "pvc10Depth": "2",
-        "pvc10DepthRate": "20",
-        "pvc12Amt": "90",
-        "pvc12Depth": "3",
-        "pvc12DepthRate": "30",
-        "pvc7Amt": "10",
-        "pvc7Depth": "1",
-        "pvc7DepthRate": "10",
-        "remarks": "first entry hope it will work",
-        "rig": "KA01AK3196",
-        "startRpm": "25",
-        "totalAmt": "",
-        "totalCasingAmt": "550",
-        "totalFeet": "990",
-        "totalFeetAmt": "260950",
-        "totalFeetPerHour": "33 ft/hr",
-        "totalRpm": "30",
-        "user": "santhosh",
-        "welding": "12",
-        "weldingAmt": "264"
-    }
-]
+{
+    "point": [
+        {
+            "agentName": "HARI KUMAR",
+            "agentType": "agent",
+            "allowance": "2000",
+            "amtPerWelding": "22",
+            "boreType": "New Bore",
+            "casingType": "",
+            "commissionAmt": "",
+            "date": "19-08-2019",
+            "endRpm": "55",
+            "feets": [
+                {
+                    "amt": "23000",
+                    "amtPerFeet": "115",
+                    "endFeet": "200",
+                    "feetDiff": "200",
+                    "startFeet": "0"
+                },
+                {
+                    "amt": "12500",
+                    "amtPerFeet": "125",
+                    "endFeet": "300",
+                    "feetDiff": "100",
+                    "startFeet": "201"
+                },
+                {
+                    "amt": "13500",
+                    "amtPerFeet": "135",
+                    "endFeet": "400",
+                    "feetDiff": "100",
+                    "startFeet": "301"
+                },
+                {
+                    "amt": "15500",
+                    "amtPerFeet": "155",
+                    "endFeet": "500",
+                    "feetDiff": "100",
+                    "startFeet": "401"
+                },
+                {
+                    "amt": "20500",
+                    "amtPerFeet": "205",
+                    "endFeet": "600",
+                    "feetDiff": "100",
+                    "startFeet": "501"
+                },
+                {
+                    "amt": "30500",
+                    "amtPerFeet": "305",
+                    "endFeet": "700",
+                    "feetDiff": "100",
+                    "startFeet": "601"
+                },
+                {
+                    "amt": "40500",
+                    "amtPerFeet": "405",
+                    "endFeet": "800",
+                    "feetDiff": "100",
+                    "startFeet": "701"
+                },
+                {
+                    "amt": "50500",
+                    "amtPerFeet": "505",
+                    "endFeet": "900",
+                    "feetDiff": "100",
+                    "startFeet": "801"
+                },
+                {
+                    "amt": "54450",
+                    "amtPerFeet": "605",
+                    "endFeet": "990",
+                    "feetDiff": "90",
+                    "startFeet": "901"
+                }
+            ],
+            "msHeavyAmt": "250",
+            "msHeavyDepth": "5",
+            "msHeavyDepthRate": "50",
+            "msMediumAmt": "160",
+            "msMediumDepth": "4",
+            "msMediumDepthRate": "40",
+            "overallTotalAmt": "263764",
+            "partyCity": "coimbatore",
+            "partyMobile": "7894561230",
+            "partyName": "kumar",
+            "partyState": "TAMIL NADU",
+            "pipeSelection": "",
+            "pipeType": "",
+            "pointno": "1",
+            "pvc10Amt": "40",
+            "pvc10Depth": "2",
+            "pvc10DepthRate": "20",
+            "pvc12Amt": "90",
+            "pvc12Depth": "3",
+            "pvc12DepthRate": "30",
+            "pvc7Amt": "10",
+            "pvc7Depth": "1",
+            "pvc7DepthRate": "10",
+            "remarks": "first entry hope it will work",
+            "rig": "KA01AK3196",
+            "startRpm": "25",
+            "totalAmt": "",
+            "totalCasingAmt": "550",
+            "totalFeet": "990",
+            "totalFeetAmt": "260950",
+            "totalFeetPerHour": "33 ft/hr",
+            "totalRpm": "30",
+            "user": "santhosh",
+            "welding": "12",
+            "weldingAmt": "264"
+        }
+    ]
+}

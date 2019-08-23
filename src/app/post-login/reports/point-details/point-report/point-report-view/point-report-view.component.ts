@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'point-report-view',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PointReportViewComponent implements OnInit {
     @Input() point;
     @Input() viewOnly;
+    @Output() downloadPdf = new EventEmitter<any>();
 
     ngOnInit() {
         this.generateCasingDetails(this.point)

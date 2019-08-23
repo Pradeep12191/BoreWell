@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="15px" [ngClass.lt-md]="viewOnly ? '' : 'mobile-view'">
     <div fxLayout fxLayoutAlign="end" fxLayoutGap="25px">
-        <button mat-mini-fab color="primary">
+        <button (click)="downloadPdf.emit()" mat-mini-fab color="primary">
             <mat-icon><img src="assets/images/whatsapp.png" alt=""></mat-icon>
         </button>
         <button mat-mini-fab color="primary">

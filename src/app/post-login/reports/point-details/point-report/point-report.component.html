@@ -25,7 +25,7 @@
             <expand-table @fadeIn [data]="points" [expandFirstRow]="true" *ngIf="points?.length; else emptyTpl" fxFlex
                 [columns]="columns" [dataSource]="pointDataSource">
                 <ng-container *expandDetails="let point">
-                    <point-report-view fxFlex class="m-t-10" [point]="point"></point-report-view>
+                    <point-report-view (downloadPdf)="onDownloadPdf($event)" #report fxFlex class="m-t-10" [point]="point"></point-report-view>
                 </ng-container>
             </expand-table>
         </ng-container>

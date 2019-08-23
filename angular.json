@@ -32,7 +32,11 @@
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jspdf/dist/jspdf.min.js",
+              "node_modules/html2canvas/dist/html2canvas.js",
+              "node_modules/html2pdf.js/dist/html2pdf.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Column } from '../../../../expand-table/Column';
 import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,11 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import data from './point.sub.json';
+
+declare let html2pdf: any;
+
+import * as jsPDF from 'jspdf';
+import html2pdf from 'html2pdf.js';
 
 @Component({
     templateUrl: './point-report.component.html',
@@ -37,6 +42,7 @@ export class PointReportComponent implements OnDestroy {
     private routeQuerySubscription: Subscription;
     public casingDetails = [];
     public view = 'list';
+    @ViewChild('report', { read: ElementRef, static: false }) reportEl: ElementRef;
 
     constructor(
         private route: ActivatedRoute,
@@ -47,6 +53,7 @@ export class PointReportComponent implements OnDestroy {
         private toastr: ToastrService
     ) {
         // this.loadStub();
+        console.log(html2pdf)
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscritpion = this.route.data.subscribe((data) => {
             if (data) {
@@ -146,5 +153,26 @@ export class PointReportComponent implements OnDestroy {
             point.casingDetails.push(msHeavyDetail)
         }
 
+    }
+
+    onDownloadPdf() {
+        const opt = {
+            margin: 16,
+            filename: 'point_report',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: {
+                scale: 3,
+                letterRendering: true,
+                useCORS: true
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', pagesplit: true }
+        };
+
+        const worker = html2pdf().from(this.reportEl.nativeElement).set(opt).save()
+            .then(done => {
+                console.log('succcess')
+            }, (err) => {
+                console.log(err)
+            })
     }
 }

@@ -157,7 +157,7 @@ export class PointReportComponent implements OnDestroy {
 
     onDownloadPdf() {
         const opt = {
-            margin: 16,
+            margin: 0,
             filename: 'point_report',
             image: { type: 'jpeg', quality: 1 },
             html2canvas: {

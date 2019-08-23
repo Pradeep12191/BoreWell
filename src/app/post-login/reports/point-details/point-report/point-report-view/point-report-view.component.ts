@@ -1,4 +1,9 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+
+declare let html2pdf: any;
+
+import * as jsPDF from 'jspdf';
+import html2pdf from 'html2pdf.js';
 
 @Component({
     selector: 'point-report-view',
@@ -9,6 +14,8 @@ export class PointReportViewComponent implements OnInit {
     @Input() point;
     @Input() viewOnly;
     @Output() downloadPdf = new EventEmitter<any>();
+    @ViewChild('reportCanvas', { static: false }) reportCanvas: ElementRef;
+
 
     ngOnInit() {
         this.generateCasingDetails(this.point)
@@ -56,6 +63,26 @@ export class PointReportViewComponent implements OnInit {
             msHeavyDetail['totalAmount'] = point.msHeavyAmt
             point.casingDetails.push(msHeavyDetail)
         }
+    }
 
+    downloadPdfClick() {
+        const opt = {
+            margin: 5,
+            filename: 'point_report',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: {
+                scale: 3,
+                letterRendering: true,
+                useCORS: true
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', pagesplit: true }
+        };
+
+        const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
+            .then(done => {
+                console.log('succcess')
+            }, (err) => {
+                console.log(err)
+            })
     }
 }

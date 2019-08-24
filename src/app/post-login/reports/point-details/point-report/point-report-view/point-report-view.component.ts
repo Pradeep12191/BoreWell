@@ -81,12 +81,12 @@ export class PointReportViewComponent implements OnInit {
         try {
             const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
             .then(done => {
-                alert(done)
+                alert('success')
             }, (err) => {
-                alert(err)
+                alert('errror')
             })    
         } catch (error) {
-            alert(error)
+            alert('catch error')
         }
         
     }

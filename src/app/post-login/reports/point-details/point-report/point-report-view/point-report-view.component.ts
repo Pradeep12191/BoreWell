@@ -78,11 +78,16 @@ export class PointReportViewComponent implements OnInit {
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', pagesplit: true }
         };
 
-        const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
+        try {
+            const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
             .then(done => {
-                console.log('succcess')
+                alert(done)
             }, (err) => {
-                console.log(err)
-            })
+                alert(err)
+            })    
+        } catch (error) {
+            alert(error)
+        }
+        
     }
 }

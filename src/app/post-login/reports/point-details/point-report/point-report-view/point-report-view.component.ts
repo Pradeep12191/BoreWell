@@ -4,6 +4,7 @@ declare let html2pdf: any;
 
 import * as jsPDF from 'jspdf';
 import html2pdf from 'html2pdf.js';
+import html2canvas from 'html2canvas';
 
 @Component({
     selector: 'point-report-view',
@@ -79,12 +80,21 @@ export class PointReportViewComponent implements OnInit {
         };
 
         try {
-            const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
-            .then(done => {
-                alert('success')
-            }, (err) => {
-                alert('errror')
-            })    
+
+            html2canvas(this.reportCanvas.nativeElement).then((canvas) => {
+                const pdf = new jsPDF()
+                const img = canvas.toDataURL('img/png');
+                pdf.addImage(img, 'PNG', 4, 5);
+                pdf.save('point_report')
+            })
+
+
+            // const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
+            // .then(done => {
+            //     alert('success')
+            // }, (err) => {
+            //     alert('errror')
+            // })    
         } catch (error) {
             alert('catch error')
         }

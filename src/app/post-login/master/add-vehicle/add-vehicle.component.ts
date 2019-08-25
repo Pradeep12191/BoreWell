@@ -121,6 +121,7 @@ export class AddVehicleComponent implements OnInit {
             pollution_thirtyDays: formValue.cerificate.pollution.remindBefore.thirtyDays,
 
         }
+        console.log(JSON.stringify(vehicleObj, null, 2))
         if (this.url) {
             this.http.post(this.url, vehicleObj).subscribe((response) => {
                 this.toastr.success('Vehicle Added Sucessfully', null, { timeOut: 1500 })

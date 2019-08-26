@@ -19,6 +19,6 @@ export class VehicleListResolver implements Resolve<any>{
     vehiclesUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get<Bit[]>(this.vehiclesUrl + '/' + this.authService.username)
+        return this.http.get<Bit[]>(this.vehiclesUrl + '/' + this.authService.userid)
     }
 }

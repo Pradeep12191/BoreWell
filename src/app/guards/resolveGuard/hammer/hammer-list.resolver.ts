@@ -18,6 +18,6 @@ export class HammerListResolver implements Resolve<any>{
     hammersUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get(this.hammersUrl + '/' + this.authService.username)
+        return this.http.get(this.hammersUrl + '/' + this.authService.userid)
     }
 }

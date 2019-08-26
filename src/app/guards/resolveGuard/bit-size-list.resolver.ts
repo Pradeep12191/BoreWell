@@ -20,6 +20,6 @@ export class BitSizeResolver implements Resolve<any>{
     bitSizesUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get(this.bitSizesUrl + '/' + this.auth.username)
+        return this.http.get(this.bitSizesUrl + '/' + this.auth.userid)
     }
 }

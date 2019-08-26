@@ -7,6 +7,7 @@ import * as moment from 'moment';
 @Injectable()
 export class AuthService {
     private _username: string = null;
+    private _userid: string = null;
     private _password: string = null;
 
     constructor(
@@ -14,6 +15,14 @@ export class AuthService {
         private router: Router
     ) {
 
+    }
+
+    get userid() {
+        const useridExists = this.cookie.check('userid');
+        if (useridExists) {
+            return this.cookie.get('userid')
+        }
+        return this._userid
     }
 
     get username() {
@@ -32,6 +41,16 @@ export class AuthService {
         return this._password;
     }
 
+    set userid(id) {
+        if (id) {
+            this.cookie.set('userid', id, moment().add(50, 'day').toDate());
+            this._userid = id;
+        } else {
+            this.cookie.delete('userid');
+            this._userid = null;
+        }
+    }
+
     set username(name) {
         if (name) {
             this.cookie.set('username', name, moment().add(50, 'day').toDate());
@@ -40,7 +59,6 @@ export class AuthService {
             this.cookie.delete('username');
             this._username = null;
         }
-
     }
 
     set password(password) {
@@ -54,8 +72,9 @@ export class AuthService {
     }
 
     logOut() {
-        this.username = null;
+        this.userid = null;
         this.password = null;
+        this.username = null;
         this.router.navigate(['login']);
     }
 

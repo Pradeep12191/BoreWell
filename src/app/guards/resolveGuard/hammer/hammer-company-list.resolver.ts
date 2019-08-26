@@ -18,6 +18,6 @@ export class HammerCompanyListResolver implements Resolve<any>{
     bitsUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get(this.bitsUrl + '/' + this.authService.username)
+        return this.http.get(this.bitsUrl + '/' + this.authService.userid)
     }
 }

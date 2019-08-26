@@ -21,7 +21,7 @@ export class PointReportReolver implements Resolve<any> {
         const todayDate = moment().format('DD-MM-YYYY');
         const apiUrl = this.config.getConfig('apiUrl');
         const pointUrl = this.config.getUrl('viewpointlist');
-        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
+        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.userid;
 
         if (route.params) {
             const pointno = route.params.pointno;

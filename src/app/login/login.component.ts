@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
     this.auth.username = username;
     this.auth.password = password;
     this.http.get(this.loginUrl).subscribe(() => {
+      
+      this.auth.password = null;
       this.router.navigate(['postlogin', 'dashboard'])
     }, (err: HttpErrorResponse) => {
       this.onLogin = false;

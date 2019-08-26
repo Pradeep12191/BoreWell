@@ -20,6 +20,6 @@ export class VehiclesResolver implements Resolve<any>{
     vehcilesUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get(this.vehcilesUrl + '/' + this.auth.username)
+        return this.http.get(this.vehcilesUrl + '/' + this.auth.userid)
     }
 }

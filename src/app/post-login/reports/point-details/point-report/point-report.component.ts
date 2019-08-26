@@ -76,7 +76,7 @@ export class PointReportComponent implements OnDestroy {
 
         const apiUrl = this.config.getConfig('apiUrl');
         const pointUrl = this.config.getUrl('viewpointlist');
-        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.username;
+        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.userid;
 
         this.dateForm = this.fb.group({
             date: [moment()],

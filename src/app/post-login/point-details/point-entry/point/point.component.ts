@@ -39,7 +39,7 @@ export class PointComponent {
         private http: HttpClient,
         private route: ActivatedRoute
     ) {
-        this.agentListUrl = this.config.getAbsoluteUrl('viewagentlist') + '/' + this.auth.username;
+        this.agentListUrl = this.config.getAbsoluteUrl('viewagentlist') + '/' + this.auth.userid;
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscription = this.route.data.subscribe((data) => {
             if (data.agentList) {

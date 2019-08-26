@@ -19,6 +19,6 @@ export class AgentListResolver implements Resolve<any>{
     agentsUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get<Agent[]>(this.agentsUrl + '/' + this.authService.username)
+        return this.http.get<Agent[]>(this.agentsUrl + '/' + this.authService.userid)
     }
 }

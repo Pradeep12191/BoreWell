@@ -20,6 +20,6 @@ export class DistributorsResolver implements Resolve<any>{
     distributorsUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get(this.distributorsUrl + '/' + this.auth.username)
+        return this.http.get(this.distributorsUrl + '/' + this.auth.userid)
     }
 }

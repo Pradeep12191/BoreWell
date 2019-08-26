@@ -19,6 +19,6 @@ export class BitListResolver implements Resolve<any>{
     bitsUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get<Bit[]>(this.bitsUrl + '/' + this.authService.username)
+        return this.http.get<Bit[]>(this.bitsUrl + '/' + this.authService.userid)
     }
 }

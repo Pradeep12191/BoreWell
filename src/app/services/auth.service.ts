@@ -9,12 +9,21 @@ export class AuthService {
     private _username: string = null;
     private _userid: string = null;
     private _password: string = null;
+    private _token: string = null;
 
     constructor(
         private cookie: CookieService,
         private router: Router
     ) {
 
+    }
+
+    get token() {
+        const tokenExists = this.cookie.check('token');
+        if (tokenExists) {
+            return this.cookie.get('token')
+        }
+        return this._token
     }
 
     get userid() {
@@ -39,6 +48,16 @@ export class AuthService {
             return this.cookie.get('password')
         }
         return this._password;
+    }
+
+    set token(token) {
+        if (token) {
+            this.cookie.set('token', token, moment().add(50, 'day').toDate());
+            this._token = token;
+        } else {
+            this.cookie.delete('token');
+            this._token = null;
+        }
     }
 
     set userid(id) {
@@ -75,10 +94,17 @@ export class AuthService {
         this.userid = null;
         this.password = null;
         this.username = null;
+        this.token = null;
         this.router.navigate(['login']);
     }
 
     isLoggedIn() {
         return this.username || this.password
+    }
+
+    createToken(userName, password) {
+        const decodeStr = userName + ':' + password;
+        const encodeStr = btoa(decodeStr);
+        return encodeStr;
     }
 }

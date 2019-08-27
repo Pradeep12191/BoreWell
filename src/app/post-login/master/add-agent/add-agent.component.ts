@@ -42,18 +42,14 @@ export class AddAgentComponent implements OnInit {
                 particulars: this.fb.array([this.aes.buildPointForm()]),
                 casing: this.buildCasingGroup(),
                 amtPerWelding: '',
-                otherCharges: this.fb.group({
-                    allowance: ''
-                })
+                allowance: ''
             }),
             reBore: this.fb.group({
                 flushingChange: '',
                 addlReDrillingCharge: '',
                 casing: this.buildCasingGroup(),
                 amtPerWelding: '',
-                otherCharges: this.fb.group({
-                    allowance: ''
-                }),
+                allowance: ''
             }),
             commission: this.fb.group({
                 type: null,

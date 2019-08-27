@@ -94,18 +94,18 @@ export class AddAgentComponent implements OnInit {
         }
         console.log(JSON.stringify(agentObj, null, 2))
 
-        // if (this.addAgentUrl) {
-        //     this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
-        //         this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 });
-        //         this.stepper.reset();
-        //         this.resetForm();
-        //         this.common.scrollTop();
-        //     }, (err) => {
-        //         if (err) {
-        //             this.toastr.error('Error while saving Agent', null, { timeOut: 1500 })
-        //         }
-        //     });
-        // }
+        if (this.addAgentUrl) {
+            this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
+                this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 });
+                this.stepper.reset();
+                this.resetForm();
+                this.common.scrollTop();
+            }, (err) => {
+                if (err) {
+                    this.toastr.error('Error while saving Agent', null, { timeOut: 1500 })
+                }
+            });
+        }
     }
 
     private buildCasingForm() {

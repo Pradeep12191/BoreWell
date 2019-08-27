@@ -1,0 +1,16 @@
+<form [formGroup]="otherChargesForm">
+    <mat-card class="m-t-20 m-b-20">
+        <mat-card-header>
+            <mat-card-title>{{ 'POINT_ENTRY.POINT_ENTRY.OTHER_CHARGES' | translate }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout fxLayout.lt-md="column" fxLayoutGap.lt-md="0px" fxLayoutGap="20px">
+                <mat-form-field fxFlex [appearance]="appearance">
+                    <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.ALLOWANCE' | translate }}</mat-label>
+                    <input poistiveNumber type="text" matInput formControlName="allowance">
+                </mat-form-field>
+                <div fxFlex></div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

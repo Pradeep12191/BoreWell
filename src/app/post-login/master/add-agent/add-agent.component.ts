@@ -38,8 +38,22 @@ export class AddAgentComponent implements OnInit {
                 address: null,
                 mobileNumber: [null, Validators.required]
             }),
-            point: this.fb.group({
-                particulars: this.fb.array([this.aes.buildPointForm()])
+            newBore: this.fb.group({
+                particulars: this.fb.array([this.aes.buildPointForm()]),
+                casing: this.buildCasingGroup(),
+                amtPerWelding: '',
+                otherCharges: this.fb.group({
+                    allowance: ''
+                })
+            }),
+            reBore: this.fb.group({
+                flushingChange: '',
+                addlReDrillingCharge: '',
+                casing: this.buildCasingGroup(),
+                amtPerWelding: '',
+                otherCharges: this.fb.group({
+                    allowance: ''
+                }),
             }),
             commission: this.fb.group({
                 type: null,
@@ -69,26 +83,46 @@ export class AddAgentComponent implements OnInit {
             type: agentFormValue.info.type,
             address: agentFormValue.info.address,
             mobileNumber: agentFormValue.info.mobileNumber,
-            points: agentFormValue.point.particulars,
-            commission_type: agentFormValue.commission.type,
-            commission_perFeet: agentFormValue.commission.perFeet,
-            commission_casingType: agentFormValue.commission.casingType,
-            commission_casingPerFeet: agentFormValue.commission.casingPerFeet,
-            commission_casingPaymentType: agentFormValue.commission.casingPaymentType,
+            // points: agentFormValue.newBore.particulars,
+            newBore: agentFormValue.newBore,
+            reBore: agentFormValue.reBore
+            // commission_type: agentFormValue.commission.type,
+            // commission_perFeet: agentFormValue.commission.perFeet,
+            // commission_casingType: agentFormValue.commission.casingType,
+            // commission_casingPerFeet: agentFormValue.commission.casingPerFeet,
+            // commission_casingPaymentType: agentFormValue.commission.casingPaymentType,
         }
         console.log(JSON.stringify(agentObj, null, 2))
 
-        if (this.addAgentUrl) {
-            this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
-                this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 });
-                this.stepper.reset();
-                this.resetForm();
-                this.common.scrollTop();
-            }, (err) => {
-                if (err) {
-                    this.toastr.error('Error while saving Agent', null, { timeOut: 1500 })
-                }
-            });
-        }
+        // if (this.addAgentUrl) {
+        //     this.http.post(this.addAgentUrl, agentObj).subscribe((response) => {
+        //         this.toastr.success('Agent Added Sucessfully', null, { timeOut: 1500 });
+        //         this.stepper.reset();
+        //         this.resetForm();
+        //         this.common.scrollTop();
+        //     }, (err) => {
+        //         if (err) {
+        //             this.toastr.error('Error while saving Agent', null, { timeOut: 1500 })
+        //         }
+        //     });
+        // }
+    }
+
+    private buildCasingForm() {
+        return this.fb.group({
+            depth: '',
+            depthRate: '',
+            amount: ''
+        })
+    }
+
+    private buildCasingGroup() {
+       return this.fb.group({
+            inch7DepthRate: '',
+            inch10DepthRate: '',
+            inch12DepthRate: '',
+            msMediumDepthRate: '',
+            msHeavyDepthRate: '',
+        })
     }
 }

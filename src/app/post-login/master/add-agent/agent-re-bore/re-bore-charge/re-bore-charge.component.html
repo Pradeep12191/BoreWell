@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+    <mat-card class="m-b-20">
+        <mat-card-header>
+            <mat-card-title>{{ 'ADD_AGENT.RE-BORE.CHARGES' | translate  }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout fxLayoutGap="25px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+                <mat-form-field [appearance]="appearance" fxFlex>
+                    <mat-label>{{ 'ADD_AGENT.RE-BORE.FLUSHING_CHARGE' | translate }}</mat-label>
+                    <input type="text" matInput poistiveNumber formControlName="flushingChange">
+                </mat-form-field>
+                <mat-form-field [appearance]="appearance" fxFlex>
+                    <mat-label>{{ 'ADD_AGENT.RE-BORE.ADDl_REDRILLING_CHARGE' | translate }}</mat-label>
+                    <input type="text" matInput poistiveNumber formControlName="addlReDrillingCharge">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

@@ -11,6 +11,12 @@ import { AgentCommissionParticularsComponent } from './agent-commission-particul
 import { AgentPointParticularsComponent } from './agent-point-particulars/agent-point-particulars.component';
 import { AddAgentService } from './add-agent.service';
 import { DirectiveModule } from '../../../directives/directive.module';
+import { CasingDetailsComponent } from './casing-details/casing-details.component';
+import { AgentReBoreComponent } from './agent-re-bore/agent-re-bore.component';
+import { AgentNewBoreComponent } from './agent-new-bore/agent-new-bore.component';
+import { AgentWeldingComponent } from './agent-welding/agent-welding.component';
+import { AgentOtherChargesComponent } from './agent-other-charges/agent-other-charges.component';
+import { ReBoreChargeComponent } from './agent-re-bore/re-bore-charge/re-bore-charge.component';
 
 
 @NgModule({
@@ -27,7 +33,13 @@ import { DirectiveModule } from '../../../directives/directive.module';
         AddAgentComponent,
         AgentInfoComponent,
         AgentCommissionParticularsComponent,
-        AgentPointParticularsComponent
+        AgentPointParticularsComponent,
+        AgentReBoreComponent,
+        AgentNewBoreComponent,
+        AgentWeldingComponent,
+        AgentOtherChargesComponent,
+        ReBoreChargeComponent,
+        CasingDetailsComponent,
     ],
     providers:[AddAgentService]
 })

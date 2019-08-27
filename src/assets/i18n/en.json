@@ -200,6 +200,13 @@
         "TYPE": "Agent Type",
         "ADDRESS": "Address",
         "NUMBER": "Mobile Number",
+        "RE-BORE":{
+            "TITLE": "Re-Bore Details",
+            "CHARGES": "Re-Bore Charges",
+            "AMT": "Re-Bore Amount",
+            "FLUSHING_CHARGE": "Flushing Charge",
+            "ADDl_REDRILLING_CHARGE": "Additional Re Drilling Charge"
+        },
         "POINT": {
             "TITLE": "Agent Point Particulars",
             "START_FEET": "Start Feet",
@@ -219,7 +226,9 @@
         "STEP_LABEL": {
             "INFO": "Info",
             "POINT": "Point",
-            "COMMISSION": "Commission"
+            "COMMISSION": "Commission",
+            "NEW_BORE": "New Bore",
+            "RE_BORE": "Re Bore"
         },
         "COL": {
             "OFFICE_NAME": "Office Name",

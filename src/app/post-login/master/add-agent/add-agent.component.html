@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title>{{ 'ADD_AGENT.TITLE' | translate }}</mat-card-title>
     </mat-card-header>
-    <mat-horizontal-stepper labelPosition="bottom" #stepper linear [formGroup]="agentForm">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper [formGroup]="agentForm">
         <ng-template matStepperIcon="number">
         </ng-template>
         <mat-step [stepControl]="agentForm.get('info')">
@@ -14,9 +14,10 @@
                 </div>
             </div>
         </mat-step>
-        <mat-step [stepControl]="agentForm.get('point')">
-            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.POINT' | translate }}</ng-template>
-            <agent-point-particulars [form]="agentForm.get('point')"></agent-point-particulars>
+        <mat-step [stepControl]="agentForm.get('newBore')">
+            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.NEW_BORE' | translate }}</ng-template>
+            <agent-new-bore [form]="agentForm.get('newBore')"></agent-new-bore>
+            <!-- <agent-point-particulars [form]="agentForm.get('point')"></agent-point-particulars> -->
             <div fxLayout fxLayoutAlign="space-between">
                 <div>
                     <button mat-raised-button color="primary" matStepperPrevious>{{ 'BTN.BACK' | translate }}</button>
@@ -27,8 +28,9 @@
             </div>
         </mat-step>
         <mat-step [stepControl]="agentForm.get('commission')">
-            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.COMMISSION' | translate }}</ng-template>
-            <agent-commission-particulars [form]="agentForm.get('commission')"></agent-commission-particulars>
+            <ng-template matStepLabel>{{ 'ADD_AGENT.STEP_LABEL.RE_BORE' | translate }}</ng-template>
+            <agent-re-bore [form]="agentForm.get('reBore')"></agent-re-bore>
+            <!-- <agent-commission-particulars [form]="agentForm.get('commission')"></agent-commission-particulars> -->
             <div fxLayout fxLayoutAlign="space-between">
                 <div>
                     <button mat-raised-button (click)="stepper.reset(); resetForm()" color="primary">{{ 'BTN.CLEAR' | translate }}</button>

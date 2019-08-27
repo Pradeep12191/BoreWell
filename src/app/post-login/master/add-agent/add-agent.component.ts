@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from '../../../services/common.service';
 import { MatStepper } from '@angular/material';
+import { LoaderService } from '../../../services/loader-service';
 
 @Component({
     templateUrl: 'add-agent.component.html',
@@ -21,7 +22,8 @@ export class AddAgentComponent implements OnInit {
         private config: ConfigService,
         private http: HttpClient,
         private toastr: ToastrService,
-        private common: CommonService
+        private common: CommonService,
+        private loader: LoaderService
     ) {
         const url = this.config.getUrl('addAgent');
         const baseUrl = this.config.getConfig('apiUrl');
@@ -98,7 +100,8 @@ export class AddAgentComponent implements OnInit {
                 this.common.scrollTop();
             }, (err) => {
                 if (err) {
-                    this.toastr.error('Error while saving Agent', null, { timeOut: 1500 })
+                    this.toastr.error('Error while saving Agent', null, { timeOut: 1500 });
+                    this.loader.hideSaveLoader();
                 }
             });
         }

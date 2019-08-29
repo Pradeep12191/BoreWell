@@ -99,7 +99,7 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        return this.username || this.password
+        return this.token
     }
 
     createToken(userName, password) {

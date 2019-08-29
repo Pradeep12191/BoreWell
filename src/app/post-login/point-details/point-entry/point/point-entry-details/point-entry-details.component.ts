@@ -18,13 +18,19 @@ export class PointEntryDetailsComponent implements OnDestroy {
     agentChangeSubcsription: Subscription;
     pointOptionChangeSubscription: Subscription;
     totalFeetAmtInputSubscription: Subscription;
+    reBoreFeetSubscription: Subscription;
+
+    private errorTimeout = 1000;
     public appearance;
     public agentList: Agent[];
     public agentNames;
     public selectedAgent: Agent;
     public totalFeetAmtInput$ = new Subject();
+    public reBoreFeet$ = new Subject();
     public showBtns = true;
     public triggerPipe = false;
+    public agentType;
+
     public casingTypes = [
         { name: 'PVC 7 Inch', depthControlName: 'Pvc7Depth', depthRateControlName: 'Pvc7DepthRate', amtControlName: 'Pvc7Amt' },
         { name: 'PVC 10 Inch', depthControlName: 'Pvc10Depth', depthRateControlName: 'Pvc10DepthRate', amtControlName: 'Pvc10Amt' },
@@ -45,6 +51,14 @@ export class PointEntryDetailsComponent implements OnDestroy {
         return this.pointEntryForm.get('totalFeet').value;
     }
 
+    get reBoreFeet() {
+        return this.pointEntryForm.get('reBoreFeet').value;
+    }
+
+    get isReBore() {
+        return true
+    }
+
     constructor(
         private fb: FormBuilder,
         private config: ConfigService,
@@ -53,6 +67,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
         private toastr: ToastrService
     ) {
         this.appearance = this.config.getConfig('formAppearance');
+        this.errorTimeout = this.config.getConfig('errorMessageTimeout')
         this.agentChangeSubcsription = this.pes.agentChangeObs().subscribe((event) => {
             // console.log(event.value);
 
@@ -73,17 +88,26 @@ export class PointEntryDetailsComponent implements OnDestroy {
             this.triggerPipe = !this.triggerPipe;
         })
         this.pointOptionChangeSubscription = this.pes.pointOptionChangeObs().subscribe(({ optionName, data }) => {
-            if (optionName === 'self') {
-                // reset on radio option changed to self
+
+            if (this.agentType) {
                 this.selectedAgent = null;
                 this.pes.removeControls(this.feetsFormArray);
                 this.feetsFormArray.reset([{ startFeet: '0' }]);
                 this.pointEntryForm.get('totalFeet').reset();
+                this.pointEntryForm.get('reBoreFeet').reset();
+                this.pointEntryForm.get('reBoreAmtPerFeet').reset();
+                this.pointEntryForm.get('reBoreAmt').reset();
                 this.pointEntryForm.get('totalFeetAmt').reset();
-                this.showBtns = true;
+                if (optionName === 'self') {
+                    // reset on radio option changed to self
+                    this.showBtns = true;
+                } else {
+                    this.showBtns = false;
+                }
+                this.triggerPipe = !this.triggerPipe;
             }
             this.agentList = data;
-            this.triggerPipe = !this.triggerPipe;
+            this.agentType = optionName;
         })
 
         this.totalFeetAmtInputSubscription = this.totalFeetAmtInput$.asObservable().pipe(distinctUntilChanged(), debounceTime(500)).subscribe(() => {
@@ -91,34 +115,72 @@ export class PointEntryDetailsComponent implements OnDestroy {
             this.updateTotalFeetAmount();
             this.triggerPipe = !this.triggerPipe;
         })
+
+        this.reBoreFeetSubscription = this.reBoreFeet$.asObservable().pipe(distinctUntilChanged(), debounceTime(500)).subscribe(() => {
+            if (!this.isValidReBoreFeet()) {
+                return;
+            }
+
+            this.updateFeetsFormArray();
+            this.updateReBoreAmt();
+            this.updateTotalFeetAmount();
+            this.triggerPipe = !this.triggerPipe;
+        })
     }
 
     getFeetPointsFromAgent() {
-        const points = this.selectedAgent.points.filter(point => point);
-        this.selectedAgent.points.filter(point => point);
-        const feetPoints = points.map(point => {
-            const endFeet = point.endFeet ? +  point.endFeet : 0;
-            let startFeet = point.startFeet ? +point.startFeet : 0;
-            if (startFeet > 0) {
-                startFeet -= 1;
+        let feetPoints = [];
+        if (this.selectedAgent) {
+            const points = this.selectedAgent.points.filter(point => point);
+            this.selectedAgent.points.filter(point => point);
+            feetPoints = points.map(point => {
+                const endFeet = point.endFeet ? +  point.endFeet : 0;
+                let startFeet = point.startFeet ? +point.startFeet : 0;
+                if (startFeet > 0) {
+                    startFeet -= 1;
+                }
+                const totalFeet = endFeet - startFeet;
+                return {
+                    startFeet: point.startFeet,
+                    endFeet: point.endFeet,
+                    totalFeet,
+                    amtPerFeet: point.perFeet,
+                    amt: point.amount,
+                    isDeleted: false
+                }
+            })
+        } else {
+            // agent type -self
+            const feets = this.feetsFormArray.value as any[];
+            console.log(feets);
+            if (feets && feets.length) {
+
+                feetPoints = feets.map(feet => {
+                    return {
+                        startFeet: feet.startFeet ? +feet.startFeet : 0,
+                        endFeet: feet.endFeet ? +feet.endFeet : 0,
+                        totalFeet: feet.totalFeet ? +feet.totalFeet : 0,
+                        amtPerFeet: feet.amtPerFeet ? +feet.amtPerFeet : 0,
+                        amt: feet.amt ? feet.amt : 0,
+                        isDeleted: false
+                    }
+                })
             }
-            const totalFeet = endFeet - startFeet;
-            return {
-                startFeet: point.startFeet,
-                endFeet: point.endFeet,
-                totalFeet,
-                amtPerFeet: point.perFeet,
-                amt: point.amount,
-                isDeleted: false
-            }
-        })
+
+            // if (feets && feets.length) {
+            //     feets.map()
+            // }
+        }
+
+
         return feetPoints;
     }
 
     ngOnDestroy() {
-        if (this.agentChangeSubcsription) { this.agentChangeSubcsription.unsubscribe() }
-        if (this.pointOptionChangeSubscription) { this.pointOptionChangeSubscription.unsubscribe() }
-        if (this.totalFeetAmtInputSubscription) { this.totalFeetAmtInputSubscription.unsubscribe() }
+        if (this.agentChangeSubcsription) { this.agentChangeSubcsription.unsubscribe(); }
+        if (this.pointOptionChangeSubscription) { this.pointOptionChangeSubscription.unsubscribe(); }
+        if (this.totalFeetAmtInputSubscription) { this.totalFeetAmtInputSubscription.unsubscribe(); }
+        if (this.reBoreFeetSubscription) { this.reBoreFeetSubscription.unsubscribe(); }
     }
 
     public addMoreFeet() {
@@ -225,12 +287,8 @@ export class PointEntryDetailsComponent implements OnDestroy {
     // set the last matched feet point's end feet to totalFeet
     updateFeetsFormArray() {
         const totalFeet = this.totalFeet ? +this.totalFeet : 0;
+        const reBoreFeet = this.reBoreFeet ? + this.reBoreFeet : 0;
         const points = this.getFeetPointsFromAgent();
-        if (totalFeet === 0) {
-            // reset entire form Array
-            this.setFeetsFormArray();
-            return;
-        }
 
         this.setFeetsFormArray();
 
@@ -258,83 +316,66 @@ export class PointEntryDetailsComponent implements OnDestroy {
             if (startFeet > 0) {
                 startFeet -= 1;
             }
+            // --- total feet calculation ---
+            if (totalFeet > 0) {
+                if (totalFeet >= currentEndFeet) {
+                    // do nothing - reset
+                    ctrl.get('endFeet').setValue(currentEndFeet.toString());
+                    ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
+                    ctrl.get('amt').setValue(currentAmt);
+                } else if (totalFeet > startFeet && totalFeet <= currentEndFeet) {
+                    // update
+                    ctrl.get('endFeet').setValue(totalFeet.toString());
+                    feetRange = totalFeet - startFeet;
+                    if (feetRange <= 0) {
+                        feetRange = 0;
+                    }
 
-            if (totalFeet >= currentEndFeet) {
-                // do nothing - reset
-                if (ctrl.get('isDeleted').value) {
-                    ctrl.get('isDeleted').setValue(false);
-                }
-                ctrl.get('endFeet').setValue(currentEndFeet.toString());
-                ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
-                ctrl.get('amt').setValue(currentAmt);
-            } else if (totalFeet > startFeet && totalFeet <= currentEndFeet) {
-                // update
-                if (ctrl.get('isDeleted').value) {
-                    ctrl.get('isDeleted').setValue(false);
-                }
-                ctrl.get('endFeet').setValue(totalFeet.toString());
-                feetRange = totalFeet - startFeet;
-                if (feetRange <= 0) {
-                    feetRange = 0;
+                    amt = feetRange * amtPerFeet;
+                    ctrl.get('totalFeet').setValue(feetRange.toString());
+                    ctrl.get('amt').setValue(amt.toString());
+                } else {
+                    if (index !== 0) {
+                        ctrl.get('isDeleted').setValue(true);
+                    }
                 }
 
-                amt = feetRange * amtPerFeet;
-                ctrl.get('totalFeet').setValue(feetRange.toString());
-                ctrl.get('amt').setValue(amt.toString());
-            } else {
-                if (index !== 0) {
+            }
+            // --- total feet calculation ---
+
+            // --- rebore calculation ----
+            // remove feets having end feet that are lesser than or equal to reBoreFeet
+            // also update the start feet in such a way it starts from remaining feet
+            if (this.isReBore) {
+                const updatedEndFeet = ctrl.get('endFeet').value ? +ctrl.get('endFeet').value : 0;
+                if (reBoreFeet >= updatedEndFeet) {
                     ctrl.get('isDeleted').setValue(true);
+                } else if (reBoreFeet > startFeet && reBoreFeet <= updatedEndFeet) {
+                    let newStartFeet = 0;
+                    if (reBoreFeet > 0) {
+                        newStartFeet = reBoreFeet + 1;
+                    }
+                    ctrl.get('startFeet').setValue(newStartFeet.toString());
+                    if (newStartFeet > 0) {
+                        newStartFeet -= 1;
+                    }
+                    const newTotalFeet = (updatedEndFeet - newStartFeet)
+                    const newFeetAmt = newTotalFeet * amtPerFeet;
+
+
+                    ctrl.get('amt').setValue(newFeetAmt.toString());
+                    ctrl.get('totalFeet').setValue(newTotalFeet.toString());
+                } else {
+                    if (ctrl.get('isDeleted'))
+                        ctrl.get('startFeet').setValue(currentStartFeet.toString());
+                    // lets not reset here on rebore as aleady reset by total feet
+                    // ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
+                    // ctrl.get('amt').setValue(currentAmt);
                 }
             }
+            // --- rebore calculation ----
         })
         this.checkRemainingCtrls(points.length);
-        // this.feetsFormArray.controls.forEach((ctrl, index) => {
-        //     // reset to actual value ----
-        //     const currentEndFeet = points[index].endFeet ? + points[index].endFeet : 0;
-        //     const currentTotlalPointFeet = points[index].totalFeet;
-        //     const currentAmt = points[index].amt;
-        //     // reset ends here ----
-
-        //     const endFeet = ctrl.get('endFeet').value ? +ctrl.get('endFeet').value : 0;
-        //     let startFeet = ctrl.get('startFeet').value ? +ctrl.get('startFeet').value : 0;
-        //     const amtPerFeet = ctrl.get('amtPerFeet').value ? +ctrl.get('amtPerFeet').value : 0;
-        //     let feetRange = 0;
-        //     let amt = 0;
-
-
-        //     if (startFeet > 0) {
-        //         startFeet -= 1;
-        //     }
-
-        //     if (totalFeet >= currentEndFeet) {
-        //         // do nothing - reset
-        //         if (ctrl.get('isDeleted').value) {
-        //             ctrl.get('isDeleted').setValue(false);
-        //         }
-        //         ctrl.get('endFeet').setValue(currentEndFeet.toString());
-        //         ctrl.get('totalFeet').setValue(currentTotlalPointFeet);
-        //         ctrl.get('amt').setValue(currentAmt);
-        //     } else if (totalFeet > startFeet && totalFeet <= currentEndFeet) {
-        //         // update
-        //         if (ctrl.get('isDeleted').value) {
-        //             ctrl.get('isDeleted').setValue(false);
-        //         }
-        //         ctrl.get('endFeet').setValue(totalFeet.toString());
-        //         feetRange = totalFeet - startFeet;
-        //         if (feetRange <= 0) {
-        //             feetRange = 0;
-        //         }
-
-        //         amt = feetRange * amtPerFeet;
-        //         ctrl.get('totalFeet').setValue(feetRange.toString());
-        //         ctrl.get('amt').setValue(amt.toString());
-        //     } else {
-        //         if (index !== 0) {
-        //             ctrl.get('isDeleted').setValue(true);
-        //         }
-        //     }
-
-        // })
     }
 
     // total Feet amount calulation.
@@ -342,6 +383,9 @@ export class PointEntryDetailsComponent implements OnDestroy {
     // from there calculate the remaining feet and add to the sum
     updateTotalFeetAmount() {
         let totalAmount = 0;
+        let reBoreAmt = this.pointEntryForm.get('reBoreAmt').value;
+
+        reBoreAmt = reBoreAmt ? +reBoreAmt : 0;
         this.feetsFormArray.controls.forEach(ctrl => {
             if (ctrl.get('isDeleted').value) {
                 return;
@@ -351,25 +395,16 @@ export class PointEntryDetailsComponent implements OnDestroy {
             let startFeet = +ctrl.get('startFeet').value;
             const amtPerFeet = +ctrl.get('amtPerFeet').value;
             const totalFeet = +this.totalFeet;
-            // start feet always starts with one less than its actual value
-            // for eg : 0 - 100 = 100
-            //          101 - 200 = 100 (this should be 100) as 0 - 200 will be 200
-            if (startFeet > 0) {
-                startFeet -= 1;
-            }
-            if (totalFeet >= +endFeet) {
-                if (feetAmt) {
-                    totalAmount += +feetAmt;
-                }
-            } else if (totalFeet > startFeet && totalFeet <= endFeet) {
-                const remainingFeet = totalFeet - startFeet
-                totalAmount += remainingFeet * amtPerFeet
-            }
 
+            if (feetAmt) {
+                totalAmount += +feetAmt;
+            }
         })
+        if (this.isReBore) {
+            totalAmount += reBoreAmt;
+        }
         this.pointEntryForm.get('totalFeetAmt').setValue(totalAmount.toString());
         this.updateOverallAmt();
-        // this.triggerPipe = !this.triggerPipe;
     }
 
     checkRemainingCtrls(pointLen) {
@@ -412,7 +447,7 @@ export class PointEntryDetailsComponent implements OnDestroy {
             feetCtrl.get('endFeet').setValue('');
             feetCtrl.get('amt').setValue('');
             feetCtrl.get('totalFeet').setValue('');
-            this.updateTotalFeetAmount()
+            this.updateTotalFeetAmount();
             return this.toastr.error('End feet cannot be more than total Feet', null, { timeOut: 2000 })
         }
     }
@@ -463,5 +498,46 @@ export class PointEntryDetailsComponent implements OnDestroy {
         // this.feetsFormArray.removeAt(this.feetsFormArray.length - 1);
         this.updateTotalFeetAmount();
         this.triggerPipe = !this.triggerPipe;
+    }
+
+    public onReboreFeetInput(event) {
+        this.reBoreFeet$.next(event)
+    }
+
+    public onReBoreAmt(event) {
+        this.updateReBoreAmt();
+        this.updateTotalFeetAmount();
+    }
+
+    public updateReBoreAmt() {
+        let reBoreFeet = this.pointEntryForm.get('reBoreFeet').value;
+        let reBoreAmtPerFeet = this.pointEntryForm.get('reBoreAmtPerFeet').value;
+        let totalReBoreAmt = 0;
+
+        reBoreFeet = reBoreFeet ? +reBoreFeet : 0;
+        reBoreAmtPerFeet = reBoreAmtPerFeet ? +reBoreAmtPerFeet : 0;
+        totalReBoreAmt = reBoreFeet * reBoreAmtPerFeet;
+
+        this.pointEntryForm.get('reBoreAmt').setValue(totalReBoreAmt.toString())
+    }
+
+    private isValidReBoreFeet() {
+        let reBoreFeet = this.pointEntryForm.get('reBoreFeet').value;
+        let totalFeet = this.pointEntryForm.get('totalFeet').value;
+
+        reBoreFeet = reBoreFeet ? +reBoreFeet : 0;
+        totalFeet = totalFeet ? +totalFeet : 0;
+
+        if (totalFeet === 0) {
+            this.toastr.error('Please enter total feet before entering Re-Bore feet', null, { timeOut: this.errorTimeout });
+            return false;
+        }
+
+        if (reBoreFeet > totalFeet) {
+            this.toastr.error('Re-Bore Feet should be greater than Total Feet', null, { timeOut: this.errorTimeout });
+            return false;
+        }
+
+        return true;
     }
 }

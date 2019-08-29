@@ -1,0 +1,69 @@
+<!-- also incude depth and feetage -->
+<div fxLayout.gt-sm="column" fxLayoutGap.gt-sm="16px">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>RPM Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout fxLayoutGap="10px">
+                    <div fxFlex="35" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
+                        <div class="m-b-17">
+                            Start RPM
+                        </div>
+                    </div>
+                    <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                        <mat-label>RPM</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutGap="10px">
+                    <div fxFlex="35" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
+                        <div class="m-b-17">
+                            End RPM
+                        </div>
+                    </div>
+                    <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                        <mat-label>RPM</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutAlign="end end" fxLayoutGap="16px" class="m-t-15">
+                    <div class="text-right" fxFlex="70">Total RPM</div>
+                    <div class="bold">10 hr</div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Depth</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout fxLayoutGap="10px">
+                    <div fxFlex="35" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
+                        <div class="m-b-17" >
+                            Drilling Depth
+                        </div>
+                    </div>
+                    <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                        <mat-label>Depth</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Feetage</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <div class="bold">100 ft/hr</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

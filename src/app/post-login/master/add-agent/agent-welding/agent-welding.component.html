@@ -5,7 +5,7 @@
         </mat-card-header>
         <mat-card-content>
             <div fxLayout fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
-                <mat-form-field fxFlex="50" [appearance]="appearance" class="calc-field">
+                <mat-form-field fxFlex.lt-md="100" fxFlex="50" [appearance]="appearance" class="calc-field">
                     <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.AMT_PER_WELDING' | translate }}</mat-label>
                     <input poistiveNumber type="text" matInput formControlName="amtPerWelding">
                 </mat-form-field>

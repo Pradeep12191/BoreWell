@@ -99,6 +99,9 @@ export class PointEntryComponent implements OnInit, OnDestroy {
         agentName: '',
         pointEntry: this.fb.group({
           totalFeet: '',
+          reBoreFeet: '',
+          reBoreAmtPerFeet: '150',
+          reBoreAmt: '',
           feets: this.fb.array([this.pes.feetFormBuilder()]),
           totalFeetAmt: '',
           Pvc7Depth: '',

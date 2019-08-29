@@ -1,0 +1,123 @@
+<div fxLayout.gt-sm="column" ngClass.gt-sm="p-16" fxLayoutGap.gt-sm="25px">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Diesel
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout>
+                    <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
+                        <div class="bold m-b-17">Bunk Name</div>
+                    </div>
+                    <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout>
+                    <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
+                        <div class="bold m-b-17">Bunk Area</div>
+                    </div>
+                    <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout>
+                    <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
+                        <div class="bold m-b-17">Per Liter Amt.</div>
+                    </div>
+                    <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
+                        <mat-label>Amount</mat-label>
+                        <input poistiveNumber matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout>
+                    <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
+                        <div class="bold m-b-17">Total Liter</div>
+                    </div>
+                    <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
+                        <input poistiveNumber matInput>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
+                        Total Amount
+                    </div>
+                    <div fxFlex class="bold">{{ '1000' | currency:'INR' }}</div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Advance Amount</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout>
+                    <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
+                        <div class="bold m-b-17">Advance</div>
+                    </div>
+                    <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
+                        <mat-label>Amount</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayoutGap="15px">
+                    <div class="bold">Remarks</div>
+                    <mat-form-field [appearance]="appearance">
+                        <textarea matInput cols="30" rows="7"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Soil Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column">
+                <div fxLayout fxLayoutGap="10px">
+                    <div fxFlex="25" fxFlex.gt-sm="20"  fxLayout fxLayoutAlign="start center">
+                        <div class="bold m-b-17">Loose Soil</div>
+                    </div>
+                    <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                        <mat-label>From</mat-label>
+                        <input poistiveNumber matInput>
+                    </mat-form-field>
+                    <div fxLayout fxLayoutAlign="start center">
+                        <div class="bold m-b-17">To</div>
+                    </div>
+                    <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                        <mat-label>To</mat-label>
+                        <input poistiveNumber matInput>
+                    </mat-form-field>
+                </div>
+                <div fxLayout fxLayoutGap="10px">
+                    <div fxFlex="25" fxLayout fxLayoutAlign="start center">
+                        <div fxFlex.gt-sm="20" class="bold m-b-17">Boulder</div>
+                    </div>
+                    <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                        <mat-label>From</mat-label>
+                        <input poistiveNumber matInput>
+                    </mat-form-field>
+                    <div fxLayout fxLayoutAlign="start center">
+                        <div class="bold m-b-17">To</div>
+                    </div>
+                    <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
+                        <mat-label>To</mat-label>
+                        <input poistiveNumber matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout fxLayoutAlign="center center" class="m-t-16" fxLayoutGap="10px">
+                <div fxFLex="30">
+                    Total Depth
+                </div>
+                <div class="bold">1000</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

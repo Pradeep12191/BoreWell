@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
-declare let html2pdf: any;
+// declare let html2pdf: any;
 
 import * as jsPDF from 'jspdf';
 import html2pdf from 'html2pdf.js';
@@ -81,13 +81,27 @@ export class PointReportViewComponent implements OnInit {
 
         try {
 
-            html2canvas(this.reportCanvas.nativeElement).then((canvas) => {
-                const pdf = new jsPDF()
-                const img = canvas.toDataURL('img/png');
-                pdf.addImage(img, 'PNG', 4, 5);
-                pdf.save('point_report')
+            // html2canvas(this.reportCanvas.nativeElement).then((canvas) => {
+            //     const pdf = new jsPDF()
+            //     const img = canvas.toDataURL();
+            //     pdf.addImage(img, 'PNG', 4, 5);
+            //     pdf.save('point_report')
+            // })
+
+
+            // html2pdf().fro
+
+           html2pdf().from(this.reportCanvas.nativeElement).outputPdf('arraybuffer').then((pdf) => {
+                console.log(pdf)
+                // console.log(pdf.arrayBufferToBinaryString())
+                // console.log(pdf.arrayBufferToBase64())
             })
 
+            html2pdf().from(this.reportCanvas.nativeElement).outputPdf().then((pdf) => {
+                console.log(btoa(pdf))
+                // console.log(pdf.arrayBufferToBinaryString())
+                // console.log(pdf.arrayBufferToBase64())
+            })
 
             // const worker = html2pdf().from(this.reportCanvas.nativeElement).set(opt).save()
             // .then(done => {

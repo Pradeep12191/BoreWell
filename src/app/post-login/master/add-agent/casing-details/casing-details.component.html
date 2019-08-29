@@ -9,7 +9,7 @@
                     {{ casing.name }}
                 </div>
                 <div fxLayout fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
-                    <mat-form-field fxFlex="45" [appearance]="appearance" class="calc-field">
+                    <mat-form-field fxFlex.lt-md="100" fxFlex="45" [appearance]="appearance" class="calc-field">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
                         <input poistiveNumber type="text" matInput [formControlName]="casing.ctrlName">
                     </mat-form-field>

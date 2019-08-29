@@ -15,6 +15,22 @@
                                 formControlName="totalFeet" type="text" matInput placeholder="Total Feet">
                         </mat-form-field>
                     </div>
+                    <div fxLayout fxLayoutAlign="start center" fxLayoutGap="20px">
+                        <mat-form-field fxFlex="33" [appearance]="appearance">
+                            <mat-label>Re-Bore Feet</mat-label>
+                            <input type="text" (input)="onReboreFeetInput($event)" formControlName="reBoreFeet" matInput poistiveNumber placeholder="Re-Bore Feet">
+                        </mat-form-field>
+                        <div>X</div>
+                        <mat-form-field fxFlex="33" [appearance]="appearance">
+                            <mat-label>Amt Per Re-bore Feet</mat-label>
+                            <input type="text" (input)="onReBoreAmt($event)" formControlName="reBoreAmtPerFeet" matInput poistiveNumber placeholder="Amt Per Re-bore Feet">
+                        </mat-form-field>
+                        <div>=</div>
+                        <mat-form-field fxFlex="33" [appearance]="appearance">
+                            <mat-label>Re-bore Amount</mat-label>
+                            <input type="text" formControlName="reBoreAmt" matInput poistiveNumber placeholder="Re-bore Amount">
+                        </mat-form-field>
+                    </div>
                     <!-- <div class="m-b-16" fxLayout fxLayout.lt-md="column">
                                 <mat-checkbox color="primary" labelPosition="after">{{
                                     'POINT_ENTRY.POINT_ENTRY.SHOW_HIDE_START_FEET' |
@@ -129,12 +145,14 @@
                 <div fxLayout fxLayoutGap.lt-md="10px" fxLayoutGap="20px">
                     <mat-form-field fxFlex="45" [appearance]="appearance" class="calc-field">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH' | translate }}</mat-label>
-                        <input poistiveNumber (input)="calculateCasingAmt(casing.depthControlName, casing.depthRateControlName, casing.amtControlName)" type="text" matInput [formControlName]="casing.depthControlName">
+                        <input poistiveNumber (input)="calculateCasingAmt(casing.depthControlName, casing.depthRateControlName, casing.amtControlName)"
+                            type="text" matInput [formControlName]="casing.depthControlName">
                     </mat-form-field>
                     <div fxFlex="1" class="bold m-b-20" fxLayout="column" fxLayoutAlign="center center">X</div>
                     <mat-form-field fxFlex="45" [appearance]="appearance" class="calc-field">
                         <mat-label>{{ 'POINT_ENTRY.POINT_ENTRY.CASING_DEPTH_RATE' | translate }}</mat-label>
-                        <input poistiveNumber (input)="calculateCasingAmt(casing.depthControlName, casing.depthRateControlName, casing.amtControlName)" type="text" matInput [formControlName]="casing.depthRateControlName">
+                        <input poistiveNumber (input)="calculateCasingAmt(casing.depthControlName, casing.depthRateControlName, casing.amtControlName)"
+                            type="text" matInput [formControlName]="casing.depthRateControlName">
                     </mat-form-field>
                     <div fxFlex="1" class="m-b-20" fxLayout fxLayoutAlign="center center">
                         <div class="equal-container">

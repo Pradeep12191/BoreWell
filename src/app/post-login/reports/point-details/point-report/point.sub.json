@@ -3,6 +3,9 @@
         {
             "agentName": "HARI KUMAR",
             "agentType": "agent",
+            "agentState": "TamilNadu",
+            "agentCity": "Chennai",
+            "agentMobile": "784592899",
             "allowance": "2000",
             "amtPerWelding": "22",
             "boreType": "New Bore",
@@ -16,63 +19,72 @@
                     "amtPerFeet": "115",
                     "endFeet": "200",
                     "feetDiff": "200",
-                    "startFeet": "0"
+                    "startFeet": "0",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "12500",
                     "amtPerFeet": "125",
                     "endFeet": "300",
                     "feetDiff": "100",
-                    "startFeet": "201"
+                    "startFeet": "201",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "13500",
                     "amtPerFeet": "135",
                     "endFeet": "400",
                     "feetDiff": "100",
-                    "startFeet": "301"
+                    "startFeet": "301",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "15500",
                     "amtPerFeet": "155",
                     "endFeet": "500",
                     "feetDiff": "100",
-                    "startFeet": "401"
+                    "startFeet": "401",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "20500",
                     "amtPerFeet": "205",
                     "endFeet": "600",
                     "feetDiff": "100",
-                    "startFeet": "501"
+                    "startFeet": "501",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "30500",
                     "amtPerFeet": "305",
                     "endFeet": "700",
                     "feetDiff": "100",
-                    "startFeet": "601"
+                    "startFeet": "601",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "40500",
                     "amtPerFeet": "405",
                     "endFeet": "800",
                     "feetDiff": "100",
-                    "startFeet": "701"
+                    "startFeet": "701",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "50500",
                     "amtPerFeet": "505",
                     "endFeet": "900",
                     "feetDiff": "100",
-                    "startFeet": "801"
+                    "startFeet": "801",
+                    "feetCount": "9"
                 },
                 {
                     "amt": "54450",
                     "amtPerFeet": "605",
                     "endFeet": "990",
                     "feetDiff": "90",
-                    "startFeet": "901"
+                    "startFeet": "901",
+                    "feetCount": "9"
                 }
             ],
             "msHeavyAmt": "250",

@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Bit Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout fxLayoutGap="10px" fxLayoutGap.gt-sm="25px">
+            <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field" [appearance]="appearance">
+                <mat-label>Bit No.</mat-label>
+                <input poistiveNumber matInput>
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field" [appearance]="appearance">
+                <mat-label>Bit Size</mat-label>
+                <input poistiveNumber matInput>
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field" [appearance]="appearance">
+                <mat-label>Bit Depth</mat-label>
+                <input poistiveNumber matInput>
+            </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutAlign="end">
+            <button mat-raised-button color="primary">ADD MORE</button>
+        </div>
+    </mat-card-content>
+</mat-card>

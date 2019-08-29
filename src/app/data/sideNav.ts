@@ -83,7 +83,7 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
         children: [
             {
                 name: 'NAV.POINT_ENTRY', isFirstChild: true,
-                isLastChild: true, path: 'pointDetails/pointEntry', level: 1,
+                isLastChild: true, path: 'rpmDetails/rpmEntry', level: 1,
                 paddingLeft: LEVEL_1_PADDING
             }
         ],

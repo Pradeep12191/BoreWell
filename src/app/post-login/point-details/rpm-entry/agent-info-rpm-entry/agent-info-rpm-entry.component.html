@@ -1,0 +1,24 @@
+<div fxLayout="column" class="p-16">
+    <div fxLayout fxLayoutGap="20px" fxLayoutGap.lt-md="0px" fxLayout.lt-md="column">
+        <mat-form-field fxFlex [appearance]="appearance">
+            <mat-label>Agent Name</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let agent of agents"></mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex [appearance]="appearance">
+            <mat-label>Village Name</mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+    </div>
+    <div fxLayout fxLayoutGap="20px" fxLayoutGap.lt-md="0px" fxLayout.lt-md="column">
+        <mat-form-field fxFlex [appearance]="appearance">
+            <mat-label>Party Name</mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+        <mat-form-field fxFlex [appearance]="appearance">
+            <mat-label>Party Mobile</mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+    </div>
+</div>

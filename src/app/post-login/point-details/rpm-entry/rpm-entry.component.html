@@ -1,0 +1,41 @@
+<mat-card class="card-no-padding">
+    <mat-card-header>
+        <mat-card-title>
+            RPM Entry
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="p-16 bottom-line" fxLayout="column" fxLayoutGap="25px">
+            <div fxLayout fxLayoutAlign="space-between">
+                <div fxLayout fxLayoutGap="10px">
+                    <div class="bold">Point No</div>
+                    <div class="bold">:</div>
+                    <div>12345</div>
+                </div>
+                <div fxLayout fxLayoutGap="10px">
+                    <div class="bold">Date</div>
+                    <div class="bold">:</div>
+                    <div>{{ todayDate | date:'dd/mm/yyyy' }}</div>
+                </div>
+            </div>
+            <div fxLayout fxLayoutAlign.lt-md="center center">
+                <mat-radio-group fxLayout fxLayoutGap="20px">
+                    <mat-radio-button value="newBore">New Bore</mat-radio-button>
+                    <mat-radio-button value="reBore">Re Bore</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <mat-horizontal-stepper class="stepper-no-padding stepper-label-wrap" labelPosition="bottom">
+            <mat-step label="Agent / Party Info">
+                <agent-info-rpm-entry></agent-info-rpm-entry>
+            </mat-step>
+            <mat-step label="Depth Details">
+                <depth-details-rpm></depth-details-rpm>
+            </mat-step>
+            <mat-step label="Other Details">
+                <other-details-rpm-entry></other-details-rpm-entry>
+            </mat-step>
+        </mat-horizontal-stepper>
+
+    </mat-card-content>
+</mat-card>

@@ -276,3 +276,21 @@ mat-form-field.calc-field{
      }
  }
 
+ .stepper-no-padding{
+    .mat-horizontal-content-container{
+        padding: 0px;
+    }
+ }
+
+ .stepper-label-wrap{
+    .mat-step-text-label{
+        white-space: normal;   
+    }
+ }
+
+ .card-no-padding{
+     &.mat-card >  mat-card-content{
+         padding: 0px;
+     }
+ }
+ 

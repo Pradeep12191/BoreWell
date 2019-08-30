@@ -15,6 +15,7 @@ import { BitDetailsRpmEntryComponent } from './depth-details-rpm-entry/bit-detai
 import { RpmDetailsRpmEntryComponent } from './depth-details-rpm-entry/rpm-details-rpm-entry/rpm-details-rpm-entry.component';
 import { DepthDetailsRpmEntryComponent } from './depth-details-rpm-entry/depth-details-rpm-entry.component';
 import { OtherDetailsRpmEntryComponent } from './other-details-rpm-entry/other-details-rpm-entry.component';
+import { RpmEntryConfirmDialogComponent } from './rpm-entry-confirm-dialog/rpm-entry-confirm-dialog.component';
 
 @NgModule({
     imports: [
@@ -33,12 +34,16 @@ import { OtherDetailsRpmEntryComponent } from './other-details-rpm-entry/other-d
         BitDetailsRpmEntryComponent,
         RpmDetailsRpmEntryComponent,
         DepthDetailsRpmEntryComponent,
-        OtherDetailsRpmEntryComponent
+        OtherDetailsRpmEntryComponent,
+        RpmEntryConfirmDialogComponent
+    ],
+    entryComponents: [
+        RpmEntryConfirmDialogComponent
     ],
     providers: [
         AgentListResolver
     ]
 })
-export class RpmEntryModule{
+export class RpmEntryModule {
 
 }

@@ -1,0 +1,211 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon>clear</mat-icon>
+    </button>
+    <div fxFlex fxLayoutAlign="center center">
+        <div style="margin-left: -40px">Confirm Details</div>
+    </div>
+</mat-toolbar>
+<div mat-dialog-content class="p-16">
+    <div fxLayout="column" class="m-b-16">
+        <div fxLayout fxLayoutAlign="center center" class="m-b-16">
+            <div class="bold font-20">New Bore</div>
+        </div>
+        <div fxLayout fxLayoutAlign="space-between">
+            <div fxLayout fxLayoutGap="10px">
+                <div>Point No.</div>
+                <div class="bold">1001</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px">
+                <div>Date</div>
+                <div class="bold">{{ todayDate | date: 'dd/mm/yyyy' }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Agent & Party Info
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout>
+                <div fxFlex="50">Agent Name</div>
+                <div class="bold">Agent Name</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Village</div>
+                <div class="bold">Village</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Party Name</div>
+                <div class="bold">Party Name</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Party Mobile</div>
+                <div class="bold">98722882</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Casing Details
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout>
+                <div fxFlex="50">7'Inch</div>
+                <div class="bold">20</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">10'Inch</div>
+                <div class="bold">25</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">12'Inch</div>
+                <div class="bold">25</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Ms Medium</div>
+                <div class="bold">40</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Ms Heavy</div>
+                <div class="bold">40</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Welding Details
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout>
+                <div fxFlex="50">Welding</div>
+                <div class="bold">20</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            RPM Details
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout>
+                <div fxFlex="50">Start RPM</div>
+                <div class="bold">3100</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">End RPM</div>
+                <div class="bold">3110</div>
+            </div>
+            <div fxLayout fxLayoutAlign="end" fxLayoutGap="15px">
+                <div class="text-right" fxFlex>Total RPM</div>
+                <div class="bold">10 hr</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Depth
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Drilling Depth</div>
+                <div class="bold">1000</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Feetage
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutAlign="center center">
+                <div class="bold">1000 ft/hr</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Diesel
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Bunk Name</div>
+                <div class="bold">Bunk Name</div>
+            </div>
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Bunk Area</div>
+                <div class="bold">Bunk Area</div>
+            </div>
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Per. Liter</div>
+                <div class="bold">{{'68.6' | currency: 'INR'}}</div>
+            </div>
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Total Liters</div>
+                <div class="bold">1188.17</div>
+            </div>
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Total Amount</div>
+                <div class="bold">{{ '81508.46' | currency: 'INR' }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Advance
+        </div>
+        <div fxLayout="column" fxLayoutGap="16px">
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="50">Amount</div>
+                <div class="bold">{{'10000' | currency: 'INR'}}</div>
+            </div>
+            <div fxLayout="column" fxLayoutGap="5px">
+                <div fxFlex class="font-italic bold">Remarks</div>
+                <div class="font-italic">Remaks text in italic font with line breaks</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Hammer Depth
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutAlign="center center">
+                <div class="bold">960 ft</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Soil Details
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="30">Loose Soil</div>
+                <div class="bold text-center" fxFlex>10</div>
+                <div>to</div>
+                <div class="bold text-center" fxFlex>400</div>
+            </div>
+            <div fxLayout fxLayoutGap="5px">
+                <div fxFlex="30">Boulder</div>
+                <div class="bold text-center" fxFlex>10</div>
+                <div>to</div>
+                <div class="bold text-center" fxFlex>400</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Total Depth
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutAlign="center center">
+                <div class="bold">1000 ft</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions fxLayout fxLayoutAlign="space-between" class="sticky-footer">
+    <button mat-raised-button color="primary" (click)="onNoClick()">CANCEL</button>
+    <button mat-raised-button color="primary" cdkFocusInitial>SAVE</button>
+</div>

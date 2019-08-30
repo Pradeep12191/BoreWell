@@ -34,6 +34,10 @@
             </mat-step>
             <mat-step label="Other Details">
                 <other-details-rpm-entry></other-details-rpm-entry>
+                <div fxLayout fxLayoutAlign="space-between" class="p-16">
+                    <button mat-raised-button color="primary">CLEAR</button>
+                    <button (click)="openConfirmDialog()" mat-raised-button color="primary">CONFIRM & SAVE</button>
+                </div>
             </mat-step>
         </mat-horizontal-stepper>
 

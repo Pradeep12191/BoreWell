@@ -1,0 +1,26 @@
+.p-16{
+    padding: 16px !important;
+    margin: 0px !important;
+}
+
+.mat-dialog-content{
+    max-height: calc(100vh - 148px) !important;
+}
+
+.header{
+    margin: 0px -16px;
+    padding: 10px;
+    background: #5e6073;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.mat-dialog-actions.sticky-footer{
+    position: fixed;
+    bottom: 0px;
+    padding: 8px 16px;
+    margin-bottom: 0px;
+    width: 100vw;
+    box-shadow: 1px 1px 9px -2px rgba(0,0,0,0.75);
+}

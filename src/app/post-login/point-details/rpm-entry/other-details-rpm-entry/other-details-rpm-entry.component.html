@@ -1,5 +1,5 @@
 <div fxLayout.gt-sm="column" ngClass.gt-sm="p-16" fxLayoutGap.gt-sm="25px">
-    <mat-card>
+    <mat-card ngClass.lt-md="no-box-shadow">
         <mat-card-header>
             <mat-card-title>
                 Diesel
@@ -73,7 +73,7 @@
             </div>
         </mat-card-content>
     </mat-card>
-    <mat-card>
+    <mat-card ngClass.lt-md="no-box-shadow">
         <mat-card-header>
             <mat-card-title>Soil Details</mat-card-title>
         </mat-card-header>
@@ -96,8 +96,8 @@
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutGap="10px">
-                    <div fxFlex="25" fxLayout fxLayoutAlign="start center">
-                        <div fxFlex.gt-sm="20" class="bold m-b-17">Boulder</div>
+                    <div fxFlex="25" fxFlex.gt-sm="20" fxLayout fxLayoutAlign="start center">
+                        <div class="bold m-b-17">Boulder</div>
                     </div>
                     <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
                         <mat-label>From</mat-label>

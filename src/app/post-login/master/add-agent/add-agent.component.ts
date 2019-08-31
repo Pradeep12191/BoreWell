@@ -33,10 +33,13 @@ export class AddAgentComponent implements OnInit {
             info: this.fb.group({
                 officeName: null,
                 name: [null, Validators.required],
+                mobileNumber: [null, Validators.required],
+                area: null,
+                city:[null, Validators.required],
                 state: [null, Validators.required],
                 type: [null, Validators.required],
-                address: null,
-                mobileNumber: [null, Validators.required]
+                // // address: null,
+                
             }),
             newBore: this.fb.group({
                 particulars: this.fb.array([this.aes.buildPointForm()]),
@@ -75,6 +78,8 @@ export class AddAgentComponent implements OnInit {
         const agentObj = {
             officeName: agentFormValue.info.officeName,
             name: agentFormValue.info.name,
+            city: agentFormValue.info.city,
+            area: agentFormValue.info.area,
             state: agentFormValue.info.state,
             type: agentFormValue.info.type,
             address: agentFormValue.info.address,

@@ -14,6 +14,21 @@
     }
 }
 
+.grey{
+    background: #eee
+}
+
+.card.adjust-margin{
+    margin-left: -14px;
+    margin-right: -14px;
+}
+
+.sub-header{
+    font-size: 20px;
+    border-bottom: 1px dashed;
+    padding-bottom: 10px;
+}
+
 .dashed{
     border-bottom: 1px dashed #006064;
     // margin-bottom: 20px;

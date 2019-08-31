@@ -199,6 +199,8 @@
         "STATE": "Agent State",
         "TYPE": "Agent Type",
         "ADDRESS": "Address",
+        "CITY": "Agent City",
+        "AREA": "Agent Area",
         "NUMBER": "Mobile Number",
         "RE-BORE":{
             "TITLE": "Re-Bore Details",
@@ -234,9 +236,12 @@
             "OFFICE_NAME": "Office Name",
             "NAME": "Name",
             "STATE": "State",
+            "CITY": "City",
+            "AREA": "Area",
             "TYPE": "Type",
             "ADDRESS": "Address",
-            "MOBILE": "Mobile No."
+            "MOBILE": "Mobile No.",
+            "NEW_BORE": "New Bore Details"
         }
     },
     "NAV": {

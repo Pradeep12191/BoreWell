@@ -26,7 +26,7 @@ import { CustomPreloadingStrategy } from './services/pre-load.service';
 import { CommonService } from './services/common.service';
 import { LoaderInterceptorService } from './interceptors/loader.interceptor.service';
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json?t=' + new Date().getTime());
 }
 
 

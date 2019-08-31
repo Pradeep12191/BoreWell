@@ -17,13 +17,17 @@ export class ConfigService {
 
     }
 
+    get version() {
+        return new Date().getTime();
+    }
+
     public getConfig(key) {
         return this.config[key]
     }
     public load() {
-        let url = 'assets/config/developement.json'
+        let url = 'assets/config/developement.json?t=' + this.version
         if (!isDevMode()) {
-            url = 'assets/config/production.json'
+            url = 'assets/config/production.json?t=' + this.version
         }
         return this.http.get(url)
             .toPromise()

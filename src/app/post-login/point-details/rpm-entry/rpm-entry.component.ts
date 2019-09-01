@@ -11,6 +11,8 @@ import { Agent } from './models/Agent';
 import { Feet } from './models/Feet';
 import { CasingDetail } from './models/CasingDetail';
 import { Moment } from 'moment';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     styleUrls: ['./rpm-entry.component.scss'],
@@ -29,6 +31,7 @@ export class RpmEntryComponent implements OnInit {
     totalFeetAmt = 0;
     totalFlushingAmt = 0;
     apperance;
+    rpmEntryPostUrl;
     public casingTypes = [
         { name: 'PVC 7 Inch', depthKey: 'pvc7InchDepth', depthCtrlKey: 'pvc7Inch', depthRateCasingKey: 'inch7DepthRate', amtKey: 'pvc7Amt', depthRateKey: 'pvc7DepthRate' },
         { name: 'PVC 10 Inch', depthKey: 'pvc10InchDepth', depthCtrlKey: 'pvc10Inch', depthRateCasingKey: 'inch10DepthRate', amtKey: 'pvc10Amt', depthRateKey: 'pvc10DepthRate' },
@@ -42,7 +45,9 @@ export class RpmEntryComponent implements OnInit {
         private route: ActivatedRoute,
         private res: RpmEntryService,
         private fb: FormBuilder,
-        private config: ConfigService
+        private config: ConfigService,
+        private http: HttpClient,
+        private toastr: ToastrService
     ) {
         this.route.data.subscribe(data => {
             if (data) {
@@ -52,7 +57,8 @@ export class RpmEntryComponent implements OnInit {
             }
         })
 
-        this.appearance = this.config.getConfig('formAppearance')
+        this.appearance = this.config.getConfig('formAppearance');
+        this.rpmEntryPostUrl = this.config.getAbsoluteUrl('RPMEnty');
 
         this.boreChangeSubscription = this.res.boreChangeObs().subscribe(boreType => {
             this.selectedBoreType = boreType
@@ -71,8 +77,18 @@ export class RpmEntryComponent implements OnInit {
 
 
     openConfirmDialog() {
-        console.log(this.getPayload());
-        return console.log(this.form.value);
+        console.log(JSON.stringify(this.getPayload(), null, 2));
+        if (this.rpmEntryPostUrl) {
+            this.http.post(this.rpmEntryPostUrl, this.getPayload()).subscribe(() => {
+                this.toastr.success('Point Save successfully', null, { timeOut: 1500 })
+            }, (err) => {
+                if (err) {
+                    this.toastr.error('Error while saving Point', null, { timeOut: 1500 })
+                }
+            })
+        }
+        return;
+        // return console.log(this.form.value);
         this.dialog.open(RpmEntryConfirmDialogComponent, {
             panelClass: 'confirm-dialog',
             height: this.media.isActive('lt-md') ? '100vh' : 'auto',
@@ -211,7 +227,7 @@ export class RpmEntryComponent implements OnInit {
         }
         this.totalFeetAmt = updatedFeets.filter(feet => !feet.isFlushed)
             .map(feet => feet.totalAmt)
-            .reduce((total, amt) => total + amt);
+            .reduce((total, amt) => total + amt, 0);
         return updatedFeets.map(feet => {
             return {
                 startFeet: feet.startFeet.toString(),

@@ -80,7 +80,7 @@
         <mat-card-content>
             <div fxLayout="column">
                 <div fxLayout fxLayoutGap="10px" formGroupName="loose">
-                    <div fxFlex="25" fxFlex.gt-sm="20"  fxLayout fxLayoutAlign="start center">
+                    <div fxFlex="25" fxFlex.gt-sm="20" fxLayout fxLayoutAlign="start center">
                         <div class="bold m-b-17">Loose Soil</div>
                     </div>
                     <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
@@ -112,12 +112,28 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div fxLayout fxLayoutAlign="center center" class="m-t-16" fxLayoutGap="10px">
+            <div fxLayout class="m-t-16" fxLayoutGap="10px" *ngIf="selectedBore === 'newBore'; else reBoreTpl">
                 <div fxFLex="30">
                     Total Depth
                 </div>
-                <div class="bold">1000</div>
+                <div class="bold">{{ (form.parent.get('depth.drilling.depth').value || 0) + ' - Drilling' }}</div>
             </div>
+            <ng-template #reBoreTpl>
+                <div fxLayout="column" fxLayoutGap="10px" class="m-t-16">
+                    <div fxLayout fxLayoutGap="10px">
+                        <div fxFlex="30">
+                            Total Depth
+                        </div>
+                        <div class="bold">{{ (form.parent.get('depth.drilling.flushing').value || 0) + ' - Flusing' }}</div>
+                    </div>
+                    <div fxLayout fxLayoutGap="10px">
+                        <div fxFlex="30">
+                        </div>
+                        <div class="bold">{{ (form.parent.get('depth.drilling.depth').value || 0) + ' - ReDrilling' }}</div>
+                    </div>
+                </div>
+            </ng-template>
+
         </mat-card-content>
     </mat-card>
 </div>

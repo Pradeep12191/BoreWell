@@ -14,7 +14,7 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>RPM</mat-label>
-                        <input type="text" matInput (input)="calcTotalRpm()" formControlName="start">
+                        <input type="text" matInput (input)="calcTotalRpm()" poistiveNumber [allowDecimal]="true" formControlName="start">
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutGap="10px">
@@ -25,7 +25,7 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>RPM</mat-label>
-                        <input type="text" matInput (input)="calcTotalRpm()" formControlName="end">
+                        <input type="text" matInput (input)="calcTotalRpm()" poistiveNumber [allowDecimal]="true" formControlName="end">
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutAlign="end end" fxLayoutGap="16px" class="m-t-15">

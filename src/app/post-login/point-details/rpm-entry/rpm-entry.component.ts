@@ -285,6 +285,7 @@ export class RpmEntryComponent implements OnInit {
         const agent = this.getAgent();
         const weldingCount = this.form.get('depth.welding').value ? +this.form.get('depth.welding').value : 0;
         let perWeldingAmt = agent.newBore.amtPerWelding ? +agent.newBore.amtPerWelding : 0;
+        let allowance = agent.newBore.allowance ? +agent.newBore.allowance : 0;
 
         // const casingDetails = this.
 
@@ -295,6 +296,7 @@ export class RpmEntryComponent implements OnInit {
             this.totalFlushingAmt = totalFlusingAmt;
 
             perWeldingAmt = agent.reBore.amtPerWelding ? + agent.reBore.amtPerWelding : 0;
+            allowance = agent.reBore.allowance ? +agent.reBore.allowance : 0;
         }
 
         this.totalWeldingAmt = perWeldingAmt * weldingCount;
@@ -302,7 +304,7 @@ export class RpmEntryComponent implements OnInit {
         this.totalAdvance = this.form.get('other.advance.advance').value ? +this.form.get('other.advance.advance').value : 0;
 
 
-        overallAmt = this.totalCasingAmt + this.totalFeetAmt + totalFlusingAmt + this.totalWeldingAmt + this.totalDieselAmt + this.totalAdvance;
+        overallAmt = this.totalCasingAmt + this.totalFeetAmt + totalFlusingAmt + this.totalWeldingAmt + this.totalDieselAmt + allowance;
         return overallAmt;
     }
 

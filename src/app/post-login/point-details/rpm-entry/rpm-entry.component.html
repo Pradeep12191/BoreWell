@@ -6,7 +6,7 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="p-16 bottom-line" fxLayout="column" >
+            <div class="p-16 bottom-line" fxLayout="column">
                 <div fxLayout fxLayoutAlign="space-between" fxLayout>
                     <!-- <div fxLayout fxLayoutGap="10px">
                         <div class="bold">Point No</div>
@@ -37,17 +37,24 @@
                     </mat-radio-group>
                 </div>
             </div>
-            <mat-horizontal-stepper class="stepper-no-padding stepper-label-wrap" labelPosition="bottom">
+            <mat-horizontal-stepper class="stepper-no-padding stepper-label-wrap" labelPosition="bottom" #stepper>
                 <mat-step label="Agent / Party Info">
                     <agent-info-rpm-entry [form]="form.get('info')" [agents]="agents"></agent-info-rpm-entry>
+                    <div fxLayout fxLayoutAlign="end" class="p-l-16 p-r-16 p-b-16">
+                        <button mat-raised-button color="primary" matStepperNext>NEXT</button>
+                    </div>
                 </mat-step>
                 <mat-step label="Depth Details">
                     <depth-details-rpm [form]="form.get('depth')"></depth-details-rpm>
+                    <div fxLayout fxLayoutAlign="space-between" class="p-l-16 p-r-16 p-b-16">
+                        <button mat-raised-button color="primary" matStepperPrevious>BACK</button>
+                        <button mat-raised-button color="primary" matStepperNext>NEXT</button>
+                    </div>
                 </mat-step>
                 <mat-step label="Other Details">
                     <other-details-rpm-entry [form]="form.get('other')"></other-details-rpm-entry>
                     <div fxLayout fxLayoutAlign="space-between" class="p-16">
-                        <button mat-raised-button color="primary">CLEAR</button>
+                        <button mat-raised-button color="primary" (click)="stepper.reset()">CLEAR</button>
                         <button (click)="openConfirmDialog()" mat-raised-button color="primary">CONFIRM & SAVE</button>
                     </div>
                 </mat-step>

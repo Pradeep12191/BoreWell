@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ConfigService } from '../../../../services/config.service';
 import { FormGroup } from '@angular/forms';
+import { RpmEntryService } from '../rpm-entry.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -8,14 +10,27 @@ import { FormGroup } from '@angular/forms';
     templateUrl: './other-details-rpm-entry.component.html',
     styleUrls: ['./other-details-rpm-entry.component.scss']
 })
-export class OtherDetailsRpmEntryComponent {
+export class OtherDetailsRpmEntryComponent implements OnInit, OnDestroy {
     public appearance;
     @Input() form: FormGroup;
+    boreTypeChangeSubcription: Subscription;
+    selectedBore = 'newBore'
 
     constructor(
-        private config: ConfigService
+        private config: ConfigService,
+        private res: RpmEntryService
     ) {
         this.appearance = this.config.getConfig('formAppearance')
+    }
+
+    ngOnInit() {
+        this.boreTypeChangeSubcription = this.res.boreChangeObs().subscribe((boreType) => {
+            this.selectedBore = boreType;
+        });
+    }
+
+    ngOnDestroy() {
+        if (this.boreTypeChangeSubcription) { this.boreTypeChangeSubcription.unsubscribe(); }
     }
 
     calcTotalAmout() {

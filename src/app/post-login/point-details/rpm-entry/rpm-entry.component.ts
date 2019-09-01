@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfigService } from '../../../services/config.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatRadioChange } from '@angular/material';
+import { MatDialog, MatRadioChange, MatStepper } from '@angular/material';
 import { RpmEntryConfirmDialogComponent } from './rpm-entry-confirm-dialog/rpm-entry-confirm-dialog.component';
 import { MediaObserver } from '@angular/flex-layout';
 import { RpmEntryService } from './rpm-entry.service';
@@ -35,6 +35,7 @@ export class RpmEntryComponent implements OnInit {
     totalAdvance = 0;
     apperance;
     rpmEntryPostUrl;
+    @ViewChild('stepper', {static: false}) stepper: MatStepper;
     public casingTypes = [
         { name: 'PVC 7 Inch', depthKey: 'pvc7Depth', depthCtrlKey: 'pvc7Inch', depthRateCasingKey: 'inch7DepthRate', amtKey: 'pvc7Amt', depthRateKey: 'pvc7DepthRate' },
         { name: 'PVC 10 Inch', depthKey: 'pvc10Depth', depthCtrlKey: 'pvc10Inch', depthRateCasingKey: 'inch10DepthRate', amtKey: 'pvc10Amt', depthRateKey: 'pvc10DepthRate' },
@@ -80,24 +81,25 @@ export class RpmEntryComponent implements OnInit {
 
 
     openConfirmDialog() {
-        console.log(JSON.stringify(this.getPayload(), null, 2));
-        if (this.rpmEntryPostUrl) {
-            this.http.post(this.rpmEntryPostUrl, this.getPayload()).subscribe(() => {
-                this.toastr.success('Point Save successfully', null, { timeOut: 1500 })
-            }, (err) => {
-                if (err) {
-                    this.toastr.error('Error while saving Point', null, { timeOut: 1500 })
-                }
-            })
-        }
-        return;
+        const payload = this.getPayload();
+        const agent = this.getAgent();
+        console.log(JSON.stringify(payload, null, 2));
         // return console.log(this.form.value);
-        this.dialog.open(RpmEntryConfirmDialogComponent, {
+       const dialogRef =  this.dialog.open(RpmEntryConfirmDialogComponent, {
             panelClass: 'confirm-dialog',
             height: this.media.isActive('lt-md') ? '100vh' : 'auto',
             width: this.media.isActive('lt-md') ? '100vw' : '80vw',
             maxWidth: this.media.isActive('lt-md') ? '100vw' : '80vw',
-            position: { top: '0px' }
+            position: { top: '0px' },
+            data: {
+                formValue: this.form.value,
+                payload,
+                agentName: agent.name
+            }
+        })
+
+        dialogRef.afterClosed().subscribe(() => {
+            this.stepper.reset()
         })
     }
 
@@ -107,12 +109,12 @@ export class RpmEntryComponent implements OnInit {
 
     buildRpmEntryForm() {
         this.form = this.fb.group({
-            pointNo: ['12345', Validators.required],
+            pointNo: ['', Validators.required],
             boreType: 'newBore',
             date: '',
             info: this.fb.group({
                 agent: this.fb.group({
-                    id: '',
+                    id: ['', Validators.required],
                     village: ''
                 }),
                 party: this.fb.group({

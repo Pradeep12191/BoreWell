@@ -9,16 +9,16 @@
 <div mat-dialog-content class="p-16">
     <div fxLayout="column" class="m-b-16">
         <div fxLayout fxLayoutAlign="center center" class="m-b-16">
-            <div class="bold font-20">New Bore</div>
+            <div class="bold font-20">{{ rpmEntry.boreType === 'newBore' ? 'New Bore' : 'Re Bore' }}</div>
         </div>
         <div fxLayout fxLayoutAlign="space-between">
             <div fxLayout fxLayoutGap="10px">
                 <div>Point No.</div>
-                <div class="bold">1001</div>
+                <div class="bold">{{ rpmEntry.pointNo }}</div>
             </div>
             <div fxLayout fxLayoutGap="10px">
                 <div>Date</div>
-                <div class="bold">{{ todayDate | date: 'dd/mm/yyyy' }}</div>
+                <div class="bold">{{ rpmEntry.date | date: 'dd/MM/yyyy' }}</div>
             </div>
         </div>
     </div>
@@ -29,19 +29,19 @@
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout>
                 <div fxFlex="50">Agent Name</div>
-                <div class="bold">Agent Name</div>
+                <div class="bold">{{ agentName }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">Village</div>
-                <div class="bold">Village</div>
+                <div class="bold">{{ rpmEntry.info.agent.village }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">Party Name</div>
-                <div class="bold">Party Name</div>
+                <div class="bold">{{ rpmEntry.info.party.name }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">Party Mobile</div>
-                <div class="bold">98722882</div>
+                <div class="bold">{{ rpmEntry.info.party.mobile }}</div>
             </div>
         </div>
     </div>
@@ -52,23 +52,23 @@
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout>
                 <div fxFlex="50">7'Inch</div>
-                <div class="bold">20</div>
+                <div class="bold">{{ rpmEntry.depth.casing.pvc7Inch }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">10'Inch</div>
-                <div class="bold">25</div>
+                <div class="bold">{{ rpmEntry.depth.casing.pvc10Inch }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">12'Inch</div>
-                <div class="bold">25</div>
+                <div class="bold">{{ rpmEntry.depth.casing.pvc12Inch }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">Ms Medium</div>
-                <div class="bold">40</div>
+                <div class="bold">{{ rpmEntry.depth.casing.msMedium }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">Ms Heavy</div>
-                <div class="bold">40</div>
+                <div class="bold">{{ rpmEntry.depth.casing.msHeavy }}</div>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout>
                 <div fxFlex="50">Welding</div>
-                <div class="bold">20</div>
+                <div class="bold">{{ rpmEntry.depth.welding }}</div>
             </div>
         </div>
     </div>
@@ -90,15 +90,15 @@
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout>
                 <div fxFlex="50">Start RPM</div>
-                <div class="bold">3100</div>
+                <div class="bold">{{ rpmEntry.depth.rpm.start }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">End RPM</div>
-                <div class="bold">3110</div>
+                <div class="bold">{{ rpmEntry.depth.rpm.end }}</div>
             </div>
             <div fxLayout fxLayoutAlign="end" fxLayoutGap="15px">
                 <div class="text-right" fxFlex>Total RPM</div>
-                <div class="bold">10 hr</div>
+                <div class="bold">{{ (rpmEntry.depth.rpm.total || 0 ) + ' hr'}}</div>
             </div>
         </div>
     </div>
@@ -106,12 +106,30 @@
         <div class="section-title m-b-16 contact-title">
             Depth
         </div>
-        <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="column" fxLayoutGap="10px" *ngIf="rpmEntry.boreType === 'newBore'; else reBoreTpl">
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Drilling Depth</div>
-                <div class="bold">1000</div>
+                <div class="bold">{{ rpmEntry.depth.drilling.depth }}</div>
             </div>
         </div>
+        <ng-template #reBoreTpl>
+            <div fxLayout="column" fxLayoutGap="10px">
+                <div fxLayout fxLayoutGap="5px">
+                    <div fxFlex="50">Flusing Depth</div>
+                    <div class="bold">{{ rpmEntry.depth.drilling.flushing }}</div>
+                </div>
+                <div fxLayout fxLayoutGap="5px">
+                    <div fxFlex="50">Drilling</div>
+                    <div fxFlex="14" class="bold">{{ rpmEntry.depth.drilling.start }}</div>
+                    <div fxFlex="10">To</div>
+                    <div fxFlex="20" class="bold">{{ rpmEntry.depth.drilling.end }}</div>
+                </div>
+                <div fxLayout fxLayoutGap="5px">
+                    <div fxFlex="50">Total Drilling</div>
+                    <div class="bold">{{ rpmEntry.depth.drilling.depth }}</div>
+                </div>
+            </div>
+        </ng-template>
     </div>
     <div class="card m-b-16">
         <div class="section-title m-b-16 contact-title">
@@ -119,7 +137,34 @@
         </div>
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout fxLayoutAlign="center center">
-                <div class="bold">1000 ft/hr</div>
+                <div class="bold">{{ (rpmEntry.depth.feetage || 0) + ' ft/hr' }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Bit Details
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutGap="10px">
+                <div fxFlex="40" class="bold">Bit No.</div>
+                <div fxFlex="30" class="bold text-center">Bit Size</div>
+                <div fxFlex="30" class="bold text-center">Bit Depth</div>
+            </div>
+            <div fxLayout fxLayoutGap="10px" *ngFor="let bit of rpmEntry.depth.bits">
+                <div fxFlex="40">{{ bit.no }}</div>
+                <div fxFlex="30" class="text-center">{{ bit.size }}</div>
+                <div fxFlex="30" class="text-center">{{ bit.depth }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-16">
+        <div class="section-title m-b-16 contact-title">
+            Hammer Depth
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <div fxLayout fxLayoutAlign="center center">
+                <div class="bold">{{ (rpmEntry.depth.hammer || 0) + ' ft' }}</div>
             </div>
         </div>
     </div>
@@ -130,23 +175,23 @@
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Bunk Name</div>
-                <div class="bold">Bunk Name</div>
+                <div class="bold">{{ rpmEntry.other.diesel.bunkName }}</div>
             </div>
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Bunk Area</div>
-                <div class="bold">Bunk Area</div>
+                <div class="bold">{{ rpmEntry.other.diesel.bunkArea }}</div>
             </div>
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Per. Liter</div>
-                <div class="bold">{{'68.6' | currency: 'INR'}}</div>
+                <div class="bold">{{ rpmEntry.other.diesel.perLiterAmt | currency: 'INR'}}</div>
             </div>
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Total Liters</div>
-                <div class="bold">1188.17</div>
+                <div class="bold">{{ rpmEntry.other.diesel.totalLiter }}</div>
             </div>
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Total Amount</div>
-                <div class="bold">{{ '81508.46' | currency: 'INR' }}</div>
+                <div class="bold">{{ rpmEntry.other.diesel.totalAmt | currency: 'INR' }}</div>
             </div>
         </div>
     </div>
@@ -157,21 +202,11 @@
         <div fxLayout="column" fxLayoutGap="16px">
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="50">Amount</div>
-                <div class="bold">{{'10000' | currency: 'INR'}}</div>
+                <div class="bold">{{rpmEntry.other.advance.advance | currency: 'INR'}}</div>
             </div>
             <div fxLayout="column" fxLayoutGap="5px">
                 <div fxFlex class="font-italic bold">Remarks</div>
-                <div class="font-italic">Remaks text in italic font with line breaks</div>
-            </div>
-        </div>
-    </div>
-    <div class="card m-b-16">
-        <div class="section-title m-b-16 contact-title">
-            Hammer Depth
-        </div>
-        <div fxLayout="column" fxLayoutGap="10px">
-            <div fxLayout fxLayoutAlign="center center">
-                <div class="bold">960 ft</div>
+                <div class="font-italic">{{ rpmEntry.other.advance.remarks }}</div>
             </div>
         </div>
     </div>
@@ -182,15 +217,15 @@
         <div fxLayout="column" fxLayoutGap="10px">
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="30">Loose Soil</div>
-                <div class="bold text-center" fxFlex>10</div>
+                <div class="bold text-center" fxFlex>{{ rpmEntry.other.soil.loose.from }}</div>
                 <div>to</div>
-                <div class="bold text-center" fxFlex>400</div>
+                <div class="bold text-center" fxFlex>{{ rpmEntry.other.soil.loose.to }}</div>
             </div>
             <div fxLayout fxLayoutGap="5px">
                 <div fxFlex="30">Boulder</div>
-                <div class="bold text-center" fxFlex>10</div>
+                <div class="bold text-center" fxFlex>{{ rpmEntry.other.soil.boulder.from }}</div>
                 <div>to</div>
-                <div class="bold text-center" fxFlex>400</div>
+                <div class="bold text-center" fxFlex>{{ rpmEntry.other.soil.boulder.to }}</div>
             </div>
         </div>
     </div>
@@ -198,14 +233,30 @@
         <div class="section-title m-b-16 contact-title">
             Total Depth
         </div>
-        <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="column" fxLayoutGap="10px" *ngIf="rpmEntry.boreType === 'newBore'; else reBoreDepthTpl">
             <div fxLayout fxLayoutAlign="center center">
-                <div class="bold">1000 ft</div>
+                <div class="bold">{{ (rpmEntry.depth.drilling.depth || 0) + ' ft' }}</div>
             </div>
         </div>
+        <ng-template #reBoreDepthTpl>
+            <div fxLayout="column" fxLayoutGap="10px">
+                <div fxLayout fxLayoutAlign="center center">
+                    <div>
+                        <span class="bold">{{ (rpmEntry.depth.drilling.flushing || 0) + ' ft' }}</span>
+                        <span>- Flushing</span>
+                    </div>
+                </div>
+                <div fxLayout fxLayoutAlign="center center">
+                    <div>
+                        <span class="bold">{{ (rpmEntry.depth.drilling.depth || 0) + ' ft' }}</span>
+                        <span>- ReDrilling</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>
 <div mat-dialog-actions fxLayout fxLayoutAlign="space-between" class="sticky-footer">
-    <button mat-raised-button color="primary">CANCEL</button>
-    <button mat-raised-button color="primary" cdkFocusInitial>SAVE</button>
+    <button mat-raised-button color="primary" mat-dialog-close>CANCEL</button>
+    <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>SAVE</button>
 </div>

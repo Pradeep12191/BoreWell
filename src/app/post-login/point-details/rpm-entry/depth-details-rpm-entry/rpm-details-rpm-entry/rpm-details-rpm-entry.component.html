@@ -1,6 +1,6 @@
 <!-- also incude depth and feetage -->
-<div fxLayout.gt-sm="column" fxLayoutGap.gt-sm="16px">
-    <mat-card>
+<div fxLayout.gt-sm="column" fxLayoutGap.gt-sm="16px" [formGroup]="form">
+    <mat-card formGroupName="rpm">
         <mat-card-header>
             <mat-card-title>RPM Details</mat-card-title>
         </mat-card-header>
@@ -14,7 +14,7 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>RPM</mat-label>
-                        <input type="text" matInput>
+                        <input type="text" matInput formControlName="start">
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutGap="10px">
@@ -25,7 +25,7 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>RPM</mat-label>
-                        <input type="text" matInput>
+                        <input type="text" matInput formControlName="end">
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutAlign="end end" fxLayoutGap="16px" class="m-t-15">
@@ -35,25 +35,62 @@
             </div>
         </mat-card-content>
     </mat-card>
-
     <mat-card>
         <mat-card-header>
-            <mat-card-title>Depth</mat-card-title>
+            <mat-card-title>Drilling Details</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div fxLayout="column">
+            <div fxLayout="column" *ngIf="boreType === 'newBore'; else reBoreTpl" formGroupName="drilling">
                 <div fxLayout fxLayoutGap="10px">
                     <div fxFlex="35" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
-                        <div class="m-b-17" >
+                        <div class="m-b-17">
                             Drilling Depth
                         </div>
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>Depth</mat-label>
-                        <input type="text" matInput>
+                        <input type="text" matInput poistiveNumber formControlName="depth">
                     </mat-form-field>
                 </div>
             </div>
+            <ng-template #reBoreTpl>
+                <div fxLayout="column" formGroupName="drilling">
+                    <div fxLayout>
+                        <div fxFlex="35" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
+                            <div class="m-b-17">Flushing</div>
+                        </div>
+                        <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                            <mat-label>Depth</mat-label>
+                            <input type="text" matInput poistiveNumber formControlName="flushing">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout fxLayoutGap="5px">
+                        <div fxFlex="calc(35% - 5px)" class="bold" fxLayout fxLayoutAlign="start center">
+                            <div>Drilling</div>
+                        </div>
+                        <mat-form-field fxFlex="calc(27.5% - 5px)" class="calc-field" [appearance]="appearance">
+                            <mat-label>From</mat-label>
+                            <input type="text" matInput poistiveNumber formControlName="start">
+                        </mat-form-field>
+                        <div fxFlex="calc(10% - 5px)" class="bold" fxLayout fxLayoutAlign="center center">
+                            <div>To</div>
+                        </div>
+                        <mat-form-field fxFlex="27.5%" class="calc-field" [appearance]="appearance">
+                            <mat-label>To</mat-label>
+                            <input type="text" matInput poistiveNumber formControlName="end">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout fxLayoutGap="10px">
+                        <div fxFlex="calc(35% - 10px)" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
+                            <div class="m-b-17">Total Drilling</div>
+                        </div>
+                        <mat-form-field fxFlex="65" class="calc-field" [appearance]="appearance">
+                            <mat-label>Depth</mat-label>
+                            <input type="text" matInput poistiveNumber formControlName="depth">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </ng-template>
         </mat-card-content>
     </mat-card>
     <mat-card>
@@ -62,7 +99,7 @@
         </mat-card-header>
         <mat-card-content>
             <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="bold">100 ft/hr</div>
+                <div class="bold">{{ (form.get('feetage').value || 0) + ' ft/hr'}}</div>
             </div>
         </mat-card-content>
     </mat-card>

@@ -1,24 +1,32 @@
-<mat-card>
+<mat-card [formGroup]="form">
     <mat-card-header>
         <mat-card-title>Bit Details</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div fxLayout fxLayoutGap="10px" fxLayoutGap.gt-sm="25px">
-            <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field" [appearance]="appearance">
-                <mat-label>Bit No.</mat-label>
-                <input poistiveNumber matInput>
-            </mat-form-field>
-            <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field" [appearance]="appearance">
-                <mat-label>Bit Size</mat-label>
-                <input poistiveNumber matInput>
-            </mat-form-field>
-            <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field" [appearance]="appearance">
-                <mat-label>Bit Depth</mat-label>
-                <input poistiveNumber matInput>
-            </mat-form-field>
+        <div formArrayName="bits" fxLayout fxLayoutGap="10px" fxLayoutGap.gt-sm="25px" *ngFor="let bitCtrl of form.get('bits').controls">
+            <ng-container [formGroup]="bitCtrl">
+                <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field"
+                    [appearance]="appearance">
+                    <mat-label>Bit No.</mat-label>
+                    <input matInput formControlName="no">
+                </mat-form-field>
+                <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field"
+                    [appearance]="appearance">
+                    <mat-label>Bit Size</mat-label>
+                    <input poistiveNumber matInput formControlName="size">
+                </mat-form-field>
+                <mat-form-field fxFlex="calc(33% - 10px)" fxFlex.gt-sm="calc(33% - 25px)" class="calc-field"
+                    [appearance]="appearance">
+                    <mat-label>Bit Depth</mat-label>
+                    <input poistiveNumber matInput formControlName="depth">
+                </mat-form-field>
+            </ng-container>
+        </div>
+        <div fxLayout fxLayoutAlign="end center" class="m-b-10" *ngIf="form.get('bits').controls.length > 1">
+            <span class="remove-btn" (click)="removeLastItem()">Remove</span>
         </div>
         <div fxLayout fxLayoutAlign="end">
-            <button mat-raised-button color="primary">ADD MORE</button>
+            <button mat-raised-button color="primary" (click)="addBit()">ADD MORE</button>
         </div>
     </mat-card-content>
 </mat-card>

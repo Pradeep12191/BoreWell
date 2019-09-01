@@ -1,45 +1,58 @@
-<mat-card class="card-no-padding">
-    <mat-card-header>
-        <mat-card-title>
-            RPM Entry
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="p-16 bottom-line" fxLayout="column" fxLayoutGap="25px">
-            <div fxLayout fxLayoutAlign="space-between">
-                <div fxLayout fxLayoutGap="10px">
-                    <div class="bold">Point No</div>
-                    <div class="bold">:</div>
-                    <div>12345</div>
+<form [formGroup]="form">
+    <mat-card class="card-no-padding">
+        <mat-card-header>
+            <mat-card-title>
+                RPM Entry
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="p-16 bottom-line" fxLayout="column" >
+                <div fxLayout fxLayoutAlign="space-between" fxLayout>
+                    <!-- <div fxLayout fxLayoutGap="10px">
+                        <div class="bold">Point No</div>
+                        <div class="bold">:</div>
+                        <div>{{ form.get('pointNo').value }}</div>
+                    </div> -->
+                    <mat-form-field fxFlex="40" class="calc-field" [appearance]="appearance">
+                        <mat-label>Point Number</mat-label>
+                        <input type="text" matInput poistiveNumber formControlName="pointNo">
+                    </mat-form-field>
+                    <mat-form-field class="m-l-10" class="calc-field" fxFlex="45" [appearance]="appearance" (click)="dp.open()">
+                        <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
+                        <input matInput readonly formControlName="date" [matDatepicker]="dp">
+                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp>
+                        </mat-datepicker>
+                    </mat-form-field>
+                    <!-- <div fxLayout fxLayoutGap="10px">
+                        <div class="bold">Date</div>
+                        <div class="bold">:</div>
+                        <div>{{ todayDate | date:'dd/mm/yyyy' }}</div>
+                    </div> -->
                 </div>
-                <div fxLayout fxLayoutGap="10px">
-                    <div class="bold">Date</div>
-                    <div class="bold">:</div>
-                    <div>{{ todayDate | date:'dd/mm/yyyy' }}</div>
+                <div fxLayout fxLayoutAlign.lt-md="center center">
+                    <mat-radio-group (change)="onBoreTypeChange($event)" fxLayout fxLayoutGap="20px" formControlName="boreType">
+                        <mat-radio-button color="primary" value="newBore">New Bore</mat-radio-button>
+                        <mat-radio-button color="primary" value="reBore">Re Bore</mat-radio-button>
+                    </mat-radio-group>
                 </div>
             </div>
-            <div fxLayout fxLayoutAlign.lt-md="center center">
-                <mat-radio-group fxLayout fxLayoutGap="20px">
-                    <mat-radio-button value="newBore">New Bore</mat-radio-button>
-                    <mat-radio-button value="reBore">Re Bore</mat-radio-button>
-                </mat-radio-group>
-            </div>
-        </div>
-        <mat-horizontal-stepper class="stepper-no-padding stepper-label-wrap" labelPosition="bottom">
-            <mat-step label="Agent / Party Info">
-                <agent-info-rpm-entry></agent-info-rpm-entry>
-            </mat-step>
-            <mat-step label="Depth Details">
-                <depth-details-rpm></depth-details-rpm>
-            </mat-step>
-            <mat-step label="Other Details">
-                <other-details-rpm-entry></other-details-rpm-entry>
-                <div fxLayout fxLayoutAlign="space-between" class="p-16">
-                    <button mat-raised-button color="primary">CLEAR</button>
-                    <button (click)="openConfirmDialog()" mat-raised-button color="primary">CONFIRM & SAVE</button>
-                </div>
-            </mat-step>
-        </mat-horizontal-stepper>
+            <mat-horizontal-stepper class="stepper-no-padding stepper-label-wrap" labelPosition="bottom">
+                <mat-step label="Agent / Party Info">
+                    <agent-info-rpm-entry [form]="form.get('info')" [agents]="agents"></agent-info-rpm-entry>
+                </mat-step>
+                <mat-step label="Depth Details">
+                    <depth-details-rpm [form]="form.get('depth')"></depth-details-rpm>
+                </mat-step>
+                <mat-step label="Other Details">
+                    <other-details-rpm-entry [form]="form.get('other')"></other-details-rpm-entry>
+                    <div fxLayout fxLayoutAlign="space-between" class="p-16">
+                        <button mat-raised-button color="primary">CLEAR</button>
+                        <button (click)="openConfirmDialog()" mat-raised-button color="primary">CONFIRM & SAVE</button>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
 
-    </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+</form>

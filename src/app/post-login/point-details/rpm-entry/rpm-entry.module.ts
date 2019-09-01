@@ -16,6 +16,7 @@ import { RpmDetailsRpmEntryComponent } from './depth-details-rpm-entry/rpm-detai
 import { DepthDetailsRpmEntryComponent } from './depth-details-rpm-entry/depth-details-rpm-entry.component';
 import { OtherDetailsRpmEntryComponent } from './other-details-rpm-entry/other-details-rpm-entry.component';
 import { RpmEntryConfirmDialogComponent } from './rpm-entry-confirm-dialog/rpm-entry-confirm-dialog.component';
+import { RpmEntryService } from './rpm-entry.service';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { RpmEntryConfirmDialogComponent } from './rpm-entry-confirm-dialog/rpm-e
         RpmEntryConfirmDialogComponent
     ],
     providers: [
-        AgentListResolver
+        AgentListResolver,
+        RpmEntryService
     ]
 })
 export class RpmEntryModule {

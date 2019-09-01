@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ConfigService } from '../../../../services/config.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+import { MatSelectChange } from '@angular/material';
+import { RpmEntryService } from '../rpm-entry.service';
 
 @Component({
     selector: 'agent-info-rpm-entry',
@@ -10,22 +13,21 @@ import { ActivatedRoute } from '@angular/router';
 export class AgentInfoRpmEntryComponent {
 
     public appearance;
-    public agents;
+    @Input() agents;
+    @Input() form: FormGroup;
 
     private routeSubscription;
 
     constructor(
         private config: ConfigService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private res: RpmEntryService
     ) {
         this.appearance = this.config.getConfig('formAppearance');
-        this.routeSubscription = this.route.data.subscribe((data) => {
-            if (data) {
-                if (data.agents) {
-                    this.agents = data.agents;
-                }
-            }
-        })
+    }
+
+    onAgentSelect(event: MatSelectChange) {
+        this.res.agentChange(event.value);
     }
 
 }

@@ -1,5 +1,5 @@
-<div fxLayout.gt-sm="column" ngClass.gt-sm="p-16" fxLayoutGap.gt-sm="25px">
-    <mat-card ngClass.lt-md="no-box-shadow">
+<div fxLayout.gt-sm="column" ngClass.gt-sm="p-16" fxLayoutGap.gt-sm="25px" [formGroup]="form">
+    <mat-card ngClass.lt-md="no-box-shadow" formGroupName="diesel">
         <mat-card-header>
             <mat-card-title>
                 Diesel
@@ -12,7 +12,7 @@
                         <div class="bold m-b-17">Bunk Name</div>
                     </div>
                     <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
-                        <input matInput>
+                        <input matInput formControlName="bunkName">
                     </mat-form-field>
                 </div>
                 <div fxLayout>
@@ -20,7 +20,7 @@
                         <div class="bold m-b-17">Bunk Area</div>
                     </div>
                     <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
-                        <input matInput>
+                        <input matInput formControlName="bunkArea">
                     </mat-form-field>
                 </div>
                 <div fxLayout>
@@ -29,7 +29,7 @@
                     </div>
                     <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
                         <mat-label>Amount</mat-label>
-                        <input poistiveNumber matInput>
+                        <input poistiveNumber [allowDecimal]="true" matInput formControlName="perLiterAmt" (input)="calcTotalAmout()">
                     </mat-form-field>
                 </div>
                 <div fxLayout>
@@ -37,19 +37,19 @@
                         <div class="bold m-b-17">Total Liter</div>
                     </div>
                     <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
-                        <input poistiveNumber matInput>
+                        <input poistiveNumber [allowDecimal]="true" matInput formControlName="totalLiter" (input)="calcTotalAmout()">
                     </mat-form-field>
                 </div>
                 <div>
                     <div fxLayout fxLayoutAlign="start center" fxFlex="35" fxFlex.gt-sm="20">
                         Total Amount
                     </div>
-                    <div fxFlex class="bold">{{ '1000' | currency:'INR' }}</div>
+                    <div fxFlex class="bold">{{ (form.get('diesel.totalAmt').value || 0) | currency:'INR' }}</div>
                 </div>
             </div>
         </mat-card-content>
     </mat-card>
-    <mat-card>
+    <mat-card formGroupName="advance">
         <mat-card-header>
             <mat-card-title>Advance Amount</mat-card-title>
         </mat-card-header>
@@ -61,54 +61,54 @@
                     </div>
                     <mat-form-field class="calc-field" [appearance]="appearance" fxFlex>
                         <mat-label>Amount</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="advance">
                     </mat-form-field>
                 </div>
                 <div fxLayout="column" fxLayoutGap="15px">
                     <div class="bold">Remarks</div>
                     <mat-form-field [appearance]="appearance">
-                        <textarea matInput cols="30" rows="7"></textarea>
+                        <textarea matInput cols="30" rows="7" formControlName="remarks"></textarea>
                     </mat-form-field>
                 </div>
             </div>
         </mat-card-content>
     </mat-card>
-    <mat-card ngClass.lt-md="no-box-shadow">
+    <mat-card ngClass.lt-md="no-box-shadow" formGroupName="soil">
         <mat-card-header>
             <mat-card-title>Soil Details</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <div fxLayout="column">
-                <div fxLayout fxLayoutGap="10px">
+                <div fxLayout fxLayoutGap="10px" formGroupName="loose">
                     <div fxFlex="25" fxFlex.gt-sm="20"  fxLayout fxLayoutAlign="start center">
                         <div class="bold m-b-17">Loose Soil</div>
                     </div>
                     <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
                         <mat-label>From</mat-label>
-                        <input poistiveNumber matInput>
+                        <input poistiveNumber matInput formControlName="from">
                     </mat-form-field>
                     <div fxLayout fxLayoutAlign="start center">
                         <div class="bold m-b-17">To</div>
                     </div>
                     <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
                         <mat-label>To</mat-label>
-                        <input poistiveNumber matInput>
+                        <input poistiveNumber matInput formControlName="to">
                     </mat-form-field>
                 </div>
-                <div fxLayout fxLayoutGap="10px">
+                <div fxLayout fxLayoutGap="10px" formGroupName="boulder">
                     <div fxFlex="25" fxFlex.gt-sm="20" fxLayout fxLayoutAlign="start center">
                         <div class="bold m-b-17">Boulder</div>
                     </div>
                     <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
                         <mat-label>From</mat-label>
-                        <input poistiveNumber matInput>
+                        <input poistiveNumber matInput formControlName="from">
                     </mat-form-field>
                     <div fxLayout fxLayoutAlign="start center">
                         <div class="bold m-b-17">To</div>
                     </div>
                     <mat-form-field fxFlex [appearance]="appearance" class="calc-field">
                         <mat-label>To</mat-label>
-                        <input poistiveNumber matInput>
+                        <input poistiveNumber matInput formControlName="to">
                     </mat-form-field>
                 </div>
             </div>

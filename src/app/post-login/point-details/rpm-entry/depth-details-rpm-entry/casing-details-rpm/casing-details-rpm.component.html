@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [formGroup]="form">
     <mat-card-header>
         <mat-card-title>Casing Details</mat-card-title>
     </mat-card-header>
@@ -12,7 +12,7 @@
                 </div>
                 <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>Depth</mat-label>
-                    <input type="text" matInput>
+                    <input type="text" matInput [formControlName]="casing.ctrlName">
                 </mat-form-field>
             </div>
         </div>

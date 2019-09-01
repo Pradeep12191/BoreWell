@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'depth-details-rpm',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./depth-details-rpm-entry.component.scss']
 })
 export class DepthDetailsRpmEntryComponent {
-
+    @Input() form: FormGroup; 
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ConfigService } from '../../../../../services/config.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'casing-details-rpm',
@@ -8,13 +9,14 @@ import { ConfigService } from '../../../../../services/config.service';
 })
 export class CasingDetailsRpmComponent {
     public casingTypes = [
-        { name: 'PVC 7 Inch', ctrlName: 'inch7DepthRate' },
-        { name: 'PVC 10 Inch', ctrlName: 'inch10DepthRate' },
-        { name: 'PVC 12 Inch', ctrlName: 'inch12DepthRate' },
-        { name: 'MS, Medium', ctrlName: 'msMediumDepthRate' },
-        { name: 'MS, Heavy', ctrlName: 'msHeavyDepthRate' },
+        { name: 'PVC 7 Inch', ctrlName: 'pvc7Inch' },
+        { name: 'PVC 10 Inch', ctrlName: 'pvc10Inch' },
+        { name: 'PVC 12 Inch', ctrlName: 'pvc12Inch' },
+        { name: 'MS, Medium', ctrlName: 'msMedium' },
+        { name: 'MS, Heavy', ctrlName: 'msHeavy' },
     ]
     public appearance;
+    @Input() form: FormGroup
 
     constructor(
         private config: ConfigService

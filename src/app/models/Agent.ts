@@ -12,6 +12,7 @@ export interface Agent {
     officeName: string,
     points: Point[]
     state: string
-    type: string
+    type: string;
+    agent_id?: string;
     user: string
 }

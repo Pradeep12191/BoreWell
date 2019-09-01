@@ -4,6 +4,6 @@ export interface ReBore {
     addlReDrillingCharge: string;
     allowance: string;
     amtPerWelding: string;
-    flusingChange: string;
+    flushingChange: string;
     casing: Casing;
 }

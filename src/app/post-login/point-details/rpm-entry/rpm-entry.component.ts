@@ -171,7 +171,12 @@ export class RpmEntryComponent implements OnInit {
     private getUpdatedFeets() {
         const agent = this.getAgent();
         const updatedFeets: Feet[] = [];
-        let totalFeet = this.form.get('depth.drilling.depth').value;
+        let totalFeet = 0;
+        if (this.selectedBoreType === 'newBore') {
+            totalFeet = this.form.get('depth.drilling.depth').value
+        } else {
+            totalFeet = this.form.get('depth.drilling.end').value
+        }
         console.log(agent);
 
         totalFeet = totalFeet ? +totalFeet : 0;
@@ -285,7 +290,7 @@ export class RpmEntryComponent implements OnInit {
 
         if (this.selectedBoreType === 'reBore') {
             const flusingDepth = this.form.get('depth.drilling.flushing').value ? +this.form.get('depth.drilling.flushing').value : 0;
-            const flushingAmt = agent.reBore.flusingChange ? +agent.reBore.flusingChange : 0;
+            const flushingAmt = agent.reBore.flushingChange ? +agent.reBore.flushingChange : 0;
             totalFlusingAmt = flusingDepth * flushingAmt;
             this.totalFlushingAmt = totalFlusingAmt;
 
@@ -391,7 +396,7 @@ export class RpmEntryComponent implements OnInit {
             overallAmt: overallAmt.toString()
         }
 
-        if (this.selectedBoreType === 'rebore') {
+        if (this.selectedBoreType === 'reBore') {
             payload['totalFlusingAmt'] = this.totalFlushingAmt
         }
 

@@ -14,7 +14,7 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>RPM</mat-label>
-                        <input type="text" matInput formControlName="start">
+                        <input type="text" matInput (input)="calcTotalRpm()" formControlName="start">
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutGap="10px">
@@ -25,12 +25,12 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>RPM</mat-label>
-                        <input type="text" matInput formControlName="end">
+                        <input type="text" matInput (input)="calcTotalRpm()" formControlName="end">
                     </mat-form-field>
                 </div>
                 <div fxLayout fxLayoutAlign="end end" fxLayoutGap="16px" class="m-t-15">
                     <div class="text-right" fxFlex="70">Total RPM</div>
-                    <div class="bold">10 hr</div>
+                    <div class="bold">{{(form.get('rpm.total').value || 0) + ' hr' }}</div>
                 </div>
             </div>
         </mat-card-content>
@@ -49,7 +49,8 @@
                     </div>
                     <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                         <mat-label>Depth</mat-label>
-                        <input type="text" matInput poistiveNumber formControlName="depth">
+                        <input type="text" matInput poistiveNumber (input)="calcTotalRpm(); calcHammerDepth()"
+                            formControlName="depth">
                     </mat-form-field>
                 </div>
             </div>
@@ -61,7 +62,8 @@
                         </div>
                         <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                             <mat-label>Depth</mat-label>
-                            <input type="text" matInput poistiveNumber formControlName="flushing">
+                            <input type="text" matInput poistiveNumber (input)="calcDepthRange(); calcTotalRpm(); calcHammerDepth();"
+                                formControlName="flushing">
                         </mat-form-field>
                     </div>
                     <div fxLayout fxLayoutGap="5px">
@@ -70,14 +72,14 @@
                         </div>
                         <mat-form-field fxFlex="calc(27.5% - 5px)" class="calc-field" [appearance]="appearance">
                             <mat-label>From</mat-label>
-                            <input type="text" matInput poistiveNumber formControlName="start">
+                            <input type="text" matInput poistiveNumber formControlName="start" readonly>
                         </mat-form-field>
                         <div fxFlex="calc(10% - 5px)" class="bold" fxLayout fxLayoutAlign="center center">
                             <div>To</div>
                         </div>
                         <mat-form-field fxFlex="27.5%" class="calc-field" [appearance]="appearance">
                             <mat-label>To</mat-label>
-                            <input type="text" matInput poistiveNumber formControlName="end">
+                            <input type="text" matInput poistiveNumber formControlName="end" (input)="calcDepthRange(); calcTotalRpm(); calcHammerDepth();">
                         </mat-form-field>
                     </div>
                     <div fxLayout fxLayoutGap="10px">
@@ -86,11 +88,29 @@
                         </div>
                         <mat-form-field fxFlex="65" class="calc-field" [appearance]="appearance">
                             <mat-label>Depth</mat-label>
-                            <input type="text" matInput poistiveNumber formControlName="depth">
+                            <input type="text" matInput poistiveNumber readonly formControlName="depth">
                         </mat-form-field>
                     </div>
                 </div>
             </ng-template>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Welding Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout fxLayoutGap="10px">
+                <div fxFlex="35" fxFlex.gt-sm="20" class="bold" fxLayout fxLayoutAlign="start center">
+                    <div class="m-b-17">
+                        Welding
+                    </div>
+                </div>
+                <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
+                    <mat-label>Count</mat-label>
+                    <input type="text" matInput formControlName="welding">
+                </mat-form-field>
+            </div>
         </mat-card-content>
     </mat-card>
     <mat-card>

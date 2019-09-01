@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ConfigService } from '../../../../../services/config.service';
 import { FormGroup } from '@angular/forms';
+import { RpmEntryService } from '../../rpm-entry.service';
 
 @Component({
     selector: 'casing-details-rpm',
@@ -19,8 +20,13 @@ export class CasingDetailsRpmComponent {
     @Input() form: FormGroup
 
     constructor(
-        private config: ConfigService
+        private config: ConfigService,
+        private res: RpmEntryService
     ) {
         this.appearance = this.config.getConfig('formAppearance')
+    }
+
+    onCasingChange() {
+        this.res.casingChanged()
     }
 }

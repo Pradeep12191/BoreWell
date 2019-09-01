@@ -12,7 +12,7 @@
                 </div>
                 <mat-form-field fxFlex class="calc-field" [appearance]="appearance">
                     <mat-label>Depth</mat-label>
-                    <input type="text" matInput [formControlName]="casing.ctrlName">
+                    <input type="text" matInput [formControlName]="casing.ctrlName" (input)="onCasingChange()">
                 </mat-form-field>
             </div>
         </div>

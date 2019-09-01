@@ -7,11 +7,20 @@ import { FormBuilder } from '@angular/forms';
 export class RpmEntryService {
     private boreChange$ = new Subject<any>();
     private agentChange$ = new Subject<any>();
+    private casingChange$ = new Subject<any>();
 
     constructor(
         private _fb: FormBuilder
     ) {
 
+    }
+
+    casingChanged() {
+        this.casingChange$.next()
+    }
+
+    casingChangeObs() {
+        return this.casingChange$.asObservable();
     }
 
     agentChange(agent) {

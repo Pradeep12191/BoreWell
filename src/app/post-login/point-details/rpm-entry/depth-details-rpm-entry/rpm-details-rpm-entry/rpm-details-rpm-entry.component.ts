@@ -36,11 +36,57 @@ export class RpmDetailsRpmEntryComponent implements OnInit, OnDestroy {
             (this.form.get('drilling') as FormGroup).addControl('start', new FormControl(''));
             (this.form.get('drilling') as FormGroup).addControl('end', new FormControl(''));
             (this.form.get('drilling') as FormGroup).addControl('flushing', new FormControl(''));
-        })
+        });
     }
 
     public ngOnDestroy() {
         if (this.boreChangeSubscription) { this.boreChangeSubscription.unsubscribe(); }
+    }
+
+    calcTotalRpm() {
+        const startRpm = this.form.get('rpm.start').value ? +this.form.get('rpm.start').value : 0;
+        const endRpm = this.form.get('rpm.end').value ? +this.form.get('rpm.end').value : 0;
+        const totalDepth = this.form.get('drilling.depth').value ? +this.form.get('drilling.depth').value : 0;
+
+        let totalRpm = 0;
+        let feetage = 0;
+        totalRpm = endRpm - startRpm;
+
+        if (totalRpm > 0) {
+            this.form.get('rpm.total').setValue(totalRpm.toString())
+        } else {
+            this.form.get('rpm.total').setValue('0')
+        }
+
+        if (totalRpm > 0 && totalDepth > 0) {
+            feetage = Math.round((totalDepth / totalRpm) * 1000) / 1000;
+        }
+        this.form.get('feetage').setValue(feetage.toString());
+    }
+
+    calcDepthRange() {
+        const flushingDepth = this.form.get('drilling.flushing').value ? +this.form.get('drilling.flushing').value : 0;
+        const totalDepth = this.form.get('drilling.end').value ? +this.form.get('drilling.end').value : 0;
+
+        let drillingStart = 0;
+        let totalDrilling = totalDepth - flushingDepth;
+
+        if (flushingDepth) {
+            drillingStart = flushingDepth + 1;
+        }
+
+        if (totalDrilling > 0) {
+            this.form.get('drilling.depth').setValue(totalDrilling.toString());
+        } else {
+            this.form.get('drilling.depth').setValue('0');
+        }
+
+        const startDepthCtrl = this.form.get('drilling.start')
+        startDepthCtrl.setValue(drillingStart.toString());
+    }
+
+    calcHammerDepth() {
+        this.res.casingChanged()
     }
 
     buildNewBoreForm() {

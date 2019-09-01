@@ -30,12 +30,15 @@ export class RpmEntryComponent implements OnInit {
     totalCasingAmt = 0;
     totalFeetAmt = 0;
     totalFlushingAmt = 0;
+    totalWeldingAmt = 0;
+    totalDieselAmt = 0;
+    totalAdvance = 0;
     apperance;
     rpmEntryPostUrl;
     public casingTypes = [
-        { name: 'PVC 7 Inch', depthKey: 'pvc7InchDepth', depthCtrlKey: 'pvc7Inch', depthRateCasingKey: 'inch7DepthRate', amtKey: 'pvc7Amt', depthRateKey: 'pvc7DepthRate' },
-        { name: 'PVC 10 Inch', depthKey: 'pvc10InchDepth', depthCtrlKey: 'pvc10Inch', depthRateCasingKey: 'inch10DepthRate', amtKey: 'pvc10Amt', depthRateKey: 'pvc10DepthRate' },
-        { name: 'PVC 12 Inch', depthKey: 'pvc12InchDepth', depthCtrlKey: 'pvc12Inch', depthRateCasingKey: 'inch12DepthRate', amtKey: 'pvc12DepthAmt', depthRateKey: 'pvc12DepthRate' },
+        { name: 'PVC 7 Inch', depthKey: 'pvc7Depth', depthCtrlKey: 'pvc7Inch', depthRateCasingKey: 'inch7DepthRate', amtKey: 'pvc7Amt', depthRateKey: 'pvc7DepthRate' },
+        { name: 'PVC 10 Inch', depthKey: 'pvc10Depth', depthCtrlKey: 'pvc10Inch', depthRateCasingKey: 'inch10DepthRate', amtKey: 'pvc10Amt', depthRateKey: 'pvc10DepthRate' },
+        { name: 'PVC 12 Inch', depthKey: 'pvc12Depth', depthCtrlKey: 'pvc12Inch', depthRateCasingKey: 'inch12DepthRate', amtKey: 'pvc12Amt', depthRateKey: 'pvc12DepthRate' },
         { name: 'MS, Medium', depthKey: 'msMediumDepth', depthCtrlKey: 'msMedium', depthRateCasingKey: 'msMediumDepthRate', amtKey: 'msMediumAmt', depthRateKey: 'msMediumDepthRate' },
         { name: 'MS, Heavy', depthKey: 'msHeavyDepth', depthCtrlKey: 'msHeavy', depthRateCasingKey: 'msHeavyDepthRate', amtKey: 'msHeavyAmt', depthRateKey: 'msHeavyDepthRate' }
     ]
@@ -135,7 +138,8 @@ export class RpmEntryComponent implements OnInit {
                 hammer: '',
                 drilling: this.fb.group({
                     depth: ''
-                })
+                }),
+                welding: ''
             }),
             other: this.fb.group({
                 diesel: this.fb.group({
@@ -274,15 +278,26 @@ export class RpmEntryComponent implements OnInit {
         let overallAmt = 0;
         let totalFlusingAmt = 0;
         const agent = this.getAgent();
+        const weldingCount = this.form.get('depth.welding').value ? +this.form.get('depth.welding').value : 0;
+        let perWeldingAmt = agent.newBore.amtPerWelding ? +agent.newBore.amtPerWelding : 0;
+
         // const casingDetails = this.
 
         if (this.selectedBoreType === 'reBore') {
-            const flusingDepth = this.form.get('drilling.depth.flushing').value ? +this.form.get('drilling.depth.flushing').value : 0;
+            const flusingDepth = this.form.get('depth.drilling.flushing').value ? +this.form.get('depth.drilling.flushing').value : 0;
             const flushingAmt = agent.reBore.flusingChange ? +agent.reBore.flusingChange : 0;
             totalFlusingAmt = flusingDepth * flushingAmt;
-            this.totalFlushingAmt = totalFlusingAmt
+            this.totalFlushingAmt = totalFlusingAmt;
+
+            perWeldingAmt = agent.reBore.amtPerWelding ? + agent.reBore.amtPerWelding : 0;
         }
-        overallAmt = this.totalCasingAmt + this.totalFeetAmt + totalFlusingAmt;
+
+        this.totalWeldingAmt = perWeldingAmt * weldingCount;
+        this.totalDieselAmt = this.form.get('other.diesel.totalAmt').value ? + this.form.get('other.diesel.totalAmt').value : 0;
+        this.totalAdvance = this.form.get('other.advance.advance').value ? +this.form.get('other.advance.advance').value : 0;
+
+
+        overallAmt = this.totalCasingAmt + this.totalFeetAmt + totalFlusingAmt + this.totalWeldingAmt + this.totalDieselAmt + this.totalAdvance;
         return overallAmt;
     }
 
@@ -324,12 +339,39 @@ export class RpmEntryComponent implements OnInit {
         const feets = this.getUpdatedFeets();
         const overallAmt = this.calcTotalAmt();
         const formValue = this.form.value;
+        const agent = this.getAgent();
+        let amtPerWelding = agent.newBore.amtPerWelding;
+        let allowance = agent.newBore.allowance;
+        if (this.selectedBoreType === 'reBore') {
+            amtPerWelding = agent.reBore.amtPerWelding;
+            allowance = agent.reBore.allowance
+        }
 
         const payload = {
-            pointNo: formValue.pointNo,
+            pointno: formValue.pointNo,
             date: formValue.date ? (formValue.date as Moment).format('DD-MM-YYYY') : null,
-            info: formValue.info,
-            casingDetails,
+            boreType: formValue.boreType,
+            partyName: formValue.info.party.name,
+            partyMobile: formValue.info.party.mobile,
+            agentId: formValue.info.agent.id,
+            agentVillage: formValue.info.agent.village,
+            agentName: agent.name,
+            agentMobile: agent.mobileNumber,
+            pvc7Depth: casingDetails.pvc7Depth ? casingDetails.pvc7Depth : '',
+            pvc7DepthRate: casingDetails.pvc7DepthRate ? casingDetails.pvc7DepthRate : '',
+            pvc7Amt: casingDetails.pvc7Amt ? casingDetails.pvc7Amt : '',
+            pvc10Depth: casingDetails.pvc10Depth ? casingDetails.pvc10Depth : '',
+            pvc10DepthRate: casingDetails.pvc10DepthRate ? casingDetails.pvc10DepthRate : '',
+            pvc10Amt: casingDetails.pvc10Amt ? casingDetails.pvc10Amt : '',
+            pvc12Depth: casingDetails.pvc12Depth ? casingDetails.pvc12Depth : '',
+            pvc12DepthRate: casingDetails.pvc12DepthRate ? casingDetails.pvc12DepthRate : '',
+            pvc12Amt: casingDetails.pvc12Amt ? casingDetails.pvc12Amt : '',
+            msMediumDepth: casingDetails.msMediumDepth ? casingDetails.msMediumDepth : '',
+            msMediumDepthRate: casingDetails.msMediumDepthRate ? casingDetails.msMediumDepthRate : '',
+            msMediumAmt: casingDetails.msMediumAmt ? casingDetails.msMediumAmt : '',
+            msHeavyDepth: casingDetails.msHeavyDepth ? casingDetails.msHeavyDepth : '',
+            msHeavyDepthRate: casingDetails.msHeavyDepthRate ? casingDetails.msHeavyDepthRate : '',
+            msHeavyAmt: casingDetails.msHeavyAmt ? casingDetails.msHeavyAmt : '',
             feets,
             bits: formValue.depth.bits,
             drilling: formValue.depth.drilling,
@@ -338,6 +380,14 @@ export class RpmEntryComponent implements OnInit {
             soilDetails: formValue.other.soil,
             totalCasingAmt: this.totalCasingAmt.toString(),
             totalFeetAmt: this.totalFeetAmt.toString(),
+            welding: formValue.depth.welding,
+            allowance,
+            startRpm: formValue.depth.rpm.start,
+            endRpm: formValue.depth.rpm.end,
+            totalRpm: formValue.depth.rpm.total,
+            totalFeetPerHour: formValue.depth.feetage,
+            amtPerWelding,
+            weldingAmt: this.totalWeldingAmt.toString(),
             overallAmt: overallAmt.toString()
         }
 

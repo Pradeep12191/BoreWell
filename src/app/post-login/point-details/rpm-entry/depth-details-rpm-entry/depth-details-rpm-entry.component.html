@@ -8,7 +8,7 @@
         </mat-card-header>
         <mat-card-content>
             <div fxLayout fxLayoutAlign="center center">
-                <div class="bold">960 ft</div>
+                <div class="bold">{{ (form.get('hammer').value || 0) + ' ft' }}</div>
             </div>
         </mat-card-content>
     </mat-card>

@@ -147,7 +147,7 @@
         },
         {
             "name": "RPMEntry",
-            "url": ""
+            "url": "createrpmentry"
         }
     ]
 }

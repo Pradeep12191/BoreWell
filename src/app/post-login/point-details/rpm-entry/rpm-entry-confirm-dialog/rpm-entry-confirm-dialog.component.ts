@@ -24,7 +24,7 @@ export class RpmEntryConfirmDialogComponent {
         this.rpmEntry = data.formValue;
         this.payload = data.payload;
         this.agentName = data.agentName;
-        this.rpmEntryPostUrl = this.config.getAbsoluteUrl('RPMEnty');
+        this.rpmEntryPostUrl = this.config.getAbsoluteUrl('RPMEntry');
     }
 
     save() {

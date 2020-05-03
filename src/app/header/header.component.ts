@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     changeLang(lang) {
         if (this.selectedLanguage.id === lang.id) {
-            return
+            return;
         }
         this.http.put(this.langUrl, { language: lang.id }).subscribe(() => {
             this.translate.use(lang.id);

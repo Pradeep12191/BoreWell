@@ -13,12 +13,12 @@ export class VehicleListResolver implements Resolve<any>{
     ) {
         const baseUrl = this.config.getConfig('apiUrl');
         const url = this.config.getUrl('view_vehicle_list');
-        this.vehiclesUrl = baseUrl + url; 
+        this.vehiclesUrl = baseUrl + url;
     }
 
     vehiclesUrl;
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-        return this.http.get<Bit[]>(this.vehiclesUrl + '/' + this.authService.userid)
+        return this.http.get<Bit[]>(this.vehiclesUrl + '/' + this.authService.userid);
     }
 }

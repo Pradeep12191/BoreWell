@@ -11,6 +11,7 @@ import { PointReportReolver } from '../../../../guards/resolveGuard/reports/poin
 import { PipesModule } from '../../../../pipes/pipes.module';
 import { PointReportViewComponent } from './point-report-view/point-report-view.component';
 import { DirectiveModule } from '../../../../directives/directive.module';
+import { VehiclesResolver } from 'src/app/guards/resolveGuard/vehicles.resolver';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { DirectiveModule } from '../../../../directives/directive.module';
         PointReportViewComponent
     ],
     providers: [
-        PointReportReolver
+        PointReportReolver,
+        VehiclesResolver,
     ]
 })
 export class PointReportModule {

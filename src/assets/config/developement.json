@@ -1,6 +1,6 @@
 {
     "formAppearance": "outline",
-    "apiUrl": "http://103.207.4.72:8080/rigapi2/webapi/resource/",
+    "apiUrl": "http://103.207.4.72:18082/rigapi2/webapi/resource/",
     "mobileNav": false,
     "classicSidenav": true,
     "errorMessageTimeout": 2000,
@@ -148,6 +148,10 @@
         {
             "name": "RPMEntry",
             "url": "createrpmentry"
+        },
+        {
+            "name": "rpmReportSheet",
+            "url":"rpm_sheet_report"
         }
     ]
 }

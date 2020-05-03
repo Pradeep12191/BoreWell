@@ -1,14 +1,15 @@
-import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Column } from '../../../../expand-table/Column';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSelect } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 import * as moment from 'moment';
+import { Moment } from 'moment';
 import { ConfigService } from '../../../../services/config.service';
 import { FADE_IN_ANIMATION } from '../../../../animations';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { AuthService } from '../../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import data from './point.sub.json';
@@ -17,13 +18,37 @@ declare let html2pdf: any;
 
 import * as jsPDF from 'jspdf';
 import html2pdf from 'html2pdf.js';
+import { Vehicle } from 'src/app/models/Vehicle';
+import { debounceTime, switchMap, tap, finalize, catchError } from 'rxjs/operators';
+
+const pointNoValidation = (control: AbstractControl) => {
+    const fromPointNo = +control.get('from_rpm').value;
+    const toPointNo = +control.get('to_rpm').value;
+    if (fromPointNo && toPointNo && fromPointNo > toPointNo) {
+        return {
+            sheetNoGreater: true
+        };
+    }
+    return null;
+};
+
+const dateValidation = (control: AbstractControl) => {
+    const fromDate = control.get('from').value as Moment;
+    const toDate = control.get('to').value as Moment;
+    if (fromDate && toDate && fromDate.isAfter(toDate)) {
+        return {
+            dateGreater: true
+        };
+    }
+    return null;
+};
 
 @Component({
     templateUrl: './point-report.component.html',
     styleUrls: ['./point-report.component.scss'],
     animations: [FADE_IN_ANIMATION]
 })
-export class PointReportComponent implements OnDestroy {
+export class PointReportComponent implements OnDestroy, AfterViewInit {
     public columns: Column[] = [
         { id: 'serialNo', name: 'COLUMN.SERIAL_NO', type: 'index', width: '15' },
         { id: 'pointno', name: 'POINT_ENTRY.COL.POINT_NO', type: 'string', width: '25' },
@@ -31,10 +56,16 @@ export class PointReportComponent implements OnDestroy {
         { id: 'edit', name: '', type: 'button', width: '10' },
         { id: 'delete', name: '', type: 'button', width: '10' },
         { id: 'more_details', name: '', type: 'toggle', width: '10', },
+    ];
+    searchCriterias = [
+        { value: 'pointNo', display: 'Point No' },
+        { value: 'date', display: 'Date' },
+        { value: 'month', display: 'Month' },
     ]
     public pointDataSource: MatTableDataSource<any>;
     public points;
-    public dateForm: FormGroup;
+    public vehicles: Vehicle[];
+    public searchForm: FormGroup;
     public appearance;
     public fetchingData;
     public pointUrl;
@@ -43,6 +74,7 @@ export class PointReportComponent implements OnDestroy {
     public casingDetails = [];
     public view = 'list';
     @ViewChild('report', { read: ElementRef, static: false }) reportEl: ElementRef;
+    @ViewChild('vehicleSelect', { static: false }) vehicleSelect: MatSelect;
 
     constructor(
         private route: ActivatedRoute,
@@ -53,17 +85,15 @@ export class PointReportComponent implements OnDestroy {
         private toastr: ToastrService
     ) {
         // this.loadStub();
-        console.log(html2pdf)
         this.appearance = this.config.getConfig('formAppearance');
         this.routeSubscritpion = this.route.data.subscribe((data) => {
             if (data) {
                 if (data.points) {
                     this.points = data.points;
-                    // this.points.forEach(point => {
-                    //     this.generateCasingDetails(point)
-                    // })
                     this.pointDataSource = new MatTableDataSource<any>(this.points);
                 }
+
+                this.vehicles = data.vehicles;
             }
         });
 
@@ -72,16 +102,121 @@ export class PointReportComponent implements OnDestroy {
                 this.view = queryParamMap.get('view');
             }
 
-        })
+        });
 
         const apiUrl = this.config.getConfig('apiUrl');
-        const pointUrl = this.config.getUrl('viewpointlist');
-        this.pointUrl = apiUrl + pointUrl + '/' + this.auth.userid;
+        const pointUrl = this.config.getUrl('rpmReportSheet');
+        this.pointUrl = apiUrl + pointUrl;
 
-        this.dateForm = this.fb.group({
-            date: [moment()],
-            pointNo: ['', Validators.required]
-        })
+        this.searchForm = this.fb.group({
+            point: this.fb.group({
+                from_rpm: { value: '', disabled: true },
+                to_rpm: { value: '', disabled: true }
+            }, { validators: pointNoValidation }),
+            vehicle: '',
+            date: this.fb.group({
+                from: '',
+                to: ''
+            }, { validators: dateValidation }),
+            month: '',
+            criteria: { value: 'pointNo', disabled: true },
+        });
+
+        this.searchForm.get('point').valueChanges.pipe(
+            tap(() => {
+                const pointCtrl = this.searchForm.get('point');
+                if (pointCtrl.valid) {
+                    this.fetchingData = true;
+                } else {
+                    this.fetchingData = false;
+                }
+            }),
+            debounceTime(500),
+            switchMap(() => {
+                const searchCriteria = this.searchForm.get('criteria').value;
+                const params = this.getParams(searchCriteria);
+                if (!params) {
+                    return of(null);
+                }
+                return this.fetchData(params).pipe(
+                    finalize(() => this.fetchingData = false),
+                    catchError((err) => {
+                        this.toastr.error('Error while fetching point data', null, { timeOut: 2000 });
+                        return of(err);
+                    })
+                );
+            })
+        ).subscribe((points) => {
+            if (points) {
+                this.bindData(points);
+            }
+        });
+
+        this.searchForm.get('date').valueChanges.pipe(
+            tap(() => {
+                const dateCtrl = this.searchForm.get('date');
+                if (dateCtrl.valid) {
+                    this.fetchingData = true;
+                } else {
+                    this.fetchingData = false;
+                }
+            }),
+            debounceTime(500),
+            switchMap(() => {
+                const searchCriteria = this.searchForm.get('criteria').value;
+                const params = this.getParams(searchCriteria);
+                if (!params) {
+                    return of(null);
+                }
+                return this.fetchData(params).pipe(
+                    finalize(() => this.fetchingData = false),
+                    catchError((err) => {
+                        this.toastr.error('Error while fetching point data', null, { timeOut: 2000 });
+                        return of(err);
+                    })
+                );
+            })
+        ).subscribe((points) => {
+            if (points) {
+                this.bindData(points);
+            }
+        });
+
+        this.searchForm.get('month').valueChanges.pipe(
+            tap(() => this.fetchingData = true),
+            debounceTime(500),
+            switchMap(() => {
+                const searchCriteria = this.searchForm.get('criteria').value;
+                const params = this.getParams(searchCriteria);
+                if (!params) {
+                    return of(null);
+                }
+                return this.fetchData(params).pipe(
+                    finalize(() => this.fetchingData = false),
+                    catchError((err) => {
+                        this.toastr.error('Error while fetching point data', null, { timeOut: 2000 });
+                        return of(err);
+                    })
+                );
+            })
+        ).subscribe((points) => {
+            if (points) {
+                this.bindData(points);
+            }
+        });
+    }
+
+    ngAfterViewInit() {
+        if (this.vehicleSelect) {
+            setTimeout(() => {
+                this.vehicleSelect.open();
+            });
+            this.vehicleSelect._closedStream.subscribe(() => {
+                if (this.searchForm.get('vehicle').value) {
+                    this.searchForm.enable({ emitEvent: false });
+                }
+            });
+        }
     }
 
     ngOnDestroy() {
@@ -89,25 +224,78 @@ export class PointReportComponent implements OnDestroy {
         if (this.routeQuerySubscription) { this.routeQuerySubscription.unsubscribe(); }
     }
 
-    loadStub() {
-        this.points = data;
-        this.pointDataSource = new MatTableDataSource<any>(this.points);
+    private getParams(criteria) {
+        const vehicle_id = this.searchForm.value.vehicle.vehicle_id;
+        switch (criteria) {
+            case 'pointNo':
+                if (this.searchForm.get('point').valid) {
+                    let from_rpm = this.searchForm.value.point.from_rpm;
+                    let to_rpm = this.searchForm.value.point.to_rpm;
+                    from_rpm = from_rpm || to_rpm;
+                    to_rpm = to_rpm || from_rpm;
+                    return { from_rpm, to_rpm, vehicle_id };
+                }
+                break;
+            case 'date':
+                if (this.searchForm.get('date').valid) {
+                    let from_date = this.searchForm.value.date.from;
+                    let to_date = this.searchForm.value.date.to;
+                    from_date = from_date || to_date;
+                    to_date = to_date || from_date;
+                    from_date = (from_date as Moment).format('YYYY-MM-DD');
+                    to_date = (to_date as Moment).format('YYYY-MM-DD');
+                    return { from_date, to_date, vehicle_id };
+                }
+                break;
+            case 'month':
+                const month = this.searchForm.value.month;
+                if (month) {
+                    const startOfMonth = (month as Moment).startOf('month').format('YYYY-MM-DD');
+                    const endOfMonth = (month as Moment).endOf('month').format('YYYY-MM-DD');
+                    return { vehicle_id, from_date: startOfMonth, to_date: endOfMonth }
+                }
+                break;
+        }
     }
 
-    fetchData() {
+    getMessage() {
+        if (this.searchForm.get('date').invalid) {
+            return 'To Date should be greater than From Date';
+        }
+        if (this.searchForm.get('point').invalid) {
+            return 'To Point No should be greater than From Point No';
+        }
+    }
+
+    bindData(points) {
+        this.points = points;
+        this.pointDataSource = new MatTableDataSource<any>(points);
+    }
+
+    fetchData(params) {
         this.fetchingData = true;
-        const selectedDate = (this.dateForm.get('date').value as moment.Moment).format('DD-MM-YYYY');
-        const selectedPoint = this.dateForm.get('pointNo').value;
-        this.http.get(this.pointUrl + '/' + selectedPoint).subscribe((points) => {
-            this.fetchingData = false;
-            this.points = points;
-            this.pointDataSource = new MatTableDataSource<any>(this.points);
-        }, (err) => {
-            if (err) {
-                this.fetchingData = false;
-                this.toastr.error('Error while fetching point data', null, { timeOut: 2000 })
+        const user_id = this.auth.userid;
+        params = { ...params, user_id };
+        return this.http.get(this.pointUrl, { params });
+    }
+
+    onChange() {
+        const searchCriteria = this.searchForm.get('criteria').value;
+        const params = this.getParams(searchCriteria);
+        this.fetchingData = true;
+        this.fetchData(params).pipe(
+            finalize(() => this.fetchingData = false)
+        ).subscribe((points) => {
+            if (points) {
+                this.bindData(points);
             }
-        })
+        });
+    }
+
+    onCriteriaChange() {
+        (this.searchForm.get('point') as FormGroup).reset({ from_rpm: '', to_rpm: '' }, { emitEvent: false });
+        (this.searchForm.get('date') as FormGroup).reset({ from: '', to: '' }, { emitEvent: false });
+        (this.searchForm.get('month') as FormGroup).reset('', { emitEvent: false });
     }
 
     generateCasingDetails(point) {

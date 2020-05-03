@@ -1,0 +1,9 @@
+
+<mat-form-field class="calc-field" floatLabel="always" fxFlex (click)="monthPicker.open()">
+    <mat-label>Select Month</mat-label>
+    <input [formControl]="monthCtrl" #dateInput placeholder="Select month" readonly matInput [matDatepicker]="monthPicker">
+    <mat-datepicker-toggle matSuffix [for]="monthPicker"></mat-datepicker-toggle>
+    <mat-datepicker 
+        (monthSelected)="chosenMonthHandler($event, monthPicker)"
+        startView="year" #monthPicker></mat-datepicker>
+</mat-form-field>

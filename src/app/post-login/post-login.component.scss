@@ -17,6 +17,9 @@ mat-sidenav-container{
     &.mobile-container{
         height: 100%;
     }
+    &.mobile-height{
+        height: calc(100% - 56px);
+    }
   }
 
   mat-sidenav{

@@ -1,25 +1,50 @@
-<div *ngIf="view === 'list'; else reportViewTpl" fxLayout="column" fxLayoutGap="10px">
-    <form [formGroup]="dateForm" fxLayout fxLayoutGap="10px">
-        <!-- <mat-form-field class="m-l-10" [appearance]="appearance" (click)="dp.open()">
-                <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
-                <input matInput readonly formControlName="date" [matDatepicker]="dp">
-                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                <mat-datepicker #dp>
-                </mat-datepicker>
-            </mat-form-field> -->
-        <mat-form-field class="m-l-10" [appearance]="appearance">
-            <mat-label>{{ 'POINT_ENTRY.NUMBER' | translate }}</mat-label>
-            <input poistiveNumber type="text" matInput formControlName="pointNo">
+<div *ngIf="view === 'list'; else reportViewTpl" fxLayout="column" class="report-container" fxLayoutGap="10px">
+    <form [formGroup]="searchForm" gdRows.lt-md="50% 50%" gdAuto.lt-md="row" 
+        gdColumns.lt-md="calc(50% - 0.5rem) 50%" gdColumns="25% 25% auto" gdAuto="column" gdGap="0.5rem">
+        <mat-form-field class="calc-field" >
+            <mat-label>Select Vehicle</mat-label>
+            <mat-select formControlName="vehicle" #vehicleSelect (selectionChange)="onChange()">
+                <mat-option [value]="vehicle" *ngFor="let vehicle of vehicles">{{ vehicle.registrationNumber }}</mat-option>
+            </mat-select>
         </mat-form-field>
-        <div fxLayout fxLayoutAlign="center center">
-            <button (click)="fetchData()" [disabled]="dateForm.get('pointNo').invalid" fxHide.lt-md mat-raised-button
-                color="primary">Apply</button>
-            <button (click)="fetchData()" [disabled]="dateForm.get('pointNo').invalid" class="m-b-25" fxHide.gt-sm
-                mat-mini-fab color="primary">
-                <mat-icon>refresh</mat-icon>
-            </button>
-        </div>
+        <mat-form-field class="calc-field">
+            <mat-label>Search By</mat-label>
+            <mat-select formControlName="criteria" (selectionChange)="onCriteriaChange($event)">
+                <mat-option [value]="criteria.value" *ngFor="let criteria of searchCriterias">{{ criteria.display }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <ng-container formGroupName="point" *ngIf="searchForm.get('criteria').value === 'pointNo'">
+            <mat-form-field class="calc-field">
+                <mat-label>From Point No</mat-label>
+                <input formControlName="from_rpm" poistiveNumber type="text" matInput>
+            </mat-form-field>
+            <mat-form-field class="calc-field">
+                <mat-label>To Point No</mat-label>
+                <input formControlName="to_rpm" poistiveNumber type="text" matInput>
+            </mat-form-field>
+        </ng-container>
+        <ng-container formGroupName="date" *ngIf="searchForm.get('criteria').value === 'date'">
+            <mat-form-field floatLabel="always" (click)="fromPicker.open()" class="calc-field">
+                <mat-label>From Date</mat-label>
+                <input #dateInput placeholder="From Date" readonly matInput [matDatepicker]="fromPicker"
+                    formControlName="from">
+                <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+                <mat-datepicker #fromPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field floatLabel="always" (click)="toPicker.open()" class="calc-field">
+                <mat-label>To Date</mat-label>
+                <input #dateInput placeholder="To Date" readonly matInput [matDatepicker]="toPicker"
+                    formControlName="to">
+                <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+                <mat-datepicker #toPicker></mat-datepicker>
+            </mat-form-field>
+        </ng-container>
+        <month-picker formControlName="month" *ngIf="searchForm.get('criteria').value === 'month'"></month-picker>
     </form>
+    <div *ngIf="searchForm.invalid" gdAlignColumns="center center" class="error" gdColumns="auto 1fr" gdGap="0.5rem" gdAuto="column">
+        <mat-icon>error</mat-icon>
+        {{ getMessage() }}
+    </div>
     <div fxLayout fxLayoutAlign="center center">
         <ng-container *ngIf="!fetchingData; else fetchingTpl">
             <expand-table @fadeIn [data]="points" [expandFirstRow]="true" *ngIf="points?.length; else emptyTpl" fxFlex
@@ -39,13 +64,14 @@
 </ng-template>
 
 <ng-template #emptyTpl>
-    <mat-card>
-        <mat-card-content>No Point found for the selected date.</mat-card-content>
-    </mat-card>
+    <div gdRows="250px auto" gdAlignColumns="center center"  gdAlignRows="center center">
+        <img height="150px" width="150px" src="./assets/svg/no_data.svg" alt="">
+        <div>No Report found.</div>
+    </div>
 </ng-template>
 
 <ng-template #reportViewTpl>
-    <div class="p-l-10 p-r-10">
+    <div class="p-l-10 p-r-10 report-container">
         <point-report-view *ngIf="points?.length" [viewOnly]="true" [point]="points[0]"></point-report-view>
     </div>
 </ng-template>

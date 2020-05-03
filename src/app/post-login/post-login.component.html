@@ -8,7 +8,7 @@
     </mat-card>
 </div>
 <router-outlet *ngIf="!isMobile" name="header"></router-outlet>
-<mat-sidenav-container [class.mobile-container]="isMobile">
+<mat-sidenav-container [class.mobile-container]="isMobile" ngClass.xs="mobile-height">
 
     <mat-sidenav [class.classic]="classicSidenav" *ngIf="!isMobile; else mobileSidenavTpl" class="mat-elevation-z2" [opened]="openSideNav" #sidenav
         [mode]="isSmallDevice ? 'over' : 'side'">

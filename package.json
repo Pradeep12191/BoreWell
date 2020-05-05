@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:stats": "ng build --stats-json --prod",
+    "build:rig": "ng build --base-href \\rig\\ --prod",
     "analyze": "webpack-bundle-analyzer dist/bore-well-app/stats-es5.json"
   },
   "private": true,

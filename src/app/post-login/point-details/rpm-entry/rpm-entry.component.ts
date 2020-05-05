@@ -35,7 +35,8 @@ export class RpmEntryComponent implements OnInit {
     totalAdvance = 0;
     apperance;
     rpmEntryPostUrl;
-    @ViewChild('stepper', {static: false}) stepper: MatStepper;
+    vehicles = [];
+    @ViewChild('stepper', { static: false }) stepper: MatStepper;
     public casingTypes = [
         { name: 'PVC 7 Inch', depthKey: 'pvc7Depth', depthCtrlKey: 'pvc7Inch', depthRateCasingKey: 'inch7DepthRate', amtKey: 'pvc7Amt', depthRateKey: 'pvc7DepthRate' },
         { name: 'PVC 10 Inch', depthKey: 'pvc10Depth', depthCtrlKey: 'pvc10Inch', depthRateCasingKey: 'inch10DepthRate', amtKey: 'pvc10Amt', depthRateKey: 'pvc10DepthRate' },
@@ -56,7 +57,10 @@ export class RpmEntryComponent implements OnInit {
         this.route.data.subscribe(data => {
             if (data) {
                 if (data.agents) {
-                    this.agents = data.agents
+                    this.agents = data.agents;
+                }
+                if (data.rigs) {
+                    this.vehicles = data.rigs;
                 }
             }
         })
@@ -65,12 +69,12 @@ export class RpmEntryComponent implements OnInit {
         this.rpmEntryPostUrl = this.config.getAbsoluteUrl('RPMEnty');
 
         this.boreChangeSubscription = this.res.boreChangeObs().subscribe(boreType => {
-            this.selectedBoreType = boreType
+            this.selectedBoreType = boreType;
         })
 
         this.res.agentChangeObs().subscribe(agentId => {
             this.selectedAgentId = agentId;
-        })
+        });
 
     }
 
@@ -85,7 +89,7 @@ export class RpmEntryComponent implements OnInit {
         const agent = this.getAgent();
         console.log(JSON.stringify(payload, null, 2));
         // return console.log(this.form.value);
-       const dialogRef =  this.dialog.open(RpmEntryConfirmDialogComponent, {
+        const dialogRef = this.dialog.open(RpmEntryConfirmDialogComponent, {
             panelClass: 'confirm-dialog',
             height: this.media.isActive('lt-md') ? '100vh' : 'auto',
             width: this.media.isActive('lt-md') ? '100vw' : '80vw',
@@ -110,16 +114,19 @@ export class RpmEntryComponent implements OnInit {
     buildRpmEntryForm() {
         this.form = this.fb.group({
             pointNo: ['', Validators.required],
+            vehicle: ['', Validators.required],
             boreType: 'newBore',
             date: '',
             info: this.fb.group({
                 agent: this.fb.group({
                     id: ['', Validators.required],
-                    village: ''
                 }),
                 party: this.fb.group({
                     name: '',
-                    mobile: ''
+                    mobile: '',
+                    area: '',
+                    city: '',
+                    state: ''
                 }),
             }),
             depth: this.fb.group({
@@ -350,54 +357,69 @@ export class RpmEntryComponent implements OnInit {
         const formValue = this.form.value;
         const agent = this.getAgent();
         let amtPerWelding = agent.newBore.amtPerWelding;
-        let allowance = agent.newBore.allowance;
+        let allowance = +agent.newBore.allowance;
         if (this.selectedBoreType === 'reBore') {
             amtPerWelding = agent.reBore.amtPerWelding;
-            allowance = agent.reBore.allowance
+            allowance = +agent.reBore.allowance;
         }
 
         const payload = {
-            pointno: formValue.pointNo,
+            pointno: +formValue.pointNo,
+            point_id: 0, // used by server
+            book_no: 0, // furture use
+            book_id: 0,
+            vehicle_id: +formValue.vehicle.vehicle_id,
+            vehicle_no: formValue.vehicle.registrationNumber,
             date: formValue.date ? (formValue.date as Moment).format('DD-MM-YYYY') : null,
-            boreType: formValue.boreType,
-            partyName: formValue.info.party.name,
-            partyMobile: formValue.info.party.mobile,
-            agentId: formValue.info.agent.id,
-            agentVillage: formValue.info.agent.village,
-            agentName: agent.name,
-            agentMobile: agent.mobileNumber,
-            pvc7Depth: casingDetails.pvc7Depth ? casingDetails.pvc7Depth : '',
-            pvc7DepthRate: casingDetails.pvc7DepthRate ? casingDetails.pvc7DepthRate : '',
-            pvc7Amt: casingDetails.pvc7Amt ? casingDetails.pvc7Amt : '',
-            pvc10Depth: casingDetails.pvc10Depth ? casingDetails.pvc10Depth : '',
-            pvc10DepthRate: casingDetails.pvc10DepthRate ? casingDetails.pvc10DepthRate : '',
-            pvc10Amt: casingDetails.pvc10Amt ? casingDetails.pvc10Amt : '',
-            pvc12Depth: casingDetails.pvc12Depth ? casingDetails.pvc12Depth : '',
-            pvc12DepthRate: casingDetails.pvc12DepthRate ? casingDetails.pvc12DepthRate : '',
-            pvc12Amt: casingDetails.pvc12Amt ? casingDetails.pvc12Amt : '',
-            msMediumDepth: casingDetails.msMediumDepth ? casingDetails.msMediumDepth : '',
-            msMediumDepthRate: casingDetails.msMediumDepthRate ? casingDetails.msMediumDepthRate : '',
-            msMediumAmt: casingDetails.msMediumAmt ? casingDetails.msMediumAmt : '',
-            msHeavyDepth: casingDetails.msHeavyDepth ? casingDetails.msHeavyDepth : '',
-            msHeavyDepthRate: casingDetails.msHeavyDepthRate ? casingDetails.msHeavyDepthRate : '',
-            msHeavyAmt: casingDetails.msHeavyAmt ? casingDetails.msHeavyAmt : '',
+            bore_type: formValue.boreType,
+            bore_type_id: 0,
+
+            party_name: formValue.info.party.name,
+            party_mobile: formValue.info.party.mobile,
+            party_area: formValue.info.party.area,
+            party_city: formValue.info.party.city,
+            party_state: formValue.info.party.state,
+
+            agent_id: +formValue.info.agent.id,
+            agent_name: agent.name,
+            agent_mobile_no: agent.mobileNumber,
+            agent_office_name: agent.officeName,
+            agent_area: agent.area,
+            agent_city: agent.city,
+            agent_state: agent.state,
+
+            pvc7Depth: casingDetails.pvc7Depth ? +casingDetails.pvc7Depth : 0,
+            pvc7DepthRate: casingDetails.pvc7DepthRate ? +casingDetails.pvc7DepthRate : 0,
+            pvc7Amt: casingDetails.pvc7Amt ? +casingDetails.pvc7Amt : 0,
+            pvc10Depth: casingDetails.pvc10Depth ? +casingDetails.pvc10Depth : 0,
+            pvc10DepthRate: casingDetails.pvc10DepthRate ? +casingDetails.pvc10DepthRate : 0,
+            pvc10Amt: casingDetails.pvc10Amt ? +casingDetails.pvc10Amt : 0,
+            pvc12Depth: casingDetails.pvc12Depth ? +casingDetails.pvc12Depth : 0,
+            pvc12DepthRate: casingDetails.pvc12DepthRate ? +casingDetails.pvc12DepthRate : 0,
+            pvc12Amt: casingDetails.pvc12Amt ? +casingDetails.pvc12Amt : 0,
+            msMediumDepth: casingDetails.msMediumDepth ? +casingDetails.msMediumDepth : 0,
+            msMediumDepthRate: casingDetails.msMediumDepthRate ? +casingDetails.msMediumDepthRate : 0,
+            msMediumAmt: casingDetails.msMediumAmt ? +casingDetails.msMediumAmt : 0,
+            msHeavyDepth: casingDetails.msHeavyDepth ? +casingDetails.msHeavyDepth : 0,
+            msHeavyDepthRate: casingDetails.msHeavyDepthRate ? +casingDetails.msHeavyDepthRate : 0,
+            msHeavyAmt: casingDetails.msHeavyAmt ? +casingDetails.msHeavyAmt : 0,
             feets,
             bits: formValue.depth.bits,
             drilling: formValue.depth.drilling,
             diesel: formValue.other.diesel,
             advance: formValue.other.advance,
             soilDetails: formValue.other.soil,
-            totalCasingAmt: this.totalCasingAmt.toString(),
-            totalFeetAmt: this.totalFeetAmt.toString(),
-            welding: formValue.depth.welding,
+            total_casing_amt: this.totalCasingAmt,
+            total_feet_amt: +this.totalFeetAmt,
+            no_of_welding: +formValue.depth.welding,
             allowance,
-            startRpm: formValue.depth.rpm.start,
-            endRpm: formValue.depth.rpm.end,
-            totalRpm: formValue.depth.rpm.total,
-            totalFeetPerHour: formValue.depth.feetage,
-            amtPerWelding,
-            weldingAmt: this.totalWeldingAmt.toString(),
-            overallAmt: overallAmt.toString()
+            startRpm: +formValue.depth.rpm.start,
+            endRpm: +formValue.depth.rpm.end,
+            totalRpm: +formValue.depth.rpm.total,
+            totalFeetPerHour: +formValue.depth.feetage,
+            amount_per_welding: +amtPerWelding,
+            total_welding_amount: +this.totalWeldingAmt,
+            overallAmt: +overallAmt
         }
 
         if (this.selectedBoreType === 'reBore') {

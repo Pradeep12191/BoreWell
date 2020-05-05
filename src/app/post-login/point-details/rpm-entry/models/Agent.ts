@@ -1,6 +1,7 @@
 import { NewBore } from './NewBore';
 import { ReBore } from './ReBore';
 import { Feet } from './Feet';
+import { Point } from 'src/app/models/Point';
 
 export interface Agent{
     address: string;
@@ -16,4 +17,6 @@ export interface Agent{
     type: string;
     user: string;
     user_id: string;
+    officeName?: string,
+    points?: Point[]
 }

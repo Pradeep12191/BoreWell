@@ -1,24 +1,32 @@
-<div fxLayout="column" class="p-16" [formGroup]="form">
-    <div fxLayout fxLayoutGap="20px" fxLayoutGap.lt-md="0px" fxLayout.lt-md="column" formGroupName="agent">
-        <mat-form-field fxFlex [appearance]="appearance">
+<div gdRows.lt-md gdColumns.lt-md="100%" gdGap.lt-md="0px" gdColumns="calc(50% - 0.5rem) calc(50% - 0.5rem)" gdGap="1rem" class="p-16" [formGroup]="form">
+    <ng-container formGroupName="agent">
+        <mat-form-field [appearance]="appearance">
             <mat-label>Agent Name</mat-label>
             <mat-select formControlName="id" (selectionChange)="onAgentSelect($event)">
                 <mat-option [value]="agent.agent_id" *ngFor="let agent of agents">{{ agent.name }}</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field fxFlex [appearance]="appearance">
-            <mat-label>Village Name</mat-label>
-            <input type="text" matInput formControlName="village">
-        </mat-form-field>
-    </div>
-    <div fxLayout fxLayoutGap="20px" fxLayoutGap.lt-md="0px" fxLayout.lt-md="column" formGroupName="party">
-        <mat-form-field fxFlex [appearance]="appearance" >
+    </ng-container>
+    <ng-container formGroupName="party">
+        <mat-form-field [appearance]="appearance" >
             <mat-label>Party Name</mat-label>
             <input type="text" matInput formControlName="name">
         </mat-form-field>
-        <mat-form-field fxFlex [appearance]="appearance" >
+        <mat-form-field [appearance]="appearance" >
             <mat-label>Party Mobile</mat-label>
             <input type="text" matInput poistiveNumber formControlName="mobile">
         </mat-form-field>
-    </div>
+        <mat-form-field [appearance]="appearance" >
+            <mat-label>Party Area</mat-label>
+            <input type="text" matInput formControlName="area">
+        </mat-form-field>
+        <mat-form-field [appearance]="appearance" >
+            <mat-label>Party City</mat-label>
+            <input type="text" matInput formControlName="city">
+        </mat-form-field>
+        <mat-form-field [appearance]="appearance" >
+            <mat-label>Party State</mat-label>
+            <input type="text" matInput formControlName="state">
+        </mat-form-field>
+    </ng-container>
 </div>

@@ -17,7 +17,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         let modifiedRequest = req.clone();
         if (req.method === 'POST' || req.method === 'PUT') {
             modifiedRequest = req.clone({
-                body: { user: this.auth.username, user_id: this.auth.userid, ...req.body },
+                body: { user: this.auth.username, user_id: +this.auth.userid, ...req.body },
                 headers: req.headers.append('Authorization', this.auth.token ? this.auth.token : '')
             })
         } else if (req.method === 'GET') {

@@ -6,29 +6,25 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div class="p-16 bottom-line" fxLayout="column">
-                <div fxLayout fxLayoutAlign="space-between" fxLayout>
-                    <!-- <div fxLayout fxLayoutGap="10px">
-                        <div class="bold">Point No</div>
-                        <div class="bold">:</div>
-                        <div>{{ form.get('pointNo').value }}</div>
-                    </div> -->
-                    <mat-form-field fxFlex="40" class="calc-field" [appearance]="appearance">
+            <div class="p-16 bottom-line">
+                <div gdColumns="30% 30% 30%" gdRows="auto" gdRows.lt-md="auto auto" gdColumns.lt-md="35% 55%" gdAlignRows="space-between">
+                    <mat-form-field gdArea.lt-md="1 / 1 / span 2 / span 2" class="calc-field" [appearance]="appearance">
+                        <mat-label>Vehicle</mat-label>
+                        <mat-select formControlName="vehicle">
+                            <mat-option [value]="vehicle" *ngFor="let vehicle of vehicles">{{ vehicle.registrationNumber }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="calc-field" [appearance]="appearance">
                         <mat-label>Point Number</mat-label>
                         <input type="text" matInput poistiveNumber formControlName="pointNo">
                     </mat-form-field>
-                    <mat-form-field class="m-l-10" class="calc-field" fxFlex="45" [appearance]="appearance" (click)="dp.open()">
+                    <mat-form-field class="m-l-10" class="calc-field" [appearance]="appearance" (click)="dp.open()">
                         <mat-label>{{ 'POINT_ENTRY.DATE' | translate }}</mat-label>
                         <input matInput readonly formControlName="date" [matDatepicker]="dp">
                         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                         <mat-datepicker #dp>
                         </mat-datepicker>
                     </mat-form-field>
-                    <!-- <div fxLayout fxLayoutGap="10px">
-                        <div class="bold">Date</div>
-                        <div class="bold">:</div>
-                        <div>{{ todayDate | date:'dd/mm/yyyy' }}</div>
-                    </div> -->
                 </div>
                 <div fxLayout fxLayoutAlign.lt-md="center center">
                     <mat-radio-group (change)="onBoreTypeChange($event)" fxLayout fxLayoutGap="20px" formControlName="boreType">

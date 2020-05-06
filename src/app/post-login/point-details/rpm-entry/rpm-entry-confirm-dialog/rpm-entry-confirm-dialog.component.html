@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button mat-dialog-close>
+    <button mat-icon-button mat-dialog-close="cancel">
         <mat-icon>clear</mat-icon>
     </button>
     <div fxFlex fxLayoutAlign="center center">
@@ -32,16 +32,24 @@
                 <div class="bold">{{ agentName }}</div>
             </div>
             <div fxLayout>
-                <div fxFlex="50">Village</div>
-                <div class="bold">{{ rpmEntry.info.agent.village }}</div>
-            </div>
-            <div fxLayout>
                 <div fxFlex="50">Party Name</div>
                 <div class="bold">{{ rpmEntry.info.party.name }}</div>
             </div>
             <div fxLayout>
                 <div fxFlex="50">Party Mobile</div>
                 <div class="bold">{{ rpmEntry.info.party.mobile }}</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Party Area</div>
+                <div class="bold">{{ rpmEntry.info.party.area }}</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Party City</div>
+                <div class="bold">{{ rpmEntry.info.party.city }}</div>
+            </div>
+            <div fxLayout>
+                <div fxFlex="50">Party State</div>
+                <div class="bold">{{ rpmEntry.info.party.state }}</div>
             </div>
         </div>
     </div>
@@ -257,6 +265,6 @@
     </div>
 </div>
 <div mat-dialog-actions fxLayout fxLayoutAlign="space-between" class="sticky-footer">
-    <button mat-raised-button color="primary" mat-dialog-close>CANCEL</button>
+    <button mat-raised-button color="primary" mat-dialog-close="cancel">CANCEL</button>
     <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>SAVE</button>
 </div>

@@ -280,11 +280,16 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
     }
 
     onChange() {
+        this.searchForm.enable({ emitEvent: false });
         const searchCriteria = this.searchForm.get('criteria').value;
         const params = this.getParams(searchCriteria);
         this.fetchingData = true;
         this.fetchData(params).pipe(
-            finalize(() => this.fetchingData = false)
+            finalize(() => this.fetchingData = false),
+            catchError((err) => {
+                this.toastr.error('Error while fetching point data', null, { timeOut: 2000 });
+                return of(err);
+            })
         ).subscribe((points) => {
             if (points) {
                 this.bindData(points);

@@ -102,8 +102,12 @@ export class RpmEntryComponent implements OnInit {
             }
         })
 
-        dialogRef.afterClosed().subscribe(() => {
-            this.stepper.reset()
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result === 'cancel') {
+                return;
+            }
+            this.stepper.reset();
+            this.form.reset();
         })
     }
 

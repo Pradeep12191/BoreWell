@@ -50,7 +50,7 @@
                 <mat-step label="Other Details">
                     <other-details-rpm-entry [form]="form.get('other')"></other-details-rpm-entry>
                     <div fxLayout fxLayoutAlign="space-between" class="p-16">
-                        <button mat-raised-button color="primary" (click)="stepper.reset()">CLEAR</button>
+                        <button mat-raised-button color="primary" (click)="stepper.reset(); form.reset();">CLEAR</button>
                         <button (click)="openConfirmDialog()" mat-raised-button color="primary">CONFIRM & SAVE</button>
                     </div>
                 </mat-step>

@@ -356,7 +356,11 @@ export class RpmEntryComponent implements OnInit {
 
     private getPayload() {
         const casingDetails = this.getUpdatedCasing();
-        const feets = this.getUpdatedFeets();
+        let feets: any = this.getUpdatedFeets();
+
+        if (feets && feets.length) {
+            feets = feets.map(f => ({...f, totalAmt: (f.totalAmt || f.totalAmt === 0) ? f.totalAmt.toString() : ''}));
+        }
         const overallAmt = this.calcTotalAmt();
         const formValue = this.form.value;
         const agent = this.getAgent();

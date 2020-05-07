@@ -229,9 +229,14 @@ mat-form-field.calc-field{
     }
  }
 
- .dashed{
+ .dashed-line{
     border-bottom: 1px dashed #006064;
     height: 1px;
+    margin-bottom: 20px;
+ }
+
+ .dashed{
+    border-bottom: 1px dashed #006064;
     margin-bottom: 20px;
 }
 

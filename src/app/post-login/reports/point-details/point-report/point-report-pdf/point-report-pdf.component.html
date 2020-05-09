@@ -4,7 +4,7 @@
             <div gdRows gdColumns="auto auto auto" gdAlignRows="start start">
                 <div gdColumns gdAuto="column" gdGap="1rem">
                     <div>Vehicle No</div>
-                    <div class="label-header">{{vehicleNo}}</div>
+                    <div class="label-header">{{points[0] | json}}</div>
                 </div>
             </div>
         </th>
@@ -59,7 +59,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 <div gdRows gdGap="0.5rem" class="panel">
                                     <div class="panel-header">Point Report</div>
@@ -206,7 +206,7 @@
                             <div class="font-italic">Remarks</div>
                             <div class="dashed-line"></div>
                             <div>{{ point.remarks }}</div>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
 

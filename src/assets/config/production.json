@@ -6,48 +6,152 @@
     "classicSidenav": true,
     "urls": [
       {
-        "name": "auth",
-        "url": "rigapi1/webapi/resource/login"
+          "name": "auth",
+          "url": "login"
       },
       {
-        "name": "userInfo",
-        "url": "rigapi1/webapi/resource/userbasicinfo"
+          "name": "userInfo",
+          "url": "userbasicinfo"
       },
       {
-        "name": "addHammer",
-        "url": "rigapi1/webapi/resource/addHammer"
+          "name": "addHammer",
+          "url": "addHammer"
       },
       {
-        "name": "addBit",
-        "url": "rigapi1/webapi/resource/addbit"
+          "name": "addBit",
+          "url": "addbit"
       },
       {
-        "name": "addVehicle",
-        "url": "rigapi1/webapi/resource/addVehicle"
+          "name": "addVehicle",
+          "url": "addVehicle"
       },
       {
-        "name": "state",
-        "url": "rigapi1/webapi/resource/statelist"
+          "name": "state",
+          "url": "statelist"
       },
       {
-        "name": "addAgent",
-        "url": "rigapi1/webapi/resource/addAgent"
+          "name": "addAgent",
+          "url": "addAgent"
       },
       {
-        "name": "updateLang",
-        "url": "rigapi1/webapi/resource/updatelanguage"
+          "name": "updateLang",
+          "url": "updatelanguage"
       },
       {
-        "name": "addbit_distributor",
-        "url": "rigapi1/webapi/resource/addbit_distributor"
+          "name": "addbit_distributor",
+          "url": "addbit_distributor"
       },
       {
-        "name": "bitlist",
-        "url": "rigapi1/webapi/resource/getbitlist"
+          "name": "addHammer_distributor",
+          "url": "addHammer_distributor"
       },
       {
-        "name": "addbit_size",
-        "url": "rigapi1/webapi/resource/addbit_size"
+          "name": "addHammer_company",
+          "url": "addHammer_company"
+      },
+      {
+          "name": "gethammer_company_list",
+          "url": "gethammer_company_list"
+      },
+      {
+          "name": "viewhammerlist",
+          "url": "viewhammerlist"
+      },
+      {
+          "name": "gethammer_distributor_list",
+          "url": "gethammer_distributor_list"
+      },
+      {
+          "name": "bitlist",
+          "url": "getbitlist"
+      },
+      {
+          "name": "addbit_size",
+          "url": "addbit_size"
+      },
+      {
+          "name": "vehicle_list",
+          "url": "getvehiclenames"
+      },
+      {
+          "name": "distributor_list",
+          "url": "getbitdistributor_list"
+      },
+      {
+          "name": "bitsize_list",
+          "url": "getbitsize_list"
+      },
+      {
+          "name": "view_bit",
+          "url": "viewbitlist"
+      },
+      {
+          "name": "vehicle_types",
+          "url": "vehicle_type"
+      },
+      {
+          "name": "bore_size",
+          "url": "boresize"
+      },
+      {
+          "name": "view_vehicle_list",
+          "url": "viewvehiclelist"
+      },
+      {
+          "name": "contact_types",
+          "url": "contact_type"
+      },
+      {
+          "name": "viewagentlist",
+          "url": "viewagentlist"
+      },
+      {
+          "name": "agent_types",
+          "url": "getagent_type"
+      },
+      {
+          "name": "drilling_commission_types",
+          "url": "getdrill_comm_type"
+      },
+      {
+          "name": "casing_commission_types",
+          "url": "getcase_comm_type"
+      },
+      {
+          "name": "casing_payment_types",
+          "url": "getcase_payment_type"
+      },
+      {
+          "name": "getbore_type",
+          "url": "getbore_type"
+      },
+      {
+          "name": "getcasing_type",
+          "url": "getcasing_type"
+      },
+      {
+          "name": "getpipe_type",
+          "url": "getpipe_type"
+      },
+      {
+          "name": "createpoint",
+          "url": "createpoint"
+      },
+      {
+          "name": "viewpointlist",
+          "url": "viewpointlist"
+      },
+      {
+          "name": "getpvctype",
+          "url": "getpvctype"
+      },
+      {
+          "name": "RPMEntry",
+          "url": "createrpmentry"
+      },
+      {
+          "name": "rpmReportSheet",
+          "url":"rpm_sheet_report"
       }
-    ]
+  ]
 }

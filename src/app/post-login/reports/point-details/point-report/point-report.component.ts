@@ -242,9 +242,15 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
         })).subscribe((response) => {
             const blob = new Blob([response], { type: 'application/pdf' });
             const fileURL = window.URL.createObjectURL(blob);
-            window.open(fileURL);
+            const link = document.createElement('a');
+            link.href = fileURL;
+            link.download = 'point-entry.pdf';
+            link.click();
+
+            // window.URL.revokeObjectURL(fileURL);
+            // window.open(fileURL);
             this.toastr.success('Report Genererated Successfully', 'Success', { timeOut: 3000 });
-        })
+        });
     }
 
     private getParams(criteria) {

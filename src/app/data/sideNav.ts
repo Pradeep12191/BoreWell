@@ -24,8 +24,8 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
                 isFirstChild: true,
                 children: [
                     { name: 'NAV.ADD_VEHICLE', isFirstChild: true, path: 'master/vehicle/addVehicle', level: 2, paddingLeft: LEVEL_2_PADDING, },
-                    { name: 'NAV.VIEW_VEHICLE', path: 'master/vehicle/viewVehicle', level: 2, paddingLeft: LEVEL_2_PADDING },
-                    { name: 'NAV.LINK_VEHICLE', isLastChild: true, path: 'ytd3', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    { name: 'NAV.VIEW_VEHICLE', isLastChild: true, path: 'master/vehicle/viewVehicle', level: 2, paddingLeft: LEVEL_2_PADDING },
+                    // { name: 'NAV.LINK_VEHICLE', isLastChild: true, path: 'ytd3', level: 2, paddingLeft: LEVEL_2_PADDING },
                 ],
                 lastNode: true,
                 level: 1,
@@ -122,21 +122,21 @@ export const SIDE_NAV_ITEMS: NavItem[] = [
     //         { name: 'Other Payment Issue', isLastChild: true, path: 'ytd17', level: 1, paddingLeft: LEVEL_1_PADDING },
     //     ]
     // },
-    {
-        name: 'NAV.LABOUR_MANAGEMENT_DETAILS',
-        isMain: true,
-        icon: 'account_circle',
-        paddingLeft: LEVEL_0_PADDING,
-        level: 0,
-        children: [
-            { name: 'NAV.LABOUR_RULE', isFirstChild: true, path: 'ytd18', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'NAV.ADD_LABOUR', path: 'ytd19', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'NAV.VIEW_LABOUR', path: 'ytd20', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'NAV.LABOUR_LINK', path: 'ytd21', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'NAV.LABOUR_ADVANCE', path: 'ytd22', level: 1, paddingLeft: LEVEL_1_PADDING },
-            { name: 'NAV.LABOUR_ADVANCE_REFUND', isLastChild: true, path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
-        ]
-    },
+    // {
+    //     name: 'NAV.LABOUR_MANAGEMENT_DETAILS',
+    //     isMain: true,
+    //     icon: 'account_circle',
+    //     paddingLeft: LEVEL_0_PADDING,
+    //     level: 0,
+    //     children: [
+    //         { name: 'NAV.LABOUR_RULE', isFirstChild: true, path: 'ytd18', level: 1, paddingLeft: LEVEL_1_PADDING },
+    //         { name: 'NAV.ADD_LABOUR', path: 'ytd19', level: 1, paddingLeft: LEVEL_1_PADDING },
+    //         { name: 'NAV.VIEW_LABOUR', path: 'ytd20', level: 1, paddingLeft: LEVEL_1_PADDING },
+    //         { name: 'NAV.LABOUR_LINK', path: 'ytd21', level: 1, paddingLeft: LEVEL_1_PADDING },
+    //         { name: 'NAV.LABOUR_ADVANCE', path: 'ytd22', level: 1, paddingLeft: LEVEL_1_PADDING },
+    //         { name: 'NAV.LABOUR_ADVANCE_REFUND', isLastChild: true, path: 'ytd23', level: 1, paddingLeft: LEVEL_1_PADDING },
+    //     ]
+    // },
     {
         name: 'NAV.REPORTS.TITLE',
         isMain: true,

@@ -19,7 +19,7 @@ export class PointReportViewComponent implements OnInit {
 
 
     ngOnInit() {
-        this.generateCasingDetails(this.point)
+        this.generateCasingDetails(this.point);
     }
 
     generateCasingDetails(point) {

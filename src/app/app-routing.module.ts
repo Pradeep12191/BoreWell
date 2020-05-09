@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { CustomPreloadingStrategy } from './services/pre-load.service';
+import {  PointReportPdfComponent } from './post-login/reports/point-details/point-report/point-report-pdf/point-report-pdf.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,10 +15,10 @@ const routes: Routes = [
         loadChildren: () => import('./post-login/post-login.module').then(mod => mod.PostLoginModule),
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'dashboard',
-
-    // }
+    {
+        path: 'report-pdf',
+        component: PointReportPdfComponent
+    }
 ];
 
 @NgModule({

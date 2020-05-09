@@ -1,12 +1,12 @@
 <div fxLayout="column" fxLayoutGap="15px" [ngClass.lt-md]="viewOnly ? '' : 'mobile-view'">
-    <div fxLayout fxLayoutAlign="end" fxLayoutGap="25px">
+    <!-- <div fxLayout fxLayoutAlign="end" fxLayoutGap="25px">
         <button (click)="downloadPdfClick()" mat-mini-fab color="primary">
             <mat-icon><img src="assets/images/whatsapp.png" alt=""></mat-icon>
         </button>
         <button mat-mini-fab color="primary">
             <mat-icon>email</mat-icon>
         </button>
-    </div>
+    </div> -->
     <div #reportCanvas fxLayout="column" fxLayoutGap="15px">
 
         <div class="m-t-16" fxLayout fxLayout.lt-md="column" fxLayoutAlign="space-between" fxLayoutGap="10px">
@@ -28,11 +28,6 @@
                     <div>:</div>
                     <div class="bold text-transform-upper">{{ point.agent_name }}</div>
                 </div>
-                <!-- <div fxLayout fxLayoutGap="15px">
-                <div fxFlex="17">City</div>
-                <div>:</div>
-                <div class="bold">{{ point.agentCity }}</div>
-            </div> -->
                 <div fxLayout fxLayoutGap="15px">
                     <div fxFlex="17">State</div>
                     <div>:</div>
@@ -74,32 +69,6 @@
                 <div class="bold">{{ point.date }}</div>
             </div>
         </div>
-
-        <!-- <div fxLayout="column" class="card">
-        <div class="section-title m-b-16">RPM Details</div>
-        <div fxLayout>
-            <div fxFlex fxLayout="column" fxLayoutGap="10px">
-                <div fxLayout fxLayoutGap="10px">
-                    <div fxFlex="30" class="bold text-center">Start RPM</div>
-                    <div fxFlex="10" class="bold text-center">-</div>
-                    <div fxFlex="60" class="bold text-center">End RPM</div>
-                </div>
-                <div fxLayout fxLayoutGap="10px">
-                    <div fxFlex="30" class="text-center">{{ point.startRpm || 0 }}</div>
-                    <div fxFlex="10" class="text-center">-</div>
-                    <div fxFlex="60" class="text-center">{{ point.endRpm || 0 }}</div>
-                </div>
-            </div>
-            <div fxLayoutAlign="center end" fxLayout fxFlex="10">=</div>
-            <div class="total-text" fxLayoutAlign="start end" fxLayout fxFlex="30">{{ point.totalRpm || 0 }}</div>
-        </div>
-        <div fxLayout fxLayoutAlign="end end" class="m-t-10">
-            <div fxFlex class="text-right">Total Feet Per Hour <span class="bold">{{ '(' + (point.totalFeet || 0) + '/'
-                    + (point.totalRpm || 0) + ')' }}</span> </div>
-            <div fxFlex="10" class="text-center">=</div>
-            <div class="total-text" fxFlex="30">{{ point.totalFeetPerHour || 0 }}</div>
-        </div>
-    </div> -->
         <div fxLayout="column" class="card">
             <div class="section-title m-b-16" fxLayout="column" fxLayoutAlign="center start">Point Report</div>
             <div fxLayout="column" fxLayoutGap="10px">
@@ -134,7 +103,8 @@
                         </div>
                     </ng-container>
 
-                    <div class="m-t-n-16" gdAlignColumns="center center" gdColumns="1fr minmax(50px, auto)" gdGap="25px">
+                    <div class="m-t-n-16" gdAlignColumns="center center" gdColumns="1fr minmax(50px, auto)"
+                        gdGap="25px">
                         <div gdGridAlign="end end" class="bold font-14 text-right total-amt">Total
                             Feet
                             Amount</div>

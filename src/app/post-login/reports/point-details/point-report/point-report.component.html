@@ -1,3 +1,6 @@
+<button (click)="downloadPdf()" [disabled]="!points?.length" *ngIf="render" mat-fab class="download-pdf" color="primary">
+    <mat-icon>picture_as_pdf</mat-icon>
+</button>
 <div *ngIf="view === 'list'; else reportViewTpl" fxLayout="column" class="report-container" fxLayoutGap="10px">
     <form [formGroup]="searchForm" gdRows.lt-md="50% 50%" gdAuto.lt-md="row" 
         gdColumns.lt-md="calc(50% - 0.5rem) 50%" gdColumns="25% 25% auto" gdAuto="column" gdGap="0.5rem">

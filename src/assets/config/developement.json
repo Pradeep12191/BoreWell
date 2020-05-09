@@ -1,6 +1,7 @@
 {
     "formAppearance": "outline",
     "apiUrl": "http://103.207.4.72:18082/rigapi2/webapi/resource/",
+    "reportUrl": "http://localhost:3002/",
     "mobileNav": false,
     "classicSidenav": true,
     "errorMessageTimeout": 2000,

@@ -25,6 +25,8 @@ import { LoginGuard } from './guards/login.guard';
 import { CustomPreloadingStrategy } from './services/pre-load.service';
 import { CommonService } from './services/common.service';
 import { LoaderInterceptorService } from './interceptors/loader.interceptor.service';
+import { PointReportPdfComponent } from './post-login/reports/point-details/point-report/point-report-pdf/point-report-pdf.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json?t=' + new Date().getTime());
 }
@@ -34,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PointReportPdfComponent
   ],
   imports: [
     ReactiveFormsModule,

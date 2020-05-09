@@ -20,6 +20,7 @@ import * as jsPDF from 'jspdf';
 import html2pdf from 'html2pdf.js';
 import { Vehicle } from 'src/app/models/Vehicle';
 import { debounceTime, switchMap, tap, finalize, catchError } from 'rxjs/operators';
+import { LoaderService } from 'src/app/services/loader-service';
 
 const pointNoValidation = (control: AbstractControl) => {
     const fromPointNo = +control.get('from_rpm').value;
@@ -49,6 +50,7 @@ const dateValidation = (control: AbstractControl) => {
     animations: [FADE_IN_ANIMATION]
 })
 export class PointReportComponent implements OnDestroy, AfterViewInit {
+    render = false;
     public columns: Column[] = [
         { id: 'serialNo', name: 'COLUMN.SERIAL_NO', type: 'index', width: '15' },
         { id: 'pointno', name: 'POINT_ENTRY.COL.POINT_NO', type: 'string', width: '25' },
@@ -82,7 +84,8 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
         private config: ConfigService,
         private http: HttpClient,
         private auth: AuthService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private loader: LoaderService
     ) {
         // this.loadStub();
         this.appearance = this.config.getConfig('formAppearance');
@@ -217,11 +220,31 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
                 }
             });
         }
+        setTimeout(() => {
+            this.render = true;
+        }, 750);
     }
 
     ngOnDestroy() {
         if (this.routeSubscritpion) { this.routeSubscritpion.unsubscribe(); }
         if (this.routeQuerySubscription) { this.routeQuerySubscription.unsubscribe(); }
+    }
+
+    downloadPdf() {
+        const params = this.getParams(this.searchForm.value.criteria);
+        const reportUrl = this.config.getConfig('reportUrl') + 'point-entry';
+        this.loader.showSaveLoader('Generating Report...');
+        this.http.get(reportUrl, {
+            params, headers: { Accept: 'application/pdf' },
+            responseType: 'arraybuffer'
+        }).pipe(finalize(() => {
+            this.loader.hideSaveLoader();
+        })).subscribe((response) => {
+            const blob = new Blob([response], { type: 'application/pdf' });
+            const fileURL = window.URL.createObjectURL(blob);
+            window.open(fileURL);
+            this.toastr.success('Report Genererated Successfully', 'Success', { timeOut: 3000 });
+        })
     }
 
     private getParams(criteria) {

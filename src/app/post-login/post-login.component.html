@@ -3,7 +3,7 @@
     <mat-card fxLayoutAlign="start center" fxLayout fxLayoutGap="20px" class="save-spinner">
         <mat-spinner diameter="35" strokeWidth="2"></mat-spinner>
         <div>
-            Saving...
+            {{loaderMessage || 'Saving...'}}
         </div>
     </mat-card>
 </div>

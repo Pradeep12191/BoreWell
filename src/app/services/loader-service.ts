@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class LoaderService {
     loader$ = new Subject<boolean>();
-    saveLoader$ = new Subject<boolean>();
+    saveLoader$ = new Subject<{ status: boolean, message?: string }>();
 
     showLoader() {
         this.loader$.next(true);
@@ -14,19 +14,19 @@ export class LoaderService {
         this.loader$.next(false);
     }
 
-    showSaveLoader() {
-        this.saveLoader$.next(true);
+    showSaveLoader(message = '') {
+        this.saveLoader$.next({ status: true, message });
     }
 
     hideSaveLoader() {
-        this.saveLoader$.next(false);
+        this.saveLoader$.next({ status: false });
     }
 
     loaderObs() {
         return this.loader$.asObservable();
     }
 
-    saveLoaderObs(){
+    saveLoaderObs() {
         return this.saveLoader$.asObservable();
     }
 }

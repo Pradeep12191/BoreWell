@@ -441,9 +441,6 @@ mat-sidenav.mobile{
 }
 
 mat-card.save-spinner{
-    position: absolute;
-    top: calc(50% - 33px);
-    left: calc(50% - 82px);
     border-radius: 4px;
     padding: 16px;
     min-width: 164px;
@@ -458,4 +455,7 @@ mat-card.save-spinner{
     height: 100%;
     width: 100%;
     z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

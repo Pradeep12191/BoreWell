@@ -40,6 +40,7 @@ export class PostLoginComponent implements OnInit, OnDestroy {
   activeMainNode;
   activeSubNode;
   classicSidenav;
+  loaderMessage;
 
   get isMobile() {
     return this.mediaObserver.isActive('lt-md') && this.isMobileSideNav
@@ -88,8 +89,9 @@ export class PostLoginComponent implements OnInit, OnDestroy {
       this.sidenav.toggle()
     })
 
-    this.saveLoaderSubscription = this.loader.saveLoaderObs().subscribe((status) => {
+    this.saveLoaderSubscription = this.loader.saveLoaderObs().subscribe(({ status, message }) => {
       this.saving = status;
+      this.loaderMessage = message;
     })
 
     this.scrollTopSubscription = this.common.scrollTopObs().subscribe(() => {

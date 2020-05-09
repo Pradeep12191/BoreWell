@@ -231,7 +231,8 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
     }
 
     downloadPdf() {
-        const params = this.getParams(this.searchForm.value.criteria);
+        let params: any = this.getParams(this.searchForm.value.criteria);
+        params = { ...params, user_id: this.auth.userid };
         const reportUrl = this.config.getConfig('reportUrl') + 'point-entry';
         this.loader.showSaveLoader('Generating Report...');
         this.http.get<any>(reportUrl, { params }).pipe(finalize(() => {

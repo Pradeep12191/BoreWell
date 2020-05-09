@@ -3,3 +3,59 @@
         background-color: white;
     }
 }
+
+.primary-txt{
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 1.1
+}
+
+.report-table{
+    width: 100%;
+    border: 1px solid;
+    padding: 1rem;
+}
+
+.label-header{
+    font-weight: normal;
+}
+
+.label{
+    font-weight: bold;
+}
+
+.panel{
+    border: 1px solid;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    &-header{
+        font-size: 20px;
+        padding: 10px;
+        border-bottom: 1px solid;
+        margin: -0.5rem;
+        margin-bottom: 0;
+        font-weight: bold;
+        // background: #eee;
+    }
+}
+
+.dashed-line{
+    border-bottom: 1px dashed;
+    height: 1px;
+    margin-bottom: 5px;
+ }
+
+ .feet-header{
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+ }
+
+ .footer-title{
+font-weight: bold;
+font-size: 14px;
+ }
+
+ .total-line{
+     border-bottom: 2px solid;
+ }

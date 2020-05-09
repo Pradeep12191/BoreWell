@@ -233,7 +233,7 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
     downloadPdf() {
         let params: any = this.getParams(this.searchForm.value.criteria);
         const reg_number = this.searchForm.value.vehicle.registrationNumber;
-        params = { ...params, user_id: this.auth.userid, reg_number };
+        params = { ...params, user_id: this.auth.userid, reg_number, auth_token: this.auth.token };
         const reportUrl = this.config.getConfig('reportUrl') + 'point-entry';
         this.loader.showSaveLoader('Generating Report...');
         this.http.get<any>(reportUrl, { params }).pipe(finalize(() => {
@@ -296,7 +296,7 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
         this.fetchingData = true;
         const user_id = this.auth.userid;
         params = { ...params, user_id };
-        return this.http.get(this.pointUrl, { params });
+        return this.http.get(this.pointUrl, { params, headers: { Authorization: this.auth.token } });
     }
 
     onChange() {

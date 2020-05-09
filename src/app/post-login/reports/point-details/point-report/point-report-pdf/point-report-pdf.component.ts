@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { ConfigService } from 'src/app/services/config.service';
 import { HttpClient } from '@angular/common/http';
 import { Point } from 'src/app/models/Point';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     templateUrl: './point-report-pdf.component.html',
@@ -12,18 +13,22 @@ import { Point } from 'src/app/models/Point';
 export class PointReportPdfComponent {
     points = [];
     vehicleNo;
+    params;
     constructor(
         private route: ActivatedRoute,
         private config: ConfigService,
-        private http: HttpClient
+        private http: HttpClient,
+        private auth: AuthService
     ) {
         const apiUrl = this.config.getConfig('apiUrl');
         const pointUrl = this.config.getUrl('rpmReportSheet');
         const url = apiUrl + pointUrl;
         this.route.queryParams.pipe(
             switchMap((params) => {
+                this.params = params;
                 this.vehicleNo = params.reg_number;
-                return this.http.get<Point[]>(url, { params });
+                const authToken = params.auth_token || this.auth.token;
+                return this.http.get<Point[]>(url, { params, headers: { Authorization: authToken } });
             })
         ).subscribe((points) => {
             this.points = points;

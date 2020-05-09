@@ -14,6 +14,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         // const decodeStr = this.auth.username + ':' + this.auth.password;
         // const encodeStr = btoa(decodeStr);
+        // dont want to append auth header for rpm_sheet_report, as handled directly in calling component for report
+        if (req.url.includes('rpm_sheet_report')) {
+            return next.handle(req);
+        }
         let modifiedRequest = req.clone();
         if (req.method === 'POST' || req.method === 'PUT') {
             modifiedRequest = req.clone({

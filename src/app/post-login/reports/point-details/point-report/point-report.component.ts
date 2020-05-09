@@ -234,21 +234,10 @@ export class PointReportComponent implements OnDestroy, AfterViewInit {
         const params = this.getParams(this.searchForm.value.criteria);
         const reportUrl = this.config.getConfig('reportUrl') + 'point-entry';
         this.loader.showSaveLoader('Generating Report...');
-        this.http.get(reportUrl, {
-            params, headers: { Accept: 'application/pdf' },
-            responseType: 'arraybuffer'
-        }).pipe(finalize(() => {
+        this.http.get<any>(reportUrl, { params }).pipe(finalize(() => {
             this.loader.hideSaveLoader();
-        })).subscribe((response) => {
-            const blob = new Blob([response], { type: 'application/pdf' });
-            const fileURL = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = fileURL;
-            link.download = 'point-entry.pdf';
-            link.click();
-
-            // window.URL.revokeObjectURL(fileURL);
-            // window.open(fileURL);
+        })).subscribe(({ filename }) => {
+            window.open(this.config.getConfig('reportUrl') + 'get-report/' + filename, '_blank');
             this.toastr.success('Report Genererated Successfully', 'Success', { timeOut: 3000 });
         });
     }

@@ -109,7 +109,7 @@
 
             </td>
         </tr>
-        <tr style="page-break-inside: avoid;">
+        <tr style="page-break-inside: avoid;" *ngIf="point?.casingDetails?.length">
             <td>
                 <div gdRows gdGap="0.5rem" class="panel">
                     <div class="panel-header">Casing Details</div>
@@ -148,7 +148,7 @@
                 </div>
             </td>
         </tr>
-        <tr style="page-break-inside: avoid;">
+        <tr style="page-break-inside: avoid;" *ngIf="point?.no_of_welding">
             <div gdRows gdGap="0.5rem" class="panel">
                 <div class="panel-header">Welding Charges</div>
                 <div gdColumns="70% 15% auto">
@@ -199,7 +199,7 @@
         <tr style="page-break-inside: avoid;">
             <div class="font-italic">Remarks</div>
             <div class="dashed-line"></div>
-            <div>{{ point.remarks }}</div>
+            <div>{{ point?.advance?.remarks }}</div>
         </tr>
     </tbody>
 </table>

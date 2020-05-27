@@ -117,7 +117,7 @@
                 </div>
             </div>
         </div>
-        <div fxLayout="column" class="card">
+        <div fxLayout="column" class="card" *ngIf="point?.casingDetails?.length">
             <div class="section-title m-b-16">Casing Details</div>
             <div fxLayout="column">
                 <div fxLayout fxLayoutGap="10px" class="table-header">
@@ -154,7 +154,7 @@
                 </div>
             </div>
         </div>
-        <div fxLayout="column" class="card">
+        <div fxLayout="column" class="card" *ngIf="point?.no_of_welding">
             <div fxLayout>
                 <div fxFlex class="section-title m-b-16">Welding Charges</div>
             </div>
@@ -208,7 +208,7 @@
         <div fxLayout="column" class="m-b-25">
             <div fxFlex class="seperation-line m-b-25"></div>
             <div class="bold m-b-10">Remarks</div>
-            <div class="font-italic">{{ point.remarks }}</div>
+            <div class="font-italic">{{ point?.advance?.remarks }}</div>
         </div>
     </div>
 </div>

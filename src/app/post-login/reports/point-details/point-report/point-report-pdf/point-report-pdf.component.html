@@ -58,8 +58,7 @@
                 <div gdRows gdGap="0.5rem" class="panel">
                     <div class="panel-header">Point Report</div>
                     <div gdRows>
-                        <div class="feet-header" gdColumns="17.5% 1% 17.5% 17.5% 1% 17.5% 1% auto"
-                            gdAuto="column">
+                        <div class="feet-header" gdColumns="17.5% 1% 17.5% 17.5% 1% 17.5% 1% auto" gdAuto="column">
                             <div class="text-center">Start Ft.</div>
                             <div>-</div>
                             <div class="text-center">End Ft.</div>
@@ -83,16 +82,16 @@
                                     <div class="text-right">{{ feet.totalAmt }}</div>
                                 </div>
                                 <div *ngIf="!last" class="dashed-line m-t-5 m-b-5"></div>
-                                <div *ngIf="last" class="m-t-10" gdColumns gdAlignRows="start start"
-                                    gdGap="1rem" gdAuto="column">
+                                <div *ngIf="last" class="m-t-10" gdColumns gdAlignRows="start start" gdGap="1rem"
+                                    gdAuto="column">
                                     <div class="footer-title">Total Feet</div>
                                     <div class="footer-title">-</div>
                                     <div class="font-italic line-space-1 amt-text">
                                         {{ point.total_feet }}</div>
                                 </div>
                             </ng-container>
-                            <div class="m-t-n-16" gdAlignColumns="center center"
-                                gdColumns="1fr minmax(50px, auto)" gdGap="25px">
+                            <div class="m-t-n-16" gdAlignColumns="center center" gdColumns="1fr minmax(50px, auto)"
+                                gdGap="25px">
                                 <div gdGridAlign="end end" class="bold font-14 text-right total-amt">
                                     Total
                                     Feet
@@ -134,8 +133,7 @@
                             </div>
                             <div *ngIf="!last" class="m-t-5 m-b-5 dashed-line"></div>
                         </ng-container>
-                        <div gdAlignColumns="center center" gdColumns="1fr minmax(50px, auto)"
-                            gdGap="25px">
+                        <div gdAlignColumns="center center" gdColumns="1fr minmax(50px, auto)" gdGap="25px">
                             <div gdGridAlign="end end" class="bold font-14 text-right total-amt">Total
                                 Casing Amount</div>
                             <div fxLayout="column">
@@ -165,7 +163,8 @@
                         </div>
                     </div>
                     <div gdRows gdAlignColumns="end end">=</div>
-                    <div gdRows gdAlignRows="end end" gdAlignColumns="end end">{{ (point.total_welding_amount || 0) | currency: 'INR' }}</div>
+                    <div gdRows gdAlignRows="end end" gdAlignColumns="end end">
+                        {{ (point.total_welding_amount || 0) | currency: 'INR' }}</div>
                 </div>
 
             </div>
@@ -188,13 +187,29 @@
                     </div>
                 </div>
             </div>
-            
+
         </tr>
         <tr style="page-break-inside: avoid;">
-            <div gdGap="2rem" gdColumns="1fr minmax(50px, auto)">
-                <div class="text-right bold font-14">Overall Amount</div>
-                <div>{{ (point.overallAmt || 0) | currency: 'INR' }}</div>
+            <div gdRows gdGap="5px">
+                <div gdGap="2rem" gdColumns="1fr minmax(50px, auto)">
+                    <div class="text-right bold font-14">Overall Amount</div>
+                    <div>{{ (point.overallAmt || 0) | currency: 'INR' }}</div>
+                </div>
+                <div gdGap="2rem" gdColumns="1fr minmax(50px, auto)">
+                    <div class="text-right bold font-14">Advance Amount</div>
+                    <div>- {{ (point.advance.advance || 0) | currency: 'INR' }}</div>
+                </div>
+                <div gdGap="2rem" gdColumns="1fr minmax(50px, auto)" gdAlignColumns="end end">
+                    <div class="text-right bold font-14">Balance Amount</div>
+                    <div gdRows gdGap="5px">
+                        <div class="total-line"></div>
+                        <div>
+                            {{ ((point.overallAmt || 0) - (point.advance.advance || 0)) | currency: 'INR' }}
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </tr>
         <tr style="page-break-inside: avoid;">
             <div class="font-italic">Remarks</div>

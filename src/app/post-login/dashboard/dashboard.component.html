@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+
+<div gdColumns="repeat(auto-fill, minmax(150px, 1fr))" gdGap="2rem" class="p-16">
+    <div class="card dash" matRipple gdRows="auto 32px" gdAlignRows="center center" (click)="goTo('postlogin/reports/pointDetails/pointReport')">
+        <img class="image" src="./assets/svg/point_report.svg" alt="point_report">
+        <div class="dash-title">Point Report</div>
+    </div>
+    <div class="card dash" matRipple gdRows="auto 32px" gdAlignRows="center center" (click)="goTo('postlogin/rpmDetails/rpmEntry')">
+        <img class="image" src="./assets/svg/rpm_entry.svg" alt="rpm_entry">
+        <div class="dash-title">Rpm Entry</div>
+    </div>
+</div>
+

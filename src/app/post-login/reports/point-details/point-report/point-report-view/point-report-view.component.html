@@ -198,11 +198,25 @@
                 </div>
             </div>
         </div>
-        <div fxLayout="column" class="p-15">
+        <div gdRows gdGap="0.5rem" class="p-15">
             <div gdColumns="1fr minmax(50px, auto)" gdGap="25px" gdAlignColumns="center center">
                 <div gdGridAlign="end end" class="final-title text-right">Overall Amount</div>
                 <div class="text-right total-amt amt-text">{{
                     point.overallAmt || 0 }}</div>
+            </div>
+            <div gdColumns="1fr minmax(50px, auto)" gdGap="25px" gdAlignColumns="center center">
+                <div gdGridAlign="end end" class="bold font-14 text-right total-amt">Advance Amount</div>
+                <div class="text-right total-amt amt-text">- {{
+                    point.advance.advance || 0 }}</div>
+            </div>
+            <div gdColumns="1fr minmax(50px, auto)" gdGap="25px" gdAlignColumns="center center">
+                <div gdGridAlign="end end" class="bold font-14 text-right total-amt">Balance Amount</div>
+                <div gdRows gdGap="5px">
+                    <div class="total-line"></div>
+                    <div class="text-right total-amt amt-text">{{
+                        (point.overallAmt || 0) - (point.advance.advance || 0) }}</div>
+                </div>
+                
             </div>
         </div>
         <div fxLayout="column" class="m-b-25">
